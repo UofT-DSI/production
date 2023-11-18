@@ -1,4 +1,4 @@
-# DSI Course for Bash, Git and GitHub
+# Production
 
 ## Contents:
 1. [Description](https://github.com/rachaellam/dsi-workshop#description)
