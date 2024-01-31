@@ -2,13 +2,13 @@
 # Production
 
 ## Contents:
-1. [Description](https://github.com/rachaellam/dsi-workshop#description)
-2. [Learning Outcomes](https://github.com/rachaellam/dsi-workshop#learning-outcomes)
-3. [Logistics](https://github.com/rachaellam/dsi-workshop#logistics)
-4. [Marking Scheme](https://github.com/rachaellam/dsi-workshop#marking-scheme)
-5. [Policies](https://github.com/rachaellam/dsi-workshop#policies)
-6. [Folder Structure](https://github.com/rachaellam/dsi-workshop#folder-structure)
-7. [Acknowledgements and Contributions](https://github.com/rachaellam/dsi-workshop#acknowledgements-and-contributions)
+1. Description
+2. Learning Outcomes
+3. Logistics
+4. Marking Scheme
+5. Policies
+6. Folder Structure
+7. Acknowledgements and Contributions
 
 ## Description
 
@@ -84,7 +84,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 	
 ## Session 2:	Data Engineering
 
-### 2.3. Data Engineering Fundamentals 
+### 2.1. Data Engineering Fundamentals 
 	
 + Data Sources
 + Data Formats  
@@ -133,7 +133,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 
 ## Session 5:	Model Development and Evaluation
 
-### 5.1. Model Development and Offline Evaluation (4 Units)
+### 5.1. Model Development and Offline Evaluation
 
 + Model Development and Training 
 + Ensembles 
