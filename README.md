@@ -74,12 +74,15 @@ The workshop will be held over two weeks, four days a week. Two of the three day
  + Iterative Process
  + Framing ML Problems 
 	
-### Assignment: Setting Up a Code Repository
+### 1.3 Setting Up a Code Repository
 
  + Sign up for a GitHub Account
  + Install git.
  + Setup SSH Key.
  + Setup repo and do an initial commit.
+ + VS Code or other IDE.
+ + Logger.
+ + Virtual environment.
 
 	
 ## Session 2:	Data Engineering
@@ -91,12 +94,13 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Data Models 
 + Data Storage and Processing
 	
-### Assignment
+### 2.2 Working with Parquet Files
 
 + Download large data set
++ Numpy vs Pandas: row vs column-major tests.
 + Write code to load it in dask
 + Write code to write parquet files in dask
-+ Naming convention: easy to maintain
++ Namespaces and file organization
 
 
 ## Session 3:	Training
@@ -108,7 +112,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Class Imbalance
 + Data Augmentation
 	
-### Assignment
+### 3.2 Training Pipelines
 
 + Implement different types of sampling
 + Some recoding exercise using sci-kit learn
@@ -124,7 +128,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Feature Generalization
 	
 
-#### Assignment
+#### 4.2 Feature Pipelines
 
 + Scikit learn pipelines
 + Time series cross validation
@@ -142,7 +146,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + AutoML 
 + Model Offline Evaluation 
 
-### Assignment
+### 5.2 Containers and tracking
 
 + Implement DB with Docker
 + Experiment tracking
@@ -158,10 +162,11 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + ML in the Cloud
 	
 
-#### Assignment
+#### 5.3 Deployment
 
 + Connect to Power BI
 + What is a pipeline?
++ Django app?
 
 
 
@@ -177,7 +182,12 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 
  + Continual Learning
  + Stateless vs Stateful Training
-	
+
+
+### 7.3 Testing Distributions Shifts
+
++ Python implementation
+
 ### Session 8:	Infrastructure and Organization
 
 #### Topic 8.1. Infrastructure and Tooling for ML Ops
