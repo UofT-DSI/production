@@ -17,12 +17,13 @@ author: Jesús Calderón
 + Data Formats  
 + Data Models 
 + Data Storage and Processing
++ Modes of Data Flow
 
 :::
 :::{.column}
 
 
-**Technical: Setting Up a Code Repository**
+**Technical: An Initial Data Flow**
 
 + Download large data set
 + Setup virtual environments
@@ -535,6 +536,8 @@ ETL is the process of extracting data from one or several sources, transforming 
 
 ![](./img/elt_pipeline.png)
 
+
+# Modes of Data Flow
 
 ## Modes of Data Flow
 
