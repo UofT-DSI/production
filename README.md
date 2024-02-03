@@ -93,6 +93,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Data Formats  
 + Data Models 
 + Data Storage and Processing
++ Modes of Data Flow
 	
 ### 2.2 Working with Parquet Files
 
