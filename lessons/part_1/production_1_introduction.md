@@ -1,6 +1,6 @@
 ---
 title:  Introduction to ML Systems
-subtitle: Production - Session 1
+subtitle: Production 
 author: Jesús Calderón
 ---
 

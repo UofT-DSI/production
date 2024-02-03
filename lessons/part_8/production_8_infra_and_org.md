@@ -1,17 +1,10 @@
 ---
-marp: true
-theme: uncover
-_class: invert
-paginate: true
-output: pdf_document
+title:  Infrastructure and Organization
+subtitle: Production
+author: Jesús Calderón
 ---
 
-# ML Systems in Production
-# Session 8: Infrastructure and Organization
-Jesús A. Calderón
-February 2024
 
----
 
 # Agenda
 

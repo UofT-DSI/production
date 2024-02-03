@@ -1,30 +1,21 @@
 ---
-marp: true
-theme: uncover
-_class: invert
-paginate: true
-output: pdf_document
+title:  Training
+subtitle: Production
+author: Jesús Calderón
 ---
 
-# ML Systems in Production
-# Session 3: Training
-Jesús A. Calderón
-February 2024
+# Introduction
 
----
+## Agenda
 
-# Agenda
-
-**1.1 Overview of ML Systems**
+**3.1 Training**
 	
 + Sampling
 + Labeling
 + Class Imbalance
 + Data Augmentation
 
----
 
-# Agenda (cont.)
 
 **Assignment: Setting Up a Code Repository**
 
@@ -32,4 +23,3 @@ February 2024
 + Some recoding exercise using sci-kit learn
 + Conformal prediction?
 
----
