@@ -33,8 +33,8 @@ author: Jesús Calderón
 + Sampling is embedded across the ML lifecycle: data exploration, train/validation/test split, etc.
 + Sometimes, sampling is necessary:
 
-    - We do not have access to all possible data in the real world.
-    - It is unfeasible, costly, or otherwise impractical to use all data.
+    - We cannot access all possible data in the real world.
+    - Using all data is unfeasible, costly, or otherwise impractical.
     - Accomplish a task faster and cheaper: experiment with a new model, explore data, etc.
 
 :::
@@ -53,12 +53,12 @@ There are two families of sampling:
 ::::::{.columns}
 :::{.column}
 
-+ Generally, it is a bad idea to select data to train ML methods using this family of sampling methods, but some of them are popular.
++ Generally, selecting data to train ML methods using this family of sampling methods is a bad idea, but some of them are popular.
 
 + Convenience sampling
 
     - Select data based on their availability.
-    - Popular and conveninet: fast, inexpensive, practical.
+    - Popular and convenient: fast, inexpensive, practical.
     - Not scientific and does not offer guarantees.
 
 + Snowball sampling
@@ -72,12 +72,12 @@ There are two families of sampling:
 + Judgement sampling
 
     - Experts decide what samples to include.
-    - A.K.A.: risk-based, SME, subjective, etc.
+    - AKA: risk-based, SME, subjective, etc.
 
 + Quota sampling
 
     - Select samples based on predefined and heuristic quotas.
-    - Example: select 100 responses from all age groups, without considering the proportional representation of age groups.
+    - Example: select 100 responses from all age groups without considering the proportional representation of age groups.
 
 :::
 ::::::
@@ -91,7 +91,7 @@ There are two families of sampling:
 
     - All potential samples in the population have equal probabilities of being selected. 
     - Advantage: Easy to implement.
-    - Disadvantage: Rare or infrequent categories of data may not appear in the selection: if a class appears in 0.01% of the data and we randomly select 1% of the population, we may not get representation of this minority class.
+    - Disadvantage: Rare categories of data may not appear in the selection: if a class appears in 0.01% of the data and we randomly select 1% of the population, we may not get a representation of this minority class.
 
 + Stratified Sampling
 
@@ -99,19 +99,19 @@ There are two families of sampling:
     - Each group is called a *stratum* and this method is called *stratified sampling*.
     - Advantage: the distribution of groups in the population is reflected in the sample.
     - Particularly important for selecting training, validation, and test sets.
-    - This method is not always possible (multilabel cases, for example).
+    - This method is only sometimes possible (multilabel cases, for example, may not be treated).
 
 :::
 :::{.column}
 
 + Weighted Sampling
 
-    - Each sample is given a weight, which determines the probability of it being selected.
-    - This method allows us to leverage domain exertise.
+    - Each sample is given a weight, determining the probability of being selected.
+    - This method allows us to leverage domain expertise.
     - Can be used to adjust samples that are coming from a different distribution than the original data:
 
         - Assume the data contains 25% red samples and 75% blue samples. 
-        - We know that the actual distribution is closer to 50% red and 50% blue.
+        - We know the actual distribution is closer to 50% red and 50% blue.
         - We can apply red weights that are three times higher than blue weights.
 
 
@@ -131,7 +131,7 @@ There are two families of sampling:
 + Objectives: 
 
     - Every tweet has an equal probability of being selected.
-    - You can stop the algorithm at any time and the tweets are sample with the correct probability.
+    - You can stop the algorithm at any time, and the tweets are sampled with the correct probability.
 
 + Reservoir sampling:
 
@@ -156,22 +156,22 @@ There are two families of sampling:
 ::::::{.columns}
 :::{.column}
 
-+ Getting hand-labeled data is difficult.  
-+ It is expensive, particularly, if subject matter expertise is required. For instance, compare:
++ Getting hand-labelled data takes a lot of work.  
++ It is expensive, particularly if subject matter expertise is required. For instance, compare:
 
     - Hand label a sentiment data set.
     - Hand label a medical diagnosis data set.
 
-+ It may be invasive: hand labelling data requires someone to actually see the data. 
-+ Hand labeling is slow.
++ It may be invasive: hand labelling data requires someone to see the data. 
++ Hand labelling is slow.
 
 :::
 :::{.column}
 
-+ Label ambiguity or label multiplicty occurs when there are multiple conflicting labels for a data instance.
-+ Label multiplicity may occur when labels are input by multiple anotators or data comes from different sources.
-+ Disagreements among anotators are common, particularly as the need for subject matter expertise increases.
-+ A potential solution is to have clear problem definition and task guidance.
++ Label ambiguity or label multiplicity occurs when multiple conflicting labels exist for a data instance.
++ Label multiplicity may occur when labels are input by multiple annotators or data comes from different sources.
++ Disagreements among annotators are common, particularly as the need for subject matter expertise increases.
++ A potential solution is to have a clear problem definition and task guidance.
 
 :::
 :::::::
@@ -189,23 +189,23 @@ There are two families of sampling:
 ::::::{.columns}
 :::{.column}
 
-+ Natural ground truth labels or natural labels occur when the system can automatically evaluate or partially predictions.
-+ Examples: time traveled on a certain route on Google maps, stock return, etc.
++ Natural ground truth labels or natural labels occur when the system can automatically evaluate or partially predict.
++ Examples: time travelled on a particular route on Google Maps, stock return, etc.
 + Natural labels are inexpensive to obtain and motivate many ML projects.
 
 
 :::
 :::{.column}
 
-+ Recommender systems are the prime example of natural labels: we will knokw if the recommendation was good, if it was acted on.
-+ Many tasks can be framed as recommendation tasks, for example, predicting ads' clickthrough rate can be thought as recommending the best ads.
++ Recommender systems are the prime example of natural labels: we will know if the recommendation was good, if it was acted on.
++ Many tasks can be framed as recommendation tasks; for example, predicting an ad's clickthrough rate can be reframed as recommending the best ads.
 + Natural labels that are inferred from user behaviours like clicks and ratings are known as behavioural labels.
-+ Baehavioural labels can be:
++ Behavioural labels can be:
     
     - Explicit labels are observed from user behaviour (click, upvote, rating, etc.)
-    - Implict labels are inferred by non-behaviour, for example, ads that are not clicked. 
+    - Implicit labels are inferred by non-behaviour, for example, ads that are not clicked. 
 
-+ Inferring an implicit label depends on the deedback loop length, which is the time between serving a prediction and the feedback on it is provided.
++ Inferring an implicit label depends on the feedback loop length, which is the time between serving a prediction and the feedback on it provided.
 
 
 :::
@@ -228,7 +228,7 @@ There are two families of sampling:
 ::::::{.columns}
 :::{.column}
 
-+ If hand labeling is costly, can we automate it?
++ If hand labelling is costly, can we automate it?
 + Weak supervision is built on heuristics that are codified using Labeling Functions (LF):
 
     - Keyword heuristic.
@@ -257,9 +257,9 @@ There are two families of sampling:
 + Useful when the number of labels is limited.
 + Approach 1: self-training.
 
-    - Train a model on existing set of labeled data.
-    - Make predictions for unlabeled samples, keep only the ones with high raw probability scores.4
-    - Train a new model on expanded set of labels.
+    - Train a model on an existing set of labelled data.
+    - Make predictions for unlabeled samples; keep only the ones with high raw probability scores.4
+    - Train a new model on an expanded set of labels.
 
 
 :::
@@ -267,12 +267,12 @@ There are two families of sampling:
 
 + Approach 2: similarity.
 
-    - Assume that data samples that share similar characteristics, share the same labels.
+    - Assume that data samples that share similar characteristics share the same labels.
     - Similarity is established by more complex methods (clustering, k-nn, etc.)
 
 + Approach 3: perturbation.
 
-    - Assume that small perturbations to a sample does not change its label.
+    - Assume that small perturbations to a sample do not change its label.
     - Apply small perturbations to your training instances to obtain new training instances.
 
 
@@ -281,20 +281,20 @@ There are two families of sampling:
 
 # Class Imbalance
 
-## What is Class Imblanace?
+## What is Class Imbalance?
 
 ::::::{.columns}
 :::{.column}
 
 
-+ Class imbalance occurs when one or more classes have significantly low proportions in the data as compared to other classes.
++ Class imbalance occurs when one or more classes have significantly lower proportions in the data than other classes.
 + The majority class dominates, but interest is generally in the minority class (e.g., default, fraud, or market crash).
 + Models trained on imbalanced data will tend to be under-fitted; they will not be able to classify the minority class successfully.
-+ ML (particularly, deep learning) works well in situations when the class distribution is balanced, while performance decreases with class imbalance because:
++ ML (particularly deep learning) works well when the class distribution is balanced. At the same time, performance decreases with class imbalance because:
 
     - There is insufficient signal for the model to learn to detect the minority class.
     - It is easier for a model to find a suboptimal solution by exploiting a simple heuristic instead of learning anything useful about the underlying pattern.
-    - Asymetric costs of error.
+    - Asymmetric costs of error.
 
 + Class imbalance is the norm in many subject domains.
 
@@ -305,8 +305,8 @@ There are two families of sampling:
 + To handle class imbalance:
 
   - Choose the right performance metric.
-  - Data-level methods: change the data distribution to reduce imbalance. 
-  - Algorithm level methods: change learning method to make it more robust to class imbalance.
+  - Data-level methods: change the data distribution to reduce the imbalance. 
+  - Algorithm level methods: change the learning method to make it more robust to class imbalance.
   
 
 
@@ -386,8 +386,8 @@ $$
 ::::::{.columns}
 :::{.column}
 
-+ Some models can optimize a cost or loss function that differentiates for specific type of errors.
-+ In certain cases, one can assume that misclassifying minority events (false negatives) is more costly than incorrectly predicting non-events (false positives).
++ Some models can optimize a cost or loss function that differentiates for specific types of errors.
++ In some instances, one can assume that misclassifying minority events (false negatives) is more costly than incorrectly predicting non-events (false positives).
 
 
 
@@ -419,7 +419,7 @@ $$
 :::
 :::{.column}
 
-+ Class weights (unequal costs) can affect model parameters and potentially affect model performance.
++ Class weights (unequal costs) can affect model parameters and performance.
 + Not every model will be equally affected by class weight strategies.
 
 :::
