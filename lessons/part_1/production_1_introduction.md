@@ -95,7 +95,7 @@ ML is a collection of methods that allow a computer to:
 ::::::{.columns}
 :::{.column}
 
-+ ML is used when a task is too complex or too impractical to program explicitly.
++ ML is used when a task is too complex or impractical to program explicitly.
 + When applied successfully, ML will enable:
 
     - Greater scale: automation.
@@ -120,11 +120,11 @@ ML is a collection of methods that allow a computer to:
 ::::::{.columns}
 :::{.column}
 
-+ A business problem is not the same as a ML problem.
++ A business problem is not the same as an ML problem.
 
-    - Generally, business will be concerned with profit maximization (directly or indirectly): increasing sales, cutting costs, enhance customer satisfaction, reduce churn, increase time on website, etc.
-    - The objective of a ML method is to enhance performance of the task, given more data.
-    - Optimising ML performance metrics does not automatically translate to optimising business performance.
+    - Generally, a business will be concerned with profit maximization (directly or indirectly): increasing sales, cutting costs, enhancing customer satisfaction, reducing churn, increasing time on the website, etc.
+    - The objective of an ML method is to enhance the performance of the task, given more data.
+    - Optimising ML performance metrics does not automatically translate to optimizing business performance.
 
 + Some of the most popular business applications of ML are in areas where business and ML performance overlap: fraud detection, recommender systems, etc.
 
@@ -133,7 +133,7 @@ ML is a collection of methods that allow a computer to:
 :::
 :::{.column}
 
-"Machine learning is an approach to (1) learn (2) complex patterns from (3) existing data and use these patterns to make (4) predictions on (5) unseed data."
+"Machine learning is an approach to (1) learn (2) complex patterns from (3) existing data and use these patterns to make (4) predictions on (5) unseen data."
 
 (Huyen, 2022)
 
@@ -159,7 +159,7 @@ ML is a collection of methods that allow a computer to:
 + Complex patterns
 
     - There are patterns to learn, and they are complex.
-    - ML solutions are only useful if there are patterns.
+    - ML solutions are only helpful if there are patterns.
     - Simple patterns could be learned, but the cost of applying ML may be unreasonable.
     
 
@@ -168,13 +168,13 @@ ML is a collection of methods that allow a computer to:
 
 + Existing data
 
-    - Data is available , or it's possbile to collect data.
-    - Out of domain predictions may fail because of lack of training data.
+    - Data is available, or it is possible to collect data.
+    - Out-of-domain predictions may fail because of a lack of training data.
     - Online (real-time) learning systems could be deployed and trained using production data.
 
 + Predictions
 
-    - ML algorithms will generate predictions, therefore the problem to solve should be predictive in nature.
+    - ML algorithms will generate predictions. Therefore, the problem to solve should be predictive.
     - A prediction could be about a future event (forecast) or an event that is difficult to observe (e.g., fraud detection or clustering).
 
 
@@ -191,10 +191,10 @@ ML is a collection of methods that allow a computer to:
 
 + Unseen data
     
-    - Unseen data shares pattern with the training data.
+    - Unseen data shares patterns with the training data.
     - The learning method generalizes reasonably well on testing data.
 
-+ It's repetitive
++ It is repetitive
 
     - ML algorithms perform better with experience: repetitive tasks afford such experience.
 
@@ -210,13 +210,13 @@ ML is a collection of methods that allow a computer to:
 + It's at scale
 
     - Upfront costs are involved: infrastructure, staff, DevOps.
-    - Setting up an ML system caters to many ML concurrently.
+    - Setting up an ML system that caters to many ML models concurrently.
 
 + Patterns are constantly changing
 
     - Hard-coded solutions can become stale and outdated.
-    - The environment in which the ML system operates changes: economics, social behaviour, trends, etc.
-    - Feed-back: the ML system informs a company's actions, which in turn affects interactions with the external environment.
+    - The ML system's environment changes: economics, social behaviour, trends, etc.
+    - Feedback: the ML system informs a company's actions, affecting, in turn, the company's interactions with the external environment.
 
 :::
 ::::::
@@ -281,8 +281,8 @@ ML is a collection of methods that allow a computer to:
 
     - In production:
 
-        * Fast inference is desireable.
-        * Latency, the time between a query is received and it is addressed, should be minimized.
+        * Fast inference is desirable.
+        * Latency, the time between when a query is received and when it is addressed, should be minimized.
         * Latency is usually measured using percentiles of time elapsed (e.g., 99th percentile should be below X ms.)
 
 :::
@@ -292,41 +292,6 @@ ML is a collection of methods that allow a computer to:
 
 :::
 ::::::
-
-## Business and ML Objectives
-
-::::::{.columns}
-:::{.column}
-
-+ Different stakeholders require different things:
-
-    - ML engineers: increase performance or efficiency of recommender system.
-    - Sales: recommend more profitable options.
-    - Product: reduce latency.
-    - Platform: stability.
-    - Manager: control costs.
-
-+ Computational priorities
-
-    - During model development:
-        
-        * Training is the bottleneck.
-        * Throughput, the number of cases processed, should be maximized. 
-
-    - In production:
-
-        * Fast inference is desireable.
-        * Latency, the time between a query is received and it is addressed, should be minimized.
-        * Latency is usually measured using percentiles of time elapsed (e.g., 99th percentile should be below X ms.)
-
-:::
-:::{.column}
-
-![(Huyen, 2022)](./img/latency_throughput.png)
-
-:::
-::::::
-
 
 ## Business and ML Objectives (cont.)
 
@@ -350,7 +315,7 @@ ML is a collection of methods that allow a computer to:
 
     - Trust.
     - Legal requirements.
-    - Informativeness: in addition to predictions, we require feature importance and other information about or results.
+    - Informativeness: besides predictions, we require feature importance and other information about or results.
     - Transferrability: can learning from a scenario be applied to other scenarios?
 
 
@@ -371,10 +336,10 @@ ML is a collection of methods that allow a computer to:
 ::::::{.columns}
 :::{.column}
 
-+ Many applications today are data-intensive, instead of compute-intensive.
++ Many applications today are data-intensive instead of compute-intensive.
 
     - The limit factor is data and not computation.
-    - Concerns: amount of data, compleixty of data, and speed at which it changes.
+    - Concerns: the amount of data, complexity of data, and speed at which it changes.
 
 + ML Systems tend to be embedded in data-intensive applications.
 
@@ -396,14 +361,14 @@ ML is a collection of methods that allow a computer to:
 ::::::{.columns}
 :::{.column}
 
-+ **Reliability**: The system should continue to perform the correct function at the desired level of performance even in the face of adversity.
++ **Reliability**: The system should continue to perform the correct function at the desired level of performance, even in the face of adversity.
 
     - May require reporting uncertainty of results.
     - Remove "silent failures": the system should alert the users of unexpected conditions.
     - If all else fails, shut down gracefully (e.g., close connections, log errors, alert downstream processes, etc.) 
 
 
-+ **Scalability** to ensure possibility of growth:
++ **Scalability** to ensure the possibility of growth:
 
     - Increase complexity.
     - Traffic volume or throughput.
@@ -421,7 +386,7 @@ ML is a collection of methods that allow a computer to:
 
 + **Adaptability** to shifting data distributions and business requirements.
 
-    - System should allow discovering aspects for performance improvements.
+    - The system should allow discovering aspects for performance improvements.
     - Allow updates without service interruptions.
 
 :::
@@ -452,7 +417,7 @@ ML is a collection of methods that allow a computer to:
 ::::::{.columns}
 :::{.column}
 
-+ The output of a ML model dictates the type of ML problem.
++ The output of an ML model dictates the type of ML problem.
 + In general, there are two types of ML tasks:
 
     - Classification.
@@ -460,7 +425,7 @@ ML is a collection of methods that allow a computer to:
 
 + A regression model can be framed as a classification model and vice versa.
     - Regression to classification: apply quantization.
-    - Classification to regression: predict likelihood of class.
+    - Classification to regression: predict the likelihood of class.
     
 
 :::
@@ -476,7 +441,7 @@ ML is a collection of methods that allow a computer to:
         
         * More than two (mutually exclusive) classes.
         * High cardinality (number of classes) problems will be more complex than low cardinality problems.
-        * High cardinality can be addressed with a hierarchical classification approach: first, classify into large grups, then classify into specific labels.
+        * High cardinality can be addressed with a hierarchical classification approach: first, classify into large groups, then classify into specific labels.
 
     - Multilabel: 
     
@@ -492,13 +457,13 @@ ML is a collection of methods that allow a computer to:
 ::::::{.columns}
 :::{.column}
 
-+ ML rquires an objective function to guide the learning process through optimization. 
++ ML requires an objective function to guide the learning process through optimization. 
 + In the context of ML:
 
     - Regression tasks generally employ error or accuracy metrics: Root Mean Square Error (RMSE) or Mean Absolute Error (MAE).
-    - Classification tasks are generally performed using log loss or cross entropy.
+    - Classification tasks are generally performed using log loss or cross-entropy.
 
-+ Log loss or cross-entropy loss is a performance metric that quantifies the difference between predicted and actual probabilities. 
++ Log or cross-entropy loss is a performance metric that quantifies the difference between predicted and actual probabilities. 
 + In a two-class setting, it is given by:
 
 $$
@@ -527,7 +492,7 @@ $$
 ::::::{.columns}
 :::{.column}
 
-+ A product may have different (business) objectives that will be met by different models. 
++ A product may have different (business) objectives that different models will meet. 
 + However, each model may compete with one another for optimal results. 
 + For example, we may have the following objectives:
 

@@ -14,7 +14,7 @@ author: Jesús Calderón
 **2.1 Fundamentals of Data Engineering**
 
 + Data Sources
-+ Data Formats  
++ Data Formats  
 + Data Models 
 + Data Storage and Processing
 + Modes of Data Flow
@@ -25,10 +25,10 @@ author: Jesús Calderón
 
 **Technical: An Initial Data Flow**
 
-+ Download large data set
++ Download a large data set
 + Setup virtual environments
-+ Write code to load it in dask
-+ Write code to write parquet files in dask
++ Write code to load it in Dask
++ Write code to write parquet files in Dask
 + Naming convention
 
 :::
@@ -62,7 +62,7 @@ author: Jesús Calderón
     - Text, images, videos, files, etc.
     - Prone to error: text too long, too short, incomplete, unexpected data types, etc.
 
-+ System generated data:
++ System-generated data:
 
     - Logs, performance metrics, and other system outputs.
     - Generally, well-formatted.
@@ -79,7 +79,7 @@ author: Jesús Calderón
 
 + Third-party data:
 
-    - Data collected from the public, when the public is not a customer of the collecting organization.
+    - Data collected from the public when the public is not a customer of the collecting organization.
     - Price databases, news aggregators, etc.
 
 
@@ -100,14 +100,14 @@ author: Jesús Calderón
     - Store model performance metrics and other model-related information.
     - Store logs for monitoring and debugging.
 
-+ Multiple storage types can be combined with data transformation proceudres to create *pipelines*.
++ Multiple storage types can be combined with data transformation procedures to create *pipelines*.
 
 
 :::
 :::{.column}
 
 + Selecting the right data format for storing can be beneficial in terms of performance and costs. 
-+ *Data serialization* is the process of converting a data structure or object state into a format that can be stored or transmitted and reconstructed later.
++ *Data serialization* is converting a data structure or object state into a format that can be stored, transmitted, and reconstructed later.
 + Data formats can be:
     - Text or binary-based. 
     - Human readable. 
@@ -202,7 +202,7 @@ The data can also be represented with less structure.
 
 + Consecutive elements in a column are stored next to each other.
 + Example: parquet.
-+ Accessing columns will tend to be faster than accessing columns.
++ Accessing columns will be faster than accessing columns.
 + Faster for retrieving columns.
 
 :::
@@ -265,14 +265,14 @@ The data can also be represented with less structure.
 :::
 :::{.column}
 
-+ Normalization is the process of determining how much redundancy exists in a table and reducing it, as required. 
++ Normalization is determining how much redundancy exists in a table and reducing it, as required. 
 + The goals of normalization are to:
 
     - Be able to characterize the level of redundancy in a relational schema.
-    - Provide mechanisms for transforming schemas in order to remove redundancy
+    - Provide mechanisms for transforming schemas to remove redundancy
 
-+ Generally, we want to minimize redundancy of primamry and foreign keys.
-+ One disasdvantage of normalizing data is that it becomes spread out in different tables.
++ Generally, we want to minimize the redundancy of primary and foreign keys.
++ One disadvantage of normalizing data is that it becomes spread out in different tables.
 
 :::
 :::::::
@@ -291,7 +291,7 @@ The data can also be represented with less structure.
 :::{.column}
 
 + An *imperative language* requires the programmer to determine the steps that the program should follow. For example, Python.
-+ A *declarative language* requires the programmer to specify the outpus and the computer figures out the steps needed to get the queried outputs.  
++ A *declarative language* requires the programmer to specify the output and the computer figures out the steps needed to get the queried outputs.  
 
 :::
 ::::::
@@ -301,7 +301,7 @@ The data can also be represented with less structure.
 ::::::{.columns}
 :::{.column}
 
-+ Relational model has been applied to many use cases, but can be restrictive: data needs to adhere to a schema.
++ Relational model has been applied to many use cases but can be restrictive: data needs to adhere to a schema.
 + Not Only SQL.
 + No SQL models can be of two types:
 
@@ -312,7 +312,7 @@ The data can also be represented with less structure.
 :::{.column}
 
 + The document model targets use cases in which data is assumed to come in self-contained units called documents. There is little relationship between the documents. 
-+ The graph model targets use cases in which relationships are common and important. 
++ The graph model targets use cases in common and important relationships. 
 
 
 :::
@@ -408,7 +408,7 @@ Document1: harry_potter.json
 **Structured Data**
 
 + Structured data follows a predefined data model called a schema.
-+ Schema on write: by using structured data we commit to a predefined schema. Business requirements change over time, commiting to a predefined schema may be too restrictive.
++ Schema on write: we commit to a predefined schema using structured data. Business requirements change over time, and committing to a predefined schema may be too restrictive.
 + Data warehouse: a repository for structured data.
 
 :::
@@ -416,7 +416,7 @@ Document1: harry_potter.json
 
 **Unstructured Data**
 
-+ Schema on read: unstructured data  does not adhere to a predefined schema, pushing the responsibility of applying a schema to the application that reads the data.
++ Schema on read: unstructured data does not adhere to a predefined schema, pushing the responsibility of applying a schema to the application that reads the data.
 + Key-value pairs: even if no schema is enforced, the data may contain intrinsic patterns that help extract structures.
 + Data lake: a repository for unstructured data.
 
@@ -441,10 +441,10 @@ Document1: harry_potter.json
 ::::::{.columns}
 :::{.column}
 
-+ Databases are storage engines, an implementation of how data is stored and retrieved on machines.
++ Databases are storage engines that implement how data is stored and retrieved on machines.
 + Typically, databases are optimized for transactional processing or analytical processing.
-+ A transaction is any kind of action: buy/sell, a tweet, ordering a ride, uploading a new model, watching YouTube.
-+ On-Line Transaction Processing (OLTP): transactions are inserted into the database as they are generated. Occassionally, they can are updated. 
++ A transaction is any action: buy/sell, a tweet, ordering a ride, uploading a new model, or watching YouTube.
++ On-Line Transaction Processing (OLTP): transactions are inserted into the database as they are generated. Occasionally, they can be updated. 
 
 :::
 :::{.column}
@@ -455,7 +455,7 @@ Document1: harry_potter.json
 
     - Atomicity: all steps in a transaction are completed successfully as a group. If one step fails, all fail.
     - Consistency: all transactions coming through must follow predefined rules.
-    - Isolation: two transactions happen at the same time as if they were isolated. Two users accessing the same data, will not change it at the same time.
+    - Isolation: two transactions happen at the same time as if they were isolated. Two users accessing the same data will not change it at the same time.
     - Durability: once a transaction has been committed, it will remain committed even in the case of system failure.
 
 + Some transactional databases do not offer ACID, but BASE: "Basically Available, Soft state, and Eventual consistency." (Kleppmann, 2017)
@@ -492,9 +492,9 @@ Document1: harry_potter.json
 
 ETL is the process of extracting data from one or several sources, transforming it to the shape that an application or model requires it, and loading it to a desired destination.
     
-- Extract the data from all data sources, including validation and rejecting data that does not meet rquirements. Notify sources of rejected data.
+- Extract the data from all data sources, including validating and rejecting data that does not meet requirements. Notify sources of rejected data.
 - Transform the data through different operations: join, filter, standardization, etc.
-- Load is deciding how and how often to load the transformed data into the destination, which can be a file, a database, or a data warehouse.
+- Load is deciding how and how often to load the transformed data into the destination (a file, a database, or a data warehouse).
 
 :::
 :::{.column}
@@ -519,15 +519,15 @@ ETL is the process of extracting data from one or several sources, transforming 
 + Solves the problem of rapidly arriving data.
 + Store first, figure out what to do with the data later.
 + Use a compressed format.
-+ Take advantage of clusters of computers and cloud.
++ Take advantage of clusters of computers and the cloud.
 
 :::
 :::{.column}
 
 + Also difficult to manage.
-+ Inefficient to search through a massive amount of raw data for the data that you want.
++ Inefficient to search through a massive amount of raw data for your desired data.
 + As infrastructure and frameworks become standardized, data is also becoming standardized.
-+ Lakehouse solutions (Databricks and Snoflake) are hybrid solutions that combine the flexibility of data lakes and the data management of data warehouses.
++ Lakehouse solutions (Databricks and Snowflake) are hybrid solutions that combine the flexibility of data lakes and the data management of data warehouses.
 
 :::
 ::::::
@@ -545,7 +545,7 @@ ETL is the process of extracting data from one or several sources, transforming 
 :::{.column}
 
 + Data 'flows' when data is passed from one process to another.
-+ In production, generally we do not see data flows in the context of a single process, instead we find multiple processes.
++ In production, generally, we do not see data flows in the context of a single process. Instead, we find multiple processes.
 + How do we pass data between processes that do not share memory?
 
 
@@ -597,7 +597,7 @@ ETL is the process of extracting data from one or several sources, transforming 
     - Process B returns the requested dta through the same network.
 
 + Request driven approach.
-+ Service oriented architecture:
++ Service-oriented architecture:
 
     - Each one of the services can belong to different companies.
     - Two services can also be parts of the same application (microservices architecture).
@@ -620,7 +620,7 @@ ETL is the process of extracting data from one or several sources, transforming 
     - REST: representational state transfer. Popular among public APIs. HTML is an implementation of REST.
     - RPC: remote procedure call. Aims to make service requests look like internal function calls.
 
-+ In complex scenarios (all services request and serve data, for instance), this architecture may become overly complex.
++ This architecture may become convoluted in complex scenarios (all services request and serve data, for instance).
 + A better approach may be to have a central data broker.
 
 :::
@@ -639,7 +639,7 @@ ETL is the process of extracting data from one or several sources, transforming 
 + Request-driven data passing is synchronous: the target service must be listening for the request to go through.
 + A broker can coordinate passing data among services instead of creating a complex web of interservice data passing.
 + Whenever a service produces data (a prediction, for example), it is passed to the broker. Whichever service requires the most recent version of the data, it can find it with the broker.
-+ Technically, databases could be real-time transports, however it can add latency. If this is a conern, an in-memory transport is preferred.
++ Technically, databases could be real-time transports. However, it can add latency. If this is a concern, an in-memory transport is preferred.
 
 :::
 ::::::
@@ -653,21 +653,22 @@ ETL is the process of extracting data from one or several sources, transforming 
 + A piece of data broadcast to a real-time transport is called an event.  
 + This architecture is called event-driven. 
 + The real-time transport is sometimes called event bus.
-+ Request-driven architecture works well for systems that rely more on app logic than on data.
-+ Event-driven architecture works better for systems that are data-intensive.
++ Request-driven architecture works well for systems that rely more on app logic than data.
++ Event-driven architecture works better for data-intensive systems.
 
 
 :::
 :::{.column}
 
-+ Two most common Real-Time Transports are pubsub (publish-subscribe) and message queue.
++ Two of the most common Real-Time Transports are pubsub (publish-subscribe) and message queue.
 + In the pubsub model:
 
-    - Any service can publish to different topics in the real-time transport. - Any service that subscribes to a topics can read all the events in that topic. 
-    - There is a retention policy, for example: data will be retained for X days before being deleted or moved to permanent storage.
+    - Any service can publish to different topics in the real-time transport. 
+    - Any service that subscribes to a topic can read all the events in that topic. 
+    - There is a retention policy; for example, data will be retained for X days before being deleted or moved to permanent storage.
     - Examples: Apache Kafka and Amazon Kinesis.
 
-+ In the message queuue model:
++ In the message queue model:
 
     - An event has intended consumers. An event with intended consumers is a message.
     - The message queue is responsible for getting the message to the right consumers.
@@ -683,7 +684,7 @@ ETL is the process of extracting data from one or several sources, transforming 
 :::{.column}
 
 + Once data arrives in a data storage engine (database, data lake, or data warehouse, for example), it is historical data.
-+ Historical data is processed in batch jobs that are run preiodically.
++ Historical data is processed in batch jobs that are run periodically.
 + Batch processing is a practice with mature solutions such as MapReduce and Spark. 
 + Stream processing is performing computation on streaming data coming from real-time transports.
 
