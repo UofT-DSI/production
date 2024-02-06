@@ -145,7 +145,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 
 ### 5.2 Containers and tracking
 
-+ Implement DB with Docker
+
 + Experiment tracking
 
 

@@ -28,9 +28,6 @@ February 2024
 
 # Agenda (cont.)
 
-**Assignment: Setting Up a Code Repository**
-
-+ Implement DB with Docker
 + Experiment tracking
 
 ---
