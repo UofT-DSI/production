@@ -11,7 +11,7 @@ author: Jesús Calderón
 ::::::{.columns}
 :::{.column}
 
-**2.1 Data Engineering Fundamentals**
+**2.1 Fundamentals of Data Engineering**
 
 + Data Sources
 + Data Formats  
