@@ -1,17 +1,10 @@
 ---
-marp: true
-theme: uncover
-_class: invert
-paginate: true
-output: pdf_document
+title:  Data Distribution Shifts and Monitoring
+subtitle: Production
+author: Jesús Calderón
 ---
 
-# ML Systems in Production
-# Session 7: Data Distribution Shifts
-Jesús A. Calderón
-February 2024
 
----
 
 # Agenda
 

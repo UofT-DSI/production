@@ -1,10 +1,9 @@
 ---
-marp: true
-theme: uncover
-_class: invert
-paginate: true
-output: pdf_document
+title:  Model Development
+subtitle: Production
+author: Jesús Calderón
 ---
+
 
 # ML Systems in Production
 # Session 5: Model Development and Evaluation

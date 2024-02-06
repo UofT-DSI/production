@@ -59,7 +59,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 
 # Course Schedule
 
-## Session 1:	Introduction
+## Part 1:	Introduction
 
 ### 1.1 Overview of ML Systems 
 	
@@ -69,20 +69,20 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 	
 ### 1.2 Introduction to ML System Design 
 	
- + Business and ML Objectives
- + Requirements of Data-Driven Products: Reliability, Scalability, Maintainability, Adaptability
- + Iterative Process
- + Framing ML Problems 
++ Business and ML Objectives
++ Requirements of Data-Driven Products
++ Iterative Process
++ Framing ML Problems 
 	
-### Assignment: Setting Up a Code Repository
+### 1.3 Initial Setup
 
- + Sign up for a GitHub Account
- + Install git.
- + Setup SSH Key.
- + Setup repo and do an initial commit.
++ Git setup
++ VS Code or other IDE.
++ Virtual environment.
++ Logger.
 
 	
-## Session 2:	Data Engineering
+## Part 2:	Data Engineering
 
 ### 2.1. Data Engineering Fundamentals 
 	
@@ -90,31 +90,32 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Data Formats  
 + Data Models 
 + Data Storage and Processing
++ Modes of Data Flow
 	
-### Assignment
+### 2.2 Working with Parquet Files
 
 + Download large data set
++ Numpy vs Pandas: row vs column-major tests.
 + Write code to load it in dask
 + Write code to write parquet files in dask
-+ Naming convention: easy to maintain
++ Namespaces and file organization
 
 
-## Session 3:	Training
+## Part 3:	Training
 
 ### 3.1. Training Data 
 	
 + Sampling
 + Labeling
 + Class Imbalance
-+ Data Augmentation
+
 	
-### Assignment
+### 3.2 Training Data
 
-+ Implement different types of sampling
-+ Some recoding exercise using sci-kit learn
-+ Conformal prediction?
++ Sampling: random, stratified, weighted.
++ SMOTE
 
-### Session 4:	Feature Engineering
+### Part 4:	Feature Engineering
 
 #### 4.1. Feature Engineering 
 
@@ -124,14 +125,14 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Feature Generalization
 	
 
-#### Assignment
+#### 4.2 Feature Pipelines
 
-+ Scikit learn pipelines
++ Scikit pipelines
 + Time series cross validation
-+ 1 scikit and 1 lime or shap
++ Shap or perm feature importance
 
 
-## Session 5:	Model Development and Evaluation
+## Part 5:	Model Development and Evaluation
 
 ### 5.1. Model Development and Offline Evaluation
 
@@ -142,30 +143,30 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + AutoML 
 + Model Offline Evaluation 
 
-### Assignment
+### 5.2 Containers and tracking
 
 + Implement DB with Docker
 + Experiment tracking
 
 
-### Session 6:	Deployment
+### Part 6:	Deployment
 
 #### 6.1. Model Deployment and Prediction Service 
 
 + ML Deployment Myths
 + Batch Prediction vs Online Prediction
-+ Model Compression
 + ML in the Cloud
 	
 
-#### Assignment
+#### 5.3 Deployment
 
 + Connect to Power BI
 + What is a pipeline?
++ Django app?
 
 
 
-## Session 7:	Data Distribution Shifts
+## Part 7:	Data Distribution Shifts
 
 ### 7.1. Data Distribution Shifts and Monitoring 
 
@@ -177,8 +178,13 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 
  + Continual Learning
  + Stateless vs Stateful Training
-	
-### Session 8:	Infrastructure and Organization
+
+
+### 7.3 Testing Distributions Shifts
+
++ Python implementation
+
+### Part 8:	Infrastructure and Organization
 
 #### Topic 8.1. Infrastructure and Tooling for ML Ops
 	

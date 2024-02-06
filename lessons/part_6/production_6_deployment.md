@@ -1,19 +1,13 @@
 ---
-marp: true
-theme: uncover
-_class: invert
-paginate: true
-output: pdf_document
+title:  Deployment
+subtitle: Production
+author: Jesús Calderón
 ---
 
-# ML Systems in Production
-# Session 6: Deployment
-Jesús A. Calderón
-February 2024
 
----
+# Introduction
 
-# Agenda
+## Agenda
 
 **6.1Model Deployment and Prediction Service **
 	
@@ -27,4 +21,3 @@ February 2024
 + Connect to Power BI
 + What is a pipeline?
 
----
