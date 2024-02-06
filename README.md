@@ -59,7 +59,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 
 # Course Schedule
 
-## Session 1:	Introduction
+## Part 1:	Introduction
 
 ### 1.1 Overview of ML Systems 
 	
@@ -69,23 +69,20 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 	
 ### 1.2 Introduction to ML System Design 
 	
- + Business and ML Objectives
- + Requirements of Data-Driven Products: Reliability, Scalability, Maintainability, Adaptability
- + Iterative Process
- + Framing ML Problems 
++ Business and ML Objectives
++ Requirements of Data-Driven Products
++ Iterative Process
++ Framing ML Problems 
 	
-### 1.3 Setting Up a Code Repository
+### 1.3 Initial Setup
 
- + Sign up for a GitHub Account
- + Install git.
- + Setup SSH Key.
- + Setup repo and do an initial commit.
- + VS Code or other IDE.
- + Logger.
- + Virtual environment.
++ Git setup
++ VS Code or other IDE.
++ Virtual environment.
++ Logger.
 
 	
-## Session 2:	Data Engineering
+## Part 2:	Data Engineering
 
 ### 2.1. Data Engineering Fundamentals 
 	
@@ -104,22 +101,21 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Namespaces and file organization
 
 
-## Session 3:	Training
+## Part 3:	Training
 
 ### 3.1. Training Data 
 	
 + Sampling
 + Labeling
 + Class Imbalance
-+ Data Augmentation
+
 	
-### 3.2 Training Pipelines
+### 3.2 Training Data
 
-+ Implement different types of sampling
-+ Some recoding exercise using sci-kit learn
-+ Conformal prediction?
++ Sampling: random, stratified, weighted.
++ SMOTE
 
-### Session 4:	Feature Engineering
+### Part 4:	Feature Engineering
 
 #### 4.1. Feature Engineering 
 
@@ -131,12 +127,12 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 
 #### 4.2 Feature Pipelines
 
-+ Scikit learn pipelines
++ Scikit pipelines
 + Time series cross validation
-+ 1 scikit and 1 lime or shap
++ Shap or perm feature importance
 
 
-## Session 5:	Model Development and Evaluation
+## Part 5:	Model Development and Evaluation
 
 ### 5.1. Model Development and Offline Evaluation
 
@@ -153,13 +149,12 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Experiment tracking
 
 
-### Session 6:	Deployment
+### Part 6:	Deployment
 
 #### 6.1. Model Deployment and Prediction Service 
 
 + ML Deployment Myths
 + Batch Prediction vs Online Prediction
-+ Model Compression
 + ML in the Cloud
 	
 
@@ -171,7 +166,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 
 
 
-## Session 7:	Data Distribution Shifts
+## Part 7:	Data Distribution Shifts
 
 ### 7.1. Data Distribution Shifts and Monitoring 
 
@@ -189,7 +184,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 
 + Python implementation
 
-### Session 8:	Infrastructure and Organization
+### Part 8:	Infrastructure and Organization
 
 #### Topic 8.1. Infrastructure and Tooling for ML Ops
 	
