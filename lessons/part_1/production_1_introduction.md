@@ -122,9 +122,9 @@ ML is a collection of methods that allow a computer to:
 :::{.column}
 
 
-![](./img/object_detection.jpg)
+![ ([Source](https://www.augmentedstartups.com/blog/overcoming-challenges-in-object-detection-accuracy-speed-and-scalability)) ](./img/object_detection.jpg)
 
- ([Image source](https://www.augmentedstartups.com/blog/overcoming-challenges-in-object-detection-accuracy-speed-and-scalability))
+ 
 
 
 :::

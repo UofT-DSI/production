@@ -63,15 +63,24 @@ These notes are based on Chapters 5 of [*Designing Machine Learning Systems*](ht
 
 ## What is Feature Engineering?
 
+::::::{.columns}
+:::{.column}
 
 + Feature engineering is the process of choosing what information to use and how to extract this information into a format usable by ML models.
 + The purpose of feature engineering is to *transform and represent features so that their information content is best exposed* to the learning algorithm. 
-+ Feature engineering can include:
+:::
+:::{.column}
+Feature engineering can include:
 
-  * A transformation of a feature: standardization, scale, center, log, etc.
-  * An equivalent re-representation of a feature: dummy variables, one-hot-encoding, binning, etc.
-  * An interaction of two or more features such as a product or ratio: for example, calculate the ratio of a loan to the value of the collateral (or its inverse), as a new feature for default prediction.
-  * A functional relationship among features: Principal Components Analysis, LDA, etc. This may also include methods for imputing missing values.
+* A transformation of a feature: standardization, scale, center, log, etc.
+* An equivalent re-representation of a feature: dummy variables, one-hot-encoding, binning, etc.
+* An interaction of two or more features such as a product or ratio: for example, calculate the ratio of a loan to the value of the collateral (or its inverse), as a new feature for default prediction.
+* A functional relationship among features: Principal Components Analysis, LDA, etc. This may also include methods for imputing missing values.
+
+:::
+::::::
+
+
 
 # Common Feature Engineering Operations 
 
@@ -413,7 +422,7 @@ $$
 
 ## Permutation Feature Importance
 
-:::::::{.columns}
+::::::{.columns}
 :::{.column}
 
 + Measures the change in prediction error after a permutation of the values of a given feature.
@@ -432,7 +441,7 @@ $$
 
 ## Partial Dependence Plots
 
-:::::::{.columns}
+::::::{.columns}
 :::{.column}
 
 ![](./img/credit_pdp1_mlp.png)
@@ -479,7 +488,7 @@ $$
 
 ## Local Surrogate Models
 
-:::::::{.columns}
+::::::{.columns}
 :::{.column}
 
 + Surrogate models are interpretable models trained to approximate the predictions of a black-box model.
@@ -497,7 +506,7 @@ $$
 
 ## SHAP Values
 
-:::::::{.columns}
+::::::{.columns}
 :::{.column}
 
 + Objective: explain the prediction of an instance by computing the contribution of each feature to the prediction.

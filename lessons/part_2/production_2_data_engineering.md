@@ -297,8 +297,8 @@ The data can also be represented with less structure.
 
 ## Query Language 
 
-:::::::{.columns}
-:::
+::::::{.columns}
+:::{.column}
 
 + A query language can be used to specify the data that you want from a database. 
 + SQL is the most popular query language. 

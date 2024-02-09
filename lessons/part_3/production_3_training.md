@@ -23,7 +23,6 @@ author: Jesús Calderón
 
 **3.2 A Training  Pipeline**
 
-
 + Sampling in Python.
 + An initial training pipeline.
 + Modularizing the training pipeline.
@@ -147,8 +146,6 @@ There are two families of sampling:
 
 :::::::{.columns}
 :::{.column}
-
-
 
 + Useful for streaming data where the concept of "universe" is difficult to implement.
 + Motivation: we want samples from a Tweeter feed with equal probability.
