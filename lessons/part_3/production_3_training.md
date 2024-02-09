@@ -21,7 +21,7 @@ author: Jesús Calderón
 :::
 :::{.column}
 
-**3.2 A Training  Pipeline**
+**3.2 A Training Pipeline**
 
 + Sampling in Python.
 + An initial training pipeline.

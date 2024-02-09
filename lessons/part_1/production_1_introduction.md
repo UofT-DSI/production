@@ -24,10 +24,10 @@ author: Jesús Calderón
 
 **1.2 Introduction to ML System Design**
 
- + Business and ML Objectives
- + Requirements of Data-Driven Products
- + Iterative Process
- + Framing ML Problems 
++ Business and ML Objectives
++ Requirements of Data-Driven Products
++ Iterative Process
++ Framing ML Problems 
 
 ::: 
 :::{.column}

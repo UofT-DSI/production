@@ -7,6 +7,9 @@ author: Jesús Calderón
 
 ## Agenda
 
+::::::{.columns}
+:::{.column}
+
 **5.1 Model Development and Offline Evaluation**
 	
 + Model Development and Training 
@@ -16,11 +19,18 @@ author: Jesús Calderón
 + AutoML 
 + Model Offline Evaluation 
 	
+:::
+:::{.column}
 
----
+**5.2 Experiment Tracking**
 
-# Agenda (cont.)
++ Observability and telemetry
++ Docker and Portability
++ Experiment Tracking in Python
++ Experiment Components
 
-+ Experiment tracking
+:::
+::::::
 
----
+## 
+

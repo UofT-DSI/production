@@ -65,7 +65,7 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 	
 + When to Use ML
 + ML in Production
-+ ML vs traditional software
++ ML vs Traditional Software
 	
 ### 1.2 Introduction to ML System Design 
 	
@@ -74,46 +74,52 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Iterative Process
 + Framing ML Problems 
 	
-### 1.3 Initial Setup
+### 1.3 Project Setup
 
-+ Git setup
-+ VS Code or other IDE.
-+ Virtual environment.
-+ Logger.
++ Git, authorization, and production pipelines.
++ VS Code and Git.
++ Python virtual environments.
++ Repo File Structure.
++ Branching Strategies.
++ Commit Messages.
 
 	
-## Part 2:	Data Engineering
+## Part 2:	Data Engineering Fundamentals
 
-### 2.1. Data Engineering Fundamentals 
+### 2.1. Fundamentals of Data Engineering
 	
 + Data Sources
-+ Data Formats  
++ Data Formats  
 + Data Models 
 + Data Storage and Processing
 + Modes of Data Flow
-	
-### 2.2 Working with Parquet Files
 
-+ Download large data set
-+ Numpy vs Pandas: row vs column-major tests.
-+ Write code to load it in dask
-+ Write code to write parquet files in dask
-+ Namespaces and file organization
+### 2.2 An Initial Data Flow
 
++ Jupyter notebooks and source code. 
++ Logging and using a standard logger.
++ Environment variables.
++ Getting the data.
++ Schemas and index in dask.
++ Reading and writing parquet files.
++ Dask vs pandas: a small example of big vs small data.
 
-## Part 3:	Training
+## Part 3:	Working with Training Data
 
 ### 3.1. Training Data 
 	
 + Sampling
 + Labeling
 + Class Imbalance
++ Data Augmentation
 
 	
-### 3.2 Training Data
+### 3.2 A Training Pipeline
 
-+ Sampling: random, stratified, weighted.
-+ SMOTE
++ Sampling in Python.
++ An initial training pipeline.
++ Modularizing the training pipeline.
++ Decoupling settings, parameters, data, code, and results.
 
 ### Part 4:	Feature Engineering
 
@@ -127,9 +133,9 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 
 #### 4.2 Feature Pipelines
 
-+ Scikit pipelines
-+ Time series cross validation
-+ Shap or perm feature importance
++ Transformation Pipelines and parametrization
++ Feature Importance in Python
++ Time series cross-validation
 
 
 ## Part 5:	Model Development and Evaluation
