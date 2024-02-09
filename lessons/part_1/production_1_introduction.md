@@ -33,20 +33,36 @@ author: Jesús Calderón
 :::{.column}
 
 
-**Technical Discussion: Setting Up a Code Repository**
+**1.3 Project Setup**
 
- + Sign up for a GitHub Account
- + Install Git.
- + Setup SSH Key.
- + Create a Repository.
- + Branching Strategies
- + Commit Messages.
++ Git, authorization, and production pipelines.
++ VS Code and Git.
++ Python virtual environments.
++ Repo File Structure.
++ Branching Strategies.
++ Commit Messages.
 
 :::
 ::::::
 
 
-## Course Specifics
+
+## About These Notes
+
+
+::::::{.columns}
+:::{.column}
+
+These notes are based on Chapters 1 and 2 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
+
+:::
+:::{.column}
+
+
+![](../img/book_cover.png)
+
+:::
+::::::
 
 
 

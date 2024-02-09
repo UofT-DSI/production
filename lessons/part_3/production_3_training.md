@@ -8,6 +8,9 @@ author: Jesús Calderón
 
 ## Agenda
 
+::::::{.columns}
+:::{.column}
+
 **3.1 Working with Training Data**
 
 + Sampling
@@ -15,13 +18,34 @@ author: Jesús Calderón
 + Class Imbalance
 + Data Augmentation
 
+:::
+:::{.column}
+
+**3.2 A Training  Pipeline**
 
 
-**Assignment: Setting Up a Code Repository**
++ Sampling in Python.
++ An initial training pipeline.
++ Modularizing the training pipeline.
++ Decoupling settings, parameters, data, code, and results.
 
-+ Implement different types of sampling
-+ Some recoding exercise using sci-kit learn
-+ Conformal prediction?
+:::
+::::::
+
+## About These Notes
+
+::::::{.columns}
+:::{.column}
+
+These notes are based on Chapters 3 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
+
+:::
+:::{.column}
+
+![](../img/book_cover.png)
+
+:::
+::::::
 
 # Sampling
 

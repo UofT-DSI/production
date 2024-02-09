@@ -23,13 +23,31 @@ author: Jesús Calderón
 :::{.column}
 
 
-**Technical: An Initial Data Flow**
+**2.2 An Initial Data Flow**
 
-+ Download a large data set
-+ Setup virtual environments
-+ Write code to load it in Dask
-+ Write code to write parquet files in Dask
-+ Naming convention
++ Jupyter notebooks and source code. 
++ Logging and using a standard logger.
++ Environment variables.
++ Getting the data.
++ Schemas and index in dask.
++ Reading and writing parquet files.
++ Dask vs pandas: a small example of big vs small data.
+
+:::
+::::::
+
+## About These Notes
+
+::::::{.columns}
+:::{.column}
+
+These notes are based on Chapters 3 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
+
+:::
+:::{.column}
+
+
+![](../img/book_cover.png)
 
 :::
 ::::::
@@ -208,7 +226,7 @@ The data can also be represented with less structure.
 :::
 ::::::
 
-## Row-Major vs Column-Major (Huyen, 2022)
+## Row-Major vs Column-Major 
 
 
 ![(Huyen, 2022)](./img/row_column_majors.png)
