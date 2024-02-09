@@ -338,6 +338,8 @@ $$
   - Ex: stock prices.
   - Solution: split data by time instead of random sampling whenever possible (ex., time-series cross-validation).
 
+:::
+:::{.column}
 
 + Scaling before splitting.
 
@@ -351,21 +353,31 @@ $$
   - Solution: split data before calculation and ensure only training data is used (use a framework).
 
 :::
+:::::::
+
+## Data Leakage (cont.)
+
+
+::::::{.columns}
 :::{.column}
 
-
-
 + Poor handling of data duplication.
+
   - Failure to remove duplicates or near-duplicates before splitting the data.
   - Data duplication can result from data collection or merging of different data sources.
   - As well, synthetic oversampling can induce duplication.
   - Solution: check for duplicates before splitting and also after splitting.
 
 + Group leakage.
+
   - Similar to duplication, where a group of examples have strongly correlated labels but are divided into different splits.
   - Example: in object detection, several pictures are taken a few seconds apart and almost identical.
 
+:::
+:::{.column}
+
 + Leakage from the data generation process
+
   - The sampling mechanism may induce duplication.
   - Example: patient data in critical condition is duplicated because more tests are run.
 
