@@ -37,7 +37,7 @@ author: Jesús Calderón
 ::::::{.columns}
 :::{.column}
 
-These notes are based on Chapters 3 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
+These notes are based on Chapter 4 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
 
 :::
 :::{.column}

@@ -22,14 +22,27 @@ author: Jesús Calderón
 
 **4.2 Feature Engineering**
 
-+ Engineering Features.
-+ Feature Importance.
-+ Time series cross-validation.
++ Transformation Pipelines and parametrization
++ Feature Importance in Python
++ Time series cross-validation
 
 :::
 ::::::
 
+## About These Notes
 
+::::::{.columns}
+:::{.column}
+
+These notes are based on Chapters 5 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
+
+:::
+:::{.column}
+
+![](../img/book_cover.png)
+
+:::
+::::::
 
 ## Learned Features Versus Engineered Features
 
@@ -396,7 +409,7 @@ $$
 :::
 ::::::
 
-## Feature Importance
+# Feature Importance
 
 ## Permutation Feature Importance
 

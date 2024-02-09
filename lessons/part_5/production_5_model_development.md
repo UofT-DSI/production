@@ -5,14 +5,7 @@ author: Jesús Calderón
 ---
 
 
-# ML Systems in Production
-# Session 5: Model Development and Evaluation
-Jesús A. Calderón
-February 2024
-
----
-
-# Agenda
+## Agenda
 
 **5.1 Model Development and Offline Evaluation**
 	
