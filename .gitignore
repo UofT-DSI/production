@@ -3,5 +3,6 @@
 docs/slides-resources/*
 env/*
 data/*
+logs/*
 docs/assignments/*
 docs/homework/*
