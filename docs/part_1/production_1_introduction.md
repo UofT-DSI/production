@@ -35,10 +35,11 @@ author: Jesús Calderón
 
 **1.3 Project Setup**
 
++ Introduction.
++ Repo File Structure.
 + Git, authorization, and production pipelines.
 + VS Code and Git.
 + Python virtual environments.
-+ Repo File Structure.
 + Branching Strategies.
 + Commit Messages.
 
