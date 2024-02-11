@@ -6,3 +6,5 @@ data/*
 logs/*
 docs/assignments/*
 docs/homework/*
+src/db/postgres-data/*
+src/__pycache__/*
