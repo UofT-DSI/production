@@ -1,7 +1,10 @@
 .DS_Store*
 *.html
-slides-resources/*
+docs/slides-resources/*
 env/*
 data/*
-assignments/*
-homework/*
+logs/*
+docs/assignments/*
+docs/homework/*
+src/db/postgres-data/*
+src/__pycache__/*
