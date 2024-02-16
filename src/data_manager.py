@@ -42,34 +42,44 @@ class DataManager():
     def get_tickers(self):
         _logs.info(f'Getting tickers from {self.tickers_file}')
         tickers = pd.read_csv(self.tickers_file)
-        self.tickers = tickers['ticker'].unique()
+        self.tickers = tickers.drop_duplicates(subset=['ticker'])
 
 
     def process_all_tickers(self):
         _logs.info(f'Processing all tickers')
-        for ticker in self.tickers:
-            self.get_data_and_save_by_year(ticker, self.start_date, self.end_date, self.price_dir)
+        for k, stock_info in self.tickers.iterrows():
+            self.get_data_and_save_by_year(stock_info['ticker'], 
+                                           self.start_date, 
+                                           self.end_date, 
+                                           self.price_dir, 
+                                           sector = stock_info['GICS Sector'], 
+                                           subsector = stock_info['GICS Sub-Industry'])
 
     @staticmethod
-    def get_data_and_save_by_year(ticker, start_date, end_date, outpath):
+    def get_data_and_save_by_year(ticker, start_date, end_date, outpath, sector = None, subsector = None):
         _logs.info(f'Processing ticker {ticker}')
         ticker_dt = DataManager.get_stock_price_data(ticker, start_date, end_date)
-        DataManager.save_by_year(ticker, outpath, ticker_dt)
+        DataManager.save_by_year(ticker, outpath, ticker_dt, sector, subsector)
 
     @staticmethod
-    def save_by_year(ticker, outpath, ticker_dt):
+    def save_by_year(ticker, outpath, ticker_dt, sector = None, subsector = None):
         _logs.info(f'Saving data for {ticker} by year') 
         if ticker_dt.shape[0] > 0:
             os.makedirs(os.path.join(outpath, ticker), exist_ok = True)
             ticker_dt = ticker_dt.reset_index()
             _logs.debug(f'ticker_dt.columns {ticker_dt.columns}')
             ticker_dt = (ticker_dt
-                        .assign(ticker = ticker)
+                        .assign(ticker = ticker,
+                                sector = sector,
+                                subsector = subsector)
                         .assign(year = ticker_dt['Date'].dt.year))
+            
             for yr in ticker_dt.year.unique():
-                yr_dt = ticker_dt[ticker_dt.year == yr]
+                yr_dd = (dd
+                         .from_pandas(ticker_dt[ticker_dt.year == yr], npartitions=1)
+                         .set_index('ticker'))
                 yr_path = os.path.join(outpath, ticker, f"{ticker}_{yr}.parquet")
-                yr_dt.to_parquet(yr_path, engine = "pyarrow")
+                yr_dd.to_parquet(yr_path, overwrite = True)
         else:
             _logs.warning(f'No data found for {ticker}')
 
@@ -89,7 +99,7 @@ class DataManager():
 
     def load_prices(self):
         _logs.info(f'Loading price data from {self.price_dir}')
-        parquet_files = glob(os.path.join(self.price_dir, "**/*.parquet"))
+        parquet_files = glob(os.path.join(self.price_dir, "*/*/*.parquet"))
         self.price_dd = dd.read_parquet(parquet_files).set_index("ticker")
 
     def create_features(self):
@@ -104,13 +114,15 @@ class DataManager():
                         returns = lambda x: x['Close']/x['Close_lag_1'] - 1
                     ).assign(
                         positive_return = lambda x: (x['returns'] > 0)*1
-                    ).set_index("ticker"))
-        self.features = features
+                    ))
+        self.features = features.set_index('ticker')
 
     def save_features(self):
         _logs.info(f'Saving features to {self.features_path}')
-        self.features.to_parquet(
+        feat_out = (self
+         .features
+         .repartition(npartitions = 500))
+        feat_out.to_parquet(
             self.features_path, 
             write_index = True, 
-            overwrite = True, 
-            partition_on='ticker')
+            overwrite = True)
