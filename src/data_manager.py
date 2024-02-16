@@ -1,3 +1,4 @@
+import dask.dataframe as dd
 import pandas as pd
 import numpy as np
 import yfinance as yf
@@ -25,6 +26,8 @@ class DataManager():
                  features_path = FEATURES_DATA, 
                  tickers_file = TICKERS):
         self.price_dir = price_dir
+        self.price_dd = None
+        self.features = None
         self.features_path = features_path
         self.tickers_file = tickers_file
         self.start_date = start_date
@@ -75,3 +78,39 @@ class DataManager():
         _logs.info(f'Getting stock price data for {ticker} from {start_date} to {end_date}')
         stock_data = yf.download(ticker, start=start_date, end=end_date)
         return stock_data
+
+
+    def featurize(self):
+        _logs.info(f'Creating features data.')
+        self.load_prices()
+        self.create_features()
+        self.save_features()
+
+
+    def load_prices(self):
+        _logs.info(f'Loading price data from {self.price_dir}')
+        parquet_files = glob(os.path.join(self.price_dir, "**/*.parquet"))
+        self.price_dd = dd.read_parquet(parquet_files).set_index("ticker")
+
+    def create_features(self):
+        _logs.info(f'Creating features')
+        price_dd = self.price_dd
+        features = (price_dd
+                   .groupby('ticker', group_keys=False)
+                   .apply(
+                        lambda x: x.assign(Close_lag_1 = x['Close'].shift(1))
+                    ).assign(
+                        log_returns = lambda x: np.log(x['Close']/x['Close_lag_1']), 
+                        returns = lambda x: x['Close']/x['Close_lag_1'] - 1
+                    ).assign(
+                        positive_return = lambda x: (x['returns'] > 0)*1
+                    ).set_index("ticker"))
+        self.features = features
+
+    def save_features(self):
+        _logs.info(f'Saving features to {self.features_path}')
+        self.features.to_parquet(
+            self.features_path, 
+            write_index = True, 
+            overwrite = True, 
+            partition_on='ticker')
