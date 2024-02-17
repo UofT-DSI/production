@@ -94,6 +94,7 @@ class DataManager():
         _logs.info(f'Creating features data.')
         self.load_prices()
         self.create_features()
+        self.create_target()
         self.save_features()
 
 
@@ -110,12 +111,18 @@ class DataManager():
                    .apply(
                         lambda x: x.assign(Close_lag_1 = x['Close'].shift(1))
                     ).assign(
-                        log_returns = lambda x: np.log(x['Close']/x['Close_lag_1']), 
-                        returns = lambda x: x['Close']/x['Close_lag_1'] - 1
+                        returns = lambda x: x['Close']/x['Close_lag_1'] - 1,
                     ).assign(
                         positive_return = lambda x: (x['returns'] > 0)*1
                     ))
-        self.features = features.set_index('ticker')
+        self.features = features
+
+    def create_target(self, target_name = 'positive_return', target_window = 1):
+        _logs.info(f'Creating target')
+        self.features = (self.features.groupby('ticker', group_keys=False).apply(
+                        lambda x: x.sort_values('Date').assign(
+                            target = lambda x: x[target_name].shift(-target_window)
+                        )))
 
     def save_features(self):
         _logs.info(f'Saving features to {self.features_path}')
