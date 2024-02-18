@@ -1,5 +1,3 @@
-
-
 import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
@@ -29,6 +27,7 @@ def cfg():
 
 @preproc_ingredient.capture
 def get_column_transformer(preproc_pipe, num_not_transform, num_transform, remainder):
+    _logs.info(f'Getting Column Transformer {preproc_pipe}')
     preproc_pipe_std = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='median')),
         ('scaler', StandardScaler())
