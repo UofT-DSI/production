@@ -23,7 +23,7 @@ db_url = os.getenv('DB_URL')
 
 _logs = get_logger(__name__)
 ex  = Experiment("Credit Experiment",
-                 ingredients=[data_ingredient, preproc_ingredient])
+                 ingredients=[data_ingredient, preproc_ingredient, db_ingredient])
 
 ex.logger = _logs
 ex.observers.append(SqlObserver(db_url))
