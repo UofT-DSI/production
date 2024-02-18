@@ -5,8 +5,7 @@ import pandas as pd
 
 
 from sklearn.pipeline import Pipeline
-from sklearn.naive_bayes import GaussianNB
-from sklearn.model_selection import cross_validate, train_test_split
+from sklearn.model_selection import GridSearchCV, train_test_split
 import os
 from dotenv import load_dotenv
 
@@ -16,7 +15,7 @@ from logger import get_logger
 from credit_preproc_ingredient import preproc_ingredient, get_column_transformer
 from credit_data_ingredient import data_ingredient, load_data
 from credit_db_ingredient import db_ingredient, df_to_sql
-from credit_model_ingredient import model_ingredient, get_model
+from credit_model_ingredient import model_ingredient, get_model, get_param_grid
 load_dotenv()
 
 
@@ -31,17 +30,18 @@ ex.observers.append(SqlObserver(db_url))
 
 @ex.config
 def cfg():
-    preproc = "power"
+    preprocessing = "power"
     model = 'NaiveBayes'
     folds = 5
     scoring = ['neg_log_loss', 'roc_auc', 'f1', 'accuracy', 'precision', 'recall']
+    refit='neg_log_loss'
 
 
 @ex.capture
-def get_pipe(preproc, model):
+def get_pipe(preprocessing, model):
 
-    _logs.info(f'Getting Naive Bayes Pipeline')
-    ct = get_column_transformer(preproc)
+    _logs.info(f'Getting {preprocessing} prepocessing and {model} classifier pipeline.')
+    ct = get_column_transformer(preprocessing)
     clf = get_model(model)
     pipe = Pipeline(
         steps  = [
@@ -53,28 +53,33 @@ def get_pipe(preproc, model):
 
 
 @ex.capture
-def evaluate_model(pipe, X, Y, folds, scoring, _run):
-    _logs.info(f'Evaluating model')
-    res_dict = cross_validate(pipe, X, Y, cv = folds, scoring = scoring)
-    res = (pd.DataFrame(res_dict)
-           .reset_index()
-           .rename(columns={'index': 'fold'})
-           .assign(run_id = _run._id))
+def grid_search(pipe, param_grid, X, Y, folds, scoring, refit):
+    _logs.info(f'Tuning model')
+    gs = GridSearchCV(pipe, param_grid, scoring=scoring, cv = folds, refit = refit)
+    gs.fit(X, Y)
+    res_dict = gs.cv_results_
+    res = pd.DataFrame(res_dict)
     return res
 
 @ex.capture
-def res_to_sql(res):
+def res_to_sql(res, model, preprocessing, _run):
     _logs.info(f'Writing results to db')
-    df_to_sql(res, "model_cv_fold_results")
-    df_to_sql(res.groupby('run_id', group_keys=False).mean(), "model_cv_results")
+    res_out = (res.drop(columns=['params'])
+                    .assign(model = model, 
+                         preprocessing = preprocessing, 
+                         run_id = _run._id))
+    df_to_sql(df = res_out, 
+              table_name = f"model_tuning_cv_{model}",
+              if_exists = 'append')
 
 @ex.automain
-def run():
+def run(preprocessing, model):
     _logs.info(f'Running experiment')
     X, Y  = load_data()
-    pipe = get_pipe()
+    pipe = get_pipe(preprocessing, model)
+    param_grid = get_param_grid(model)
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 42)
-    res = evaluate_model(pipe, X_train, Y_train)   
+    res = grid_search(pipe, param_grid, X_train, Y_train)   
     res_to_sql(res)
     _logs.info(res)
    

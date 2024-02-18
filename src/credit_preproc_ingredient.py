@@ -14,7 +14,6 @@ preproc_ingredient.logger = _logs
 
 @preproc_ingredient.config
 def cfg():
-    preproc_pipe = 'basic'
     num_not_transform = ['num_30_59_days_late', 
                      'num_60_89_days_late', 
                      'num_90_days_late',
