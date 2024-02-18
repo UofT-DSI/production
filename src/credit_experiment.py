@@ -16,6 +16,7 @@ from logger import get_logger
 from credit_preproc_ingredient import preproc_ingredient, get_column_transformer
 from credit_data_ingredient import data_ingredient, load_data
 from credit_db_ingredient import db_ingredient, df_to_sql
+from credit_model_ingredient import model_ingredient, get_model
 load_dotenv()
 
 
@@ -23,28 +24,29 @@ db_url = os.getenv('DB_URL')
 
 _logs = get_logger(__name__)
 ex  = Experiment("Credit Experiment",
-                 ingredients=[data_ingredient, preproc_ingredient])
+                 ingredients=[data_ingredient, preproc_ingredient, db_ingredient, model_ingredient])
 
 ex.logger = _logs
 ex.observers.append(SqlObserver(db_url))
 
 @ex.config
 def cfg():
-    preproc_pipe = "power"
+    preproc = "power"
+    model = 'NaiveBayes'
     folds = 5
     scoring = ['neg_log_loss', 'roc_auc', 'f1', 'accuracy', 'precision', 'recall']
 
-    
 
 @ex.capture
-def get_pipe(preproc_pipe):
+def get_pipe(preproc, model):
 
     _logs.info(f'Getting Naive Bayes Pipeline')
-    ct = get_column_transformer(preproc_pipe)
+    ct = get_column_transformer(preproc)
+    clf = get_model(model)
     pipe = Pipeline(
         steps  = [
             ('preproc', ct),
-            ('clf', GaussianNB())
+            ('clf', clf)
         ]
     )
     return pipe
@@ -64,7 +66,6 @@ def evaluate_model(pipe, X, Y, folds, scoring, _run):
 def res_to_sql(res):
     _logs.info(f'Writing results to db')
     df_to_sql(res, "model_cv_fold_results")
-    
     df_to_sql(res.groupby('run_id', group_keys=False).mean(), "model_cv_results")
 
 @ex.automain
@@ -75,6 +76,7 @@ def run():
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 42)
     res = evaluate_model(pipe, X_train, Y_train)   
     res_to_sql(res)
+    _logs.info(res)
    
 if __name__=="__main__":
     ex.run_commandline()
