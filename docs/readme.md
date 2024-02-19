@@ -11,5 +11,5 @@ pandoc -o output.pptx .\input.md --reference-doc=template.pptx
 For example, 
 
 ```
-pandoc -o session_1.pptx .\session_1_introduction.md --reference-doc='../slide_template.pptx'
+pandoc -o production_1.pptx .\production_1_introduction.md --reference-doc='../slide_template.pptx'
 ```
