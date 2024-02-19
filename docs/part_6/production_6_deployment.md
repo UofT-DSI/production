@@ -16,17 +16,15 @@ author: Jesús Calderón
 	
 + ML Deployment Myths and Anti-Patterns
 + Batch Prediction vs Online Prediction
-+ Model Compression
-+ ML in the Cloud
 
 :::
 :::{.column}
 
-**6.2 Deployment**
+**6.2 Explainability Methods**
 
-+ Deployment to a DB.
-+ Deployment to Pickle file.
-+ Power BI and Jupyter.
++ Partial Dependence Plots
++ Permutation Importance
++ Shap Values
 
 :::
 ::::::

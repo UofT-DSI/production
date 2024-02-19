@@ -15,7 +15,7 @@ def cfg():
     ft_file = os.getenv("CREDIT_DATA")
 
 @data_ingredient.capture
-def get_data(ft_file):
+def get_data(ft_file = os.getenv("CREDIT_DATA")):
     _logs.info(f'Getting data from {ft_file}')
     df_raw = pd.read_csv(ft_file)
     return df_raw

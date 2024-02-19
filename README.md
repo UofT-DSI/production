@@ -155,21 +155,18 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Experiment tracking
 
 
-### Part 6:	Deployment
+### Part 6:	Deployment and Model Explanations
 
-#### 6.1. Model Deployment and Prediction Service 
+#### 6.1. Model Deployment
 
 + ML Deployment Myths
 + Batch Prediction vs Online Prediction
-+ ML in the Cloud
-	
 
-#### 5.3 Deployment
+#### 6.2 Explainability Methods
 
-+ Connect to Power BI
-+ What is a pipeline?
-+ Django app?
-
++ Partial Dependence Plots
++ Permutation Importance
++ SHAP Values
 
 
 ## Part 7:	Data Distribution Shifts
