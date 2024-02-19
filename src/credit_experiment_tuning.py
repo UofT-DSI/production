@@ -2,7 +2,7 @@ from sacred import Experiment
 from sacred.observers import SqlObserver
 
 import pandas as pd
-
+import pickle
 
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV, train_test_split
@@ -31,7 +31,7 @@ ex.observers.append(SqlObserver(db_url))
 @ex.config
 def cfg():
     preprocessing = "power"
-    model = 'NaiveBayes'
+    model = 'LogisticRegression'
     folds = 5
     scoring = ['neg_log_loss', 'roc_auc', 'f1', 'accuracy', 'precision', 'recall']
     refit='neg_log_loss'
@@ -57,9 +57,12 @@ def grid_search(pipe, param_grid, X, Y, folds, scoring, refit):
     _logs.info(f'Tuning model')
     gs = GridSearchCV(pipe, param_grid, scoring=scoring, cv = folds, refit = refit)
     gs.fit(X, Y)
+    _logs.info(f'Best score: {gs.best_score_}')
+    _logs.info(f'Best params: {gs.best_params_}')
     res_dict = gs.cv_results_
     res = pd.DataFrame(res_dict)
-    return res
+    pipe_best = gs.best_estimator_
+    return res, pipe_best
 
 @ex.capture
 def res_to_sql(res, model, preprocessing, _run):
@@ -72,16 +75,43 @@ def res_to_sql(res, model, preprocessing, _run):
               table_name = f"model_tuning_cv_{model}",
               if_exists = 'append')
 
-@ex.automain
+@ex.capture
+def pickle_model_artifact(pipe, model, preprocessing, _run):
+    _logs.info(f'Pickling model artifact')
+    
+    artifacts_dir = os.getenv('ARTIFACTS_DIR')
+    os.makedirs(artifacts_dir, exist_ok=True)
+    
+    outpath = os.path.join(
+        artifacts_dir, 
+        f"model_{model}_{preprocessing}_{_run._id}.pkl")
+    
+    with open(outpath, 'wb') as f:
+        pickle.dump(pipe, f)
+    # Add artifact to experiment run
+    _run.add_artifact(outpath)
+    
+    _logs.info(f'Pickled model artifact to {outpath}')
+    
+
+
+@ex.main
 def run(preprocessing, model):
     _logs.info(f'Running experiment')
     X, Y  = load_data()
     pipe = get_pipe(preprocessing, model)
     param_grid = get_param_grid(model)
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 42)
-    res = grid_search(pipe, param_grid, X_train, Y_train)   
-    res_to_sql(res)
-    _logs.info(res)
+    if param_grid is not None:
+        X_train, X_test, Y_train, Y_test = train_test_split(
+            X, Y, 
+            test_size = 0.2)
+        res, pipe_best = grid_search(pipe, param_grid, X_train, Y_train)   
+        _logs.info(f'Optimization results {res.shape}')
+        res_to_sql(res)
+        pickle_model_artifact(pipe_best, model, preprocessing)
+        
+    else:
+        _logs.warning(f'Parameter grid is None for {model}')
    
 if __name__=="__main__":
     ex.run_commandline()
