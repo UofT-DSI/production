@@ -40,7 +40,9 @@ By the end of this course, a student will be able to:
 
 + Instructor: Jesús Calderón (he/him)
 
-  * Email etiquette
+  * dsi.production.course [at] gmail.com
+
+    - I will monitor this email 
   * [LinkedIn](https://www.linkedin.com/in/jcalderon/) 
 
 + TA: TBD
@@ -83,7 +85,9 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Branching Strategies.
 + Commit Messages.
 
-	
+Date: Feb 22, 6 PM.
+Quiz 1
+
 ## Part 2:	Data Engineering Fundamentals
 
 ### 2.1. Fundamentals of Data Engineering
@@ -103,6 +107,8 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Schemas and index in dask.
 + Reading and writing parquet files.
 + Dask vs pandas: a small example of big vs small data.
+
+Date: 
 
 ## Part 3:	Working with Training Data
 

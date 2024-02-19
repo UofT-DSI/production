@@ -2,6 +2,7 @@
 title:  Introduction to ML Systems
 subtitle: Production 
 author: Jesús Calderón
+date: February 2024
 ---
 
 
@@ -48,19 +49,31 @@ author: Jesús Calderón
 
 
 
-## About These Notes
+## Slides, Notebooks, and Code
 
 
 ::::::{.columns}
 :::{.column}
 
-These notes are based on Chapters 1 and 2 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
+**Slides**
+
++ These notes are based on Chapters 1 and 2 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
+
+
 
 :::
 :::{.column}
 
+**Notebooks**
 
-![](../img/book_cover.png)
++ `./notebooks/production_1_setup.ipynb`
+
+**Code**
+
++ `./src/logger.py`
++ `./src/.env`
++ `./src/docker/docker-compose.yml`
++ `./src/docker/.env`
 
 :::
 ::::::
@@ -257,7 +270,7 @@ ML is a collection of methods that allow a computer to:
 :::
 :::{.column}
 
-![(Sculley, 2019)](./img/ml_infrastructure.png)
+![(Sculley, 2015)](./img/ml_infrastructure.png)
 
 :::
 ::::::
@@ -503,24 +516,20 @@ $$
 ::::::
 
 
-## Decoupling Objectives
+# Our Reference Architecture
 
+## The Flock Reference Architecture
 
-::::::{.columns}
-:::{.column}
+![Agrawal et al (2019)](../img/flock_ref_arhitecture.png)
 
-+ A product may have different (business) objectives that different models will meet. 
-+ However, each model may compete with one another for optimal results. 
-+ For example, we may have the following objectives:
+# References
 
-    - Filter out spam.
-    - Filter out NSFW content.
-    - Rank posts by engagement (likelihood of users clicking on it).
+## References
 
-
-:::
-:::{.column}
-
-
-:::
-::::::
++ Agrawal, A. et al. "Cloudy with high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
++ Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2022).
++ Kleppmann, M. "Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems." O'Reilly Media, Inc. (2017).
++ Mitchell, Tom M. "Machine learning." (1997).
++ Olah, C. "Conv Nets: A Modular Perspective." (2014) [URL](https://colah.github.io/posts/2014-07-Conv-Nets-Modular/)
++ Sculley, D. et al. "Hidden technical debt in machine learning systems." Advances in neural information processing systems 28 (2015).
++ Wirth, R. and J. Hipp. "CRISP-DM: Towards a standard process model for data mining." Proceedings of the 4th international conference on the practical applications of knowledge discovery and data mining. Vol. 1. (2000).
