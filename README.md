@@ -114,7 +114,6 @@ Quiz 1
 
 Date: Feb 24, 9 AM.
 Quiz 2
-Assignment 1 can be completed (due Mar 3).
 
 
 ### 2.1. Fundamentals of Data Engineering
@@ -141,7 +140,6 @@ Assignment 1 can be completed (due Mar 3).
 
 Date: Mar 2, 9 AM.
 Quiz 3
-Assignment 2 can be completed (due Mar 10).
 
 ### 3.1. Training Data 
 	
@@ -170,9 +168,8 @@ Assignment 2 can be completed (due Mar 10).
 
 #### 4.2 Feature Pipelines
 
-+ Transformation Pipelines and parametrization
-+ Feature Importance in Python
-+ Time series cross-validation
++ Transformation Pipelines
++ Encapsulation and parametrization
 
 
 ## Part 5:	Model Development and Evaluation
@@ -182,14 +179,12 @@ Assignment 2 can be completed (due Mar 10).
 + Model Development and Training 
 + Ensembles 
 + Experiment Tracking and Versioning 
-+ Distributed Training
-+ AutoML 
 + Model Offline Evaluation 
 
-### 5.2 Containers and tracking
-
+### 5.2 Experiment Tracking
 
 + Experiment tracking
++ Hyperparameter Tuning
 
 
 ### Part 6:	Deployment and Model Explanations
@@ -214,13 +209,7 @@ Assignment 2 can be completed (due Mar 10).
 + Data Distribution Shifts
 + Monitoring and Observability
 	
-### 7.2. Continual Learning and Test in Production 
-
- + Continual Learning
- + Stateless vs Stateful Training
-
-
-### 7.3 Testing Distributions Shifts
+### 7.2 Testing Distributions Shifts
 
 + Python implementation
 
@@ -228,14 +217,20 @@ Assignment 2 can be completed (due Mar 10).
 
 #### Topic 8.1. Infrastructure and Tooling for ML Ops
 	
-+ Infra 1
-+ Infra 2
-
++ Infrastructure
++ ML Ops
 
 #### Topic 8.2. The Human Side of ML
 
-+ Human 1
-+ Human 2
++ Roles and skills
++ Organization
+
+
+## Assignment Due Dates
+
++ Assignment 1 due on March 3.
++ Assignment 2 due on March 9.
++ Assignment 3 due on March 12.
 
 
 ## Policies
@@ -243,11 +238,10 @@ Assignment 2 can be completed (due Mar 10).
 + Evaluation.
 
   - Quizzes will follow every session. They include multiple choice, multiple selection, and true/false questions related to the day's quesitons. The quizzes are not only assessment, but an integral part of learning. I recommend that you do not leave them all to the very last minute.
-  - There will be three assignments, which will 
+  - There will be three coding assignments. They should be submitted via email. 
 
 + Assignment.
 + Reading.
-
 + Attendance. 
 
 + The course has a live-coding component. 
@@ -257,19 +251,17 @@ Assignment 2 can be completed (due Mar 10).
 + [U of T Holiday Schedule](https://people.utoronto.ca/news/holiday-schedule-2022-23-and-2023-24/)
 
 
+# Folder Structure
 
-
-
-
-## Folder Structure
 Below are the folders contained in this repo with a description of what they contain and information on how to use them.
 
-**TODO**
++ `assignments`: assignment files.
++ `config`: configuration files for experiments.
++ `docs`: all notes and quizzes.
++ `notebooks`: Jupyter notebooks
++ `src`: code.
 
-# Acknowledgements and Contributions
-
-
-### Contributions 
+# Contributions 
 
 * We welcomes issues, enhancement requests, and other contributions. To submit an issue, use [GitHub
 issues](https://github.com/UofT-DSI/production/issues).
