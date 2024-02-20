@@ -9,3 +9,4 @@ docs/homework/*
 src/db/postgres-data/*
 src/__pycache__/*
 docs/quizzes/responses/*
+assignments/responses/*

@@ -2,6 +2,7 @@
 # Production
 
 ## Contents:
+
 1. Description
 2. Learning Outcomes
 3. Logistics
@@ -10,28 +11,41 @@
 6. Folder Structure
 7. Acknowledgements and Contributions
 
+
+## Achnowledgement
+
+We wish to acknowledge this land on which the University of Toronto operates. For thousands of years it has been the traditional land of the Huron-Wendat, the Seneca, and most recently, the Mississaugas of the Credit River. Today, this meeting place is still the home to many Indigenous people from across Turtle Island and we are grateful to have the opportunity to work on this land.
+
+
 ## Description
 
-**TODO**
-The course was created by the University of Toronto's Data Science Institute. The beginning of the course will introduce the basic language of Unix shell including how to navigate and manipulate files and directories. Learners will then learn certain commands, how to create scripts and write basic functions using pipes, filters and loops. 
+The course was created by the University of Toronto's Data Science Institute. The course provides an overview of the Design of Machine Learning Systems which are embedded within data-intensive products and applications. It covers the fundamental components of the infrastructure, systems, and methods necessary to implement and maintain Machine Learning (ML) models in production. In short, we will learn methods to build a factory of ML models. 
 
-The next portion of the course will be dedicated to getting started with version control and GitHub, and how it connects to the ethical discussions of reproducibility. Learners will learn how to set up Git and initialize and utilize repositories, including recording, viewing and undoing changes. They will also learn how to create branches and collaborate with others with shared branches. This course will put it all together and introduce some more advanced commands such as de-bugging and history editing.
+The course has two components: 
 
-Finally, learners will determine how to problem-solve by identifying where the issue is and how to search with Google and Stack Overflow. This will then lead to the topic of reproducibility and how to contribute by commenting code and writing documentation.
++ A discussion of the main issues and challenges faced in production, together with some approaches to address them.
++ A live lab with demonstrations of implementation techniques. 
 
-This course is designed for those who have a degree in something other than Computer Science/Statistics who are looking to enhance their data science skills for their career.
+The course covers the following areas:
+
++ Data engineering.
++ Feature engineering.
++ Hyperparameter tuning.
++ Model deployment.
++ Model explainability.
++ Logging, experiment tracking, and monitoring.
+
+We will discuss the tools and techniques required to do the above in good order and at scale. However, we will not discuss the inner working of models, advantages, and so on. As well, we will not discuss the theoretical aspects of feature engineering or hyperparameter tuning. We will focus on tools and reproducibility.
 
 ## Learning Outcomes
-
-**TODO**
 
 By the end of this course, a student will be able to:
 
 + Describe the main components of a machine learning system.
-+ Explain the methods to train and test models in production, including deployment of production systems.
-+ Delinate solutions and implementations to data and machine learning engineering problems.
-+ Contrast and evaluate different approaches to implementing machine learning systems.
-
++ Explain the infrastructure required to train and test models in production.
++ Implement an experiment tracking system and logging.
++ Contrast and evaluate different approaches of storing and manipulating data.
++ Design data flows and processes to automate the construction of ML models.
 
 
 ## Logistics
@@ -41,27 +55,36 @@ By the end of this course, a student will be able to:
 + Instructor: Jesús Calderón (he/him)
 
   * dsi.production.course [at] gmail.com
+    
+    - This email is exclusively for the course. 
+    - I will monitor this email and respond within 24 hours.
 
-    - I will monitor this email 
   * [LinkedIn](https://www.linkedin.com/in/jcalderon/) 
 
 + TA: TBD
 
 ### Delivery instructions
 
-The workshop will be held over two weeks, four days a week. Two of the three days will be 2-hours long and the last day will be 3-hours. Being mindful of online fatigue, there will be one break during each class where students are encouraged to stretch, grab a drink and snacks, or ask any additional questions.
++ The workshop will be held over three weeks on the dates outlined below. 
++ Most days, we will review slides for about one hour, take a short break and continue with the technical discussion.
++ There are Jupyter notebooks in the repo to follow along in the coding sessions. 
++ We encourage you to participate and ask questions.
 
 ### Technology Requirements
 
-**TODO**
+1. A standard PC with Python installed. Ideally, an account with admin rights to this PC. 
+2. The examples are not computationally intensive and can be further reduced if performance is an issue.
+3. The course is implemented with a Docker backend that will run a PosgreSQL server. This is intended to mimic a production-like environment. Use SQLite if Docker is not an option.
+4. Camera is optional although highly encouraged. We understand that not everyone may have the space at home to have the camera on.
 
-1. PC, connection, etc. Potentially, could VM.
-2. Camera is optional although highly encouraged. We understand that not everyone may have the space at home to have the camera on.
-3. Ability to install software (administrator priviliges)
 
 # Course Schedule
 
 ## Part 1:	Introduction
+
+Date: Feb 22, 6 PM.
+Quiz 1
+
 
 ### 1.1 Overview of ML Systems 
 	
@@ -85,10 +108,14 @@ The workshop will be held over two weeks, four days a week. Two of the three day
 + Branching Strategies.
 + Commit Messages.
 
-Date: Feb 22, 6 PM.
-Quiz 1
+
 
 ## Part 2:	Data Engineering Fundamentals
+
+Date: Feb 24, 9 AM.
+Quiz 2
+Assignment 1 can be completed (due Mar 3).
+
 
 ### 2.1. Fundamentals of Data Engineering
 	
@@ -108,9 +135,13 @@ Quiz 1
 + Reading and writing parquet files.
 + Dask vs pandas: a small example of big vs small data.
 
-Date: 
+
 
 ## Part 3:	Working with Training Data
+
+Date: Mar 2, 9 AM.
+Quiz 3
+Assignment 2 can be completed (due Mar 10).
 
 ### 3.1. Training Data 
 	
@@ -209,21 +240,24 @@ Date:
 
 ## Policies
 
++ Evaluation.
+
+  - Quizzes will follow every session. They include multiple choice, multiple selection, and true/false questions related to the day's quesitons. The quizzes are not only assessment, but an integral part of learning. I recommend that you do not leave them all to the very last minute.
+  - There will be three assignments, which will 
+
 + Assignment.
 + Reading.
-+ Evaluation.
+
 + Attendance. 
 
 + The course has a live-coding component. 
-+ Students are expected to follow along with the coding, creating files and folders to navigate and manipulate. Students should be active participants while coding and are encouraged to ask questions throughout. Although slides will be available for students to reference, they should be referenced before or after class, as during class will be dedicated to coding with the instructor.
++ Students are expected to follow along with the coding, creating files and folders to navigate and manipulate. Students should be active participants while coding and are encouraged to ask questions throughout.
 
 
 + [U of T Holiday Schedule](https://people.utoronto.ca/news/holiday-schedule-2022-23-and-2023-24/)
-+ [Policy]
-+ [Policy]
 
 
-**TODO**: **How to submit assignments, late policy, academic integrity.**
+
 
 
 
@@ -234,10 +268,6 @@ Below are the folders contained in this repo with a description of what they con
 
 # Acknowledgements and Contributions
 
-## Achnowledgements
-
-* Who helped make theses slides
-* We wish to acknowledge this land on which the University of Toronto operates. For thousands of years it has been the traditional land of the Huron-Wendat, the Seneca, and most recently, the Mississaugas of the Credit River. Today, this meeting place is still the home to many Indigenous people from across Turtle Island and we are grateful to have the opportunity to work on this land.
 
 ### Contributions 
 
