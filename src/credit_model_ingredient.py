@@ -17,6 +17,9 @@ def cfg():
 
 @model_ingredient.capture
 def get_model(model):
+    '''
+    Given a name, return a model.
+    '''
     _logs.info(f'Getting model {model}')
     if model == 'NaiveBayes':
         from sklearn.naive_bayes import GaussianNB
@@ -37,6 +40,9 @@ def get_model(model):
         return None
 
 def get_param_grid(model):
+    '''
+    Given a name, return a parameter grid. Param grids are stored in json files.
+    '''
     _logs.info(f'Getting parameter grid for {model}')
     file = None
     if model == 'LogisticRegression':

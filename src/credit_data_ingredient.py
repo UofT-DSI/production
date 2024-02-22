@@ -16,12 +16,14 @@ def cfg():
 
 @data_ingredient.capture
 def get_data(ft_file = os.getenv("CREDIT_DATA")):
+    '''Loads data from a given location.'''
     _logs.info(f'Getting data from {ft_file}')
     df_raw = pd.read_csv(ft_file)
     return df_raw
 
 @data_ingredient.capture
 def process_data(df_raw):
+    '''Update data names, add features, and remove unwanted columns.'''
     df = df_raw.drop(columns = ["Unnamed: 0"]).rename(
     columns = {
         'SeriousDlqin2yrs': 'delinquency',
@@ -45,6 +47,7 @@ def process_data(df_raw):
 
 @data_ingredient.capture
 def load_data():
+    '''Load data and return X, Y'''
     df_raw = get_data()
     df = process_data(df_raw)
     X = df.drop(columns = ['delinquency'])

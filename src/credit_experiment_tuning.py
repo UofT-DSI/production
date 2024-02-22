@@ -30,6 +30,9 @@ ex.observers.append(SqlObserver(db_url))
 
 @ex.config
 def cfg():
+    '''
+    Main experiment config.
+    '''
     preprocessing = "power"
     model = 'LogisticRegression'
     folds = 5
@@ -39,7 +42,9 @@ def cfg():
 
 @ex.capture
 def get_pipe(preprocessing, model):
-
+    '''
+    Main pipeline builder: gets a preprocessing name and a classifier name, returns a pipeline.
+    '''
     _logs.info(f'Getting {preprocessing} prepocessing and {model} classifier pipeline.')
     ct = get_column_transformer(preprocessing)
     clf = get_model(model)
@@ -54,6 +59,7 @@ def get_pipe(preprocessing, model):
 
 @ex.capture
 def grid_search(pipe, param_grid, X, Y, folds, scoring, refit):
+    '''Perform grid search on a pipeline given a parameter grid and data.'''
     _logs.info(f'Tuning model')
     gs = GridSearchCV(pipe, param_grid, scoring=scoring, cv = folds, refit = refit)
     gs.fit(X, Y)
@@ -66,6 +72,9 @@ def grid_search(pipe, param_grid, X, Y, folds, scoring, refit):
 
 @ex.capture
 def res_to_sql(res, model, preprocessing, _run):
+    '''
+    Push CV results to DB.
+    '''
     _logs.info(f'Writing results to db')
     res_out = (res.drop(columns=['params'])
                     .assign(model = model, 
@@ -77,6 +86,10 @@ def res_to_sql(res, model, preprocessing, _run):
 
 @ex.capture
 def pickle_model_artifact(pipe, model, preprocessing, _run):
+    '''
+    Save model object to disk and add it as an artifact to the experiment run.
+    '''
+
     _logs.info(f'Pickling model artifact')
     
     artifacts_dir = os.getenv('ARTIFACTS_DIR')
@@ -97,6 +110,7 @@ def pickle_model_artifact(pipe, model, preprocessing, _run):
 
 @ex.main
 def run(preprocessing, model):
+    '''Main function: runs the experiment.'''
     _logs.info(f'Running experiment')
     X, Y  = load_data()
     pipe = get_pipe(preprocessing, model)

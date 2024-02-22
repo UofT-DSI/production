@@ -14,6 +14,9 @@ preproc_ingredient.logger = _logs
 
 @preproc_ingredient.config
 def cfg():
+    '''
+    Config function of the ingredient: all values defined here are shared across captured functions.
+    '''
     num_not_transform = ['num_30_59_days_late', 
                      'num_60_89_days_late', 
                      'num_90_days_late',
@@ -26,6 +29,9 @@ def cfg():
 
 @preproc_ingredient.capture
 def get_column_transformer(preproc_pipe, num_not_transform, num_transform, remainder):
+    '''
+    Get a column transformer given a name of the preproc_pipe and the column names.
+    '''
     _logs.info(f'Getting Column Transformer {preproc_pipe}')
     preproc_pipe_std = Pipeline(steps=[
         ('imputer', SimpleImputer(strategy='median')),

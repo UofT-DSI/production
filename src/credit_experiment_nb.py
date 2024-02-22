@@ -30,6 +30,9 @@ ex.observers.append(SqlObserver(db_url))
 
 @ex.config
 def cfg():
+    '''
+    Config function: all variables here will be avialable in captured functions.
+    '''
     preproc_pipe = "power"
     folds = 5
     scoring = ['neg_log_loss', 'roc_auc', 'f1', 'accuracy', 'precision', 'recall']
@@ -38,7 +41,9 @@ def cfg():
 
 @ex.capture
 def get_pipe(preproc_pipe):
-
+    '''
+    Returns an NB pipeline.
+    '''
     _logs.info(f'Getting Naive Bayes Pipeline')
     ct = get_column_transformer(preproc_pipe)
     pipe = Pipeline(
@@ -52,6 +57,7 @@ def get_pipe(preproc_pipe):
 
 @ex.capture
 def evaluate_model(pipe, X, Y, folds, scoring, _run):
+    '''Evaluate model using corss validation.'''
     _logs.info(f'Evaluating model')
     res_dict = cross_validate(pipe, X, Y, cv = folds, scoring = scoring)
     res = (pd.DataFrame(res_dict)
@@ -62,6 +68,7 @@ def evaluate_model(pipe, X, Y, folds, scoring, _run):
 
 @ex.capture
 def res_to_sql(res):
+    '''Write results to db.'''
     _logs.info(f'Writing results to db')
     df_to_sql(res, "model_cv_fold_results")
     
@@ -69,6 +76,7 @@ def res_to_sql(res):
 
 @ex.automain
 def run():
+    '''Main experiment run.'''
     _logs.info(f'Running experiment')
     X, Y  = load_data()
     pipe = get_pipe()

@@ -19,6 +19,7 @@ def cfg():
 
 @db_ingredient.capture
 def df_to_sql(df, table_name, db_url=DB_URL, schema = None, if_exists = 'append'):
+    '''Convenience function to interface with db.'''
     _logs.info(f'Writing {df.shape} to {table_name} with {db_url}')
     engine = create_engine(db_url)
     with engine.connect() as con:

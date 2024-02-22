@@ -10,6 +10,10 @@ LOG_DIR = os.getenv('LOG_DIR', './logs/')
 LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
 
 def get_logger(name, log_dir = LOG_DIR, log_level = LOG_LEVEL):
+
+    '''
+    Set up a logger with the given name and log level.
+    '''
     _logs = logging.getLogger(name)
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
