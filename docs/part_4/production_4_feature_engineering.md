@@ -22,9 +22,9 @@ author: Jesús Calderón
 
 **4.2 Feature Engineering**
 
-+ Transformation Pipelines and parametrization
-+ Feature Importance in Python
-+ Time series cross-validation
++ Transformation Pipelines
++ Encapsulation and parametrization
+
 
 :::
 ::::::

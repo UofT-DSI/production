@@ -37,7 +37,7 @@ author: Jesús Calderón
 ::::::{.columns}
 :::{.column}
 
-These notes are based on Chapters 5 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
+These notes are based on Chapter 6 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
 
 :::
 :::{.column}
@@ -46,6 +46,12 @@ These notes are based on Chapters 5 of [*Designing Machine Learning Systems*](ht
 
 :::
 ::::::
+
+## Reference Architecture
+
+![Aggrawal et al. (2020)](../img/flock_ref_arhitecture.png)
+
+
 
 
 # Model Development and Training 
@@ -296,9 +302,9 @@ those bull’s-eye guesses typically say more about the power of luck […] than
 ::::::
 
 
-# Debugging 
+# Making Progress
 
-## Why ML Models Fail
+## Debugging: Why ML Models Fail
 
 ::::::{.columns}
 :::{.column}
@@ -322,19 +328,72 @@ those bull’s-eye guesses typically say more about the power of luck […] than
 ::::::
 
 
+# AutoML 
+
+::::::{.columns}
+:::{.column}
+
++ AutoML is the automatic process of finding ML algorithms to solve real-world problems.
++ The most popular form of AutoML is hyperparameter tuning.
+
+:::
+:::{.column}
+
++ Searching the Hyperparameter space can be time-consuming and resource-intensive.
 
 
 :::
 ::::::
 
 
+## Model Offline Evaluation 
 
-# Distributed Training
+::::::{.columns}
+:::{.column}
+
++ Measure model performance before and after deployment.
++ Evaluation methods should (ideally) be the same for models during development and production.
++ Techniques for model offline evaluation:
+
+    - Use baselines.
+    - Tests: perturbation tests, invariance tests, directional expectation tests, model calibration, confidence measurement, slice-based evaluation.
 
 
+:::
+:::{.column}
 
+**Baselines**
 
-# AutoML 
+- Random baseline: if model predicts at random, how would it perform?
+- Simple heuristic: how does model perform vs a simple (non-ML) rule of thumb?
+- Zero rule baseline: trivial prediction, always predict the same thing.
+- Human baseline: human-level performance may be the required baseline.
+- Existing solutions.
 
-# Model Offline Evaluation 
+:::
+::::::
+
+## Evaluation Methods in Production
+
+::::::{.columns}
+:::{.column}
+
++ Perturbation tests: make changes to test splits such as adding noise to input data. If model is not robust to noise, it will be difficult to maintain.
++ Invariance tests: certain changes to inputs should not lead to changes in outputs. For example, protected clases.
++ Directional expectation tests.
+
+:::
+:::{.column}
+
++ Model callibration or conformal prediction methods:
+
+    - Idea: if forecast is 70% chance of rain, then 70% of the time this forecast was made it actually rained.
+    - Prediction scores are many times normalized to values between 0 and 1. It is tempting to think of them as probabilities, but they are not necessarily so.
+    - Use conformal prediction methods to calibrate prediction scores.
+
++ Confidence measurement: show only predictions where the model is confident.
++ Slice-based evaluation: model performance is different in subsets of data. 
+
+:::
+::::::
 

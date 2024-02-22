@@ -29,28 +29,41 @@ author: Jesús Calderón
 + Logging and using a standard logger.
 + Environment variables.
 + Getting the data.
-+ Schemas and index in dask.
++ Schemas and index in Dask.
 + Reading and writing parquet files.
 + Dask vs pandas: a small example of big vs small data.
 
 :::
 ::::::
 
-## About These Notes
+## Slides, Notebooks, and Code
 
 ::::::{.columns}
 :::{.column}
 
-These notes are based on Chapters 3 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
++ These notes are based on Chapter 3 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
 
 :::
 :::{.column}
 
 
-![](../img/book_cover.png)
+**Notebooks**
+
++ `./notebooks/production_2_data_engineering.ipynb`
+
+**Code**
+
++ `./src/data_manager.py`
++ `./src/.env`
 
 :::
 ::::::
+
+# Our Reference Architecture
+
+## The Flock Reference Architecture
+
+![Agrawal et al (2019)](../img/flock_ref_arhitecture.png)
 
 # Data Sources
 
@@ -59,7 +72,7 @@ These notes are based on Chapters 3 of [*Designing Machine Learning Systems*](ht
 ::::::{.columns}
 :::{.column}
 
-![(FSB, 2019)](./img/cost_of_data_storage_and_availability.png)
+![(FSB, 2017)](./img/cost_of_data_storage_and_availability.png)
 
 :::
 :::{.column}
@@ -623,7 +636,7 @@ ETL is the process of extracting data from one or several sources, transforming 
 :::
 ::::::
 
-## Data FLows 2: Data Passing Through Services (cont)
+## Data FLows 2: Data Passing Through Services (cont.)
 
 ::::::{.columns}
 :::{.column}
@@ -716,3 +729,12 @@ ETL is the process of extracting data from one or several sources, transforming 
 
 :::
 ::::::
+
+# References
+
+## References
+
++ Agrawal, A. et al. "Cloudy with high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
++ Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2022).
++ Financial Stability Board (FSB). "Artificial intelligence and machine learning in financial services" (2017). [URL](https://www.fsb.org/2017/11/artificial-intelligence-and-machine-learning-in-financial-service/)
++ Kleppmann, M. "Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems." O'Reilly Media, Inc. (2017).

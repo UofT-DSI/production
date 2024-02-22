@@ -8,3 +8,5 @@ docs/assignments/*
 docs/homework/*
 src/db/postgres-data/*
 src/__pycache__/*
+docs/quizzes/*
+assignments/responses/*
