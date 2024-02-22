@@ -31,20 +31,39 @@ author: Jesús Calderón
 :::
 ::::::
 
-## About These Notes
+## Slides, Notebooks, and Code
 
 ::::::{.columns}
 :::{.column}
 
-These notes are based on Chapter 4 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
++ These notes are based on Chapter 4 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
 
 :::
 :::{.column}
 
-![](../img/book_cover.png)
+**Notebooks**
+
++ `./notebooks/production_3_1_sampling.ipynb`
++ `./notebooks/production_3_2_pipeline.ipynb`
+
+**Code**
+
++ `./src/credit_experiment_nb.py`
++ `./src/credit_preproc_ingredient.py`
++ `./src/
++ `./src/.env`
+
 
 :::
 ::::::
+
+
+# Our Reference Architecture
+
+## The Flock Reference Architecture
+
+![Agrawal et al (2019)](../img/flock_ref_arhitecture.png)
+
 
 # Sampling
 
@@ -279,7 +298,7 @@ There are two families of sampling:
 + Approach 1: self-training.
 
     - Train a model on an existing set of labelled data.
-    - Make predictions for unlabeled samples; keep only the ones with high raw probability scores.4
+    - Make predictions for unlabeled samples; keep only the ones with high raw probability scores.
     - Train a new model on an expanded set of labels.
 
 
@@ -471,3 +490,9 @@ $$
 :::
 :::::::
 
+# References
+
+## References
+
++ Agrawal, A. et al. "Cloudy with high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
++ Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2022).
