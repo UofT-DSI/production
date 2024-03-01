@@ -1,6 +1,4 @@
 .DS_Store*
-*.html
-docs/slides-resources/*
 env/*
 data/*
 logs/*
