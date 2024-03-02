@@ -29,20 +29,35 @@ author: Jesús Calderón
 :::
 ::::::
 
-## About These Notes
+## Slides, Notebooks, and Code
 
 ::::::{.columns}
 :::{.column}
 
-These notes are based on Chapters 5 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
++ These notes are based on Chapter 5 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
 
 :::
 :::{.column}
 
-![](../img/book_cover.png)
+**Notebooks**
+
++ `./notebooks/production_4_transforms.ipynb`
+
+
+**Code**
+
++ `./src/credit_experiment_nb.py`
++ `./src/credit_preproc_ingredient.py`
+
 
 :::
 ::::::
+
+# Our Reference Architecture
+
+## The Flock Reference Architecture
+
+![Agrawal et al (2019)](../img/flock_ref_arhitecture.png)
 
 ## Learned Features Versus Engineered Features
 
@@ -170,7 +185,7 @@ $$
 + If we believe that the variable is normally distributed, it may be helpful to use:
 
 $$
-x' = frac{(x- mean(x))}{std(x)}
+x' = \frac{(x- mean(x))}{std(x)}
 $$
 
 
@@ -305,7 +320,7 @@ $$
 ::::::{.columns}
 :::{.column}
 
-![(Gilyadov, 2018)](./img/word_embeddings.png)
+![(Gilyadov, 2017)](./img/word_embeddings.png)
 
 :::
 :::{.column}
@@ -511,7 +526,7 @@ $$
 :::
 :::{.column}
 
-![(Molnar, 2019)](./img/lime-fitting-1.png)
+![(Molnar, 2023)](./img/lime-fitting-1.png)
 
 :::
 ::::::
@@ -566,3 +581,13 @@ $$
 
 :::
 ::::::
+
+# References
+
+## References
+
++ Agrawal, A. et al. "Cloudy with high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
++ Gilyadov, J (2017). Word2Vec Explained. [URL](https://israelg99.github.io/2017-03-23-Word2Vec-Explained/)
++ Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2022).
++ Lunderberg and Lee. A Unified Approach to INterpreting Model Predictions. Advances in Nueral INformation Processing Systems 30 (NIPS 2017). [GitHub Repository](https://github.com/shap/shap?tab=readme-ov-file)
++ Molnar, C. Interpretable Machine Learning. (2023) [URL](https://christophm.github.io/interpretable-ml-book/)
