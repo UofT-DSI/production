@@ -13,7 +13,7 @@ author: Jesús Calderón
 :::{.column}
 
 **6.1 Model Deployment and Prediction Service **
-	
+    
 + ML Deployment Myths and Anti-Patterns
 + Batch Prediction vs Online Prediction
 
@@ -30,25 +30,36 @@ author: Jesús Calderón
 ::::::
 
 
-## About These Notes
+## Slides, Notebooks, and Code
 
 ::::::{.columns}
 :::{.column}
 
-These notes are based on Chapters 7 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
++ These notes are based on Chapter 7 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
 
 :::
 :::{.column}
 
-![](../img/book_cover.png)
+**Notebooks**
+
++ `./notebooks/production_5_model_development.ipynb`
+
+
+**Code**
+
++ `./src/credit_experiment_*.py`
 
 :::
 ::::::
 
+# Our Reference Architecture
 
-## Reference Architecture
+## The Flock Reference Architecture
 
-![Aggrawal et al. (2020)](../img/flock_ref_arhitecture.png)
+![Agrawal et al (2019)](../img/flock_ref_arhitecture.png)
+
+
+# Deployment
 
 ## Deployment
 
@@ -56,14 +67,14 @@ These notes are based on Chapters 7 of [*Designing Machine Learning Systems*](ht
 :::{.column}
 
 + Deploying a model is to make it useable by allowing users to interact with it through an app or by using its results for a purpose in a data product (BI visuals, reports, data views).
-+ Deployment is a transition of development to production environment. 
++ Deployment is a transition of development to a production environment. 
 
 
 :::
 :::{.column}
 
-+ There is a wide range of production environments: from BI to live applications serving millions of users.
-+ Engaging with users in formal or informal feedback conversations is useful, although not always possible.
++ There is a wide range of production environments, from BI to live applications serving millions of users.
++ Engaging with users in formal or informal feedback conversations is helpful, although only sometimes possible.
 
 
 :::
@@ -78,20 +89,20 @@ These notes are based on Chapters 7 of [*Designing Machine Learning Systems*](ht
 **1. You only deploy one or two ML models at a time**
 
 + Infrastructure should support many models, not only a few.
-+ Many models can interact and we also need a way of mapping these interactions.
++ Many models can interact, and we also need a way of mapping these interactions.
 + Ride sharing app: 
 
-    - 10 models: ride demand, driver availability, estimated time of arrival dynamic pricing, fraud, churn, etc.
+    - 10 models: ride demand, driver availability, estimated time of arrival, dynamic pricing, fraud, churn, etc.
     - 20 countries.
 
 
 :::
 :::{.column}
 
-**2. If we don't do anything, mode performance stays the same**
+**2. If we don't do anything, model performance stays the same**
 
 + Software does not age like fine wine.
-+ Data distribution shifts: when the data distribution that the trained model is different from the one during training.
++ Data distribution shifts: when the data distribution in the trained model differs from the distribution during testing.
 
 :::
 ::::::
@@ -107,7 +118,7 @@ These notes are based on Chapters 7 of [*Designing Machine Learning Systems*](ht
 + Model performance decays over time.
 + Deploy should be easy:
 
-    - Development environment should resemble as close as possible the production environment.
+    - The development environment should resemble the production environment as closely as possible.
     - Infrastructure should be easier to rebuild than to repair.
     - Small incremental and frequent changes.
 
@@ -142,7 +153,7 @@ These notes are based on Chapters 7 of [*Designing Machine Learning Systems*](ht
 
 **Batch Prediction**
 
-- Predictions are generated preiodically or whenever triggered.
+- Predictions are generated periodically or whenever triggered.
 - Predictions are stored in SQL tables or in memory. They are later retrieved as needed.
 - Batch prediction is also known as asynchronous prediction.
 
@@ -183,3 +194,9 @@ Three types of model prediction or inference service:
 
 :::
 ::::::
+
+
+## References
+
++ Agrawal, A. et al. "Cloudy with a high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
++ Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2021).
