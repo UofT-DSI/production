@@ -13,14 +13,24 @@ author: Jesús Calderón
 
 **8.1. Infrastructure for ML**
 
++ Infrastructure
++ Storage and Compute
++ Development Environments
++ Resource Management
+
+
 :::
 :::{.column}
 
 **Topic 8.2. The Human Side of ML**
-	
+
++ Roles, Tasks, and Skills
++ Where to Focus our Efforts?
 
 :::
 :::::::
+
+# Infrastructure
 
 
 ## What is Infrastructure?
@@ -192,7 +202,7 @@ author: Jesús Calderón
 :::
 ::::::
 
-# Where to Focus Our Efforts?
+## Where to Focus Our Efforts?
 
 ::::::{.columns}
 :::{.column}
@@ -215,3 +225,8 @@ Then, focus on serving and deployment:
 
 :::
 ::::::
+
+## References
+
++ Agrawal, A. et al. "Cloudy with a high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
++ Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2022).
