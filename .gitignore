@@ -1,8 +1,12 @@
 .DS_Store*
-*.html
-docs/slides-resources/*
 env/*
-data/*
+data/adult/*
+data/artifacts/*
+data/credit/*
+data/features/*
+data/prices/*
+data/temp/*
+data/zipped/*
 logs/*
 docs/assignments/*
 docs/homework/*

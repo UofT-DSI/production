@@ -1,0 +1,22 @@
+ticker,Security,GICS Sector,GICS Sub-Industry,Headquarters Location,Date added,CIK,Founded
+AAPL,Apple Inc.,Information Technology,"Technology Hardware, Storage & Peripherals","Cupertino, California",30285,320193,1977
+GOOGL,Alphabet Inc. (Class A),Communication Services,Interactive Media & Services,"Mountain View, California",41732,1652044,1998
+GOOG,Alphabet Inc. (Class C),Communication Services,Interactive Media & Services,"Mountain View, California",38810,1652044,1998
+NVDA,Nvidia,Information Technology,Semiconductors,"Santa Clara, California",37225,1045810,1993
+MSFT,Microsoft Corp.,Information Technology,Application Software,"Redmond, Washington",30131,1338195,1986
+AMZN,Amazon.com Inc.,Consumer Discretionary,Internet & Direct Marketing Retail,"Seattle, Washington",28052,1359870,1994
+FB,Facebook,Communication Services,Interactive Media & Services,"Menlo Park, California",27742,589583,2004
+TSLA,Tesla Inc.,Consumer Discretionary,Auto Manufacturers,"Palo Alto, California",27589,693000,2003
+ABNB,Airbnb,Consumer Discretionary,"Hotels, Resorts & Cruise Lines","San Francisco, California",45187,1559720,2008
+WBA,Walgreens Boots Alliance,Consumer Staples,Drug Retail,"Deerfield, Illinois",29220,1618921,2014
+WMT,Walmart,Consumer Staples,Consumer Staples Merchandise Retail,"Bentonville, Arkansas",30194,104169,1962
+DIS,Walt Disney,Communication Services,Movies & Entertainment,"Burbank, California",27941,1744489,1923
+WBD,Warner Bros. Discovery,Communication Services,Broadcasting,"New York City, New York",44662,1437107,2022 (Warner Bros. 1923)
+WM,Waste Management,Industrials,Environmental & Facilities Services,"Houston, Texas",36038,823768,1968
+WAT,Waters Corporation,Health Care,Life Sciences Tools & Services,"Milford, Massachusetts",37258,1000697,1958
+WEC,WEC Energy Group,Utilities,Electric Utilities,"Milwaukee, Wisconsin",39752,783325,1896
+WFC,Wells Fargo,Financials,Diversified Banks,"San Francisco, California",27941,72971,1852
+CAT,Caterpillar Inc.,Industrials,Construction Machinery & Heavy Transportation Equipment,"Irving, Texas",20883,18230,1925
+CBOE,Cboe Global Markets,Financials,Financial Exchanges & Data,"Chicago, Illinois",42795,1374310,1973
+CBRE,CBRE Group,Real Estate,Real Estate Services,"Dallas, Texas",39031,1138118,1906
+CDW,CDW,Information Technology,Technology Distributors,"Lincolnshire, Illinois",43731,1402057,1984
