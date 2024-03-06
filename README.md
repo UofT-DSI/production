@@ -1,16 +1,22 @@
-
 # Production
 
 ## Contents:
-
-1. Description
-2. Learning Outcomes
-3. Logistics
-4. Marking Scheme
-5. Policies
-6. Folder Structure
-7. Acknowledgements and Contributions
-
+* [Achnowledgement](#achnowledgement)
+* [Description](#description)
+* [Learning Outcomes](#learning-outcomes)
+* [Logistics](#logistics)
+  + [Course Contacts](#course-contacts)
+  + [Delivery of Module](#delivery-of-module)
+  + [How the Instructor will deliver](#how-the-instructor-will-deliver)
+  + [Requirements](#requirements)
+  + [Expectations](#expectations)
+* [Course Schedule](#course-schedule)
+* [Policies](#policies)
+* [Resources](#resources)
+  + [Documents](#documents)
+  + [Videos](#videos)
+  + [How to get help](#how-to-get-help)
+* [Folder Structure](#folder-structure)
 
 ## Achnowledgement
 
@@ -52,37 +58,42 @@ By the end of this course, a student will be able to:
 
 ### Course Contacts
 
-+ Instructor: Jesús Calderón (he/him)
+**Questions can be submitted to the #questions channel on Slack**
 
-  * dsi.production.course [at] gmail.com
-    
-    - This email is exclusively for the course. 
-    - I will monitor this email and respond within 24 hours.
+* Instructor: **{Name}** {Pronouns}. Emails to the instructor can be sent to {first_name.last_name}@mail.utoronto.ca.
+* TA: **{Name}** {Pronouns}. Emails to the instructor can be sent to {first_name.last_name}@mail.utoronto.ca.
 
-  * [LinkedIn](https://www.linkedin.com/in/jcalderon/) 
-
-+ TA: TBD
-
-### Delivery instructions
+### Delivery of Module
 
 + The workshop will be held over three weeks on the dates outlined below. 
 + Most days, we will review slides for about one hour, take a short break and continue with the technical discussion.
 + There are Jupyter notebooks in the repo to follow along in the coding sessions. 
 + We encourage you to participate and ask questions.
 
-### Technology Requirements
+### How the Instructor will deliver
+The instructors will introduce the concepts through a collaborative live coding session usiing the Python notebooks found under `/01-slides`. All instructors will also upload any live coding files to this repository for any learners to revisit under `/live_production`.
 
-1. A standard PC with Python installed. Ideally, an account with admin rights to this PC. 
-2. The examples are not computationally intensive and can be further reduced if performance is an issue.
-3. The course is implemented with a Docker backend that will run a PosgreSQL server. This is intended to mimic a production-like environment. Use SQLite if Docker is not an option.
-4. Camera is optional although highly encouraged. We understand that not everyone may have the space at home to have the camera on.
+### Requirements
 
+* Learners are not expected to have any coding experience, we designed the learning contents for beginners.
+* Learners are encouraged to ask questions, and collaborate with others to enhance learning.
+* Learners must have a computer and an internet connection to participate in online activities.
+* Learners must have VSCode installed with the following extensions: 
+    * [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
+    * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+* Learners must install Docker as this module implements a Docker backend that will run a PosgreSQL server. This is intended to mimic a production-like environment. Use SQLite if Docker is not an option.
+* Learners must not use generative AI such as ChatGPT to generate code in order to complete assignments. It should be use as a supportive tool to seek out answers to questions you may have.
+* We expect learners to have completed the [onboarding repo](https://github.com/UofT-DSI/Onboarding/tree/tech-onboarding-docs).
+* Camera is optional although highly encouraged. We understand that not everyone may have the space at home to have the camera on.
+
+### Expectations
+Learners are encouraged to be active participants while coding and are encouraged to ask questions throughout the module. Learners are expected to follow along with the coding, creating files and folders to navigate and manipulate. Learners should be active participants while coding and are encouraged to ask questions throughout.
 
 # Course Schedule
 
 ## Part 1:	Introduction
 
-Date: Feb 22, 6 PM.
+Date: TBD
 Quiz 1
 
 
@@ -112,7 +123,7 @@ Quiz 1
 
 ## Part 2:	Data Engineering Fundamentals
 
-Date: Feb 24, 9 AM.
+Date: TBD
 Quiz 2
 
 
@@ -138,7 +149,7 @@ Quiz 2
 
 ## Part 3:	Working with Training Data
 
-Date: Mar 2, 9 AM.
+Date: TBD
 Quiz 3
 
 ### 3.1. Training Data 
@@ -228,40 +239,53 @@ Quiz 3
 
 ## Assignment Due Dates
 
-+ Assignment 1 due on March 3.
-+ Assignment 2 due on March 9.
-+ Assignment 3 due on March 12.
++ Assignment 1 due on TBD.
++ Assignment 2 due on TBD.
++ Assignment 3 due on TBD.
 
 
 ## Policies
 
-+ Evaluation.
-
+* **Accessibility:** We want to provide an accessible learning environment for all. If there is something we can do to make this course more accessible to you, please let us know.
+* **Course communications:** Communications take place over email or on Slack. If communicating over email, please include "DSI-Python" or similar in the subject line, e.g. "DSI-Python: pandas question"
+* **Camera:** Keeping your camera on is optional.
+* **Microphone:** Please keep microphones muted unless you need to speak. Please indicate your name before speaking as some Zoom configurations make it hard to tell who is talking!
+* **Assessments:**
   - Quizzes will follow every session. They include multiple choice, multiple selection, and true/false questions related to the day's quesitons. The quizzes are not only assessment, but an integral part of learning. I recommend that you do not leave them all to the very last minute.
   - There will be three coding assignments. They should be submitted via email. 
 
-+ Assignment.
-+ Reading.
-+ Attendance. 
+## Resources
+Feel free to use the following as resources:
 
-+ The course has a live-coding component. 
-+ Students are expected to follow along with the coding, creating files and folders to navigate and manipulate. Students should be active participants while coding and are encouraged to ask questions throughout.
+### Documents
+- [Docker Installation](https://docs.docker.com/engine/install/)
+- [Cheatsheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
 
+### Videos
+- [What is Docker?](https://www.youtube.com/watch?v=Gjnup-PuquQ)
+- [Docker Playlist](https://www.youtube.com/playlist?list=PLe4mIUXfbIqaYmsoFahYCbijPU4rjM38h)
 
-+ [U of T Holiday Schedule](https://people.utoronto.ca/news/holiday-schedule-2022-23-and-2023-24/)
+### How to get help
+![image](/Steps%20to%20ask%20for%20help.png)
 
+<hr>
 
-# Folder Structure
+## Folder Structure
 
-Below are the folders contained in this repo with a description of what they contain and information on how to use them.
+```markdown
+|-- 01-slides
+|-- 02-assignments
+|-- 03-instructors
+|-- 04-data
+|-- 05-src
+|-- .gitignore
+```
 
-+ `assignments`: assignment files.
-+ `config`: configuration files for experiments.
-+ `docs`: all notes and quizzes.
-+ `notebooks`: Jupyter notebooks
-+ `src`: code.
-
-# Contributions 
-
-* We welcomes issues, enhancement requests, and other contributions. To submit an issue, use [GitHub
-issues](https://github.com/UofT-DSI/production/issues).
+* **slides:** Course slides as interactive notebooks (.ipynb files)
+* **live_production:** Notebooks from class live coding sessions
+* **assignments:** Graded assignments
+* **data**: Contains all data associated with the module
+* **instructors:** Instructions for the Instructor on what to teach
+* **src:** Contains credit experiment
+* README: This file!
+* .gitignore: Files to exclude from this folder, specified by the instructor
