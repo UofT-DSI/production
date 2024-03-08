@@ -266,7 +266,7 @@ Feel free to use the following as resources:
 - [Docker Playlist](https://www.youtube.com/playlist?list=PLe4mIUXfbIqaYmsoFahYCbijPU4rjM38h)
 
 ### How to get help
-![image](/Steps%20to%20ask%20for%20help.png)
+![image](/steps-to-ask-for-help.png)
 
 <hr>
 
