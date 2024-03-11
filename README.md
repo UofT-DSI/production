@@ -218,36 +218,36 @@ By the end of this course, a student will be able to:
 
 # Key Dates 
 
-Class schedule:
+## Class schedule:
 
+Week 15 
 
-+ Mon Mar 11, 6 pm - 8:30 pm
-+ Tues Mar 12, 6 pm - 8:30 pm (Assignment 1 start)
-+ Weds Mar 13, 6 pm - 8:30 pm
-+ Thurs Mar 14, 6 pm - 8:30 pm (Assignment 2 start)
++ Monday, Mar 11, 6 pm - 8:30 pm
++ Tuesday, Mar 12, 6 pm - 8:30 pm 
++ Wednesday, Mar 13, 6 pm - 8:30 pm
++ Thursday, Mar 14, 6 pm - 8:30 pm 
 
 Week 16
 
-+ Tues Mar 19, 6 pm - 8:30 pm 
-+ Weds Mar 20, 6 pm - 8:30 pm (Assignment 3 start)
-+ Thurs Mar 21, 6 pm - 8:30 pm
-+ Sat Mar 23, 9 am - 11:30 am
++ Tuesday, Mar 19, 6 pm - 8:30 pm 
++ Wednesday, Mar 20, 6 pm - 8:30 pm 
++ Thursday, Mar 21, 6 pm - 8:30 pm
++ Saturday, Mar 23, 9 am - 11:30 am
 
-
+## Assignments
 
 + Assignment 1 due on March 15.
 + Assignment 2 due on March 19.
 + Assignment 3 due on March 23.
 
 
-## Policies
+# Policies
 
 + Evaluation.
 
   - Quizzes will follow every session. They include multiple choice, multiple selection, and true/false questions related to the day's quesitons. The quizzes are not only assessment, but an integral part of learning. I recommend that you do not leave them all to the very last minute.
-  - There will be three coding assignments. They should be submitted via email. 
+  - There will be three coding assignments. 
 
-+ Assignment.
 + Reading.
 + Attendance. 
 
