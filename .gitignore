@@ -3,6 +3,7 @@ env/*
 data/adult/*
 data/artifacts/*
 data/credit/*
+data/fires/*
 data/features/*
 data/prices/*
 data/temp/*

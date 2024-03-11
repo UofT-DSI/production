@@ -82,10 +82,6 @@ By the end of this course, a student will be able to:
 
 ## Part 1:	Introduction
 
-Date: Feb 22, 6 PM.
-Quiz 1
-
-
 ### 1.1 Overview of ML Systems 
 	
 + When to Use ML
@@ -112,9 +108,6 @@ Quiz 1
 
 ## Part 2:	Data Engineering Fundamentals
 
-Date: Feb 24, 9 AM.
-Quiz 2
-
 
 ### 2.1. Fundamentals of Data Engineering
 	
@@ -137,9 +130,6 @@ Quiz 2
 
 
 ## Part 3:	Working with Training Data
-
-Date: Mar 2, 9 AM.
-Quiz 3
 
 ### 3.1. Training Data 
 	
@@ -226,21 +216,38 @@ Quiz 3
 + Organization
 
 
-## Assignment Due Dates
+# Key Dates 
 
-+ Assignment 1 due on March 3.
-+ Assignment 2 due on March 9.
-+ Assignment 3 due on March 12.
+## Class schedule:
+
+Week 15 
+
++ Monday, Mar 11, 6 pm - 8:30 pm
++ Tuesday, Mar 12, 6 pm - 8:30 pm 
++ Wednesday, Mar 13, 6 pm - 8:30 pm
++ Thursday, Mar 14, 6 pm - 8:30 pm 
+
+Week 16
+
++ Tuesday, Mar 19, 6 pm - 8:30 pm 
++ Wednesday, Mar 20, 6 pm - 8:30 pm 
++ Thursday, Mar 21, 6 pm - 8:30 pm
++ Saturday, Mar 23, 9 am - 11:30 am
+
+## Assignments
+
++ Assignment 1 due on March 15.
++ Assignment 2 due on March 19.
++ Assignment 3 due on March 23.
 
 
-## Policies
+# Policies
 
 + Evaluation.
 
   - Quizzes will follow every session. They include multiple choice, multiple selection, and true/false questions related to the day's quesitons. The quizzes are not only assessment, but an integral part of learning. I recommend that you do not leave them all to the very last minute.
-  - There will be three coding assignments. They should be submitted via email. 
+  - There will be three coding assignments. 
 
-+ Assignment.
 + Reading.
 + Attendance. 
 
