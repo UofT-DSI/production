@@ -1,5 +1,6 @@
 .DS_Store*
 env/*
+venv/*
 data/adult/*
 data/artifacts/*
 data/credit/*
