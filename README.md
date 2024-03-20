@@ -91,151 +91,14 @@ Learners are encouraged to be active participants while coding and are encourage
 
 # Course Schedule
 
-## Part 1:	Introduction
-
-Date: TBD
-Quiz 1
-
-
-### 1.1 Overview of ML Systems 
-	
-+ When to Use ML
-+ ML in Production
-+ ML vs Traditional Software
-	
-### 1.2 Introduction to ML System Design 
-	
-+ Business and ML Objectives
-+ Requirements of Data-Driven Products
-+ Iterative Process
-+ Framing ML Problems 
-	
-### 1.3 Project Setup
-
-+ Git, authorization, and production pipelines.
-+ VS Code and Git.
-+ Python virtual environments.
-+ Repo File Structure.
-+ Branching Strategies.
-+ Commit Messages.
-
-
-
-## Part 2:	Data Engineering Fundamentals
-
-Date: TBD
-Quiz 2
-
-
-### 2.1. Fundamentals of Data Engineering
-	
-+ Data Sources
-+ Data Formats  
-+ Data Models 
-+ Data Storage and Processing
-+ Modes of Data Flow
-
-### 2.2 An Initial Data Flow
-
-+ Jupyter notebooks and source code. 
-+ Logging and using a standard logger.
-+ Environment variables.
-+ Getting the data.
-+ Schemas and index in dask.
-+ Reading and writing parquet files.
-+ Dask vs pandas: a small example of big vs small data.
-
-
-
-## Part 3:	Working with Training Data
-
-Date: TBD
-Quiz 3
-
-### 3.1. Training Data 
-	
-+ Sampling
-+ Labeling
-+ Class Imbalance
-+ Data Augmentation
-
-	
-### 3.2 A Training Pipeline
-
-+ Sampling in Python.
-+ An initial training pipeline.
-+ Modularizing the training pipeline.
-+ Decoupling settings, parameters, data, code, and results.
-
-### Part 4:	Feature Engineering
-
-#### 4.1. Feature Engineering 
-
-+ Common Operations
-+ Data Leakage
-+ Feature Importance 
-+ Feature Generalization
-	
-
-#### 4.2 Feature Pipelines
-
-+ Transformation Pipelines
-+ Encapsulation and parametrization
-
-
-## Part 5:	Model Development and Evaluation
-
-### 5.1. Model Development and Offline Evaluation
-
-+ Model Development and Training 
-+ Ensembles 
-+ Experiment Tracking and Versioning 
-+ Model Offline Evaluation 
-
-### 5.2 Experiment Tracking
-
-+ Experiment tracking
-+ Hyperparameter Tuning
-
-
-### Part 6:	Deployment and Model Explanations
-
-#### 6.1. Model Deployment
-
-+ ML Deployment Myths
-+ Batch Prediction vs Online Prediction
-
-#### 6.2 Explainability Methods
-
-+ Partial Dependence Plots
-+ Permutation Importance
-+ SHAP Values
-
-
-## Part 7:	Data Distribution Shifts
-
-### 7.1. Data Distribution Shifts and Monitoring 
-
-+ ML System Failures
-+ Data Distribution Shifts
-+ Monitoring and Observability
-	
-### 7.2 Testing Distributions Shifts
-
-+ Python implementation
-
-### Part 8:	Infrastructure and Organization
-
-#### Topic 8.1. Infrastructure and Tooling for ML Ops
-	
-+ Infrastructure
-+ ML Ops
-
-#### Topic 8.2. The Human Side of ML
-
-+ Roles and skills
-+ Organization
-
+|Class|Date        |Topic                             |
+|-----|------------|----------------------------------|
+|  1  | TBD        | ML System Design                 |
+|  2  | TBD        | Data Engineering Fundamentals    |
+|  3  | TBD        | Working with Training Data       |
+|  4  | TBD        | Feature Engineering              |
+|  5  | TBD        | Model Development and Evaluation |
+|  6  | TBD        | Deployment and Model Explanations|
 
 ## Assignment Due Dates
 
@@ -274,18 +137,19 @@ Feel free to use the following as resources:
 
 ```markdown
 |-- 01-slides
-|-- 02-assignments
-|-- 03-instructors
+|-- 02-notebooks
+|-- 03-assignments
 |-- 04-data
 |-- 05-src
+|-- 06-instructors
 |-- .gitignore
 ```
 
-* **slides:** Course slides as interactive notebooks (.ipynb files)
-* **live_production:** Notebooks from class live coding sessions
+* **slides:** Course slides as PDF
+* **notebooks:** Interactive notebooks (.ipynb files)
 * **assignments:** Graded assignments
 * **data**: Contains all data associated with the module
-* **instructors:** Instructions for the Instructor on what to teach
 * **src:** Contains credit experiment
+* **instructors:** Instructions for the Instructor on what to teach
 * README: This file!
 * .gitignore: Files to exclude from this folder, specified by the instructor
