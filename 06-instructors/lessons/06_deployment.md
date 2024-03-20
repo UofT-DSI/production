@@ -37,7 +37,7 @@ $ echo "Data Science Institute"
 
 **Notebooks**
 
-- `./notebooks/production_5_model_development.ipynb`
+- `./02-notebooks/production_5_model_development.ipynb`
 
 **Code**
 

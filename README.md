@@ -65,10 +65,7 @@ By the end of this course, a student will be able to:
 
 ### Delivery of Module
 
-+ The workshop will be held over three weeks on the dates outlined below. 
-+ Most days, we will review slides for about one hour, take a short break and continue with the technical discussion.
-+ There are Jupyter notebooks in the repo to follow along in the coding sessions. 
-+ We encourage you to participate and ask questions.
+The module will run sychronously three times a week on Zoom. The first three days are used as "lectures" and will last a maximum of 3 hours. During this time, the instructor will introduce the concepts for the week. The last two days are used for as optional, asychronous work periods. The work periods will also last for up to 3 hours. During these two days, an instructor or TA will be present on Zoom to assist learners reach the intended learning outcomes.
 
 ### How the Instructor will deliver
 The instructors will introduce the concepts through a collaborative live coding session usiing the Python notebooks found under `/01-slides`. All instructors will also upload any live coding files to this repository for any learners to revisit under `/live_production`.
@@ -90,6 +87,8 @@ The instructors will introduce the concepts through a collaborative live coding 
 Learners are encouraged to be active participants while coding and are encouraged to ask questions throughout the module. Learners are expected to follow along with the coding, creating files and folders to navigate and manipulate. Learners should be active participants while coding and are encouraged to ask questions throughout.
 
 # Course Schedule
+
+The schedule is tentative and may be modified as needed. Learners will be notified of schedule changes.
 
 |Class|Date        |Topic                             |
 |-----|------------|----------------------------------|
