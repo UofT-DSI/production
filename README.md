@@ -5,12 +5,12 @@
 * [Description](#description)
 * [Learning Outcomes](#learning-outcomes)
 * [Logistics](#logistics)
-  + [Course Contacts](#course-contacts)
-  + [Delivery of Module](#delivery-of-module)
+  + [Module Contacts](#module-contacts)
+  + [Delivery of module](#delivery-of-module)
   + [How the Instructor will deliver](#how-the-instructor-will-deliver)
   + [Requirements](#requirements)
   + [Expectations](#expectations)
-* [Course Schedule](#course-schedule)
+* [Module Schedule](#module-schedule)
 * [Policies](#policies)
 * [Resources](#resources)
   + [Documents](#documents)
@@ -25,14 +25,14 @@ We wish to acknowledge this land on which the University of Toronto operates. Fo
 
 ## Description
 
-The course was created by the University of Toronto's Data Science Institute. The course provides an overview of the Design of Machine Learning Systems which are embedded within data-intensive products and applications. It covers the fundamental components of the infrastructure, systems, and methods necessary to implement and maintain Machine Learning (ML) models in production. In short, we will learn methods to build a factory of ML models. 
+The module was created by the University of Toronto's Data Science Institute. The module provides an overview of the Design of Machine Learning Systems which are embedded within data-intensive products and applications. It covers the fundamental components of the infrastructure, systems, and methods necessary to implement and maintain Machine Learning (ML) models in production. In short, we will learn methods to build a factory of ML models. 
 
-The course has two components: 
+The module has two components: 
 
 + A discussion of the main issues and challenges faced in production, together with some approaches to address them.
 + A live lab with demonstrations of implementation techniques. 
 
-The course covers the following areas:
+The module covers the following areas:
 
 + Data engineering.
 + Feature engineering.
@@ -45,7 +45,7 @@ We will discuss the tools and techniques required to do the above in good order 
 
 ## Learning Outcomes
 
-By the end of this course, a student will be able to:
+By the end of this module, a student will be able to:
 
 + Describe the main components of a machine learning system.
 + Explain the infrastructure required to train and test models in production.
@@ -56,7 +56,7 @@ By the end of this course, a student will be able to:
 
 ## Logistics
 
-### Course Contacts
+### Module Contacts
 
 **Questions can be submitted to the #questions channel on Slack**
 
@@ -86,7 +86,7 @@ The instructors will introduce the concepts through a collaborative live coding 
 ### Expectations
 Learners are encouraged to be active participants while coding and are encouraged to ask questions throughout the module. Learners are expected to follow along with the coding, creating files and folders to navigate and manipulate. Learners should be active participants while coding and are encouraged to ask questions throughout.
 
-# Course Schedule
+# Module Schedule
 
 The schedule is tentative and may be modified as needed. Learners will be notified of schedule changes.
 
@@ -108,8 +108,8 @@ The schedule is tentative and may be modified as needed. Learners will be notifi
 
 ## Policies
 
-* **Accessibility:** We want to provide an accessible learning environment for all. If there is something we can do to make this course more accessible to you, please let us know.
-* **Course communications:** Communications take place over email or on Slack. If communicating over email, please include "DSI-Python" or similar in the subject line, e.g. "DSI-Python: pandas question"
+* **Accessibility:** We want to provide an accessible learning environment for all. If there is something we can do to make this module more accessible to you, please let us know.
+* **Module communications:** Communications take place over email or on Slack. If communicating over email, please include "DSI-Python" or similar in the subject line, e.g. "DSI-Python: pandas question"
 * **Camera:** Keeping your camera on is optional.
 * **Microphone:** Please keep microphones muted unless you need to speak. Please indicate your name before speaking as some Zoom configurations make it hard to tell who is talking!
 * **Assessments:**
@@ -144,7 +144,7 @@ Feel free to use the following as resources:
 |-- .gitignore
 ```
 
-* **slides:** Course slides as PDF
+* **slides:** module slides as PDF
 * **notebooks:** Interactive notebooks (.ipynb files)
 * **assignments:** Graded assignments
 * **data**: Contains all data associated with the module
