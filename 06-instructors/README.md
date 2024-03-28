@@ -8,7 +8,6 @@ The module is organized into 2 main directories:
 1. Slides
 2. Assignments
 
-
 The `/01-slides` directory would be the first directory anyone would see, and contains the lecture slides, learning outcomes, and anything related to the learning outcomes such as live-coding files.
 
 The `/02-assignments` directory is the second directory containing the assignments that would be marked as a `pass` or `fail`. All assignments are mandatory to complete and deliver.
@@ -64,3 +63,5 @@ Feedback will be given through the pull request a learner had made, and allowing
 **Work Period**: A Work Period is an asynchronous period of time, lasting up to 3 hours. The learners will work on their assignments and/or homework during this block of time. A TA will be present online through Zoom to assist the learners and answer any questions they may have. As work periods are asynchronous and flexible, learners can choose to work on their own time. However, it is encouraged to work during the block of time when a TA is present.
 
 **Assignments**: An Assignment is work assigned as part of the program. They are slightly more difficult, providing an opportunity for learners to integrate and synthesize what they have learned throughout the week to meet the set learning outcomes.
+
+The requirements.txt file provided here shows the specific dependencies needed to run the entire course as specified by the course author. However, the conda environment already given to you by the admin team includes these dependencies, so this file is only for your reference.
