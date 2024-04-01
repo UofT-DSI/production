@@ -68,7 +68,7 @@ By the end of this module, a student will be able to:
 The module will run sychronously three times a week on Zoom. The first three days are used as "lectures" and will last a maximum of 3 hours. During this time, the instructor will introduce the concepts for the week. The last two days are used for as optional, asychronous work periods. The work periods will also last for up to 3 hours. During these two days, an instructor or TA will be present on Zoom to assist learners reach the intended learning outcomes.
 
 ### How the Instructor will deliver
-The instructors will introduce the concepts through a collaborative live coding session usiing the Python notebooks found under `/01-slides`. All instructors will also upload any live coding files to this repository for any learners to revisit under `/live_production`.
+The instructors will introduce the concepts through a collaborative live coding session usiing the Python notebooks found under `/01_slides`. All instructors will also upload any live coding files to this repository for any learners to revisit under `/live_production`.
 
 ### Requirements
 
@@ -135,12 +135,12 @@ Feel free to use the following as resources:
 ## Folder Structure
 
 ```markdown
-|-- 01-slides
-|-- 02-notebooks
-|-- 03-assignments
-|-- 04-data
-|-- 05-src
-|-- 06-instructors
+|-- 01_slides
+|-- 02_notebooks
+|-- 03_assignments
+|-- 04_data
+|-- 05_src
+|-- 06_instructors
 |-- .gitignore
 ```
 
