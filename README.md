@@ -69,6 +69,7 @@ The module will run sychronously three times a week on Zoom. The first three day
 
 ### How the Instructor will deliver
 The instructors will introduce the concepts through a collaborative live coding session usiing the Python notebooks found under `/01_slides`. All instructors will also upload any live coding files to this repository for any learners to revisit under `/live_production`.
+The instructors will introduce the concepts through a collaborative live coding session usiing the Python notebooks found under `/01_slides`. All instructors will also upload any live coding files to this repository for any learners to revisit under `/live_production`.
 
 ### Requirements
 
