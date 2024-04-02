@@ -10,7 +10,7 @@ We would like to get your thoughts on your experiences with this course and how 
 - 2 - Somewhat
 - 3 - Moderately
 - 4 - Mostly
-- 5- A great deal
+- 5 - A great deal
 
 ## 1. About the Curriculum.
 - I found the course intellectually stimulating.  
