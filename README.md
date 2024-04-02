@@ -1,32 +1,38 @@
-
 # Production
 
-## Contents:
+## Content
+* [Acknowledgement](#acknowledgement)
+* [Description](#description)
+* [Learning Outcomes](#learning-outcomes)
+* [Logistics](#logistics)
+  + [Module Contacts](#module-contacts)
+  + [Delivery of module](#delivery-of-module)
+  + [How the Instructor will deliver](#how-the-instructor-will-deliver)
+  + [Requirements](#requirements)
+  + [Expectations](#expectations)
+* [Module Schedule](#module-schedule)
+* [Policies](#policies)
+* [Resources](#resources)
+  + [Documents](#documents)
+  + [Videos](#videos)
+  + [How to get help](#how-to-get-help)
+* [Folder Structure](#folder-structure)
 
-1. Description
-2. Learning Outcomes
-3. Logistics
-4. Marking Scheme
-5. Policies
-6. Folder Structure
-7. Acknowledgements and Contributions
-
-
-## Achnowledgement
+## Acknowledgement
 
 We wish to acknowledge this land on which the University of Toronto operates. For thousands of years it has been the traditional land of the Huron-Wendat, the Seneca, and most recently, the Mississaugas of the Credit River. Today, this meeting place is still the home to many Indigenous people from across Turtle Island and we are grateful to have the opportunity to work on this land.
 
 
 ## Description
 
-The course was created by the University of Toronto's Data Science Institute. The course provides an overview of the Design of Machine Learning Systems which are embedded within data-intensive products and applications. It covers the fundamental components of the infrastructure, systems, and methods necessary to implement and maintain Machine Learning (ML) models in production. In short, we will learn methods to build a factory of ML models. 
+The module was created by the University of Toronto's Data Science Institute. The module provides an overview of the Design of Machine Learning Systems which are embedded within data-intensive products and applications. It covers the fundamental components of the infrastructure, systems, and methods necessary to implement and maintain Machine Learning (ML) models in production. In short, we will learn methods to build a factory of ML models. 
 
-The course has two components: 
+The module has two components: 
 
 + A discussion of the main issues and challenges faced in production, together with some approaches to address them.
 + A live lab with demonstrations of implementation techniques. 
 
-The course covers the following areas:
+The module covers the following areas:
 
 + Data engineering.
 + Feature engineering.
@@ -39,7 +45,7 @@ We will discuss the tools and techniques required to do the above in good order 
 
 ## Learning Outcomes
 
-By the end of this course, a student will be able to:
+By the end of this module, a student will be able to:
 
 + Describe the main components of a machine learning system.
 + Explain the infrastructure required to train and test models in production.
@@ -50,225 +56,108 @@ By the end of this course, a student will be able to:
 
 ## Logistics
 
-### Course Contacts
+### Module Contacts
 
-+ Instructor: Jesús Calderón (he/him)
+**Questions can be submitted to the #questions channel on Slack**
 
-  * dsi.production.course [at] gmail.com
-    
-    - This email is exclusively for the course. 
-    - I will monitor this email and respond within 24 hours.
+* Technical Facilitator: 
+  * name and pronouns: `<Name>`, `<Pronouns>` 
+  * email: `<first_name.last_name@mail.ca>`
+* Learning Support Staff: 
+  * name and pronouns: `<Name>`, `<Pronouns>` 
+  * email: `<first_name.last_name@mail.ca>`
 
-  * [LinkedIn](https://www.linkedin.com/in/jcalderon/) 
+### Delivery of Module
 
-+ TA: TBD
+The module will run sychronously three times a week on Zoom. The first three days are used as "lectures" and will last a maximum of 3 hours. During this time, the instructor will introduce the concepts for the week. The last two days are used for as optional, asychronous work periods. The work periods will also last for up to 3 hours. During these two days, an instructor or TA will be present on Zoom to assist learners reach the intended learning outcomes.
 
-### Delivery instructions
+### How the Instructor will deliver
+The instructors will introduce the concepts through a collaborative live coding session usiing the Python notebooks found under `/01_slides`. All instructors will also upload any live coding files to this repository for any learners to revisit under `/live_production`.
+The instructors will introduce the concepts through a collaborative live coding session usiing the Python notebooks found under `/01_slides`. All instructors will also upload any live coding files to this repository for any learners to revisit under `/live_production`.
 
-+ The workshop will be held over three weeks on the dates outlined below. 
-+ Most days, we will review slides for about one hour, take a short break and continue with the technical discussion.
-+ There are Jupyter notebooks in the repo to follow along in the coding sessions. 
-+ We encourage you to participate and ask questions.
+### Requirements
 
-### Technology Requirements
+* Learners are not expected to have any coding experience, we designed the learning contents for beginners.
+* Learners are encouraged to ask questions, and collaborate with others to enhance learning.
+* Learners must have a computer and an internet connection to participate in online activities.
+* Learners must have VSCode installed with the following extensions: 
+    * [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
+    * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+* Learners must install Docker as this module implements a Docker backend that will run a PosgreSQL server. This is intended to mimic a production-like environment. Use SQLite if Docker is not an option.
+* Learners must not use generative AI such as ChatGPT to generate code in order to complete assignments. It should be use as a supportive tool to seek out answers to questions you may have.
+* We expect learners to have completed the [onboarding repo](https://github.com/UofT-DSI/Onboarding/tree/tech-onboarding-docs).
+* Camera is optional although highly encouraged. We understand that not everyone may have the space at home to have the camera on.
 
-1. A standard PC with Python installed. Ideally, an account with admin rights to this PC. 
-2. The examples are not computationally intensive and can be further reduced if performance is an issue.
-3. The course is implemented with a Docker backend that will run a PosgreSQL server. This is intended to mimic a production-like environment. Use SQLite if Docker is not an option.
-4. Camera is optional although highly encouraged. We understand that not everyone may have the space at home to have the camera on.
+### Expectations
+Learners are encouraged to be active participants while coding and are encouraged to ask questions throughout the module. Learners are expected to follow along with the coding, creating files and folders to navigate and manipulate. Learners should be active participants while coding and are encouraged to ask questions throughout.
 
+# Module Schedule
 
-# Course Schedule
+The schedule is tentative and may be modified as needed. Learners will be notified of schedule changes.
 
-## Part 1:	Introduction
+|Class|Date        |Topic                             |
+|-----|------------|----------------------------------|
+|  1  | TBD        | ML System Design                 |
+|  2  | TBD        | Data Engineering Fundamentals    |
+|  3  | TBD        | Working with Training Data       |
+|  4  | TBD        | Feature Engineering              |
+|  5  | TBD        | Model Development and Evaluation |
+|  6  | TBD        | Deployment and Model Explanations|
 
-### 1.1 Overview of ML Systems 
-	
-+ When to Use ML
-+ ML in Production
-+ ML vs Traditional Software
-	
-### 1.2 Introduction to ML System Design 
-	
-+ Business and ML Objectives
-+ Requirements of Data-Driven Products
-+ Iterative Process
-+ Framing ML Problems 
-	
-### 1.3 Project Setup
+## Assignment Due Dates
 
-+ Git, authorization, and production pipelines.
-+ VS Code and Git.
-+ Python virtual environments.
-+ Repo File Structure.
-+ Branching Strategies.
-+ Commit Messages.
++ Assignment 1 due on TBD.
++ Assignment 2 due on TBD.
++ Assignment 3 due on TBD.
 
 
+## Policies
 
-## Part 2:	Data Engineering Fundamentals
-
-
-### 2.1. Fundamentals of Data Engineering
-	
-+ Data Sources
-+ Data Formats  
-+ Data Models 
-+ Data Storage and Processing
-+ Modes of Data Flow
-
-### 2.2 An Initial Data Flow
-
-+ Jupyter notebooks and source code. 
-+ Logging and using a standard logger.
-+ Environment variables.
-+ Getting the data.
-+ Schemas and index in dask.
-+ Reading and writing parquet files.
-+ Dask vs pandas: a small example of big vs small data.
-
-
-
-## Part 3:	Working with Training Data
-
-### 3.1. Training Data 
-	
-+ Sampling
-+ Labeling
-+ Class Imbalance
-+ Data Augmentation
-
-	
-### 3.2 A Training Pipeline
-
-+ Sampling in Python.
-+ An initial training pipeline.
-+ Modularizing the training pipeline.
-+ Decoupling settings, parameters, data, code, and results.
-
-### Part 4:	Feature Engineering
-
-#### 4.1. Feature Engineering 
-
-+ Common Operations
-+ Data Leakage
-+ Feature Importance 
-+ Feature Generalization
-	
-
-#### 4.2 Feature Pipelines
-
-+ Transformation Pipelines
-+ Encapsulation and parametrization
-
-
-## Part 5:	Model Development and Evaluation
-
-### 5.1. Model Development and Offline Evaluation
-
-+ Model Development and Training 
-+ Ensembles 
-+ Experiment Tracking and Versioning 
-+ Model Offline Evaluation 
-
-### 5.2 Experiment Tracking
-
-+ Experiment tracking
-+ Hyperparameter Tuning
-
-
-### Part 6:	Deployment and Model Explanations
-
-#### 6.1. Model Deployment
-
-+ ML Deployment Myths
-+ Batch Prediction vs Online Prediction
-
-#### 6.2 Explainability Methods
-
-+ Partial Dependence Plots
-+ Permutation Importance
-+ SHAP Values
-
-
-## Part 7:	Data Distribution Shifts
-
-### 7.1. Data Distribution Shifts and Monitoring 
-
-+ ML System Failures
-+ Data Distribution Shifts
-+ Monitoring and Observability
-	
-### 7.2 Testing Distributions Shifts
-
-+ Python implementation
-
-### Part 8:	Infrastructure and Organization
-
-#### Topic 8.1. Infrastructure and Tooling for ML Ops
-	
-+ Infrastructure
-+ ML Ops
-
-#### Topic 8.2. The Human Side of ML
-
-+ Roles and skills
-+ Organization
-
-
-# Key Dates 
-
-## Class schedule:
-
-Week 15 
-
-+ Monday, Mar 11, 6 pm - 8:30 pm
-+ Tuesday, Mar 12, 6 pm - 8:30 pm 
-+ Wednesday, Mar 13, 6 pm - 8:30 pm
-+ Thursday, Mar 14, 6 pm - 8:30 pm 
-
-Week 16
-
-+ Tuesday, Mar 19, 6 pm - 8:30 pm 
-+ Wednesday, Mar 20, 6 pm - 8:30 pm 
-+ Thursday, Mar 21, 6 pm - 8:30 pm
-+ Saturday, Mar 23, 9 am - 11:30 am
-
-## Assignments
-
-+ Assignment 1 due on March 15.
-+ Assignment 2 due on March 19.
-+ Assignment 3 due on March 23.
-
-
-# Policies
-
-+ Evaluation.
-
+* **Accessibility:** We want to provide an accessible learning environment for all. If there is something we can do to make this module more accessible to you, please let us know.
+* **Module communications:** Communications take place over email or on Slack. If communicating over email, please include "DSI-Python" or similar in the subject line, e.g. "DSI-Python: pandas question"
+* **Camera:** Keeping your camera on is optional.
+* **Microphone:** Please keep microphones muted unless you need to speak. Please indicate your name before speaking as some Zoom configurations make it hard to tell who is talking!
+* **Assessments:**
   - Quizzes will follow every session. They include multiple choice, multiple selection, and true/false questions related to the day's quesitons. The quizzes are not only assessment, but an integral part of learning. I recommend that you do not leave them all to the very last minute.
-  - There will be three coding assignments. 
+  - There will be three coding assignments. They should be submitted via email. 
 
-+ Reading.
-+ Attendance. 
+## Resources
+Feel free to use the following as resources:
 
-+ The course has a live-coding component. 
-+ Students are expected to follow along with the coding, creating files and folders to navigate and manipulate. Students should be active participants while coding and are encouraged to ask questions throughout.
+### Documents
+- [Docker Installation](https://docs.docker.com/engine/install/)
+- [Cheatsheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
 
+### Videos
+- [What is Docker?](https://www.youtube.com/watch?v=Gjnup-PuquQ)
+- [Docker Playlist](https://www.youtube.com/playlist?list=PLe4mIUXfbIqaYmsoFahYCbijPU4rjM38h)
 
-+ [U of T Holiday Schedule](https://people.utoronto.ca/news/holiday-schedule-2022-23-and-2023-24/)
+### How to get help
+![image](/steps_to_ask_for_help.png)
 
+<hr>
 
-# Folder Structure
+## Folder Structure
 
-Below are the folders contained in this repo with a description of what they contain and information on how to use them.
+```markdown
+.
+├── 01_slides
+├── 02_notebooks
+├── 03_assignments
+├── 04_data
+├── 05_src
+├── 06_instructors
+├── 07_logs
+├── LICENSE
+├── README.md
+└── steps_to_ask_for_help.png
+```
 
-+ `assignments`: assignment files.
-+ `config`: configuration files for experiments.
-+ `docs`: all notes and quizzes.
-+ `notebooks`: Jupyter notebooks
-+ `src`: code.
-
-# Contributions 
-
-* We welcomes issues, enhancement requests, and other contributions. To submit an issue, use [GitHub
-issues](https://github.com/UofT-DSI/production/issues).
+* **slides:** module slides as PDF
+* **notebooks:** Interactive notebooks (.ipynb files)
+* **assignments:** Graded assignments
+* **data**: Contains all data associated with the module
+* **src:** Contains credit experiment
+* **instructors:** Instructions for the Instructor on what to teach
+* README: This file!
+* .gitignore: Files to exclude from this folder, specified by the instructor
