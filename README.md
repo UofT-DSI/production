@@ -60,8 +60,12 @@ By the end of this module, a student will be able to:
 
 **Questions can be submitted to the #questions channel on Slack**
 
-* Instructor: **{Name}** {Pronouns}. Emails to the instructor can be sent to {first_name.last_name}@mail.utoronto.ca.
-* TA: **{Name}** {Pronouns}. Emails to the instructor can be sent to {first_name.last_name}@mail.utoronto.ca.
+* Technical Facilitator: 
+  * name and pronouns: `<Name>`, `<Pronouns>` 
+  * email: `<first_name.last_name@mail.ca>`
+* Learning Support Staff: 
+  * name and pronouns: `<Name>`, `<Pronouns>` 
+  * email: `<first_name.last_name@mail.ca>`
 
 ### Delivery of Module
 
