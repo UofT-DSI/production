@@ -11,7 +11,6 @@
   + [Requirements](#requirements)
   + [Expectations](#expectations)
 * [Module Schedule](#module-schedule)
-* [Policies](#policies)
 * [Resources](#resources)
   + [Documents](#documents)
   + [Videos](#videos)
@@ -109,17 +108,6 @@ The schedule is tentative and may be modified as needed. Learners will be notifi
 + Assignment 1 due on TBD.
 + Assignment 2 due on TBD.
 + Assignment 3 due on TBD.
-
-
-## Policies
-
-* **Accessibility:** We want to provide an accessible learning environment for all. If there is something we can do to make this module more accessible to you, please let us know.
-* **Module communications:** Communications take place over email or on Slack. If communicating over email, please include "DSI-Python" or similar in the subject line, e.g. "DSI-Python: pandas question"
-* **Camera:** Keeping your camera on is optional.
-* **Microphone:** Please keep microphones muted unless you need to speak. Please indicate your name before speaking as some Zoom configurations make it hard to tell who is talking!
-* **Assessments:**
-  - Quizzes will follow every session. They include multiple choice, multiple selection, and true/false questions related to the day's quesitons. The quizzes are not only assessment, but an integral part of learning. I recommend that you do not leave them all to the very last minute.
-  - There will be three coding assignments. They should be submitted via email. 
 
 ## Resources
 Feel free to use the following as resources:
