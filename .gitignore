@@ -1,4 +1,5 @@
 .DS_Store
+.vscode/
 */__pycache__/*
 04_data/adult/*
 04_data/artifacts/*

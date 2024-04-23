@@ -1,7 +1,6 @@
 # Production
 
 ## Content
-* [Acknowledgement](#acknowledgement)
 * [Description](#description)
 * [Learning Outcomes](#learning-outcomes)
 * [Logistics](#logistics)
@@ -16,10 +15,7 @@
   + [Videos](#videos)
   + [How to get help](#how-to-get-help)
 * [Folder Structure](#folder-structure)
-
-## Acknowledgement
-
-We wish to acknowledge this land on which the University of Toronto operates. For thousands of years it has been the traditional land of the Huron-Wendat, the Seneca, and most recently, the Mississaugas of the Credit River. Today, this meeting place is still the home to many Indigenous people from across Turtle Island and we are grateful to have the opportunity to work on this land.
+* [Acknowledgement](#acknowledgement)
 
 
 ## Description
@@ -84,7 +80,7 @@ The instructors will introduce the concepts through a collaborative live coding 
     * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 * Learners must install Docker as this module implements a Docker backend that will run a PosgreSQL server. This is intended to mimic a production-like environment. Use SQLite if Docker is not an option.
 * Learners must not use generative AI such as ChatGPT to generate code in order to complete assignments. It should be use as a supportive tool to seek out answers to questions you may have.
-* We expect learners to have completed the [onboarding repo](https://github.com/UofT-DSI/Onboarding/tree/tech-onboarding-docs).
+* We expect learners to have completed the [onboarding repo](https://github.com/UofT-DSI/onboarding/tree/main/onboarding_documents).
 * Camera is optional although highly encouraged. We understand that not everyone may have the space at home to have the camera on.
 
 ### Expectations
@@ -121,7 +117,7 @@ Feel free to use the following as resources:
 - [Docker Playlist](https://www.youtube.com/playlist?list=PLe4mIUXfbIqaYmsoFahYCbijPU4rjM38h)
 
 ### How to get help
-![image](/steps_to_ask_for_help.png)
+![image](./steps_to_ask_for_help.png)
 
 <hr>
 
@@ -134,7 +130,7 @@ Feel free to use the following as resources:
 ├── 03_assignments
 ├── 04_data
 ├── 05_src
-├── 06_instructors
+├── 06_instructional_team
 ├── 07_logs
 ├── LICENSE
 ├── README.md
@@ -149,3 +145,7 @@ Feel free to use the following as resources:
 * **instructors:** Instructions for the Instructor on what to teach
 * README: This file!
 * .gitignore: Files to exclude from this folder, specified by the instructor
+
+## Acknowledgement
+
+We wish to acknowledge this land on which the University of Toronto operates. For thousands of years, it has been the traditional land of the Huron-Wendat, the Seneca, and most recently, the Mississaugas of the Credit River. Today, this meeting place is still the home to many Indigenous people from across Turtle Island and we are grateful to have the opportunity to work on this land.
