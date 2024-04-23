@@ -383,7 +383,7 @@ Document1: harry_potter.json
     - Node metrics like centrality measures: degree, eigen, betweenness.
     - Graph-level features: cliques, clusters, modularity.
 
-- Graph databases may bundle other features (visualisation). 
+- Graph databases may bundle other features (visualization). 
 
 
 
