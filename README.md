@@ -18,7 +18,7 @@
 
 ## Description
 
-The module was created by the University of Toronto's Data Science Institute. The module provides an overview of the Design of Machine Learning Systems which are embedded within data-intensive products and applications. It covers the fundamental components of the infrastructure, systems, and methods necessary to implement and maintain Machine Learning (ML) models in production. In short, we will learn methods to build a factory of ML models. 
+This module provides an overview of the Design of Machine Learning Systems which are embedded within data-intensive products and applications. It covers the fundamental components of the infrastructure, systems, and methods necessary to implement and maintain Machine Learning (ML) models in production. In short, we will learn methods to build a factory of ML models. 
 
 The module has two components: 
 
@@ -38,7 +38,7 @@ We will discuss the tools and techniques required to do the above in good order 
 
 ## Learning Outcomes
 
-By the end of this module, a student will be able to:
+By the end of this module, participants will be able to:
 
 + Describe the main components of a machine learning system.
 + Explain the infrastructure required to train and test models in production.
@@ -48,9 +48,9 @@ By the end of this module, a student will be able to:
 
 ## Assignments
 
-+ Assignment 1 due on TBD.
-+ Assignment 2 due on TBD.
-+ Assignment 3 due on TBD.
++ [Assignment](https://github.com/UofT-DSI/production/blob/main/03_assignments/assignment_1.ipynb) 1 due on TBD.
++ [Assignment 2](https://github.com/UofT-DSI/production/blob/main/03_assignments/assignment_2.ipynb) due on TBD.
++ [Assignment 3](https://github.com/UofT-DSI/production/blob/main/03_assignments/assignment_3.ipynb) due on TBD.
 
 ## Contacts
 
@@ -70,8 +70,6 @@ This module will include live learning sessions and optional, asynchronous work 
 Participants are encouraged to engage actively during the learning module. They key to developing the core skills in each learning module is through practice. The more participants engage in coding along with the instructional team, and applying the skills in each module, the more likely it is that these skills will solidify. 
 
 # Schedule
-
-The schedule is tentative and may be modified as needed. Learners will be notified of schedule changes.
 
 |Live Learning Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
