@@ -3,13 +3,11 @@
 ## Content
 * [Description](#description)
 * [Learning Outcomes](#learning-outcomes)
-* [Logistics](#logistics)
-  + [Module Contacts](#module-contacts)
-  + [Delivery of module](#delivery-of-module)
-  + [How the Instructor will deliver](#how-the-instructor-will-deliver)
-  + [Requirements](#requirements)
-  + [Expectations](#expectations)
-* [Module Schedule](#module-schedule)
+* [Assignments](#assignments)
+* [Contacts](#contacts)
+* [Delivery of the Learning module](#delivery-of-the-learning-module)
+* [Schedule](#schedule)
+* [Requirements](#requirements)
 * [Resources](#resources)
   + [Documents](#documents)
   + [Videos](#videos)
@@ -48,12 +46,15 @@ By the end of this module, a student will be able to:
 + Contrast and evaluate different approaches of storing and manipulating data.
 + Design data flows and processes to automate the construction of ML models.
 
+## Assignments
 
-## Logistics
++ Assignment 1 due on TBD.
++ Assignment 2 due on TBD.
++ Assignment 3 due on TBD.
 
-### Module Contacts
+## Contacts
 
-**Questions can be submitted to the #questions channel on Slack**
+**Questions can be submitted to the _#cohort-3-help_ channel on Slack**
 
 * Technical Facilitator: 
   * name and pronouns: `<Name>`, `<Pronouns>` 
@@ -62,35 +63,17 @@ By the end of this module, a student will be able to:
   * name and pronouns: `<Name>`, `<Pronouns>` 
   * email: `<first_name.last_name@mail.ca>`
 
-### Delivery of Module
+## Delivery of the Learning Module
 
-The module will run sychronously three times a week on Zoom. The first three days are used as "lectures" and will last a maximum of 3 hours. During this time, the instructor will introduce the concepts for the week. The last two days are used for as optional, asychronous work periods. The work periods will also last for up to 3 hours. During these two days, an instructor or TA will be present on Zoom to assist learners reach the intended learning outcomes.
+This module will include live learning sessions and optional, asynchronous work periods. During live learning sessions, the Technical Facilitator will introduce and explain key concepts and demonstrate core skills. Learning is facilitated during this time. Before and after each live learning session, the instructional team will be available for questions related to the core concepts of the module. Optional work periods are to be used to seek help from peers, the Learning Support team, and to work through the homework and assignments in the learning module, with access to live help. Content is not facilitated, but rather this time should be driven by participants. We encourage participants to come to these work periods with questions and problems to work through. 
+ 
+Participants are encouraged to engage actively during the learning module. They key to developing the core skills in each learning module is through practice. The more participants engage in coding along with the instructional team, and applying the skills in each module, the more likely it is that these skills will solidify. 
 
-### How the Instructor will deliver
-The instructors will introduce the concepts through a collaborative live coding session usiing the Python notebooks found under `/01_slides`. All instructors will also upload any live coding files to this repository for any learners to revisit under `/live_production`.
-The instructors will introduce the concepts through a collaborative live coding session usiing the Python notebooks found under `/01_slides`. All instructors will also upload any live coding files to this repository for any learners to revisit under `/live_production`.
-
-### Requirements
-
-* Learners are not expected to have any coding experience, we designed the learning contents for beginners.
-* Learners are encouraged to ask questions, and collaborate with others to enhance learning.
-* Learners must have a computer and an internet connection to participate in online activities.
-* Learners must have VSCode installed with the following extensions: 
-    * [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
-    * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-* Learners must install Docker as this module implements a Docker backend that will run a PosgreSQL server. This is intended to mimic a production-like environment. Use SQLite if Docker is not an option.
-* Learners must not use generative AI such as ChatGPT to generate code in order to complete assignments. It should be use as a supportive tool to seek out answers to questions you may have.
-* We expect learners to have completed the [onboarding repo](https://github.com/UofT-DSI/onboarding/tree/main/onboarding_documents).
-* Camera is optional although highly encouraged. We understand that not everyone may have the space at home to have the camera on.
-
-### Expectations
-Learners are encouraged to be active participants while coding and are encouraged to ask questions throughout the module. Learners are expected to follow along with the coding, creating files and folders to navigate and manipulate. Learners should be active participants while coding and are encouraged to ask questions throughout.
-
-# Module Schedule
+# Schedule
 
 The schedule is tentative and may be modified as needed. Learners will be notified of schedule changes.
 
-|Class|Date        |Topic                             |
+|Live Learning Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
 |  1  | TBD        | ML System Design                 |
 |  2  | TBD        | Data Engineering Fundamentals    |
@@ -99,11 +82,18 @@ The schedule is tentative and may be modified as needed. Learners will be notifi
 |  5  | TBD        | Model Development and Evaluation |
 |  6  | TBD        | Deployment and Model Explanations|
 
-## Assignment Due Dates
+### Requirements
 
-+ Assignment 1 due on TBD.
-+ Assignment 2 due on TBD.
-+ Assignment 3 due on TBD.
+* Participants are not expected to have any coding experience; the learning content has been designed for beginners.
+* Participants are encouraged to ask questions, and collaborate with others to enhance their learning experience.
+* Participants must have a computer and an internet connection to participate in online activities.
+* Participants must have VSCode installed with the following extensions: 
+    * [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
+    * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+* Participants must install Docker as this module implements a Docker backend that will run a PosgreSQL server. This is intended to mimic a production-like environment. Particpants may use SQLite if Docker is not an option.
+* Participants must not use generative AI such as ChatGPT to generate code in order to complete assignments. It should be used as a supportive tool to seek out answers to questions you may have.
+* We expect participants to have completed the steps in the [onboarding repo](https://github.com/UofT-DSI/onboarding/).
+* We encourage participants to default to having their camera on at all times, and turning the camera off only as needed. This will greatly enhance the learning experience for all participants and provides real-time feedback for the instructional team. 
 
 ## Resources
 Feel free to use the following as resources:
