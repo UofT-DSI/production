@@ -1,67 +1,72 @@
-# Technical Facilitator Playbook
+# Instructional Team Playbook
 
 ## How do you interact with the repo?
-The Technical Facilitator will teach using the content provided in the `/01_slides` directory. You are allowed to live code with them during your lecture. Just make sure you upload the live-coding files to a new directory called `/live_production` under `/01_slides` to this repository using a new branch and open up a pull request for it to be merge.
+The Technical Facilitator will deliver the content in the `/01_slides` directory. You are encouraged to live code with participants during live sessions. Please ensure that live-coding files are uploaded to a new directory called `/live-coding` under `/01_slides` in this repository using a new branch. Please open a pull request for it to be merged.
 
 ## How does the module flow?
-The module is organized into 2 main directories:
+The module is organized into 3 main directories:
 1. Slides
 2. Assignments
+3. Homework
 
-The `/01_slides` directory would be the first directory anyone would see, and contains the lecture slides, learning outcomes, and anything related to the learning outcomes such as live-coding files.
+The `/01_slides` directory contains the live learning session slides and the live-coding files.
 
-The `/03_assignments` directory is the second directory containing the assignments that would be marked as a `pass` or `fail`. All assignments are mandatory to complete and deliver.
+The `/02_assignments` contains assignments participants should submit for evaluation as  `complete` or `incomplete`. The assignments measure a participant's achievement of the learning outcomes, and help technical facilitators determine if a participant has successfully completed the learning module. 
+
+The `/03_homework` directory contains homework participants can complete to further develop and practice the skills covered in a learning module. Homework is optional, but participants are encouraged to complete as much as they can. 
 
 ### Week 1
 
-#### Lecture 1
-The focus of the first lecture will be to introduce the Production module especialy about Machine Learning System Design.
+#### Live Learning Session 1
+The focus of the first live learning session will be to introduce the Production module especially Machine Learning System Design.
 
-#### Lecture 2
-The focus of the second lecture is to deliver the contents of Data Engineering Fundamentals. 
+#### Live Learning Session 2
+The focus of the second live learning session is to deliver the content of Data Engineering Fundamentals. 
 
-#### Lecture 3
-The focus of the third module is to teach the learners how to work with training data.
+#### Live Learning Session 3
+The focus of the third session is to teach the participants how to work with training data.
 
 #### Assignment 1
-This assignment will introduce learners to working with parquet files.
+This assignment will introduce participants to working with parquet files.
 
 ### Week 2
 
-#### Lecture 4
-The fourth lecture will introduce the learners to Feature Engineering.
+#### Live Learning Session 4
+The fourth live learning session will introduce the participants to Feature Engineering.
 
-#### Lecture 5
-The fifth lecture will introduce the learners to model development and evaluation.
+#### Live Learning Session 5
+The fifth live learning session will introduce the participants to model development and evaluation.
 
-#### Lecture 6
-The fifth lecture will continue teaching the learners about model development and evaluation.
+#### Live Learning Session 6
+The fifth live learning session will continue exploring model development and evaluation.
 
 #### Assignment 2
 The assignment for their final week in this module is to construct a preprocessing and model pipeline to predict the variable `income`.
 
 ## How do you assign assignments?
-Assignments are given and assigned at the start of each week at the end of the first lecture. The Technical Facilitator will announce to the learners what the assignment is about, and how everything they will learn within the week will equip them to work on the assignment.
+Technical Facilitators are encouraged to introduce assignments as early as possible in the learning module. The Technical Facilitator should describe the assignment to participants and explain how the topics covered in the module will equip them with the knowledge and skills to complete the assignment. 
 
-## How an assignment is expected to be completed and delivered?
-Learners are expected to complete the assignment before the first lecture of the following week. They will deliver the assignment by opening up a pull request on their copied repo. The learner will also add a Learning Support Staff as a reviewer indicating they delivered a completed assignment, and it is ready to be graded as a `pass` or `fail`.
+## How is an assignment is expected to be completed and delivered?
+Participants are expected to complete the assignment by the end of the first week. They will deliver the assignment by opening a pull request on their copied repo. The participants will also add a Learning Support Staff as a reviewer indicating they delivered a completed assignment, and it is ready to be evaluated as `complete` or `incomplete`.
 
-## What is the criteria for `pass` or `fail`?
-The criteria for a `pass` or `fail` is if all parts of the program are working, and nothing in the code is broken. For some assignments, a rubric will be given outlining the criteria needed to pass.
+## What is the criteria for `complete` or `incomplete`?
+The criteria for a `complete` or `incomplete` is if all parts of the program are working, and nothing in the code is broken. For some assignments, a rubric is provided outlining the criteria needed to assess an assignment as incomplete.
 
-## How to mark?
-If the learner's solution works, then they `pass`! You or the Learning Support Staff would only need to focus on providing them constructive feedback on how they can improve their code. If the solution does not work, then they `fail`, and you would provide any constructive feedback on their existing code, and encourage them to get their solution working.
+## How to evaluate?
+If the participant's solution works, then their assignment should be assessed as `complete`! Technical Facilitators and the Learning Support Staff should focus on providing constructive feedback to participants who need to improve their code. If the solution does not work, then the assignment is `incomplete`. Facilitators should provide constructive feedback on their existing code, and guide them to get their solution working.
 
 ## How will feedback be given?
-Feedback will be given through the pull request a learner had made, and allowing them to make revisions if needed. In order to maximize learning, feedback must be constructive, and specific.
+Feedback should be given through the pull request a participant has made. Technical Facilitators are encouraged to allow participants to make revisions if needed. In order to maximize learning, feedback should be constructive, and specific.
 
 <hr>
 
 ## Definitions
-**Lecture**: A Lecture is a synchronous period of time, lasting up to 3 hours, where the Technical Facilitator will facilitate and deliver the contents and learning outcomes online through Zoom. Learners are encouraged to participate and ask questions as they learn. Breaks are given if lecture goes pass an hour, with a 10 minutes break given for every hour still in a lecture.
+**Live Learning Sessions**: A Live Learning Session is a synchronous period of time, lasting up to 2.5 hours, where the Technical Facilitator will facilitate and deliver the content and learning outcomes online through Zoom. Participants are encouraged to participate and ask questions as they learn. 10 minute breaks are encouraged once per hour.
 
-**Work Period**: A Work Period is an asynchronous period of time, lasting up to 3 hours. The learners will work on their assignments and/or homework during this block of time. A Learning Support Staff will be present online through Zoom to assist the learners and answer any questions they may have. As work periods are asynchronous and flexible, learners can choose to work on their own time. However, it is encouraged to work during the block of time when a Learning Support Staff is present.
+**Work Period**: A Work Period is an asynchronous period of time, lasting up to 3 hours. Participants will work on assignments and/or homework during this block of time. Learning Support Staff are to be present online through Zoom to assist participants and answer any questions they may have. As work periods are asynchronous and flexible, participants can choose to work on their own time. However, it is encouraged that they work during the block of time when a Learning Support Staff is present.
 
-**Assignments**: An Assignment is work assigned as part of the certification. They are slightly more difficult, providing an opportunity for learners to integrate and synthesize what they have learned throughout the week to meet the set learning outcomes.
+**Assignments**: An Assignment is work assigned as part of the learning modules. They provide an opportunity for participants to integrate and synthesize what they have learned throughout the week to meet the set learning outcomes.
 
-The requirements.txt file provided here shows the specific dependencies needed to run the entire course as specified by the course author. However, the conda environment already given to you by the admin team includes these dependencies, so this file is only for your reference.
+## generate_slides.sh
+
+This script is designed to convert Markdown files located in a specified folder into slide presentations using Marp CLI, allowing for the generation of either HTML or PDF formats based on user input. It includes an option to apply a custom CSS theme to the slides by specifying a theme path. The script also provides a help function detailing its usage, options, and examples for convenience. It ensures the necessary directories exist, validates the presence of Marp CLI on the system, processes each Markdown file found in the specified directory, and outputs the generated slides into a designated output folder, displaying the status of each operation and a completion message. The only configuration needed is to set where the md files are and where you would like the pdf/html files to be placed.
