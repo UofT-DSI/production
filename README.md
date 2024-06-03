@@ -48,9 +48,9 @@ By the end of this module, participants will be able to:
 
 ## Assignments
 
-+ [Assignment](https://github.com/UofT-DSI/production/blob/main/03_assignments/assignment_1.ipynb) 1 due on TBD.
-+ [Assignment 2](https://github.com/UofT-DSI/production/blob/main/03_assignments/assignment_2.ipynb) due on TBD.
-+ [Assignment 3](https://github.com/UofT-DSI/production/blob/main/03_assignments/assignment_3.ipynb) due on TBD.
++ [Assignment](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_1.ipynb) 1 due on TBD.
++ [Assignment 2](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_2.ipynb) due on TBD.
++ [Assignment 3](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_3.ipynb) due on TBD.
 
 ## Contacts
 
@@ -113,26 +113,28 @@ Feel free to use the following as resources:
 
 ```markdown
 .
-├── 01_slides
-├── 02_notebooks
-├── 03_assignments
-├── 04_data
+├── .github
+├── 01_materials
+├── 02_activities
+├── 03_instructional_team
+├── 04_cohort_three
 ├── 05_src
-├── 06_instructional_team
-├── 07_logs
+├── .gitignore
 ├── LICENSE
 ├── README.md
 └── steps_to_ask_for_help.png
 ```
 
-* **slides:** module slides as PDF
-* **notebooks:** Interactive notebooks (.ipynb files)
-* **assignments:** Graded assignments
-* **data**: Contains all data associated with the module
-* **src:** Contains credit experiment
-* **instructors:** Instructions for the Instructor on what to teach
-* README: This file!
-* .gitignore: Files to exclude from this folder, specified by the instructor
+* **.github**: Contains issue templates and pull request templates for the repository.
+* **materials**: Module slides and interactive notebooks (.ipynb files) used during learning sessions.
+* **activities**: Contains graded assignments, exercises, and homework to practice concepts covered in the learning module.
+* **instructional_team**: Resources for the instructional team.
+* **cohort_three**: Additional materials and resources for cohort three.
+* **src**: Source code, databases, logs, and required dependencies (requirements.txt) needed during the module.
+* **.gitignore**: Files to exclude from this folder, specified by the Technical Facilitator
+* **LICENSE**: The license for this repository.
+* **README**: This file.
+* **steps_to_ask_for_help.png**: Guide on how to ask for help.
 
 ## Acknowledgement
 
