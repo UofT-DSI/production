@@ -32,7 +32,7 @@ $ echo "Data Science Institute"
 
 **Notebooks**
 
-- `./02_notebooks/production_7_distribution_shifts.ipynb`
+- `./01_materials/labs/production_7_distribution_shifts.ipynb`
 
 ---
 
