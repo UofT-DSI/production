@@ -14,3 +14,4 @@ dependencies:
   - python-dotenv
   - scikit-learn
   - yfinance
+  - ipykernel
