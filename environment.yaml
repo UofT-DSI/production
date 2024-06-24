@@ -1,0 +1,16 @@
+name: scale2prod
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python
+  - pandas
+  - numpy
+  - sqlalchemy
+  - pyodbc
+  - arrow
+  - pyarrow
+  - dask
+  - python-dotenv
+  - scikit-learn
+  - yfinance
