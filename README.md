@@ -48,20 +48,21 @@ By the end of this module, participants will be able to:
 
 ## Assignments
 
-+ [Assignment](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_1.ipynb) 1 due on TBD.
-+ [Assignment 2](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_2.ipynb) due on TBD.
-+ [Assignment 3](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_3.ipynb) due on TBD.
++ [Assignment 1](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_1.ipynb) due on June 29.
++ [Assignment 2](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_2.ipynb) due on July 5.
++ [Assignment 3](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_3.ipynb) due on July 7.
 
 ## Contacts
 
 **Questions can be submitted to the _#cohort-3-help_ channel on Slack**
 
 * Technical Facilitator: 
-  * name and pronouns: `<Name>`, `<Pronouns>` 
-  * email: `<first_name.last_name@mail.ca>`
+  * [Jesús Calderón](https://www.linkedin.com/in/jcalderon/)
+  
 * Learning Support Staff: 
-  * name and pronouns: `<Name>`, `<Pronouns>` 
-  * email: `<first_name.last_name@mail.ca>`
+  * Ananya Jha 
+  * Vishnou Vinayagame 
+  * Tong Su 
 
 ## Delivery of the Learning Module
 
@@ -73,12 +74,12 @@ Participants are encouraged to engage actively during the learning module. They 
 
 |Live Learning Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
-|  1  | TBD        | ML System Design                 |
-|  2  | TBD        | Data Engineering Fundamentals    |
-|  3  | TBD        | Working with Training Data       |
-|  4  | TBD        | Feature Engineering              |
-|  5  | TBD        | Model Development and Evaluation |
-|  6  | TBD        | Deployment and Model Explanations|
+|  1  | June 25    | ML System Design                 |
+|  2  | June 26    | Data Engineering Fundamentals    |
+|  3  | June 27    | Working with Training Data       |
+|  4  | July 2     | Feature Engineering              |
+|  5  | July 3     | Model Development and Evaluation |
+|  6  | July 4     | Deployment and Model Explanations|
 
 ### Requirements
 
