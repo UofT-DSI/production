@@ -15,6 +15,7 @@ dependencies:
   - dask
   - python-dotenv
   - scikit-learn
+  - shap
   - sacred
   - yfinance
   - ipykernel
