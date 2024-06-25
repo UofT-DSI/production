@@ -11,3 +11,4 @@
 05_src/data/zipped/*
 05_src/db/postgres_data/*
 07_logs/*
+**/07_logs/*
