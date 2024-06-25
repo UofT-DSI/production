@@ -9,10 +9,12 @@ dependencies:
   - matplotlib
   - sqlalchemy
   - pyodbc
+  - psycopg2
   - arrow
   - pyarrow
   - dask
   - python-dotenv
   - scikit-learn
+  - sacred
   - yfinance
   - ipykernel
