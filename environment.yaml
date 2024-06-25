@@ -6,6 +6,7 @@ dependencies:
   - python
   - pandas
   - numpy
+  - matplotlib
   - sqlalchemy
   - pyodbc
   - arrow
