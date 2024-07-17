@@ -48,9 +48,9 @@ By the end of this module, participants will be able to:
 
 ## Assignments
 
-+ [Assignment 1](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_1.ipynb) due on June 29.
-+ [Assignment 2](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_2.ipynb) due on July 5.
-+ [Assignment 3](https://github.com/UofT-DSI/production/blob/main/02_activties/assignments/assignment_3.ipynb) due on July 7.
++ [Assignment 1](./02_activities/assignments/assignment_1.ipynb) due on June 29.
++ [Assignment 2](./02_activities/assignments/assignment_2.ipynb) due on July 5.
++ [Assignment 3](./02_activities/assignments/assignment_3.ipynb) due on July 7.
 
 ## Contacts
 
