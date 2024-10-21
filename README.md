@@ -71,15 +71,14 @@ Participants are encouraged to engage actively during the learning module. They 
 
 |Live Learning Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
-|  1  | Mon, Oct 21, 2024    | ML System Design                 |
-|  2  | Tue, Oct 22, 2024    | Data Engineering Fundamentals    |
-|  3  | Wed, Oct 23, 2024    | Working with Training Data       |
-|  4  | Thur, Oct 24, 2024     | Feature Engineering              |
+|  1  | Tue, Oct 22, 2024    | ML System Design                 |
+|  2  | Wed, Oct 23, 2024    | Data Engineering Fundamentals    |
+|  3  | Thur, Oct 24, 2024    | Working with Training Data       |
 |  NA  | Fri, Oct 25, 2024     | Work Period (1-4 PM) |
 |  NA  | Sat, Oct 26, 2024     | Work Period (9 AM-12 PM) |
-|  5  | Tue, Oct 29, 2024     | Model Development and Evaluation |
-|  6  | Wed, Oct 30, 2024     | Deployment and Model Explanations|
-|  7  | Thur, Oct 31, 2024     | Monitoring, Infrastructure, and Organization|
+|  4  | Tue, Oct 29, 2024     | Feature Engineering              |
+|  5  | Wed, Oct 30, 2024     | Model Development and Evaluation |
+|  6  | Thur, Oct 31, 2024     | Model Explanations, and Monitoring|
 |  NA  | Fri, Nov 1, 2024     | Work Period (1-4 PM) |
 |  NA  | Sat, Nov 2, 2024     | Work Period (9 AM-12 PM) |
 
