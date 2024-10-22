@@ -146,7 +146,7 @@ Participants are encouraged to engage actively during the learning module. They 
 ├── 01_materials
 ├── 02_activities
 ├── 03_instructional_team
-├── 04_cohort_three
+├── 04_this_cohort
 ├── 05_src
 ├── .gitignore
 ├── LICENSE
@@ -158,7 +158,7 @@ Participants are encouraged to engage actively during the learning module. They 
 * **materials**: Module slides and interactive notebooks (.ipynb files) used during learning sessions.
 * **activities**: Contains graded assignments, exercises, and homework to practice concepts covered in the learning module.
 * **instructional_team**: Resources for the instructional team.
-* **cohort_three**: Additional materials and resources for cohort three.
+* **this_cohort**: Additional materials and resources for cohort three.
 * **src**: Source code, databases, logs, and required dependencies (requirements.txt) needed during the module.
 * **.gitignore**: Files to exclude from this folder, specified by the Technical Facilitator
 * **LICENSE**: The license for this repository.
