@@ -49,7 +49,7 @@ $ echo "Data Science Institute"
 
 **Notebooks**
 
-- `./01_materials/labs/production_2_data_engineering.ipynb`
+- `./01_materials/labs/2_data_engineering.ipynb`
 
 **Code**
 
