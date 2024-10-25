@@ -85,7 +85,7 @@ Participants are encouraged to engage actively during the learning module. They 
 
 ### Requirements
 
-* Participants are not expected to have any coding experience; the learning content has been designed for beginners.
+* Participants are expected to have completed Shell, Git, and Python learning modules.
 * Participants are encouraged to ask questions, and collaborate with others to enhance their learning experience.
 * Participants must have a computer and an internet connection to participate in online activities.
 * Participants must have VSCode installed with the following extensions: 
