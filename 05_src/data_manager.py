@@ -72,6 +72,7 @@ class DataManager():
 
         _logs.info(f'Processing ticker {ticker}')
         ticker_dt = DataManager.get_stock_price_data(ticker, start_date, end_date)
+        _logs.debug(f'ticker_dt columns {ticker_dt.columns}')
         DataManager.save_by_year(ticker, outpath, ticker_dt, sector, subsector)
 
     @staticmethod
@@ -107,6 +108,9 @@ class DataManager():
 
         _logs.info(f'Getting stock price data for {ticker} from {start_date} to {end_date}')
         stock_data = yf.download(ticker, start=start_date, end=end_date)
+        
+        if isinstance(stock_data.columns, pd.core.indexes.multi.MultiIndex):
+            stock_data.columns = stock_data.columns.get_level_values('Price')
         return stock_data
 
 
