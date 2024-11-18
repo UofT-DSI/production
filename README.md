@@ -3,11 +3,13 @@
 ## Content
 * [Description](#description)
 * [Learning Outcomes](#learning-outcomes)
-* [Assignments](#assignments)
 * [Contacts](#contacts)
 * [Delivery of the Learning module](#delivery-of-the-learning-module)
 * [Schedule](#schedule)
 * [Requirements](#requirements)
+* [Assessment](#assessment)
+  + [Quizzes](#quizzes)
+  + [Assignments](#assignments)
 * [Resources](#resources)
   + [Documents](#documents)
   + [Videos](#videos)
@@ -46,11 +48,6 @@ By the end of this module, participants will be able to:
 + Contrast and evaluate different approaches of storing and manipulating data.
 + Design data flows and processes to automate the construction of ML models.
 
-## Assignments
-
-+ [Assignment 1](./02_activities/assignments/assignment_1.ipynb) due on June 29.
-+ [Assignment 2](./02_activities/assignments/assignment_2.ipynb) due on July 5.
-+ [Assignment 3](./02_activities/assignments/assignment_3.ipynb) due on July 7.
 
 ## Contacts
 
@@ -60,9 +57,9 @@ By the end of this module, participants will be able to:
   * [Jesús Calderón](https://www.linkedin.com/in/jcalderon/)
   
 * Learning Support Staff: 
-  * Ananya Jha 
-  * Vishnou Vinayagame 
-  * Tong Su 
+  * [Ananya Jha](https://www.linkedin.com/in/jhaananya/)
+  * [Vishnou Vinayagame](https://www.linkedin.com/in/vinayagame-vishnou/)
+  * [Kasra Vakiloroayaei](https://www.linkedin.com/in/kasravakiloroayaei/)
 
 ## Delivery of the Learning Module
 
@@ -74,16 +71,21 @@ Participants are encouraged to engage actively during the learning module. They 
 
 |Live Learning Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
-|  1  | June 25    | ML System Design                 |
-|  2  | June 26    | Data Engineering Fundamentals    |
-|  3  | June 27    | Working with Training Data       |
-|  4  | July 2     | Feature Engineering              |
-|  5  | July 3     | Model Development and Evaluation |
-|  6  | July 4     | Deployment and Model Explanations|
+|  1  | Tue, Oct 22, 2024    | ML System Design                 |
+|  2  | Wed, Oct 23, 2024    | Data Engineering Fundamentals    |
+|  3  | Thur, Oct 24, 2024    | Working with Training Data       |
+|  NA  | Fri, Oct 25, 2024     | Work Period (1-4 PM) |
+|  NA  | Sat, Oct 26, 2024     | Work Period (9 AM-12 PM) |
+|  4  | Tue, Oct 29, 2024     | Feature Engineering              |
+|  5  | Wed, Oct 30, 2024     | Model Development and Evaluation |
+|  6  | Thur, Oct 31, 2024     | Model Explanations, and Monitoring|
+|  NA  | Fri, Nov 1, 2024     | Work Period (1-4 PM) |
+|  NA  | Sat, Nov 2, 2024     | Work Period (9 AM-12 PM) |
+
 
 ### Requirements
 
-* Participants are not expected to have any coding experience; the learning content has been designed for beginners.
+* Participants are expected to have completed Shell, Git, and Python learning modules.
 * Participants are encouraged to ask questions, and collaborate with others to enhance their learning experience.
 * Participants must have a computer and an internet connection to participate in online activities.
 * Participants must have VSCode installed with the following extensions: 
@@ -94,18 +96,44 @@ Participants are encouraged to engage actively during the learning module. They 
 * We expect participants to have completed the steps in the [onboarding repo](https://github.com/UofT-DSI/onboarding/).
 * We encourage participants to default to having their camera on at all times, and turning the camera off only as needed. This will greatly enhance the learning experience for all participants and provides real-time feedback for the instructional team. 
 
-## Resources
-Feel free to use the following as resources:
+### Assessment
 
-### Documents
++ Course participants will receive a Pass/Fail mark.
++ The mark will be equally based 50% on average quiz scores and 50% on assignment assessments. 
+
+#### Quizzes
+
++ After each live session you will get access to a quiz on the session's materials. 
++ Each quiz will contain about 10 questions of different types: true/false, multiple choice, simple selection, etc.
++ All quizzes are mandatory and should be submitted by Nov 2. 
++ An individualized link will be emailed to you after each session. If you do not receive the quiz (check your spam folder) please let us know. Please do not share the link.
+
+#### Assignments
+
++ [Assignment 1](./02_activities/assignments/assignment_1.ipynb) due on Oct 24. [Rubric](./02_activities/assignments/assignment_1_rubric_clean.xlsx).
++ [Assignment 2](./02_activities/assignments/assignment_2.ipynb) due on Oct 31. [Rubric](./02_activities/assignments/assignment_2_rubric_clean.xlsx).
++ [Assignment 3](./02_activities/assignments/assignment_3.ipynb) due on Nov 2. [Rubric](./02_activities/assignments/assignment_3_rubric_clean.xlsx).
+
+
+## Resources
+
+
+### Documents and Repositories
+
+- Chip Huyen's [DMLS repo on GitHub](https://github.com/chiphuyen/dmls-book)
+- Scikit-Learn [User Guide](https://scikit-learn.org/stable/user_guide.html)
+- Dask [Documentation](https://docs.dask.org/en/stable/)
+- Sacred [Documentation](https://sacred.readthedocs.io/en/stable/)
 - [Docker Installation](https://docs.docker.com/engine/install/)
 - [Cheatsheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf)
 
 ### Videos
+
 - [What is Docker?](https://www.youtube.com/watch?v=Gjnup-PuquQ)
 - [Docker Playlist](https://www.youtube.com/playlist?list=PLe4mIUXfbIqaYmsoFahYCbijPU4rjM38h)
 
 ### How to get help
+
 ![image](./steps_to_ask_for_help.png)
 
 <hr>
@@ -118,7 +146,7 @@ Feel free to use the following as resources:
 ├── 01_materials
 ├── 02_activities
 ├── 03_instructional_team
-├── 04_cohort_three
+├── 04_this_cohort
 ├── 05_src
 ├── .gitignore
 ├── LICENSE
@@ -130,7 +158,7 @@ Feel free to use the following as resources:
 * **materials**: Module slides and interactive notebooks (.ipynb files) used during learning sessions.
 * **activities**: Contains graded assignments, exercises, and homework to practice concepts covered in the learning module.
 * **instructional_team**: Resources for the instructional team.
-* **cohort_three**: Additional materials and resources for cohort three.
+* **this_cohort**: Additional materials and resources for cohort three.
 * **src**: Source code, databases, logs, and required dependencies (requirements.txt) needed during the module.
 * **.gitignore**: Files to exclude from this folder, specified by the Technical Facilitator
 * **LICENSE**: The license for this repository.
