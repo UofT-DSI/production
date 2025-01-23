@@ -59,7 +59,7 @@ By the end of this module, participants will be able to:
 * Learning Support Staff: 
   * [Ananya Jha](https://www.linkedin.com/in/jhaananya/)
   * [Vishnou Vinayagame](https://www.linkedin.com/in/vinayagame-vishnou/)
-  * [Kasra Vakiloroayaei](https://www.linkedin.com/in/kasravakiloroayaei/)
+  * [Shiraz Latif](https://ca.linkedin.com/in/shiraz-latif/)
 
 ## Delivery of the Learning Module
 
@@ -71,17 +71,18 @@ Participants are encouraged to engage actively during the learning module. They 
 
 |Live Learning Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
-|  1  | Tue, Oct 22, 2024    | ML System Design                 |
-|  2  | Wed, Oct 23, 2024    | Data Engineering Fundamentals    |
-|  3  | Thur, Oct 24, 2024    | Working with Training Data       |
-|  NA  | Fri, Oct 25, 2024     | Work Period (1-4 PM) |
-|  NA  | Sat, Oct 26, 2024     | Work Period (9 AM-12 PM) |
-|  4  | Tue, Oct 29, 2024     | Feature Engineering              |
-|  5  | Wed, Oct 30, 2024     | Model Development and Evaluation |
-|  6  | Thur, Oct 31, 2024     | Model Explanations, and Monitoring|
-|  NA  | Fri, Nov 1, 2024     | Work Period (1-4 PM) |
-|  NA  | Sat, Nov 2, 2024     | Work Period (9 AM-12 PM) |
-
+|  1  | Tue., Jan. 28, 2025    | ML System Design                 |
+|  2  | Wed., Jan. 29, 2025    | Data Engineering Fundamentals    |
+|  3  | Thur., Jan. 30, 2025    | Working with Training Data       |
+|  --  | Fri., Jan. 31, 2025     | Work Period  |
+|  --  | Sat., Feb. 1, 2025     | Work Period  |
+| --  | Sun., Feb. 2, 2025        | Assignment 1 and Quizzes 1-3 Due |
+|  4  | Tue., Feb. 3, 2025     | Feature Engineering              |
+|  5  | Wed., Feb. 4, 2025     | Model Development and Evaluation |
+|  6  | Thur., Feb. 5, 2025     | Model Explanations, and Monitoring|
+|  --  | Fri., Feb. 6, 2025     | Work Period  |
+|  --  | Sat., Feb. 7, 2025     | Work Period  |
+|  --  | Sun., Feb. 8, 2025     | Assignment 2 and Quizzer 4-6 Due | 
 
 ### Requirements
 
@@ -91,29 +92,65 @@ Participants are encouraged to engage actively during the learning module. They 
 * Participants must have VSCode installed with the following extensions: 
     * [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
     * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-* Participants must install Docker as this module implements a Docker backend that will run a PosgreSQL server. This is intended to mimic a production-like environment. Participants may use SQLite if Docker is not an option.
+* Participants must [install Docker](https://docs.docker.com/engine/install/) as this module implements a Docker backend that will run a PosgreSQL server. This is intended to mimic a production-like environment. Participants may use SQLite if Docker is not an option.
 * Participants must not use generative AI such as ChatGPT to generate code in order to complete assignments. It should be used as a supportive tool to seek out answers to questions you may have.
 * We expect participants to have completed the steps in the [onboarding repo](https://github.com/UofT-DSI/onboarding/).
 * We encourage participants to default to having their camera on at all times, and turning the camera off only as needed. This will greatly enhance the learning experience for all participants and provides real-time feedback for the instructional team. 
 
 ### Assessment
 
-+ Course participants will receive a Pass/Fail mark.
-+ The mark will be equally based 50% on average quiz scores and 50% on assignment assessments. 
+Your performance on this module will be assessed using six quizzes and two assignments. 
 
 #### Quizzes
 
-+ After each live session you will get access to a quiz on the session's materials. 
+Quizzes will help you build key concepts in data science, data engineering, and machine learning engineering. Historically, learners take 5-10 minutes to answer each quizz to obtain an average score of +80%. 
+
++ Each quiz will contain material from each live learning session.
++ You will receive a link to each quiz during the respective live learning session. The links are personalized, please do not share them. If you did not receive a link, contact any member of the course delivery team.
 + Each quiz will contain about 10 questions of different types: true/false, multiple choice, simple selection, etc.
-+ All quizzes are mandatory and should be submitted by Nov 2. 
-+ An individualized link will be emailed to you after each session. If you do not receive the quiz (check your spam folder) please let us know. Please do not share the link.
++ All quizzes are mandatory and should be submitted by their due date. 
++ The quizzes will remain open until their respective due dates, after which you will not have access to them.
 
 #### Assignments
 
-+ [Assignment 1](./02_activities/assignments/assignment_1.ipynb) due on Oct 24. [Rubric](./02_activities/assignments/assignment_1_rubric_clean.xlsx).
-+ [Assignment 2](./02_activities/assignments/assignment_2.ipynb) due on Oct 31. [Rubric](./02_activities/assignments/assignment_2_rubric_clean.xlsx).
-+ [Assignment 3](./02_activities/assignments/assignment_3.ipynb) due on Nov 2. [Rubric](./02_activities/assignments/assignment_3_rubric_clean.xlsx).
+Assignments will help you develop coding and debuging skills. They will cover foundational skills and will extend to advanced concepts. We recommend that you attempt all assignments and submit your work even if it is incomplete (partial submissions will get you partial marks). 
 
++ Each assigment should be submitted using the usual method in DSI via a Pull Request. 
++ The assigments and their respective rubrics are:
+
+  - [Assignment 1](./02_activities/assignments/assignment_1.ipynb). [Rubric](./02_activities/assignments/assignment_1_rubric_clean.xlsx).
+  - [Assignment 2](./02_activities/assignments/assignment_2.ipynb) . [Rubric](./02_activities/assignments/assignment_2_rubric_clean.xlsx).
+
+
+#### Grades
+
+All participants will receive a pass or fail mark. The mark will be determined as follows:
+
++ Quizzes' average score - 60%
++ Assginment 1 - 20%
++ Assignment 2 - 20%
+
+Assignments' assessment can be transformed to a numeric grade using:
+
++ Complete - 100 points
++ Incomplete / Partially Complete - 50 points
++ Missing / Not submitted - 0 points
+
+For this course, 60 points are required to receive a "pass" mark.
+
+For example, a learner with the following grades would receive "pass":
+
++ Quizzes 80
++ Assignment 1 - Complete (100)
++ Assignment 2 - Incomplete (50)
++ (0.6 * 80) + (0.2 * 100) + (0.2 * 50) = 48 + 20 + 10 = 78 > 60
+
+A different learner with grades as shown bellow would receive "fail":
+
++ Quizzes 80
++ Assignment 1 - Incomplete (50)
++ Assignment 2 - Missing (0)
++ (0.6 * 80) + (0.2 * 50) + 0 = 48 + 10 + 0 = 58 < 60
 
 ## Resources
 
