@@ -6,14 +6,13 @@ from dotenv import load_dotenv
 from datetime import datetime
 from glob import glob
 import os
-
+import argparse
 from logger import get_logger
 
 load_dotenv()
 
 _logs = get_logger(__name__)
 
-logger = get_logger(__name__)
 PRICE_DATA = os.getenv('PRICE_DATA')
 FEATURES_DATA = os.getenv('FEATURES_DATA')
 TICKERS = os.getenv('TICKERS')
@@ -115,7 +114,6 @@ class DataManager():
         _logs.info(f'Creating features data.')
         self.load_prices()
         self.create_features()
-        self.create_target()
         self.save_features()
 
 
@@ -124,27 +122,21 @@ class DataManager():
         Give a set of parquet files, load them into a dask dataframe.
         '''
         _logs.info(f'Loading price data from {self.price_dir}')
-        parquet_files = glob(os.path.join(self.price_dir, "*/*/*.parquet"))
-        self.price_dd = dd.read_parquet(parquet_files).set_index("ticker")
+        parquet_files = glob(os.path.join(self.price_dir, "**/*.parquet"),
+                             recursive = True)
+        self.price_dd = dd.read_parquet(parquet_files).set_index("Ticker")
 
     def create_features(self):
         '''
         Create features from price data.
         '''
         _logs.info(f'Creating features')
+        _logs.debug(f'Columns in price data {self.price_dd.columns}')
         price_dd = self.price_dd
         features = (price_dd.groupby('Ticker', group_keys=False)
                             .apply(
                                 lambda x: x.assign(
-                                    Close_lag_1 = x['Close'].shift(1)), 
-                                meta = {'Date': 'datetime64[ns]',
-                                        'Close': 'float64',
-                                        'High': 'float64',
-                                        'Low': 'float64',
-                                        'Open': 'float64',
-                                        'Volume': 'float64',
-                                        'Year': 'int32',
-                                        'Close_lag_1': 'float64'}
+                                    Close_lag_1 = x['Close'].shift(1))
                             ))
         self.features = features
 
@@ -154,7 +146,7 @@ class DataManager():
         '''
 
         _logs.info(f'Creating target')
-        self.features = (self.features.groupby('ticker', group_keys=False).apply(
+        self.features = (self.features.groupby('Ticker', group_keys=False).apply(
                         lambda x: x.sort_values('Date').assign(
                             target = lambda x: x[target_name].shift(-target_window)
                         )))
@@ -164,15 +156,24 @@ class DataManager():
         Save to parquet.
         '''
         _logs.info(f'Saving features to {self.features_path}')
-        feat_out = (self
-         .features
-         .repartition(npartitions = 500))
-        feat_out.to_parquet(
+        _logs.debug(f'Features columns {self.features.columns}')
+        self.features.to_parquet(
             self.features_path, 
             write_index = True, 
             overwrite = True)
         
 if __name__ == "__main__":
-    dm = DataManager()
-    dm.download_all()
-    dm.featurize()
+    parser = argparse.ArgumentParser(description='Download and process stock price data.')
+    parser.add_argument('--start_date', type=str, default="2000-01-01", help='Start date for downloading data.')
+    parser.add_argument('--end_date', type=str, default=datetime.now().strftime("%Y-%m-%d"), help='End date for downloading data.')
+    parser.add_argument('--action', default='all', help='Action to perform. Options: all, download, featurize')
+    args = parser.parse_args()
+    _logs.info(f'Starting from command line with args {args}')
+    
+    dm = DataManager(start_date = args.start_date, end_date = args.end_date)
+    if args.action in ('all', 'download'):
+        _logs.info('Downloading data.')
+        dm.download_all()
+    if args.action in ('all', 'featurize'):
+        _logs.info('Featurizing data.')
+        dm.featurize()
