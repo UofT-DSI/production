@@ -56,62 +56,56 @@ class DataManager():
 
     def process_all_tickers(self):
         _logs.info(f'Processing all tickers')
-        for k, stock_info in self.tickers.iterrows():
-            self.get_data_and_save_by_year(stock_info['ticker'], 
-                                           self.start_date, 
-                                           self.end_date, 
-                                           self.price_dir, 
-                                           sector = stock_info['GICS Sector'], 
-                                           subsector = stock_info['GICS Sub-Industry'])
+        ticker_list = self.tickers['ticker'].unique().tolist()
+        self.get_data_and_save_by_year(ticker_list, 
+                                        self.start_date, 
+                                        self.end_date, 
+                                        self.price_dir)
 
     @staticmethod
-    def get_data_and_save_by_year(ticker, start_date, end_date, outpath, sector = None, subsector = None):
+    def get_data_and_save_by_year(tickers, start_date, end_date, outpath, sector = None, subsector = None):
         '''
         Gets individual data for a ticker, partitions by year and saves. (Wrapper)
         '''
 
-        _logs.info(f'Processing ticker {ticker}')
-        ticker_dt = DataManager.get_stock_price_data(ticker, start_date, end_date)
+        _logs.info(f'Processing ticker {tickers}')
+        ticker_dt = DataManager.get_stock_price_data(tickers, start_date, end_date)
         _logs.debug(f'ticker_dt columns {ticker_dt.columns}')
-        DataManager.save_by_year(ticker, outpath, ticker_dt, sector, subsector)
+        DataManager.save_by_year(ticker_dt, outpath)
 
     @staticmethod
-    def save_by_year(ticker, outpath, ticker_dt, sector = None, subsector = None):
+    def save_by_year(ticker_dt, outpath):
         '''
         Partition by year and save.
         '''
-        _logs.info(f'Saving data for {ticker} by year') 
-        if ticker_dt.shape[0] > 0:
+        _logs.info(f'Saving data by year') 
+        ticker_dt = ticker_dt.assign(Year = ticker_dt['Date'].dt.year)
+        for ticker in ticker_dt['Ticker'].unique().tolist():
+            _logs.info(f'Saving data for {ticker}')
             os.makedirs(os.path.join(outpath, ticker), exist_ok = True)
-            ticker_dt = ticker_dt.reset_index()
-            _logs.debug(f'ticker_dt.columns {ticker_dt.columns}')
-            ticker_dt = (ticker_dt
-                        .assign(ticker = ticker,
-                                sector = sector,
-                                subsector = subsector)
-                        .assign(year = ticker_dt['Date'].dt.year))
-            
-            for yr in ticker_dt.year.unique():
+            t_dt = ticker_dt[ticker_dt['Ticker'] == ticker]
+            for yr in t_dt['Year'].unique():
                 yr_dd = (dd
-                         .from_pandas(ticker_dt[ticker_dt.year == yr], npartitions=1)
-                         .set_index('ticker'))
-                yr_path = os.path.join(outpath, ticker, f"{ticker}_{yr}.parquet")
+                         .from_pandas(t_dt[t_dt['Year'] == yr], npartitions=1)
+                         .set_index('Ticker'))
+                yr_path = os.path.join(outpath, ticker, f"{ticker}_{yr}")
                 yr_dd.to_parquet(yr_path, overwrite = True)
-        else:
-            _logs.warning(f'No data found for {ticker}')
+
 
     @staticmethod
-    def get_stock_price_data(ticker, start_date, end_date):
+    def get_stock_price_data(tickers, start_date, end_date):
         '''
         Download stock prices for a given ticker and date range.
         '''
 
-        _logs.info(f'Getting stock price data for {ticker} from {start_date} to {end_date}')
-        stock_data = yf.download(ticker, start=start_date, end=end_date)
+        _logs.info(f'Getting stock price data for {tickers} from {start_date} to {end_date}')
+        yfinance_dt = yf.download(tickers, start=start_date, end=end_date)
+        price_dt = (yfinance_dt
+           .stack(future_stack=True)
+           .reset_index()
+           .sort_values(['Ticker', 'Date']))
         
-        if isinstance(stock_data.columns, pd.core.indexes.multi.MultiIndex):
-            stock_data.columns = stock_data.columns.get_level_values('Price')
-        return stock_data
+        return price_dt
 
 
     def featurize(self):
@@ -139,15 +133,19 @@ class DataManager():
         '''
         _logs.info(f'Creating features')
         price_dd = self.price_dd
-        features = (price_dd
-                   .groupby('ticker', group_keys=False)
-                   .apply(
-                        lambda x: x.assign(Close_lag_1 = x['Close'].shift(1))
-                    ).assign(
-                        returns = lambda x: x['Close']/x['Close_lag_1'] - 1,
-                    ).assign(
-                        positive_return = lambda x: (x['returns'] > 0)*1
-                    ))
+        features = (price_dd.groupby('Ticker', group_keys=False)
+                            .apply(
+                                lambda x: x.assign(
+                                    Close_lag_1 = x['Close'].shift(1)), 
+                                meta = {'Date': 'datetime64[ns]',
+                                        'Close': 'float64',
+                                        'High': 'float64',
+                                        'Low': 'float64',
+                                        'Open': 'float64',
+                                        'Volume': 'float64',
+                                        'Year': 'int32',
+                                        'Close_lag_1': 'float64'}
+                            ))
         self.features = features
 
     def create_target(self, target_name = 'positive_return', target_window = 1):
@@ -173,3 +171,8 @@ class DataManager():
             self.features_path, 
             write_index = True, 
             overwrite = True)
+        
+if __name__ == "__main__":
+    dm = DataManager()
+    dm.download_all()
+    dm.featurize()
