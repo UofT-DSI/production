@@ -169,12 +169,6 @@ A different learner with grades as shown bellow would receive "fail":
 - [What is Docker?](https://www.youtube.com/watch?v=Gjnup-PuquQ)
 - [Docker Playlist](https://www.youtube.com/playlist?list=PLe4mIUXfbIqaYmsoFahYCbijPU4rjM38h)
 
-### How to get help
-
-![image](./steps_to_ask_for_help.png)
-
-<hr>
-
 ## Folder Structure
 
 ```markdown
