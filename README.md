@@ -180,8 +180,7 @@ A different learner with grades as shown bellow would receive "fail":
 ├── 05_src
 ├── .gitignore
 ├── LICENSE
-├── README.md
-└── steps_to_ask_for_help.png
+└── README.md
 ```
 
 * **.github**: Contains issue templates and pull request templates for the repository.
@@ -193,4 +192,4 @@ A different learner with grades as shown bellow would receive "fail":
 * **.gitignore**: Files to exclude from this folder, specified by the Technical Facilitator
 * **LICENSE**: The license for this repository.
 * **README**: This file.
-* **steps_to_ask_for_help.png**: Guide on how to ask for help.
+
