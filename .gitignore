@@ -13,5 +13,9 @@
 07_logs/*
 **/07_logs/*
 echo "venv/" >> .gitignore
-echo "env/" >> .gitignore
-echo "production/" >> .gitignore
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
