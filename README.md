@@ -76,12 +76,12 @@ Participants are encouraged to engage actively during the learning module. They 
 |  --  | Fri., Jan. 31, 2025     | Work Period  |
 |  --  | Sat., Feb. 1, 2025     | Work Period  |
 | --  | Sun., Feb. 2, 2025        | Assignment 1 and Quizzes 1-3 Due |
-|  4  | Tue., Feb. 3, 2025     | Feature Engineering              |
-|  5  | Wed., Feb. 4, 2025     | Model Development and Evaluation |
-|  6  | Thur., Feb. 5, 2025     | Model Explanations, and Monitoring|
-|  --  | Fri., Feb. 6, 2025     | Work Period  |
-|  --  | Sat., Feb. 7, 2025     | Work Period  |
-|  --  | Sun., Feb. 8, 2025     | Assignment 2 and Quizzer 4-6 Due | 
+|  4  | Tue., Feb. 4, 2025     | Feature Engineering              |
+|  5  | Wed., Feb. 5, 2025     | Model Development and Evaluation |
+|  6  | Thur., Feb. 6, 2025     | Model Explanations, and Monitoring|
+|  --  | Fri., Feb. 7, 2025     | Work Period  |
+|  --  | Sat., Feb. 8, 2025     | Work Period  |
+|  --  | Sun., Feb. 9, 2025     | Assignment 2 and Quizzer 4-6 Due | 
 
 ### Requirements
 
