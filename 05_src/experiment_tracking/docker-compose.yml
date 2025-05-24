@@ -1,6 +1,5 @@
-version: '3.8'
-
 services:  
+  # PostgreSQL database
   postgres:
     container_name: postgres
     image: postgres:latest
@@ -13,9 +12,10 @@ services:
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
       POSTGRES_DB: "${POSTGRES_DB}"
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-      - ./postgres:
-    
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+  # pgAdmin4
+  # A web-based database management tool for PostgreSQL
   pgadmin:
     container_name: pgadmin4_dsi_container
     image: dpage/pgadmin4:latest
@@ -25,6 +25,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"
     ports:
       - "5051:80"
+  # MinIO
+  # An object storage server compatible with Amazon S3
   minio:
     restart: always
     image: quay.io/minio/minio
@@ -39,20 +41,25 @@ services:
       - MINIO_STORAGE_USE_HTTPS=false
     command: server /data --console-address ":9001"
     volumes:
-      - minio_data:/data
+      - ./minio_data:/data
 
+  # MinIO Client
+  # A command-line client for MinIO
   minio-setup:
     image: quay.io/minio/mc
+    env_file: ./.env
     depends_on:
       - minio
     volumes:
       - ./minio/create-bucket.sh:/create-bucket.sh
     entrypoint: /bin/sh
     command: -c "chmod +x /create-bucket.sh && /create-bucket.sh"
-    env_file: ./.env
     environment:
       - MINIO_ROOT_USER=${MINIO_ACCESS_KEY}
       - MINIO_ROOT_PASSWORD=${MINIO_SECRET_ACCESS_KEY}
+  # MLflow
+  # An open-source platform for managing the ML lifecycle
+  # It includes experimentation, reproducibility, and deployment
   mlflow:
     restart: always
     build: ./mlflow
@@ -60,6 +67,7 @@ services:
     container_name: mlflow_server
     ports:
       - "5001:5000"
+    env_file: ./.env
     environment:
       - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}
       - AWS_SECRET_ACCESS_KEY=${MINIO_SECRET_ACCESS_KEY}
