@@ -7,7 +7,7 @@ services:
     restart: always
     ports:
       - "5432:5432"
-    env_file: ./postgres.env
+    env_file: ./.env
     environment:
       POSTGRES_USER: "${POSTGRES_USER}"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
@@ -32,7 +32,7 @@ services:
     ports:
       - "9000:9000"
       - "9001:9001"
-    env_file: ./minio.env
+    env_file: ./.env
     environment:
       - MINIO_ROOT_USER=${MINIO_ACCESS_KEY}
       - MINIO_ROOT_PASSWORD=${MINIO_SECRET_ACCESS_KEY}
@@ -49,8 +49,29 @@ services:
       - ./minio/create-bucket.sh:/create-bucket.sh
     entrypoint: /bin/sh
     command: -c "chmod +x /create-bucket.sh && /create-bucket.sh"
-    env_file: ./minio.env
+    env_file: ./.env
     environment:
       - MINIO_ROOT_USER=${MINIO_ACCESS_KEY}
       - MINIO_ROOT_PASSWORD=${MINIO_SECRET_ACCESS_KEY}
+  mlflow:
+    restart: always
+    build: ./mlflow
+    image: mlflow_server
+    container_name: mlflow_server
+    ports:
+      - "5001:5000"
+    environment:
+      - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}
+      - AWS_SECRET_ACCESS_KEY=${MINIO_SECRET_ACCESS_KEY}
+      - MLFLOW_S3_ENDPOINT_URL=http://localhost:9000
+      - MLFLOW_S3_IGNORE_TLS=true
+    command: >
+      mlflow server
+      --backend-store-uri postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/mlflow
+      --host 0.0.0.0
+      --serve-artifacts
+      --artifacts-destination s3://mlflow
+    depends_on:
+      - postgres
+      - minio-setup
   
