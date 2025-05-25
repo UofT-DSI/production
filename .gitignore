@@ -1,6 +1,6 @@
 .DS_Store
 .vscode/
-*/__pycache__/*
+**/__pycache__/*
 05_src/data/adult/*
 05_src/data/artifacts/*
 05_src/data/credit/*
