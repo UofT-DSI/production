@@ -138,7 +138,7 @@ def grid_search(scoring = 'neg_log_loss', folds = 5, random_state = 42):
     X, Y = load_data(CREDIT_FILE)
     param_space = {
         'preproc__num_standard__imputer__add_indicator': [False, True],
-        'clf__C': [0.1, 0.2, 0.4, 0.6, 0.8, 0.9, 1.0],
+        'clf__C': [0.1, 0.25, 0.5, 0.75, 0.9, 1.0],
         'clf__class_weight': [None, 'balanced'],
         'clf__penalty': ['l2'],
         'clf__random_state': [random_state],
