@@ -14,44 +14,17 @@ from sklearn.metrics import get_scorer
 import os
 from dotenv import load_dotenv
 
+
+from credit.data import load_data
 from utils.logger import get_logger
 
+mlflow.set_tracking_uri("http://localhost:5001")
 
-load_dotenv()
+load_dotenv(override=True)
 CREDIT_FILE = os.getenv("CREDIT_DATA")
 MLFLOW_URI = os.getenv("MLFLOW_TRACKING_URI")
 
 _logs = get_logger(__name__)
-
-
-
-def load_data(file = CREDIT_FILE):
-    '''Loads data from a given location.'''
-    _logs.info(f'Getting data from {file}')
-    df_raw = pd.read_csv(file)
-    df = df_raw.drop(columns = ["Unnamed: 0"]).rename(
-        columns = {
-            'SeriousDlqin2yrs': 'delinquency',
-            'RevolvingUtilizationOfUnsecuredLines': 'revolving_unsecured_line_utilization', 
-            'age': 'age',
-            'NumberOfTime30-59DaysPastDueNotWorse': 'num_30_59_days_late', 
-            'DebtRatio': 'debt_ratio', 
-            'MonthlyIncome': 'monthly_income',
-            'NumberOfOpenCreditLinesAndLoans': 'num_open_credit_loans', 
-            'NumberOfTimes90DaysLate':  'num_90_days_late',
-            'NumberRealEstateLoansOrLines': 'num_real_estate_loans', 
-            'NumberOfTime60-89DaysPastDueNotWorse': 'num_60_89_days_late',
-            'NumberOfDependents': 'num_dependents'
-        }
-    ).assign(
-        high_debt_ratio = lambda x: (x['debt_ratio'] > 1)*1,
-        missing_monthly_income = lambda x: x['monthly_income'].isna()*1,
-        missing_num_dependents = lambda x: x['num_dependents'].isna()*1, 
-    )
-    X = df.drop(columns = ['delinquency'])
-    Y = df['delinquency']
-    return X, Y
-    
 
 def get_pipe():
     _logs.info(f'Getting Model Pipeline')
@@ -91,52 +64,79 @@ def get_pipe():
     )
     return pipe
 
+def get_or_create_experiment(experiment_name):
+    _logs.info(f'Getting or creating experiment: {experiment_name}')
+    _logs.info(f'Checking if experiment {experiment_name} exists')
+    experiment = mlflow.get_experiment_by_name(experiment_name)
+    if experiment is None:
+        _logs.info(f'Experiment {experiment_name} not found, creating it')
+        experiment_id = mlflow.create_experiment(experiment_name)
+    else:
+        _logs.info(f'Experiment {experiment_name} found')
+        experiment_id = experiment.experiment_id
+    return experiment_id
 
-def evaluate_model(pipe, X, Y,
-                   scoring, 
-                   params,
-                   folds = 5,
-                   test_size = 0.2,  
-                   random_state = None):
-    _logs.info(f'Evaluating model using {scoring} and {folds} folds')
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, 
+
+def run_experiment_cv(pipe, 
+                      params, 
+                      X, Y, 
+                      folds = 5, 
+                      experiment_name=None,
+                      model_name=None,
+                      test_size = 0.2,
+                      scoring = ['neg_log_loss'],
+                      mlflow_uri = MLFLOW_URI,
+                      random_state = None, 
+                      tags = None):
+    
+    _logs.info(f'Starting experiment: {experiment_name}')
+
+    if isinstance(scoring, str):
+        _logs.info(f'Converting scoring to list')
+        scoring = [scoring]
+    if tags is None:
+        _logs.info(f'No tags provided, using empty dict')
+        tags = {}
+
+    _logs.info(f'Creating experiment {experiment_name}')
+    experiment_id = get_or_create_experiment(experiment_name)
+    mlflow.set_experiment(experiment_id=experiment_id)
+    
+    with mlflow.start_run():
+        _logs.info('Logging parameters and tags')
+        mlflow.log_params(params)
+        mlflow.log_params({
+            'folds': folds,
+            'test_size': test_size,
+            'random_state': random_state,
+            'scoring': scoring
+        })
+        mlflow.set_tags(tags)
+        _logs.info('Starting cross-validation')
+        X_train, X_test, Y_train, Y_test = train_test_split(X, Y, 
                                                         test_size = test_size, 
                                                         random_state = random_state)
-    pipe.set_params(**params)
-    res_cv = cross_validate(pipe, X_train, Y_train, cv = folds, scoring = scoring)
-    _logs.debug(f'CV results: {res_cv}')
-    register_experiment(pipe, params, X_train, Y_train, res_cv)
-
-
-def register_experiment(pipe, params, X_train, Y_train, res_cv):
-    _logs.info('Logging model')
-    mlflow.set_tracking_uri(uri=MLFLOW_URI)
-    mlflow.set_experiment("MLFlow first experiment")
-    with mlflow.start_run():
-        mlflow.log_params(params)
-
-        mlflow.log_metric("fit_time", res_cv['fit_time'].mean())
-        mlflow.log_metric("score_time", res_cv['score_time'].mean())
-        mlflow.log_metric("mean_score", res_cv['test_score'].mean())
-        mlflow.set_tag("CV performance", "Basic LR model for credit data")
-
+        pipe.set_params(**params)
+        res_cv = cross_validate(pipe, X_train, Y_train, cv = folds, scoring = scoring, return_train_score = True)
+        mean_res_cv = pd.DataFrame(res_cv).mean().to_dict()
+        mlflow.log_metrics(mean_res_cv)
+        
         pipe.fit(X_train, Y_train)
         signature = infer_signature(X_train, pipe.predict(X_train))
 
         model_info = mlflow.sklearn.log_model(
             sk_model=pipe, 
-            artifact_path='credit_simple', 
             signature = signature,
+            artifact_path = "model", 
             input_example = X_train,
-            registered_model_name='tracking-credit-initial'
+            registered_model_name=model_name
         )
 
-def run(scoring = 'neg_log_loss', folds = 5, random_state = 42):
+def single_run(scoring = 'neg_log_loss', folds = 5, random_state = 42):
     _logs.info(f'Running experiment')
-    X, Y  = load_data()
     pipe = get_pipe()
+    X, Y = load_data(CREDIT_FILE)
     params = {
-        
         'preproc__num_standard__imputer__add_indicator': False,
         'preproc__num_standard__imputer__copy': True,
         'preproc__num_standard__imputer__strategy': 'median',
@@ -157,12 +157,22 @@ def run(scoring = 'neg_log_loss', folds = 5, random_state = 42):
         'clf__random_state': random_state,
         'clf__solver': 'lbfgs'
     }
-    res_cv = evaluate_model(pipe, X, Y, 
-                            scoring = "neg_log_loss", 
-                            params = params,
-                            folds = folds, 
-                            random_state = random_state)
+
+    run_experiment_cv(pipe, 
+                      params, 
+                      X, Y, 
+                      folds = 5, 
+                      experiment_name='credit_single_run_logistic',
+                      model_name=None,
+                      test_size = 0.2,
+                      scoring = ['neg_log_loss', 'accuracy', 'f1'],
+                      mlflow_uri = MLFLOW_URI,
+                      random_state = None, 
+                      tags = None)
+
+
+
 
    
 if __name__=="__main__":
-    run()
+    single_run()
