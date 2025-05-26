@@ -14,6 +14,7 @@ mlflow.set_tracking_uri("http://localhost:5001")
 if __name__ == "__main__":
     _logs.info('Starting ML flow test.')
 
+    mlflow.set_experiment("mlflow_test_experiment")
     with mlflow.start_run():
         try:
             X = np.array([-2, -1, 0, 1, 2, 1]).reshape(-1, 1)
