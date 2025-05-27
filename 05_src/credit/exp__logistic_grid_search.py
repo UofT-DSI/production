@@ -77,7 +77,7 @@ def get_or_create_experiment(experiment_name):
     return experiment_id
 
 
-def run_experiment_cv(pipe, 
+def run_cv(pipe, 
                       params, 
                       X, Y, 
                       folds = 5, 
@@ -147,7 +147,7 @@ def grid_search(scoring = 'neg_log_loss', folds = 5, random_state = 42):
     param_grid = ParameterGrid(param_space)
     for k, params in enumerate(param_grid):
         _logs.info(f'Running grid search iteration {k+1}/{len(param_grid)} with params: {params}')
-        run_experiment_cv(pipe, 
+        run_cv(pipe, 
                         params, 
                         X, Y, 
                         folds = 5, 
