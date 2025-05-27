@@ -33,7 +33,10 @@ def load_data(file = CREDIT_FILE):
         high_debt_ratio = lambda x: (x['debt_ratio'] > 1)*1,
         missing_monthly_income = lambda x: x['monthly_income'].isna()*1,
         missing_num_dependents = lambda x: x['num_dependents'].isna()*1, 
+    ).apply(
+        lambda x: pd.to_numeric(x, errors='coerce', downcast='float')
     )
+    _logs.debug(f'Data info: {df.info()}')
     X = df.drop(columns = ['delinquency'])
     Y = df['delinquency']
     
