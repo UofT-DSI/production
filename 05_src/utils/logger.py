@@ -21,12 +21,14 @@ def get_logger(name, log_dir = LOG_DIR, log_level = LOG_LEVEL):
     f_handler = logging.FileHandler(os.path.join(log_dir, f'{ datetime.now().strftime("%Y%m%d_%H%M%S") }.log'))
     f_format = logging.Formatter('%(asctime)s, %(name)s, %(filename)s, %(lineno)d, %(funcName)s, %(levelname)s, %(message)s')
     f_handler.setFormatter(f_format)
-    _logs.addHandler(f_handler)
     
     s_handler = logging.StreamHandler()
     s_format = logging.Formatter('%(asctime)s, %(filename)s, %(lineno)d, %(levelname)s, %(message)s')
     s_handler.setFormatter(s_format)
-    _logs.addHandler(s_handler)
+    
+    if not len(_logs.handlers):
+        _logs.addHandler(f_handler)
+        _logs.addHandler(s_handler)
     
     _logs.setLevel(log_level)
     return _logs

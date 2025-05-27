@@ -1,4 +1,4 @@
-name: scale2prod
+name: dsi_production
 channels:
   - defaults
   - conda-forge
@@ -7,15 +7,12 @@ dependencies:
   - pandas
   - numpy
   - matplotlib
-  - sqlalchemy
-  - pyodbc
-  - psycopg2
   - arrow
   - pyarrow
   - dask
   - python-dotenv
   - scikit-learn
   - shap
-  - sacred
+  - mlflow
   - yfinance
   - ipykernel
