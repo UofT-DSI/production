@@ -78,16 +78,16 @@ def get_or_create_experiment(experiment_name):
 
 
 def run_cv(pipe, 
-                      params, 
-                      X, Y, 
-                      folds = 5, 
-                      experiment_name=None,
-                      model_name=None,
-                      test_size = 0.2,
-                      scoring = ['neg_log_loss'],
-                      mlflow_uri = MLFLOW_URI,
-                      random_state = None, 
-                      tags = None):
+            params, 
+            X, Y, 
+            folds = 5, 
+            experiment_name=None,
+            model_name=None,
+            test_size = 0.2,
+            scoring = ['neg_log_loss'],
+            mlflow_uri = MLFLOW_URI,
+            random_state = None, 
+            tags = {'optimizer': 'grid search'}):
     
     _logs.info(f'Starting experiment: {experiment_name}')
 
@@ -154,14 +154,10 @@ def grid_search(scoring = 'neg_log_loss', folds = 5, random_state = 42):
                         experiment_name='credit_grid_search_logistic',
                         model_name=None,
                         test_size = 0.2,
-                        scoring = ['neg_log_loss', 'accuracy', 'f1'],
+                        scoring = ['neg_log_loss', 'balanced_accuracy', 'f1'],
                         mlflow_uri = MLFLOW_URI,
                         random_state = None, 
                         tags = None)
-
-
-
-
    
 if __name__=="__main__":
     grid_search()

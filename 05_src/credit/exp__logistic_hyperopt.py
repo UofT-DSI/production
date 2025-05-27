@@ -69,28 +69,38 @@ def get_pipe():
     return pipe
 
 def get_or_create_experiment(experiment_name):
-    _logs.info(f'Getting or creating experiment: {experiment_name}')
-    _logs.info(f'Checking if experiment {experiment_name} exists')
-    experiment = mlflow.get_experiment_by_name(experiment_name)
-    if experiment is None:
-        _logs.info(f'Experiment {experiment_name} not found, creating it')
-        experiment_id = mlflow.create_experiment(experiment_name)
-    else:
-        _logs.info(f'Experiment {experiment_name} found')
-        experiment_id = experiment.experiment_id
-    return experiment_id
+  """
+  Retrieve the ID of an existing MLflow experiment or create a new one if it doesn't exist.
+
+  This function checks if an experiment with the given name exists within MLflow.
+  If it does, the function returns its ID. If not, it creates a new experiment
+  with the provided name and returns its ID.
+
+  Parameters:
+  - experiment_name (str): Name of the MLflow experiment.
+
+  Returns:
+  - str: ID of the existing or newly created MLflow experiment.
+
+  Ref: https://mlflow.org/docs/latest/traditional-ml/hyperparameter-tuning-with-child-runs/notebooks/hyperparameter-tuning-with-child-runs#how-will-we-use-the-experiment_id
+  """
+
+  if experiment := mlflow.get_experiment_by_name(experiment_name):
+      return experiment.experiment_id
+  else:
+      return mlflow.create_experiment(experiment_name)
 
 
-def run_cv(pipe, 
-            params, 
-            X, Y, 
-            folds = 5, 
-            model_name=None,
-            test_size = 0.2,
-            scoring = ['neg_log_loss'],
-            random_state = None, 
-            tags = None):
+def run_cv(params, 
+           folds = 5, 
+           model_name=None,
+           test_size = 0.2,
+           scoring = ['neg_log_loss'],
+           random_state = None, 
+           tags = None):
     
+    pipe = get_pipe()
+    X, Y = load_data(CREDIT_FILE)
 
     if isinstance(scoring, str):
         _logs.info(f'Converting scoring to list')
@@ -129,16 +139,15 @@ def run_cv(pipe,
             registered_model_name=model_name
         )
     
-        return {'loss': -mean_res_cv['test_neg_log_loss'], 'status': STATUS_OK, 'model': pipe}
+        return {'loss': -mean_res_cv['test_neg_log_loss'], 'status': STATUS_OK, 'model': pipe, 'params': params}
 
 
 
 
 
-def hyperparam_opt(scoring = ['neg_log_loss', 'accuracy', 'f1'], folds = 5, random_state = 42, experiment_name='credit_hyperopt_logistic'):
+def hyperparam_opt(scoring = ['neg_log_loss', 'balanced_accuracy', 'f1'], folds = 5, random_state = 42, experiment_name='credit_hyperopt_logistic'):
     _logs.info(f'Running experiment')
-    pipe = get_pipe()
-    X, Y = load_data(CREDIT_FILE)
+
     space = {
         'preproc__num_standard__imputer__add_indicator': hp.choice("preproc__num_standard__imputer__add_indicator", [False, True]),
         'clf__C': hp.uniform("clf__C", 0.1,  1.0),
@@ -154,14 +163,7 @@ def hyperparam_opt(scoring = ['neg_log_loss', 'accuracy', 'f1'], folds = 5, rand
 
     with mlflow.start_run():
         trials = Trials()
-        best = fmin(
-            fn=lambda params: run_cv(pipe, params,  X, Y, 
-                                        folds=folds, 
-                                        model_name=None,
-                                        test_size=0.2,
-                                        scoring=scoring,
-                                        random_state=random_state,
-                                        tags=None),
+        best = fmin(fn=lambda params: run_cv(params, tags={'optimizer': 'hyperopt'}, scoring = ['neg_log_loss', 'balanced_accuracy', 'f1']),
             space=space,
             algo=tpe.suggest,
             max_evals=10,

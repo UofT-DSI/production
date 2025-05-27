@@ -87,7 +87,7 @@ def run_experiment_cv(pipe,
                       scoring = ['neg_log_loss'],
                       mlflow_uri = MLFLOW_URI,
                       random_state = None, 
-                      tags = None):
+                      tags = {'optimizer': 'NA'}):
     
     _logs.info(f'Starting experiment: {experiment_name}')
 
