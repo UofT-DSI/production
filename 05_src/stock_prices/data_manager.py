@@ -1,13 +1,12 @@
 import dask.dataframe as dd
 import pandas as pd
-import numpy as np
-import yfinance as yf
 from dotenv import load_dotenv
 from datetime import datetime
 from glob import glob
 import os
 import argparse
-from logger import get_logger
+
+from utils.logger import get_logger
 
 load_dotenv()
 
@@ -22,35 +21,43 @@ class DataManager():
     A class to download and process stock price data and create features.
     '''
     def __init__(self, 
-                 start_date = "2000-01-01",
-                 end_date = datetime.now().strftime("%Y-%m-%d"),
+                 csv_path,
                  price_dir = PRICE_DATA, 
                  features_path = FEATURES_DATA, 
-                 tickers_file = TICKERS):
+                 tickers_file = TICKERS, 
+                 n_sample = 30,
+                 random_state = None):
         self.price_dir = price_dir
         self.price_dd = None
         self.features = None
         self.features_path = features_path
         self.tickers_file = tickers_file
-        self.start_date = start_date
-        self.end_date = end_date
 
-    def download_all(self):
+
+    def get_file_list(self):
         '''
-        Downloads price data for all tickers and saves it to the price_dir.
+        Get a list of all files in the price directory.
         '''
-        _logs.info(f'Getting price data for all tickers.')
-        self.get_tickers()
-        self.process_all_tickers()
+        _logs.info(f'Getting file list from {self.price_dir}')
+        self.file_list = glob(os.path.join(self.price_dir, "**/*.csv"), recursive=True)
+        _logs.info(f'Found {len(self.file_list)} files in {self.price_dir}')
 
-
-    def get_tickers(self):
+    def get_metadata(self):
         '''
         Loads ticker from tickers_file.
         '''
         _logs.info(f'Getting tickers from {self.tickers_file}')
         tickers = pd.read_csv(self.tickers_file)
         self.tickers = tickers.drop_duplicates(subset=['ticker'])
+
+    def select_sample(self):
+        '''
+        Select a sample of tickers from the tickers dataframe.
+        '''
+        _logs.info(f'Selecting sample of tickers')
+        select_stocks = self.tickers.sample(n = self.n_sample, random_state = self.random_state)
+        sample_tickers = select_stocks['Symbol'].to_list()
+        _logs.info(f'Selected {len(self.tickers)} tickers')
 
 
     def process_all_tickers(self):
@@ -92,7 +99,7 @@ class DataManager():
 
 
     @staticmethod
-    def get_stock_price_data(tickers, start_date, end_date):
+    def get_stock_price_data(ticker):
         '''
         Download stock prices for a given ticker and date range.
         '''
