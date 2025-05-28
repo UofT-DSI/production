@@ -128,7 +128,7 @@ def run_experiment_cv(pipe,
             sk_model=pipe, 
             signature = signature,
             artifact_path = "model", 
-            input_example = X_train,
+            input_example = X_train.head(5),
             registered_model_name=model_name
         )
 
