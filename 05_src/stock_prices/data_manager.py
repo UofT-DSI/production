@@ -3,9 +3,9 @@ import pandas as pd
 from dotenv import load_dotenv
 from datetime import datetime
 from glob import glob
+import random
 import os
 import argparse
-
 from utils.logger import get_logger
 
 load_dotenv()
@@ -13,6 +13,7 @@ load_dotenv()
 _logs = get_logger(__name__)
 
 PRICE_DATA = os.getenv('PRICE_DATA')
+PRICE_CSV_DATA = os.getenv('PRICE_CSV_DATA')
 FEATURES_DATA = os.getenv('FEATURES_DATA')
 TICKERS = os.getenv('TICKERS')
 
@@ -21,96 +22,105 @@ class DataManager():
     A class to download and process stock price data and create features.
     '''
     def __init__(self, 
-                 csv_path,
+                 csv_dir = PRICE_CSV_DATA,
                  price_dir = PRICE_DATA, 
                  features_path = FEATURES_DATA, 
                  tickers_file = TICKERS, 
                  n_sample = 30,
                  random_state = None):
+        self.price_csv_dir = csv_dir
         self.price_dir = price_dir
         self.price_dd = None
         self.features = None
         self.features_path = features_path
         self.tickers_file = tickers_file
+        self.n_sample = n_sample
+        self.random_state = random_state
 
 
+    def process_all_files(self):
+        '''
+        Process all files in the price directory.
+        '''
+        _logs.info(f'Processing all tickers')
+        self.get_file_list()
+        self.get_data_and_save_by_year()
+
+    def process_sample_files(self, n_sample = None, random_state = None):
+        '''
+        Process a sample of files.
+        '''
+        _logs.info(f'Processing sample of tickers')
+        self.get_file_list()
+        self.select_sample()
+        self.get_data_and_save_by_year()
+    
+    
+    
     def get_file_list(self):
         '''
         Get a list of all files in the price directory.
         '''
-        _logs.info(f'Getting file list from {self.price_dir}')
-        self.file_list = glob(os.path.join(self.price_dir, "**/*.csv"), recursive=True)
+        _logs.info(f'Getting file list from {self.price_csv_dir}')
+        self.file_list = glob(os.path.join(self.price_csv_dir, "**/*.csv"), recursive=True)
         _logs.info(f'Found {len(self.file_list)} files in {self.price_dir}')
 
-    def get_metadata(self):
-        '''
-        Loads ticker from tickers_file.
-        '''
-        _logs.info(f'Getting tickers from {self.tickers_file}')
-        tickers = pd.read_csv(self.tickers_file)
-        self.tickers = tickers.drop_duplicates(subset=['ticker'])
+ 
 
     def select_sample(self):
         '''
-        Select a sample of tickers from the tickers dataframe.
+        Select a sample of files from the file list.
         '''
-        _logs.info(f'Selecting sample of tickers')
-        select_stocks = self.tickers.sample(n = self.n_sample, random_state = self.random_state)
-        sample_tickers = select_stocks['Symbol'].to_list()
-        _logs.info(f'Selected {len(self.tickers)} tickers')
+        _logs.info(f'Selecting sample of files')
+        if self.n_sample is None or self.n_sample > len(self.file_list):
+            self.n_sample = len(self.file_list)
+        else:
+            random.seed(self.random_state)
+            self.file_list = random.sample(self.file_list, self.n_sample)
+        _logs.info(f'Selected {len(self.file_list)} files')
 
 
-    def process_all_tickers(self):
-        _logs.info(f'Processing all tickers')
-        ticker_list = self.tickers['ticker'].unique().tolist()
-        self.get_data_and_save_by_year(ticker_list, 
-                                        self.start_date, 
-                                        self.end_date, 
-                                        self.price_dir)
+    
+    
+    def get_data_and_save_by_year(self):
+        '''
+        Gets data for a tickers, partitions by year and saves. (Wrapper)
+        '''
+        for s_file in self.file_list:
+            _logs.info(f'Processing file {s_file}')
+            ticker_dt = DataManager.get_stock_price_data(s_file)
+            _logs.debug(f'Columns in ticker data {ticker_dt.columns}')
+            DataManager.save_by_year(ticker_dt, self.price_dir)
+
 
     @staticmethod
-    def get_data_and_save_by_year(tickers, start_date, end_date, outpath, sector = None, subsector = None):
+    def save_by_year(price_dt, out_dir):
         '''
-        Gets individual data for a ticker, partitions by year and saves. (Wrapper)
-        '''
-
-        _logs.info(f'Processing ticker {tickers}')
-        ticker_dt = DataManager.get_stock_price_data(tickers, start_date, end_date)
-        _logs.debug(f'ticker_dt columns {ticker_dt.columns}')
-        DataManager.save_by_year(ticker_dt, outpath)
-
-    @staticmethod
-    def save_by_year(ticker_dt, outpath):
-        '''
-        Partition by year and save.
+        Partition by ticker/year and save parquet.
         '''
         _logs.info(f'Saving data by year') 
-        ticker_dt = ticker_dt.assign(Year = ticker_dt['Date'].dt.year)
-        for ticker in ticker_dt['Ticker'].unique().tolist():
-            _logs.info(f'Saving data for {ticker}')
-            os.makedirs(os.path.join(outpath, ticker), exist_ok = True)
-            t_dt = ticker_dt[ticker_dt['Ticker'] == ticker]
-            for yr in t_dt['Year'].unique():
-                yr_dd = (dd
-                         .from_pandas(t_dt[t_dt['Year'] == yr], npartitions=1)
-                         .set_index('Ticker'))
-                yr_path = os.path.join(outpath, ticker, f"{ticker}_{yr}")
-                yr_dd.to_parquet(yr_path, overwrite = True)
+        for ticker in price_dt['ticker'].unique():
+            ticker_dt = price_dt[price_dt['ticker'] == ticker]
+            ticker_dt = ticker_dt.assign(Year = ticker_dt.Date.dt.year)
+            for yr in ticker_dt['Year'].unique():
+                yr_dd = dd.from_pandas(ticker_dt[ticker_dt['Year'] == yr],2)
+                yr_path = os.path.join(out_dir, ticker, f"{ticker}_{yr}")
+                os.makedirs(os.path.dirname(yr_path), exist_ok=True)
+                yr_dd.to_parquet(yr_path, engine = "pyarrow")
 
 
     @staticmethod
-    def get_stock_price_data(ticker):
+    def get_stock_price_data(stock_file):
         '''
         Download stock prices for a given ticker and date range.
         '''
-
-        _logs.info(f'Getting stock price data for {tickers} from {start_date} to {end_date}')
-        yfinance_dt = yf.download(tickers, start=start_date, end=end_date)
-        price_dt = (yfinance_dt
-           .stack(future_stack=True)
-           .reset_index()
-           .sort_values(['Ticker', 'Date']))
         
+        _logs.info(f"Reading file: {stock_file}")
+        price_dt = pd.read_csv(stock_file).assign(
+            source = os.path.basename(stock_file),
+            ticker = os.path.basename(stock_file).replace('.csv', ''),
+            Date = lambda x: pd.to_datetime(x['Date'])
+        )
         return price_dt
 
 
@@ -131,7 +141,7 @@ class DataManager():
         _logs.info(f'Loading price data from {self.price_dir}')
         parquet_files = glob(os.path.join(self.price_dir, "**/*.parquet"),
                              recursive = True)
-        self.price_dd = dd.read_parquet(parquet_files).set_index("Ticker")
+        self.price_dd = dd.read_parquet(parquet_files).set_index("ticker")
 
     def create_features(self):
         '''
@@ -140,7 +150,7 @@ class DataManager():
         _logs.info(f'Creating features')
         _logs.debug(f'Columns in price data {self.price_dd.columns}')
         price_dd = self.price_dd
-        features = (price_dd.groupby('Ticker', group_keys=False)
+        features = (price_dd.groupby('ticker', group_keys=False)
                             .apply(
                                 lambda x: x.assign(
                                     Close_lag_1 = x['Close'].shift(1))
@@ -153,7 +163,7 @@ class DataManager():
         '''
 
         _logs.info(f'Creating target')
-        self.features = (self.features.groupby('Ticker', group_keys=False).apply(
+        self.features = (self.features.groupby('ticker', group_keys=False).apply(
                         lambda x: x.sort_values('Date').assign(
                             target = lambda x: x[target_name].shift(-target_window)
                         )))
@@ -171,16 +181,19 @@ class DataManager():
         
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Download and process stock price data.')
-    parser.add_argument('--start_date', type=str, default="2000-01-01", help='Start date for downloading data.')
-    parser.add_argument('--end_date', type=str, default=datetime.now().strftime("%Y-%m-%d"), help='End date for downloading data.')
-    parser.add_argument('--action', default='all', help='Action to perform. Options: all, download, featurize')
+    parser.add_argument('--action', default='all', help='Action to perform. Options: all, ingest, featurize')
+    parser.add_argument('--n_sample', type=int, default=None, help='Number of tickers to sample. If None, all tickers are used.')
+    parser.add_argument('--random_state', type=int, default=None, help='Random state for sampling tickers.')
     args = parser.parse_args()
     _logs.info(f'Starting from command line with args {args}')
     
-    dm = DataManager(start_date = args.start_date, end_date = args.end_date)
-    if args.action in ('all', 'download'):
+    dm = DataManager(n_sample=args.n_sample, random_state=args.random_state)
+    if args.action in ('all', 'ingest'):
         _logs.info('Downloading data.')
-        dm.download_all()
+        if args.n_sample is not None:
+            dm.process_sample_files(n_sample=args.n_sample, random_state=args.random_state)
+        else:
+            dm.process_all_files()
     if args.action in ('all', 'featurize'):
         _logs.info('Featurizing data.')
         dm.featurize()
