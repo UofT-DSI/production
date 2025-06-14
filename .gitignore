@@ -5,3 +5,4 @@
 *.parquet
 *.log
 **/__pycache__/*
+05_src/data/*
