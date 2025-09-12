@@ -1,0 +1,16 @@
+[project]
+name = "production-env"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "argparse>=1.4.0",
+    "credit>=0.0.1",
+    "dask>=2025.9.0",
+    "datetime>=5.5",
+    "dotenv>=0.9.9",
+    "mlflow>=3.3.2",
+    "numpy>=2.3.3",
+    "pandas>=2.3.2",
+    "scikit-learn>=1.7.2",
+    "utils>=1.0.2",
+]
