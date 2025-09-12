@@ -5,3 +5,6 @@
 *.parquet
 *.log
 **/__pycache__/*
+uv.lock
+production-env
+.venv
