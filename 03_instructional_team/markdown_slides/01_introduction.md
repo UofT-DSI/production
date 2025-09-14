@@ -131,7 +131,7 @@ ML is a collection of methods that allow a computer to
 
 ---
 
-## Characteristics of ML Use Cases
+## Characteristics of ML Use Cases (1/4)
 
 - Learn: 
 
@@ -147,7 +147,7 @@ ML is a collection of methods that allow a computer to
     
 ---
 
-## Characteristics of ML Use Cases
+## Characteristics of ML Use Cases (2/4)
 
 - Existing data
 
@@ -163,7 +163,7 @@ ML is a collection of methods that allow a computer to
 
 ---
 
-## Characteristics of ML Use Cases (cont.)
+## Characteristics of ML Use Cases (3/4)
 
 - Unseen data
     - Unseen data shares patterns with the training data.
@@ -176,7 +176,7 @@ ML is a collection of methods that allow a computer to
 
 ---
 
-## Characteristics of ML Use Cases (cont.)
+## Characteristics of ML Use Cases (4/4)
 
 - It's at scale
 
@@ -206,9 +206,9 @@ ML is a collection of methods that allow a computer to
 ## ML Systems Design
 
 - MLOps:  a set of tools and best practices for bringing ML into production. 
-- (Sculley, 2015)
+- Image: (Sculley, 2015)
 
-![bg right:50% w:500](./images/01_ml_infrastructure.png)
+![bg contain right:50%](./images/01_ml_infrastructure.png)
 
 ---
 
@@ -228,56 +228,60 @@ ML is a collection of methods that allow a computer to
 
 ---
 
-## Business and ML Objectives
+## Business and ML Objectives (1/5)
 
-- Different stakeholders require different things
-    - ML engineers: increase performance or efficiency of recommender system.
-    - Sales: recommend more profitable options.
-    - Product: reduce latency.
-    - Platform: stability.
-    - Manager: control costs.
+### Different stakeholders require different things
 
----
-
-## Business and ML Objectives
-
-- Computational priorities
-    - During model development        
-         - Training is the bottleneck.
-         - Throughput, the number of cases processed, should be maximized. 
+- ML engineers: increase performance or efficiency of recommender system.
+- Sales: recommend more profitable options.
+- Product: reduce latency.
+- Platform: stability.
+- Manager: control costs.
 
 ---
 
-## Business and ML Objectives
+## Business and ML Objectives (2/5)
 
-- Computational priorities
-    - In production
-         - Fast inference is desirable.
-         - Latency, the time between when a query is received and when it is addressed, should be minimized.
-         - Latency is usually measured using percentiles of time elapsed (e.g., 99th percentile should be below X ms.)
+### Computational priorities during model development        
 
-![bg right:40% w:400](./images/01_latency_throughput.png)
+- Training is the bottleneck.
+- Throughput, the number of cases processed, should be maximized. 
 
 ---
 
-## Business and ML Objectives (cont.)
+## Business and ML Objectives (3/5)
+### Computational priorities in production
 
-- Data
-    - Data quality.
-    - Historical vs constantly generated data.
-- Fairness
-    - Fair and ethical decision-making is a key requirement.
-    - ML algorithms make predictions based on encodings of past observations: they can perpetuate the biases in the data and more.
+- Fast inference is desirable.
+- Latency, the time between when a query is received and when it is addressed, should be minimized.
+- Latency is usually measured using percentiles of time elapsed (e.g., 99th percentile should be below X ms.)
+
+![bg contain right:40%](./images/01_latency_throughput.png)
 
 ---
 
-## Business and ML Objectives (cont.)
+## Business and ML Objectives (4/5)
 
-- Explainability
-    - Trust.
-    - Legal requirements.
-    - Informativeness: besides predictions, we require feature importance and other information about or results.
-    - Transferrability: can learning from a scenario be applied to other scenarios?
+### Data
+
+- Data quality.
+- Historical vs constantly generated data.
+
+### Fairness
+
+- Fair and ethical decision-making is a key requirement.
+- ML algorithms make predictions based on encodings of past observations: they can perpetuate the biases in the data and more.
+
+---
+
+## Business and ML Objectives (5/5)
+
+### Explainability
+
+- Trust.
+- Legal requirements.
+- Informativeness: besides predictions, we require feature importance and other information about or results.
+- Transferrability: can learning from a scenario be applied to other scenarios?
 
 ---
 
@@ -300,11 +304,11 @@ ML is a collection of methods that allow a computer to
 - ML Systems tend to be embedded in data-intensive applications.
 - (Kleppmann, 2017)
 
-![bg right:50% w:500](./images/01_data_intensive_products.png)
+![bg contain right:40% ](./images/01_data_intensive_products.png)
 
 ---
 
-## Fundamental Requirements of ML Systems
+## Fundamental Requirements of ML Systems (1/2)
 
 - **Reliability**: The system should continue to perform the correct function at the desired level of performance, even in the face of adversity.
 
@@ -319,7 +323,7 @@ ML is a collection of methods that allow a computer to
 
 ---
 
-## Fundamental Requirements of ML Systems
+## Fundamental Requirements of ML Systems (2/2)
 
 - **Maintainability** to allow different contributors to work productively on the same system
     - Maintain existing capacities.
@@ -339,8 +343,7 @@ ML is a collection of methods that allow a computer to
 ## Developing ML Systems
 
 ![](./images/01_developing_ml_systems.png)
-- (Huyen, 2022)
-- CRISP-DM (c. 1999): have things changed that much? ([source](https://www.datascience-pm.com/crisp-dm-2/))
+Have things changed that much? (Huyen, 2022) and [CRISP-DM (c. 1999)](https://www.datascience-pm.com/crisp-dm-2/)
 
 ---
 
@@ -359,40 +362,45 @@ ML is a collection of methods that allow a computer to
 
 ## Framing ML Problems
 
-- Classification tasks are
-    - Binary: 
-         - Two classes. 
-         - Simplest classification problems
-    - Multiclass: 
-         - More than two (mutually exclusive) classes.
-         - High cardinality (number of classes) problems will be more complex than low cardinality problems.
-         - High cardinality can be addressed with a hierarchical classification approach: first, classify into large groups, then classify into specific labels.
+### Classification tasks are (1/2)
+- Binary: 
+        - Two classes. 
+        - Simplest classification problems
+- Multiclass: 
+        - More than two (mutually exclusive) classes.
+        - High cardinality (number of classes) problems will be more complex than low cardinality problems.
+        - High cardinality can be addressed with a hierarchical classification approach: first, classify into large groups, then classify into specific labels.
 ---
 
 ## Framing ML Problems
 
-- Classification tasks are
-    - Multilabel: 
+### Classification tasks are (2/2)
 
-         - An observation can have more than one label.
-         - One approach is to treat the problem as multiclass by creating unique labels out of combinations of individual labels.
-         - Another approach is one-vs-rest, where each label is treated with a different binary classification model.
+- Multilabel: 
+
+    - An observation can have more than one label.
+    - One approach is to treat the problem as multiclass by creating unique labels out of combinations of individual labels.
+    - Another approach is one-vs-rest, where each label is treated with a different binary classification model.
 
 ---
 
-## Objective Functions
+## Objective Functions (1/2)
 
 - ML requires an objective function to guide the learning process through optimization. 
-- In the context of ML
+- In the context of ML:
+    
     - Regression tasks generally employ error or accuracy metrics: Root Mean Square Error (RMSE) or Mean Absolute Error (MAE).
     - Classification tasks are generally performed using log loss or cross-entropy.
 ---
 
-## Objective Functions
+## Objective Functions (2/2)
 
-- Log or cross-entropy loss is a performance metric that quantifies the difference between predicted and actual probabilities. 
+- Log loss or cross-entropy loss is a performance metric that quantifies the difference between predicted and actual probabilities. 
 - In a two-class setting, it is given by
-> $H(p, q)=-\sum_{i=1}^{n}\left(y_i log(\hat{y}_{\theta, i}) +(1-y_{i})log(1-\hat{y}_{\theta, i})\right)$
+ 
+ $$
+ H(y, p)=-\frac{1}{N}\sum_{i=1}^{n}\left(y_i ln(\hat{p}_{i}) +(1-y_{i})ln(1-\hat{p}_{i})\right)
+ $$
 
 - Formulation is related to maximum likelihood: minimizing negative log-likelihood is the "same" as minimizing log loss.
 
@@ -401,9 +409,23 @@ ML is a collection of methods that allow a computer to
 ## Objective Functions
 
 - Assume the actual value is 1.
-- If the model is confident and correctly predicted 0.9, then `Loss = -(1*log(0.9)) = 0.10536`
-- If the model is unsure and predicted 0.5, then `Loss = -(1*log(0.5)) = 0.6931`.
-- If the model is confident but incorrectly predicted 0.1, then `Loss = -(1*log(0.1)) = 2.0258`
+- If the model is confident and correctly predicted 0.9, then 
+
+```
+Loss = -(1*ln(0.9)) = 0.1054
+
+```
+
+- If the model is unsure and predicted 0.5, then 
+
+```
+Loss = -(1*ln(0.5)) = 0.6932
+```
+
+- If the model is confident but incorrectly predicted 0.1, then 
+```
+Loss = -(1*ln(0.1)) = 2.3026
+```
 
 ---
 
