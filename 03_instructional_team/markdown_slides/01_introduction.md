@@ -16,7 +16,7 @@ $ echo "Data Science Institute"
 
 ---
 
-# Agenda
+## Agenda
 
 - **1.1 Overview of ML Systems**
     - When to Use ML
@@ -30,7 +30,7 @@ $ echo "Data Science Institute"
 
 ---
 
-# Agenda
+## Agenda
 
 - **1.3 Project Setup**
     - Introduction.
@@ -43,7 +43,7 @@ $ echo "Data Science Institute"
 
 ---
 
-# Slides
+## About
 
 - These notes are based on Chapters 1 and 2 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
 
