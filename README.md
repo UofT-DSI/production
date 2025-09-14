@@ -72,18 +72,18 @@ Participants are encouraged to engage actively during the learning module. The k
 
 |Live Learning Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
-|  1  | Tue., June 3, 2025    | ML System Design                 |
-|  2  | Wed., June 4, 2025    | Data Engineering Fundamentals    |
-|  3  | Thur., June 5, 2025    | Working with Training Data       |
-|  --  | Fri., June 6, 2025     | Work Period  |
-|  --  | Sat., June 7, 2025     | Work Period  |
-| --  | Sun., June 8, 2025        | Submission deadline for **Assignment 1** and **Quizzes 1-3** |
-|  4  | Tue., June 10, 2025     | Feature Engineering              |
-|  5  | Wed., June 11, 2025     | Model Development and Evaluation |
-|  6  | Thur., June 12, 2025     | Model Explanations and Monitoring|
-|  --  | Fri., June 13, 2025     | Work Period  |
-|  --  | Sat., June 14, 2025     | Work Period  |
-|  --  | Sun., June 15, 2025     | Submission deadline for **Assignment 2** and **Quizzes 4-6** | 
+|  1  | Tue., Sept. 23, 2025    | ML System Design                 |
+|  2  | Wed., Sept. 24, 2025    | Data Engineering Fundamentals    |
+|  3  | Thur., Sept. 25, 2025    | Working with Training Data       |
+|  --  | Fri., Sept. 26, 2025     | Work Period  |
+|  --  | Sat., Sept. 27, 2025     | Work Period  |
+| --  | Sun., Sept. 28, 2025        | Submission deadline for **Assignment 1** and **Quizzes 1-3** |
+|  4  | Tue., Sept. 30, 2025     | Feature Engineering              |
+|  5  | Wed., Oct. 1, 2025     | Model Development and Evaluation |
+|  6  | Thur., Oct. 2, 2025     | Model Explanations and Monitoring|
+|  --  | Fri., Oct. 3, 2025     | Work Period  |
+|  --  | Sat., Oct. 4, 2025     | Work Period  |
+|  --  | Sun., Oct. 5, 2025     | Submission deadline for **Assignment 2** and **Quizzes 4-6** | 
 
 ### Requirements
 
