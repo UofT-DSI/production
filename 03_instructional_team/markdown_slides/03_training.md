@@ -84,24 +84,25 @@ Generally, selecting data to train ML methods using this family of sampling meth
 - Popular and convenient: fast, inexpensive, practical.
 - Not scientific and does not offer guarantees.
 
-### Snowball sampling
-
-- Future samples are selected based on existing samples. 
-- Sampling in social media (or other) networks: select a base sample of accounts, then expand the sample by adding the accounts they follow, and so on.
-
----
-
-## Nonprobability Sampling (2/2)
-
 ### Judgement sampling
 
 - Experts decide what samples to include.
 - AKA: risk-based, SME, subjective, etc.
 
+---
+
+## Nonprobability Sampling (2/2)
+
 ### Quota sampling
 
 - Select samples based on predefined and heuristic quotas.
 - Example: select 100 responses from all age groups without considering the proportional representation of age groups.
+
+
+### Snowball sampling
+
+- Future samples are selected based on existing samples. 
+- Sampling in social media (or other) networks: select a base sample of accounts, then expand the sample by adding the accounts they follow, and so on.
 
 ---
 
@@ -234,12 +235,19 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
 ---
 
-## Handling the Lack of Labels
+## Handling the Lack of Labels (1/2)
 
 |Method| How| Ground truths required?|
 |------|----|------------------------|
 |Weak supervision| Leverages (often noisy) heuristics to generate labels| No, but a small number of labels are recommended to guide the development of heuristics|
 |Semi-supervision| Leverages structural assumptions to generate labels| Yes, a small number of initial labels as seeds to generate more labels|
+
+---
+
+## Handling the Lack of Labels (2/2)
+
+|Method| How| Ground truths required?|
+|------|----|------------------------|
 |Transfer learning| Leverages models pretrained on another task for your new task| No for zero-shot learning. Yes for fine-tuning, though the number of ground truths required is often much smaller than what would be needed if you train the model from scratch|
 |Active learning| Labels data samples that are most useful to your model| Yes|
 
@@ -252,7 +260,7 @@ Generally, selecting data to train ML methods using this family of sampling meth
 - LFs are combined, reweighted, and denoised to generate labels.
 - While ideally no hand labels are necessary, a few may be needed initially to assess LF accuracy.
 
-![bg right:45% w:450](./images/03_labeling_functions.png)
+![bg contain right:40%](./images/03_labeling_functions.png)
 
 <!-- Combining LF (Huyen, 2022) -->
 
@@ -263,7 +271,7 @@ Generally, selecting data to train ML methods using this family of sampling meth
 - Leverages structural assumptions to generate new labels based on a small set of initial labels.
 - Useful when the number of labels is limited.
 
-### Approach 1: self-training.
+### Approach 1: Self-training
 
 - Train a model on an existing set of labelled data.
 - Make predictions for unlabeled samples; keep only the ones with high raw probability scores.
@@ -273,12 +281,12 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
 ## Semi-Supervision (2/2)
 
-### Approach 2: similarity.
+### Approach 2: Similarity
 
 - Assume that data samples that share similar characteristics share the same labels.
 - Similarity is established by more complex methods (clustering, k-nn, etc.)
 
-### Approach 3: perturbation.
+### Approach 3: Perturbation
 
 - Assume that small perturbations to a sample do not change its label.
 - Apply small perturbations to your training instances to obtain new training instances.
@@ -299,11 +307,12 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
 ## What is Class Imbalance? (2/2)
 
-- ML (particularly, deep learning) works well when the class distribution is balanced. At the same time, performance decreases with class imbalance because:
-    - There is insufficient signal for the model to learn to detect the minority class.
-    - It is easier for a model to find a suboptimal solution by exploiting a simple heuristic instead of learning anything useful about the underlying pattern.
-    - Asymmetric costs of error.
-- Class imbalance is the norm in many subject domains.
+ML (particularly, deep learning) works well when the class distribution is balanced. At the same time, performance decreases with class imbalance because:
+- There is insufficient signal for the model to learn to detect the minority class.
+- It is easier for a model to find a suboptimal solution by exploiting a simple heuristic instead of learning anything useful about the underlying pattern.
+- Asymmetric costs of error.
+
+Class imbalance is the norm in many subject domains.
 
 ---
 
@@ -350,9 +359,10 @@ To handle class imbalance:
 - Log loss or cross-entropy loss is a performance metric that quantifies the difference between predicted and actual probabilities. 
 - In a two-class setting, it is given by:
 
-$$
-H(p, q)=-\sum_{i=1}^{n}\left(y_i log(\hat{y}_{\theta, i}) +(1-y_{i})log(1-\hat{y}_{\theta, i})\right)
-$$
+ $$
+ H(y, p)=-\frac{1}{N}\sum_{i=1}^{n}\left(y_i ln(\hat{p}_{i}) +(1-y_{i})ln(1-\hat{p}_{i})\right)
+ $$
+
 
 - Formulation is related to maximum likelihood: minimizing negative log-likelihood is the "same" as minimizing log loss.
 
