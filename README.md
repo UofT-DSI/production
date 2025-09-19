@@ -58,8 +58,8 @@ By the end of this module, participants will be able to:
 * Learning Support Staff: 
   * [Dmytro Bonislavskyi](https://www.linkedin.com/in/dmytro-bonislavskyi/)
   * [Gayathri Girish](https://www.linkedin.com/in/gayathri-girish/)
-  * [Ananya Jha](https://www.linkedin.com/in/jhaananya/)
-  * [Shiraz Latif](https://ca.linkedin.com/in/shiraz-latif/)
+  * [Xindi Zhang](https://www.linkedin.com/in/xindicindyzhang/)
+  * [Edward Chen](https://www.linkedin.com/in/edwardchen75/)
   
 
 ## Delivery of the Learning Module
