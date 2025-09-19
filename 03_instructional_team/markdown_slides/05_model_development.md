@@ -214,7 +214,7 @@ $$
 
 ---
 
-# Neural Net
+## Neural Net
 
 + Combine simple perceptron-like models in a hierarchical structure.
 + Use (mostly) differentiable activation functions such as sigmoid or ReLU, such that gradient-based optimization can be applied.
