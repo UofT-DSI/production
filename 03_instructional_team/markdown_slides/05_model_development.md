@@ -7,8 +7,8 @@ paginate: true
 
 <style>
 img[alt~="center"] {
-  display: block;
-  margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 }
 </style>
 
@@ -75,7 +75,7 @@ $ echo "Data Science Institute"
 ## Naïve Bayes
 
 + Conditional probability using Bayes’ Theorem.
-+ Assume conditional indenepdence
++ Assume conditional independence
 
 $$
 \begin{aligned}
@@ -85,22 +85,6 @@ P(C|x_1,x_2) = \frac{P(x_1, x_2|C) \cdot P(C)}{P(x_1,x_2)} \\
 $$
 
 ![bg contain right:45%](./images/05_naive_bayes_train.png)
-
----
-
-## Naïve Bayes
-
-+ Conditional probability using Bayes’ Theorem.
-+ Assume conditional indenepdence
-
-$$
-\begin{aligned}
-P(C|x_1,x_2) = \frac{P(x_1, x_2|C) \cdot P(C)}{P(x_1,x_2)} \\
-\approx \frac{P(x_1|C) \cdot P(x_2|C) \cdot P(C)}{P(x_1,x_2)}
-\end{aligned}
-$$
-
-![bg contain right:45%](./images/05_naive_bayes_test.png)
 
 ---
 
@@ -137,7 +121,7 @@ $$
 log\left(\frac{P(C|x_1,x_2)}{1-P(C|x_1,x_2)}\right)
 $$
 
-+ The resulting model has form:
++ The resulting model has the form:
 
 $$
 P(C|x_1,x_2) = \frac{1}{1+exp(-w_0-w_1x_1-w_2x_2)}
@@ -183,11 +167,11 @@ $$
 ## Ensemble Methods: Random Forest
 
 + Bootstrap
-    + Create subsets of data by sampling with replacement.
-    + Create subsets of features.
-    + Train Decision Tree Model (weak learner) on each subset.
+    + Create subsets of data by sampling with replacement.
+    + Create subsets of features.
+    + Train Decision Tree Model (weak learner) on each subset.
 + Aggregation
-    Average predictions or vote.
+ Average predictions or vote.
 
 ![bg contain right:45%](./images/05_random_forest.png)
 
@@ -205,9 +189,9 @@ $$
 ## Support Vector Machines (2/2)
 
 + SVM use linear models to implement non-linear boundaries by performing a non-linear mapping of inputs:
-    - Polynomial
-    - Radial Basis Function
-    - Sigmoid
+    - Polynomial
+    - Radial Basis Function
+    - Sigmoid
 
 ![bg contain right:45%](./images/05_svm.png)
 
@@ -239,13 +223,13 @@ $$
 ## Guidance for Model Selection (1/3)
 
 - Avoid the state-of-the-art trap
-    - Researchers evaluate models in academic settings: if a model is state-of-the-art, it performs better than existing models on some static dataset.
-    - It is essential to remain up to date but solve the problem first.
+    - Researchers evaluate models in academic settings: if a model is state-of-the-art, it performs better than existing models on some static dataset.
+    - It is essential to remain up to date but solve the problem first.
 - Start with the simplest models
-    - Simple is better than complex: easier to deploy, easier to understand, and serve as a baseline.
-    - Easier to deploy: speeds up the experimentation cycle.
-    - Easier to understand: adds complexity as needed.
-    - Baseline: simple models serve as a starting comparison point for model development.
+    - Simple is better than complex: easier to deploy, easier to understand, and serve as a baseline.
+    - Easier to deploy: speeds up the experimentation cycle.
+    - Easier to understand: adds complexity as needed.
+    - Baseline: simple models serve as a starting comparison point for model development.
 
 ---
 
@@ -260,9 +244,9 @@ $$
 ## Guidance for Model Selection (2/3)
 
 - Avoid human biases in selecting models
-    - Human biases can be introduced throughout the model development process.
-    - Experiment methodically and store results.
-    - Any model has three components: algorithmic logic, code, and data.
+    - Human biases can be introduced throughout the model development process.
+    - Experiment methodically and store results.
+    - Any model has three components: algorithmic logic, code, and data.
 
 ![bg right:45% w:600](./images/05_learning_curves.png)
 
@@ -273,8 +257,8 @@ $$
 ## Guidance for Model Selection (2/3)
 
 - Evaluate good performance now versus good performance later
-    - Using learning curves is a simple way to estimate how your model's performance might change with more data.
-    - While evaluating models, consider their potential for improvement and how easy/difficult it is to achieve.
+    - Using learning curves is a simple way to estimate how your model's performance might change with more data.
+    - While evaluating models, consider their potential for improvement and how easy/difficult it is to achieve.
 
 ![bg right:45% w:600](./images/05_learning_curves.png)
 
@@ -285,19 +269,19 @@ $$
 ## Guidance for Model Selection (3/3)
 
 - Evaluate trade-offs
-    - False positives vs false negatives: reducing false positives may increase false negatives and vice versa.
-    - Compute requirement and model performance: a more complex model may deliver better performance, but at what cost?
-    
+    - False positives vs false negatives: reducing false positives may increase false negatives and vice versa.
+    - Compute requirement and model performance: a more complex model may deliver better performance, but at what cost?
+    
 ---
 
 ## Guidance for Model Selection (3/3)
 
 - Understand your model's assumptions
-    - Every model comes with its assumptions.
-    - Prediction assumption: every model that aims to predict an output Y from an input X assumes that it is possible to predict Y based on X.
-    - Independent and Identically Distributed: neural nets assume that examples are independent and identically distributed.
-    - Smoothness: supervised learning models assume that a set of functions can transform inputs into outputs such that similar inputs are transformed into similar outputs. If an input X produces Y, then an input close to X would produce an output proportionally close to Y.
-    - Linear boundaries, conditional independence, normally distributed, and so on.
+    - Every model comes with its assumptions.
+    - Prediction assumption: every model that aims to predict an output Y from an input X assumes that it is possible to predict Y based on X.
+    - Independent and Identically Distributed: neural nets assume that examples are independent and identically distributed.
+    - Smoothness: supervised learning models assume that a set of functions can transform inputs into outputs such that similar inputs are transformed into similar outputs. If an input X produces Y, then an input close to X would produce an output proportionally close to Y.
+    - Linear boundaries, conditional independence, normally distributed, and so on.
 
 ---
 
@@ -350,9 +334,9 @@ $$
 ## Bagging
 
 - Outline:
-    - Given a data set, create n data sets by sampling with replacement (bootstrap).
-    - Train classification or regression model on each bootstrap.
-    - If classification, decide by majority vote; if regression, use the mean result.
+    - Given a data set, create n data sets by sampling with replacement (bootstrap).
+    - Train a classification or regression model on each bootstrap.
+    - If classification, decide by majority vote; if regression, use the mean result.
 
 ![bg left:50% w:500](./images/05_bagging.png)
 <!-- (Huyen, 2021) -->
@@ -372,8 +356,8 @@ $$
 ## Boosting
 
 - Outline:
-    - Each learner is trained on the same set of samples, but the samples are weighted differently in each iteration.
-    - Future weak learners focus more on the examples that previous weak learners misclassified.
+    - Each learner is trained on the same set of samples, but the samples are weighted differently in each iteration.
+    - Future weak learners focus more on the examples that previous weak learners misclassified.
 
 ![bg left:50% w:500](./images/05_boosting.png)
 <!-- (Huyen, 2021) -->
@@ -383,8 +367,8 @@ $$
 ## Stacking
 
 - Outline:
-    - Create base learners from the training data.
-    - Create a meta-learner that combines the outputs of the base learners to output predictions.
+    - Create base learners from the training data.
+    - Create a meta-learner that combines the outputs of the base learners to output predictions.
 
 ![bg right:50% w:500](./images/05_stacking.png)
 <!-- (Huyen, 2021) -->
@@ -406,7 +390,7 @@ $$
 
 ## Experiment Tracking
 
-- Model performance metrics : on all nontest splits like accuracy, F1, perplexity.
+- Model performance metrics: on all nontest splits, like accuracy, F1, and perplexity.
 - Loss curve: train split and each of the eval splits.
 - Log of corresponding sample, prediction, and ground truth labels. 
 - Speed of the model: number of steps per second or tokens processed per second.
@@ -427,8 +411,8 @@ $$
 
 - Code versioning tools allow you to switch between versions of the codebase by keeping copies of all the old files. Data may be too large for duplication to be feasible.
 - Code versioning tools allow several people to work on the same code simultaneously by replicating locally. Data may be too large, as well.
-- What is a diff when versioning data? DVC, for example, only checks in changes in checksum.
-- Compliance with GDPR may also be problematic if full history of data is kept.
+- What is a diff when versioning data? DVC, for example, only checks for changes in the checksum.
+- Compliance with GDPR may also be problematic if the full history of data is kept.
 
 ---
 
@@ -446,12 +430,12 @@ $$
 
 ## Debugging: Why ML Models Fail
 
-- Data problems: noise and dirty data are everywhere. Also, poor implementation of data flows can induce data problems.
-- Poor choice of features: Too many features may cause overfitting or data leakage. Too few features might lack predictive power to allow to make good predictions.
+- Data problems: noise and dirty data are everywhere. Additionally, poor implementation of data flows can lead to data problems.
+- Poor choice of features: Too many features may cause overfitting or data leakage. Too few features might lack predictive power to allow for making good predictions.
 - Some debugging approaches:
-    - Start simple and gradually add more components.
-    - Overfit a single batch.
-    - Set a random seed.
+    - Start simple and gradually add more components.
+    - Overfit a single batch.
+    - Set a random seed.
 
 ---
 
@@ -466,10 +450,10 @@ $$
 ## Model Offline Evaluation 
 
 - Measure model performance before and after deployment.
-- Evaluation methods should (ideally) be the same for models during development and production.
+- Evaluation methods should be the same for models during development and production.
 - Techniques for model offline evaluation:
-    - Use baselines.
-    - Tests: perturbation tests, invariance tests, directional expectation tests, model calibration, confidence measurement, slice-based evaluation.
+    - Use baselines.
+    - Tests: perturbation tests, invariance tests, directional expectation tests, model calibration, confidence measurement, slice-based evaluation.
 
 ---
 
@@ -485,7 +469,7 @@ $$
 
 ## Evaluation Methods in Production
 
-- Perturbation tests: make changes to test splits, such as adding noise to input data. If a model is not robust to noise, it will be difficult to maintain.
+- Perturbation tests: make changes to test splits, such as adding noise to input data. If a model is not robust to noise, it will be challenging to maintain.
 - Invariance tests: specific input changes should not lead to output changes—for example, protected classes.
 - Directional expectation tests.
 
@@ -494,9 +478,9 @@ $$
 ## Evaluation Methods in Production
 
 - Model calibration or conformal prediction methods:
-    - Idea: If the forecast has a 70% chance of rain, then 70% of the time this forecast was made, it actually rained.
-    - Prediction scores are many times normalized to values between 0 and 1. It is tempting to think of them as probabilities, but they are not necessarily so.
-    - Use conformal prediction methods to calibrate prediction scores.
+    - Idea: If the forecast has a 70% chance of rain, then 70% of the time this forecast was made, it actually rained.
+    - Prediction scores are often normalized to values between 0 and 1. It is tempting to think of them as probabilities, but they are not necessarily so.
+    - Use conformal prediction methods to calibrate prediction scores.
 - Confidence measurement: show only predictions where the model is confident.
 - Slice-based evaluation: model performance is different in subsets of data. 
 
