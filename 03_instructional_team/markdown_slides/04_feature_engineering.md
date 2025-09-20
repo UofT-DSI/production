@@ -265,7 +265,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 ---
 
-# Multivariate Transformations
+## Multivariate Transformations
 
 - Other transformations:
   - Discriminant Analysis Score: linear discriminant analysis produces a projection that maximizes linear separability.
@@ -273,7 +273,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
   
 ---
 
-# Embeddings (1/2)
+## Embeddings (1/2)
 
 ![bg left:50% w:500](./images/04_word_embeddings.png)
 <!--(Gilyadov, 2017)-->
@@ -285,7 +285,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 ---
 
-# Embeddings (2/2)
+## Embeddings (2/2)
 
 ![bg left:50% w:500](./images/04_word_embeddings.png)
 <!--(Gilyadov, 2017)-->
@@ -380,7 +380,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 ---
 
-## Too Many Features
+## Too Many Features (1/2)
 
 
 - Too many features can be bad during training and model service.
@@ -390,7 +390,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 ---
 
-## Too Many Features
+## Too Many Features (2/2)
 
 - Too many features can increase inference latency.
 - Useless features become technical debt. 
