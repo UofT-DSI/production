@@ -299,9 +299,7 @@ SVM use linear models to implement non-linear boundaries by performing a non-lin
 
 ## The Wisdom of the Crowds
 
-> “Aggregating the judgment of many consistently beats the accuracy of the average member of the group, and is often as startlingly accurate […] In fact, in any group there are likely to be individuals who beat the group. But those bull’s-eye guesses typically say more about the power of luck […] than about the skill of the guesser. That becomes clear when the exercise is repeated many times.”
-
-> (Tetlock and Gardner, 2015)
+> “Aggregating the judgment of many consistently beats the accuracy of the average member of the group, and is often as startlingly accurate […] In fact, in any group there are likely to be individuals who beat the group. But those bull’s-eye guesses typically say more about the power of luck […] than about the skill of the guesser. That becomes clear when the exercise is repeated many times.” (Tetlock and Gardner, 2015)
 
 ---
 
@@ -328,7 +326,7 @@ SVM use linear models to implement non-linear boundaries by performing a non-lin
 
 ---
 
-## Bagging
+## Bagging (1/2)
 
 - Bagging (bootstrap aggregating) is designed to improve ML algorithms' training stability and accuracy.
 - Reduces variance and helps avoid overfitting; it improves unstable methods (e.g., tree-based methods)
@@ -339,7 +337,7 @@ SVM use linear models to implement non-linear boundaries by performing a non-lin
 
 ---
 
-## Bagging
+## Bagging (2/2)
 
 - Given a data set, create n data sets by sampling with replacement (bootstrap).
 - Train a classification or regression model on each bootstrap.
@@ -350,7 +348,7 @@ SVM use linear models to implement non-linear boundaries by performing a non-lin
 
 ---
 
-## Boosting
+## Boosting (1/2)
 
 - Family of iterative ensemble algorithms that convert weak learners to strong ones.
 - Examples: Gradient Boosting Machine (GBM), XGBoost, and LightGBM.
@@ -360,7 +358,7 @@ SVM use linear models to implement non-linear boundaries by performing a non-lin
 
 ---
 
-## Boosting
+## Boosting (2/2)
 
 
 - Each learner is trained on the same set of samples, but the samples are weighted differently in each iteration.
