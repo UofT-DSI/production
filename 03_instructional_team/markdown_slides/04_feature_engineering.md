@@ -5,6 +5,13 @@ _class: invert
 paginate: true
 ---
 
+<style>
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+</style>
+
 # Production: Feature Engineering
 
 ```code
@@ -16,7 +23,7 @@ $ echo "Data Science Institute"
 
 
 **4.1 Feature Engineering**
-  
+  
 - Common Operations
 - Data Leakage
 - Feature Importance 
@@ -30,21 +37,10 @@ $ echo "Data Science Institute"
 
 ---
 
-# Slides, Notebooks, and Code
-
+## About
 
 - These notes are based on Chapter 5 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
 
-
-**Notebooks**
-
-- `./01_materials/labs/production_4_transforms.ipynb`
-
-
-**Code**
-
-- `./05_src/credit_experiment_nb.py`
-- `./05_src/credit_preproc_ingredient.py`
 
 ---
 
@@ -52,37 +48,37 @@ $ echo "Data Science Institute"
 
 ---
 
-# The Flock Reference Architecture
+## The Flock Reference Architecture
 
-![](./images/04_flock_ref_arhitecture_highlighted_4.png)
-<!--Agrawal et al (2019)-->
+![h:450px center](./images/04_flock_ref_arhitecture_highlighted_4.png)
+<center>Agrawal et al (2019)</center>
 
 ---
 
-# Learned Features Versus Engineered Features
+## Learned Features Versus Engineered Features
 
 
-- The promise of deep learning was that we no longer had to engineer features (feature or representation learning).
+- Deep learning promised that we no longer had to engineer features (feature or representation learning).
 - Why do we need to engineer features?
-- Some features can and will be automatically learned for certain use cases (vision, NLP, etc.)
+- Some features can and will be automatically learned for specific use cases (vision, NLP, etc.)
 - However, the majority of ML applications are not deep learning. 
 
 ---
 
-# What is Feature Engineering?
+## What is Feature Engineering?
 
 - Feature engineering is the process of choosing what information to use and how to extract this information into a format usable by ML models.
 - The purpose of feature engineering is to *transform and represent features so that their information content is best exposed* to the learning algorithm. 
 
 ---
 
-# What is Feature Engineering?
+## What is Feature Engineering?
 
 Feature engineering can include:
 - A transformation of a feature: standardization, scale, center, log, etc.
 - An equivalent re-representation of a feature: dummy variables, one-hot-encoding, binning, etc.
-- An interaction of two or more features such as a product or ratio: for example, calculate the ratio of a loan to the value of the collateral (or its inverse), as a new feature for default prediction.
-- A functional relationship among features: Principal Components Analysis, LDA, etc. This may also include methods for imputing missing values.
+- An interaction of two or more features, such as a product or ratio: for example, calculate the ratio of a loan to the value of the collateral (or its inverse), as a new feature for default prediction.
+- A functional relationship among features (Principal Components Analysis, LDA, etc.), including methods for imputing missing values.
 
 ---
 
@@ -90,14 +86,14 @@ Feature engineering can include:
 
 ---
 
-# Handling Missing Values
+## Handling Missing Values
 
 - Missing values are a common occurrence in production data. 
 - Missing values can be of three types:
 
-  - Missing Not At Random (MNAR): a value is missing because of the true value itself.
-  - Missing At Random (MAR): a value is missing not due to the value itself but to another observed variable. 
-  - Missing Completely At Random (MCAR): there is no pattern in missing values.
+  - Missing Not At Random (MNAR): a value is missing because of the actual value itself.
+  - Missing At Random (MAR): a value is missing not due to the value itself but to another observed variable. 
+  - Missing Completely At Random (MCAR): There is no pattern in missing values.
 
 ---
 
@@ -105,10 +101,10 @@ Feature engineering can include:
 
 - The simplest way to remove missing values is deletion.
 - *Column deletion*
-  - Remove variables with excessive missing values, but be cautious of potentially losing valuable information and compromising model performance.
+  - Remove variables with excessive missing values, but be cautious of potentially losing valuable information and compromising model performance.
 - *Row deletion*
-  - Remove samples with missing values, but only effective for MCAR with few missing values.
-  - Drawbacks: Doesn't work for MNAR data and can create biases by removing rows.
+  - Remove samples with missing values, but only effective for MCAR with a few missing values.
+  - Drawbacks: Doesn't work for MNAR data and can create biases by removing rows.
 
 ---
 
@@ -117,14 +113,14 @@ Feature engineering can include:
 - Impute missing values using default values: missing strings, filled with "".
 - Use a statistic like mean, median, or mode: fill the missing temperature with the mean temperature for the time of day within a specific window.
 - Domain specific: if prices are liquid, use the last available price.
-  
+  
 ---
 
 # Imputation 
 
 - Model-based: if two variables are correlated and one of them has missing values, model the relationship and use model results for imputation. 
 - Flag imputed missing values.
-- Avoid filling missing values with possible (fixed) values. Example: missing number of children should not be filled with 0, a possible value.
+- Avoid filling missing values with possible (fixed) values. Example: Missing number of children should not be filled with 0, a possible value.
 
 ---
 
@@ -180,56 +176,63 @@ $$
 
 ---
 
-# Dummy Variables and One-Hot Encoding
+# Dummy Variables and One-Hot Encoding (1/3)
 
 
 - Dummy variables and One-Hot encodings are forms of encoding categorical data. 
-- Dummy variables are binary: they will take a value of 0 or 1.
-- Dummy variables are numerical, not categorical, factor, boolean, etc.
+- Dummy variables are binary and take a value of 0 or 1.
+- They are numerical, not categorical, factor, Boolean, etc.
+
+---
+
+## Dummy Variables and One-Hot Encoding (2/3)
+
 - With dummy variables, if the original variable contained *C* levels, then we will get *C-1* levels by default. 
-  - For instance, our example had five levels (one per weekday), but the resulting dummy representation only has four. 
-  - We can back out the fifth value since we know that when all four values are 0, the fifth value should be 1. 
-  - This avoids a sometimes undesirable situation for some methods called colinearity (one variable can be obtained as a linear function of others). Colinearity is one form of observing information redundancy.
+- For instance, our example had five levels (one per weekday), but the resulting dummy representation only has four. 
+  - We can back out the fifth value since we know that when all four values are 0, the fifth value should be 1. 
+  - This avoids an undesirable situation for certain methods called colinearity. 
+- Collinearity occurs when one variable can be obtained as a linear function of others. 
+- Colinearity is a form of observing information redundancy.
 
 
 ---
 
-# Dummy Variables and One-Hot Encoding
+## Dummy Variables and One-Hot Encoding (3/3)
 
 - If the original value is missing, then all dummy variables are missing.
-- If the data contains a novel value (a value that it hand not yet considered and encoded), then all values will be missing, unless explicitly considering other values. 
+- If the data contains a novel value (a value that has not yet been considered and encoded), then all values will be missing, unless explicitly considering other values. 
 - **One-hot encoding** is similar to dummy variables, but all values receive a column. 
 
 ---
 
-# Encoding Categorical Features
+## Encoding Categorical Features (1/2)
 
 
 - Categories are not static: categories change over time.
-  - Categories were not represented in training data.
-  - New categories may appear over time.
+  - Categories were not represented in the training data.
+  - New categories may appear over time.
 - It is generally a good idea to consider the category UNKNOWN.
 
 ---
 
-# Encoding Categorical Features
+## Encoding Categorical Features (2/2)
 
 - In some cases, UNKNOWN labels may refer to samples that do not belong together: two new brands may not target the same market, new products, new IP addresses, new user accounts, etc.
 - One solution is the hashing trick:
-  - Use a hash function to generate a has for every category.
-  - The hashed value will become the index of the category.
-  - Some collisions may occur, but the overloading of the UNKNOWN category is reduced.
+  - Use a hash function to generate a hash for every category.
+  - The hashed value will become the index of the category.
+  - Some collisions may occur, but the overloading of the UNKNOWN category is reduced.
 
 ---
 
-# Feature Crossing
+# Feature Crossing (1/2)
 
 - Feature crossing is a technique to combine two or more features to generate new features.
 - We may also benefit from establishing interaction terms. This type of transformation is primarily intended for numeric data. Still, it may be applied to categorical data after being transformed into dummy variables.
 
 ---
 
-# Feature Crossing
+# Feature Crossing (2/2)
 
 - Interaction variables typically capture the joint contribution to our predictive model of two or more variables after accounting for their contributions. 
 - A majority of cases will result in the model benefiting only marginally from these terms; however, they are fundamental in some contexts: for example, loan value and collateral value are typically included in default prediction models, together with their interaction term. 
@@ -238,44 +241,59 @@ $$
 
 # Multivariate Transformations
 
-- Some transformations may include more complex formulations or the results of models that we use to pre-process the data. 
-- A couple of examples include:
-- Principal Components Analysis: 
-  - Principal Components Analysis is a change of base such that orthogonal directions of maximum variation are used. 
-  - Compute PC Scores of a group of variables in the data and keep only the first n (up to a percent of variability explained).
-  - Reduces redundant (highly correlated) information. 
+Some transformations may include more complex formulations or the results of models that we use to pre-process the data. 
+- Principal Components Analysis
+- Discriminant Analysis
+- Embeddings
 
 ---
 
-# Multivariate Transformations
+## Principal Components Analysis: 
+  
+- Principal Components Analysis (PCA) is a change of base such that orthogonal directions of maximum variation are used. 
+- Compute PC Scores of a group of variables in the data and keep only the first n (up to a percent of variability explained).
+- Reduces redundant (highly correlated) information. 
+
+![bg contain right:40%](./images/04_pca.png)
+
+---
+
+
+![h:500px center](./images/04_pca_2.jpg)
+Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis)
+
+
+---
+
+## Multivariate Transformations
 
 - Other transformations:
-  - Discriminant Analysis Score: linear discriminant analysis produces a projection that maximizes linear separability.
-  - Distance to cluster centroids.
-  
+  - Discriminant Analysis Score: linear discriminant analysis produces a projection that maximizes linear separability.
+  - Distance to cluster centroids.
+  
 ---
 
-# Embeddings
+## Embeddings (1/2)
 
 ![bg left:50% w:500](./images/04_word_embeddings.png)
 <!--(Gilyadov, 2017)-->
 
 - Training NN is computationally intensive and time-consuming.
-- Assume that an NN has been trained:
-  - Pre-trained NN are available.
-  - Models can be trained on general language (news articles, Wikipedia, etc.) and specialized language (legal, medical, etc.) corpus.
+- Assume that an NN has been trained.
+- Pre-trained NN are available.
+- Models can be trained on general language (news articles, Wikipedia, etc.) and specialized language (legal, medical, etc.) corpora.
 
 ---
 
-# Embeddings
+## Embeddings (2/2)
 
 ![bg left:50% w:500](./images/04_word_embeddings.png)
 <!--(Gilyadov, 2017)-->
 
-- Word embeddings map words in vocabulary with an n-dimensional vector.
-- A popular embedding is Word2Vec:  
-  - NN predicts a word from its context. 
-  - Similar to an autoencoder, obtained through a NN as a by-product.
+- Word embeddings map words in the vocabulary with an n-dimensional vector.
+- A popular embedding is Word2Vec.
+- NN predicts a word from its context. 
+- Similar to an autoencoder, obtained through a NN as a by-product.
 
 ---
 
@@ -283,59 +301,77 @@ $$
 
 ---
 
-# Data Leakage
+## Data Leakage
 
 
-- Data leakage refers to the situation when a form of the label "leaks" into the set of features used for making predictions, and this same information is not available during inference. Some common causes are discussed below.
-- Splitting time-correlated data randomly instead of by time.
+- Data leakage refers to the situation when a form of the label "leaks" into the set of features used for making predictions, and this same information is not available during inference. 
+- Some common causes are discussed below.
 
-  - In many cases, we are dealing with time series data: the date-time in which data is generated affects its label distribution.
-  - Ex: stock prices.
-  - Solution: split data by time instead of random sampling whenever possible (ex., time-series cross-validation).
+---
+
+## Data Leakage: Common Causes (1/6)
+
+### Splitting time-correlated data randomly instead of by time
+
+- In many cases, we are dealing with time series data: the date-time in which data is generated affects its label distribution.
+- Ex: stock prices.
+- Solution: split data by time instead of random sampling whenever possible (ex., time-series cross-validation).
 
 
 ---
 
-# Data Leakage
+## Data Leakage: Common Causes (2/6)
 
-- Scaling before splitting.
-  - Scaling requires calculating statistics like mean, std, min, and max.
-  - Data leakage occurs when stats are calculated on a data set that does not only contain training data.
-  - Solution: split data before scaling; many frameworks do this automatically and ensure the appropriate splits.
-- Filling in missing data with statistics from the test split.
-  - Values used for imputation are calculated on complete data and not only the training portion.
-  - Solution: split data before calculation and ensure only training data is used (use a framework).
+### Scaling before splitting
+
+- Scaling requires calculating statistics like mean, std, min, and max.
+- Data leakage occurs when stats are calculated on a data set that does not only contain training data.
+- Solution: split data before scaling; many frameworks do this automatically and ensure the appropriate splits.
 
 ---
 
-# Data Leakage
+## Data Leakage: Common Causes (3/6)
+### Filling in missing data with statistics from the test split.
 
-- Poor handling of data duplication.
-  - Failure to remove duplicates or near-duplicates before splitting the data.
-  - Data duplication can result from data collection or merging of different data sources.
-  - As well, synthetic oversampling can induce duplication.
-  - Solution: check for duplicates before splitting and also after splitting.
+- Values used for imputation are calculated on complete data and not only the training portion.
+- Solution: split data before calculation and ensure only training data is used (use a framework).
 
 ---
 
-# Data Leakage
+## Data Leakage: Common Causes (4/6)
 
-- Group leakage.
-  - Similar to duplication, where a group of examples have strongly correlated labels but are divided into different splits.
-  - Example: in object detection, several pictures are taken a few seconds apart and almost identical.
-- Leakage from the data generation process
-  - The sampling mechanism may induce duplication.
-  - Example: patient data in critical condition is duplicated because more tests are run.
+### Poor handling of data duplication
+- Failure to remove duplicates or near-duplicates before splitting the data.
+- Data duplication can result from data collection or the merging of different data sources.
+- As well, synthetic oversampling can induce duplication.
+- Solution: check for duplicates before splitting and also after splitting.
 
 ---
 
-# Detecting Data Leakage
+## Data Leakage: Common Causes (5/6)
+
+### Group leakage
+- Similar to duplication, where a group of examples have strongly correlated labels but are divided into different splits.
+- Example: in object detection, several pictures are taken a few seconds apart and are almost identical.
+
+---
+
+## Data Leakage: Common Causes (6/6)
+
+### Leakage from the data generation process
+
+- The sampling mechanism may induce duplication.
+- Ex.: patient data in critical condition is duplicated because more tests are run.
+
+---
+
+## Detecting Data Leakage
 
 - Measure the predictive power of each feature.
-  - Investigate unusually high readings.
-  - Investigate data generation and if we can derive a valid explanation.
+  - Investigate unusually high readings.
+  - Investigate data generation and whether we can derive a valid explanation.
 - Perform ablation studies (remove one feature at a time) to measure how important a feature or set of features is to your model.
-  - If removing a feature causes the model's performance to deteriorate significantly, investigate why that feature is so important.
+  - If removing a feature causes the model's performance to deteriorate significantly, investigate why that feature is so important.
 - Pay attention to new features added to the model.
 
 ---
@@ -344,7 +380,7 @@ $$
 
 ---
 
-# Too Many Features
+## Too Many Features (1/2)
 
 
 - Too many features can be bad during training and model service.
@@ -354,10 +390,10 @@ $$
 
 ---
 
-# Too Many Features
+## Too Many Features (2/2)
 
 - Too many features can increase inference latency.
-- Useless features become technicala debt. 
+- Useless features become technical debt. 
 - In principle, if a feature is not useful for prediction, regularization should get rid of it. In practice, it may be faster for the feature not to be available to the model in the first place.
 
 ---
@@ -366,7 +402,7 @@ $$
 
 ---
 
-# Permutation Feature Importance
+## Permutation Feature Importance
 
 - Measures the change in prediction error after a permutation of the values of a given feature.
 - A feature is important if shuffling its values decreases the model performance (increases error).
@@ -375,11 +411,24 @@ $$
 ![bg right:50% w:600](./images/04_nn_permutation_importance.png)
 <!---->
 
+
 ---
 
-# Partial Dependence Plots
+## Limitations of Post-Hoc Explainability Methods: Permutation Importance
 
-- Partial Dependence Plots (PDP) show the marginal effect of one or two features over the predicted outcome.
+- Not clear if training or testing data should be used.
+- Requires access to ground truth.
+- Can be biased by unrealistic data instances.
+- Adding a correlated feature can decrease the importance of the associated feature.
+
+
+
+
+---
+
+## Partial Dependence Plots
+
+- Partial Dependence Plots (PDP) show the marginal effect of one or two features on the predicted outcome.
 - Can show whether the relationship between feature and target is linear, monotonic, or more complex.
 - For classification, PDP displays the probability of a particular class given the different feature values.
 
@@ -388,25 +437,16 @@ $$
 
 ---
 
-# Limitations of Post-Hoc Explainability Methods: Permutation Importance
+## Limitations of Post-Hoc Explainability Methods: Partial Dependence Plots
 
-- Not clear if training or testing data should be used.
-- Requires access to ground truth.
-- Can be biased by unrealistic data instances.
-- Adding a correlated feature can decrease the importance of the associated feature.
-
----
-
-# Limitations of Post-Hoc Explainability Methods: Partial Dependence Plots
-
-- Maximum number of features per PDP is two.
-- Some PDP do not show the feature distribution.
+- The maximum number of features per PDP is two.
+- Some PDPs do not show the feature distribution.
 - Assumes independence between explanatory features: when features are correlated, we create new data points in areas of the feature distribution where the actual probability is very low.
 - Heterogeneous effects might be hidden because PDP shows average marginal effects.
 
 ---
 
-# Local Surrogate Models
+## Local Surrogate Models
 
 
 - Surrogate models are interpretable models trained to approximate the predictions of a black-box model.
@@ -415,9 +455,23 @@ $$
 
 ![bg right:40% w:400](./images/04_lime_fitting_1.png)
 <!--(Molnar, 2023)-->
+
 ---
 
-# SHAP Values
+## Limitations of Post-Hoc Explainability Methods: Local Surrogate Models
+
+- The correct definition of the neighbourhood is an unsolved problem when using LIME for tabular data.
+- Sampling can lead to unlikely data points.
+- Fidelity-sparsity tradeoff: the complexity of the explanation must be defined in advance.
+- Explanations can be unstable for nearby points.
+- LIME explanations can be manipulated to hide biases.
+
+
+
+
+---
+
+## SHAP Values (1/2)
 
 - Objective: explain the prediction of an instance by computing the contribution of each feature to the prediction.
 - Shapley value explanation is represented as an additive feature attribution method, a linear model.
@@ -428,7 +482,7 @@ $$
 
 ---
 
-# SHAP Values
+## SHAP Values (2/2)
 
 - Missingness: a missing feature gets an attribution of zero.
 - Consistency: if a model changes so that the marginal contribution of a feature value increases or stays the same, the SHAP value also increases or stays the same.
@@ -437,24 +491,15 @@ $$
 ![bg right:50% w:500](./images/04_boston_beeswarm.png)
 <!--Beeswarm Plot of SHAP Values (Lundberg and Lee, 2017)-->
 
----
-
-# Limitations of Post-Hoc Explainability Methods: Local Surrogate Models.
-
-- The correct definition of the neighbourhood is an unsolved problem when using LIME for tabular data.
-- Sampling can lead to unlikely data points.
-- Fidelity-sparsity tradeoff: the complexity of the explanation must be defined in advance.
-- Explanations can be unstable for nearby points.
-- LIME explanations can be manipulated to hide biases.
 
 
 ---
 
-# Limitations of Post-Hoc Explainability Methods: SHAP Values
+## Limitations of Post-Hoc Explainability Methods: SHAP Values
 
 - Difficult to interpret:
-  - Incorrect: the Shapley value of a feature value is the difference of the predicted value after removing the feature from the model training.
-  - Correct: given the current set of feature values, the contribution of a feature value to the difference between the actual prediction and the mean prediction is the estimated Shapley value.
+  - Incorrect: the Shapley value of a feature value is the difference of the predicted value after removing the feature from the model training.
+  - Correct: given the current set of feature values, the contribution of a feature value to the difference between the actual prediction and the mean prediction is the estimated Shapley value.
 - Method (non-Tree implementation) is computationally expensive.
 - SHAP (non-Tree) ignores feature dependence.
 
@@ -464,7 +509,7 @@ $$
 
 ---
 
-# References
+## References
 
 - Agrawal, A. et al. "Cloudy with high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
 - Gilyadov, J (2017). Word2Vec Explained. [URL](https://israelg99.github.io/2017-03-23-Word2Vec-Explained/)
