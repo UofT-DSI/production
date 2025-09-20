@@ -455,7 +455,7 @@ Document1: harry_potter.json
 ## Transactional vs Analytical DB
 
 
-OLTP and OLAP are terms falling out of use, since the devide is somewhat outdated:
+OLTP and OLAP are terms falling out of use, since the divide is somewhat outdated:
 
 1. The separation was due to technological limitations: transactional databases that can handle analytical queries efficiently (e.g., CocroachDB)
 2. Some solutions now decouple storage and compute (BigQuery, Snowflake, IBM, Teradata).
@@ -551,7 +551,7 @@ Three ways of passing data:
 
 ---
 
-## Data FLows 2: Data Passing Through Services
+## Data Flows 2: Data Passing Through Services
 
 
 ![bg left:50% w:500](./images/02_data_flows_2.png)
@@ -564,7 +564,7 @@ Three ways of passing data:
 
 ---
 
-## Data FLows 2: Data Passing Through Services (cont.)
+## Data Flows 2: Data Passing Through Services (cont.)
 
 
 ![bg right:30% w:300](./images/02_data_flows_2a.png)
@@ -579,7 +579,7 @@ Three ways of passing data:
 
 ---
 
-## Data FLows 3: Data Passing Through Real-Time Transport
+## Data Flows 3: Data Passing Through Real-Time Transport
 
 
 ![bg contain right:40% ](./images/02_data_flows_3.png)
