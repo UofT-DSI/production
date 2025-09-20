@@ -7,8 +7,8 @@ paginate: true
 
 <style>
 img[alt~="center"] {
-  display: block;
-  margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 }
 </style>
 
@@ -23,7 +23,7 @@ $ echo "Data Science Institute"
 
 
 **4.1 Feature Engineering**
-  
+  
 - Common Operations
 - Data Leakage
 - Feature Importance 
@@ -58,9 +58,9 @@ $ echo "Data Science Institute"
 ## Learned Features Versus Engineered Features
 
 
-- The promise of deep learning was that we no longer had to engineer features (feature or representation learning).
+- Deep learning promised that we no longer had to engineer features (feature or representation learning).
 - Why do we need to engineer features?
-- Some features can and will be automatically learned for certain use cases (vision, NLP, etc.)
+- Some features can and will be automatically learned for specific use cases (vision, NLP, etc.)
 - However, the majority of ML applications are not deep learning. 
 
 ---
@@ -77,8 +77,8 @@ $ echo "Data Science Institute"
 Feature engineering can include:
 - A transformation of a feature: standardization, scale, center, log, etc.
 - An equivalent re-representation of a feature: dummy variables, one-hot-encoding, binning, etc.
-- An interaction of two or more features such as a product or ratio: for example, calculate the ratio of a loan to the value of the collateral (or its inverse), as a new feature for default prediction.
-- A functional relationship among features: Principal Components Analysis, LDA, etc. This may also include methods for imputing missing values.
+- An interaction of two or more features, such as a product or ratio: for example, calculate the ratio of a loan to the value of the collateral (or its inverse), as a new feature for default prediction.
+- A functional relationship among features (Principal Components Analysis, LDA, etc.), including methods for imputing missing values.
 
 ---
 
@@ -91,9 +91,9 @@ Feature engineering can include:
 - Missing values are a common occurrence in production data. 
 - Missing values can be of three types:
 
-  - Missing Not At Random (MNAR): a value is missing because of the true value itself.
-  - Missing At Random (MAR): a value is missing not due to the value itself but to another observed variable. 
-  - Missing Completely At Random (MCAR): there is no pattern in missing values.
+  - Missing Not At Random (MNAR): a value is missing because of the actual value itself.
+  - Missing At Random (MAR): a value is missing not due to the value itself but to another observed variable. 
+  - Missing Completely At Random (MCAR): There is no pattern in missing values.
 
 ---
 
@@ -101,10 +101,10 @@ Feature engineering can include:
 
 - The simplest way to remove missing values is deletion.
 - *Column deletion*
-  - Remove variables with excessive missing values, but be cautious of potentially losing valuable information and compromising model performance.
+  - Remove variables with excessive missing values, but be cautious of potentially losing valuable information and compromising model performance.
 - *Row deletion*
-  - Remove samples with missing values, but only effective for MCAR with few missing values.
-  - Drawbacks: Doesn't work for MNAR data and can create biases by removing rows.
+  - Remove samples with missing values, but only effective for MCAR with a few missing values.
+  - Drawbacks: Doesn't work for MNAR data and can create biases by removing rows.
 
 ---
 
@@ -113,14 +113,14 @@ Feature engineering can include:
 - Impute missing values using default values: missing strings, filled with "".
 - Use a statistic like mean, median, or mode: fill the missing temperature with the mean temperature for the time of day within a specific window.
 - Domain specific: if prices are liquid, use the last available price.
-  
+  
 ---
 
 # Imputation 
 
 - Model-based: if two variables are correlated and one of them has missing values, model the relationship and use model results for imputation. 
 - Flag imputed missing values.
-- Avoid filling missing values with possible (fixed) values. Example: missing number of children should not be filled with 0, a possible value.
+- Avoid filling missing values with possible (fixed) values. Example: Missing number of children should not be filled with 0, a possible value.
 
 ---
 
@@ -181,7 +181,7 @@ $$
 
 - Dummy variables and One-Hot encodings are forms of encoding categorical data. 
 - Dummy variables are binary and take a value of 0 or 1.
-- They are numerical, not categorical, factor, boolean, etc.
+- They are numerical, not categorical, factor, Boolean, etc.
 
 ---
 
@@ -189,8 +189,8 @@ $$
 
 - With dummy variables, if the original variable contained *C* levels, then we will get *C-1* levels by default. 
 - For instance, our example had five levels (one per weekday), but the resulting dummy representation only has four. 
-  - We can back out the fifth value since we know that when all four values are 0, the fifth value should be 1. 
-  - This avoids a undesirable situation for certain methods called colinearity. 
+  - We can back out the fifth value since we know that when all four values are 0, the fifth value should be 1. 
+  - This avoids an undesirable situation for certain methods called colinearity. 
 - Collinearity occurs when one variable can be obtained as a linear function of others. 
 - Colinearity is a form of observing information redundancy.
 
@@ -200,7 +200,7 @@ $$
 ## Dummy Variables and One-Hot Encoding (3/3)
 
 - If the original value is missing, then all dummy variables are missing.
-- If the data contains a novel value (a value that it hand not yet considered and encoded), then all values will be missing, unless explicitly considering other values. 
+- If the data contains a novel value (a value that has not yet been considered and encoded), then all values will be missing, unless explicitly considering other values. 
 - **One-hot encoding** is similar to dummy variables, but all values receive a column. 
 
 ---
@@ -209,8 +209,8 @@ $$
 
 
 - Categories are not static: categories change over time.
-  - Categories were not represented in training data.
-  - New categories may appear over time.
+  - Categories were not represented in the training data.
+  - New categories may appear over time.
 - It is generally a good idea to consider the category UNKNOWN.
 
 ---
@@ -219,9 +219,9 @@ $$
 
 - In some cases, UNKNOWN labels may refer to samples that do not belong together: two new brands may not target the same market, new products, new IP addresses, new user accounts, etc.
 - One solution is the hashing trick:
-  - Use a hash function to generate a has for every category.
-  - The hashed value will become the index of the category.
-  - Some collisions may occur, but the overloading of the UNKNOWN category is reduced.
+  - Use a hash function to generate a hash for every category.
+  - The hashed value will become the index of the category.
+  - Some collisions may occur, but the overloading of the UNKNOWN category is reduced.
 
 ---
 
@@ -242,14 +242,14 @@ $$
 # Multivariate Transformations
 
 Some transformations may include more complex formulations or the results of models that we use to pre-process the data. 
-- Principal Compontents Analysis
+- Principal Components Analysis
 - Discriminant Analysis
 - Embeddings
 
 ---
 
 ## Principal Components Analysis: 
-  
+  
 - Principal Components Analysis (PCA) is a change of base such that orthogonal directions of maximum variation are used. 
 - Compute PC Scores of a group of variables in the data and keep only the first n (up to a percent of variability explained).
 - Reduces redundant (highly correlated) information. 
@@ -268,9 +268,9 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 # Multivariate Transformations
 
 - Other transformations:
-  - Discriminant Analysis Score: linear discriminant analysis produces a projection that maximizes linear separability.
-  - Distance to cluster centroids.
-  
+  - Discriminant Analysis Score: linear discriminant analysis produces a projection that maximizes linear separability.
+  - Distance to cluster centroids.
+  
 ---
 
 # Embeddings (1/2)
@@ -281,7 +281,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 - Training NN is computationally intensive and time-consuming.
 - Assume that an NN has been trained.
 - Pre-trained NN are available.
-- Models can be trained on general language (news articles, Wikipedia, etc.) and specialized language (legal, medical, etc.) corpus.
+- Models can be trained on general language (news articles, Wikipedia, etc.) and specialized language (legal, medical, etc.) corpora.
 
 ---
 
@@ -290,7 +290,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 ![bg left:50% w:500](./images/04_word_embeddings.png)
 <!--(Gilyadov, 2017)-->
 
-- Word embeddings map words in vocabulary with an n-dimensional vector.
+- Word embeddings map words in the vocabulary with an n-dimensional vector.
 - A popular embedding is Word2Vec.
 - NN predicts a word from its context. 
 - Similar to an autoencoder, obtained through a NN as a by-product.
@@ -342,7 +342,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 ### Poor handling of data duplication
 - Failure to remove duplicates or near-duplicates before splitting the data.
-- Data duplication can result from data collection or merging of different data sources.
+- Data duplication can result from data collection or the merging of different data sources.
 - As well, synthetic oversampling can induce duplication.
 - Solution: check for duplicates before splitting and also after splitting.
 
@@ -352,7 +352,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 ### Group leakage
 - Similar to duplication, where a group of examples have strongly correlated labels but are divided into different splits.
-- Example: in object detection, several pictures are taken a few seconds apart and almost identical.
+- Example: in object detection, several pictures are taken a few seconds apart and are almost identical.
 
 ---
 
@@ -368,10 +368,10 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 ## Detecting Data Leakage
 
 - Measure the predictive power of each feature.
-  - Investigate unusually high readings.
-  - Investigate data generation and if we can derive a valid explanation.
+  - Investigate unusually high readings.
+  - Investigate data generation and whether we can derive a valid explanation.
 - Perform ablation studies (remove one feature at a time) to measure how important a feature or set of features is to your model.
-  - If removing a feature causes the model's performance to deteriorate significantly, investigate why that feature is so important.
+  - If removing a feature causes the model's performance to deteriorate significantly, investigate why that feature is so important.
 - Pay attention to new features added to the model.
 
 ---
@@ -393,7 +393,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 ## Too Many Features
 
 - Too many features can increase inference latency.
-- Useless features become technicala debt. 
+- Useless features become technical debt. 
 - In principle, if a feature is not useful for prediction, regularization should get rid of it. In practice, it may be faster for the feature not to be available to the model in the first place.
 
 ---
@@ -428,7 +428,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 ## Partial Dependence Plots
 
-- Partial Dependence Plots (PDP) show the marginal effect of one or two features over the predicted outcome.
+- Partial Dependence Plots (PDP) show the marginal effect of one or two features on the predicted outcome.
 - Can show whether the relationship between feature and target is linear, monotonic, or more complex.
 - For classification, PDP displays the probability of a particular class given the different feature values.
 
@@ -439,8 +439,8 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 ## Limitations of Post-Hoc Explainability Methods: Partial Dependence Plots
 
-- Maximum number of features per PDP is two.
-- Some PDP do not show the feature distribution.
+- The maximum number of features per PDP is two.
+- Some PDPs do not show the feature distribution.
 - Assumes independence between explanatory features: when features are correlated, we create new data points in areas of the feature distribution where the actual probability is very low.
 - Heterogeneous effects might be hidden because PDP shows average marginal effects.
 
@@ -498,8 +498,8 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 ## Limitations of Post-Hoc Explainability Methods: SHAP Values
 
 - Difficult to interpret:
-  - Incorrect: the Shapley value of a feature value is the difference of the predicted value after removing the feature from the model training.
-  - Correct: given the current set of feature values, the contribution of a feature value to the difference between the actual prediction and the mean prediction is the estimated Shapley value.
+  - Incorrect: the Shapley value of a feature value is the difference of the predicted value after removing the feature from the model training.
+  - Correct: given the current set of feature values, the contribution of a feature value to the difference between the actual prediction and the mean prediction is the estimated Shapley value.
 - Method (non-Tree implementation) is computationally expensive.
 - SHAP (non-Tree) ignores feature dependence.
 
