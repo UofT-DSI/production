@@ -292,13 +292,16 @@ Causes:
 
 ## Monitoring ML Systems
 
-- Monitoring model performance:
-    - Prediction correctness is only part of the story.
-    - Collect performance in terms of usability and trust (preferences).
-    - Collect inferred metrics (clicks, accepted recommendations, etc.)
-- Monitoring predictions
-    - Monitor distribution shifts. 
-    - Slice analysis, backtesting, etc.
+### Monitoring model performance
+
+- Prediction correctness is only part of the story.
+- Collect performance in terms of usability and trust (preferences).
+- Collect inferred metrics (clicks, accepted recommendations, etc.)
+
+### Monitoring predictions
+
+- Monitor distribution shifts. 
+- Slice analysis, backtesting, etc.
 
 ---
 
