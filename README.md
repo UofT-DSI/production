@@ -183,6 +183,7 @@ A different learner with grades as shown bellow would receive "fail":
 ├── .gitignore
 ├── LICENSE
 ├── SETUP.md
+├── pyproject.toml
 └── README.md
 ```
 
@@ -194,6 +195,7 @@ A different learner with grades as shown bellow would receive "fail":
 * **src**: Source code, databases, logs, and required dependencies (requirements.txt) needed during the module.
 * **.gitignore**: Files to exclude from this folder, specified by the Technical Facilitator
 * **LICENSE**: The license for this repository.
-* **SETUP.md**: Contains the instructions for creating and activating the environment, and installing any packages needed for this specific module.
-* **README**: This file.
+* **SETUP.md**: Contains the steps required to set up this repo for the module.
+* **pyproject.toml**: Tells Python which packages this repo needs to run.  
+* **README.md**: This file.
 
