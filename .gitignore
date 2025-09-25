@@ -5,3 +5,52 @@
 *.parquet
 *.log
 **/__pycache__/*
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Conda
+.conda/
+.env/
+env/
+venv/
+.venv/
+env.bak/
+*.conda
+*.env
+*.yml
+environment.yml
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Data
+data/
+*.h5
+*.hdf5
+*.db
+*.sqlite
+*.pkl
+*.joblib
+*.npy
+*.npz
+
+# Build
+build/
+dist/
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# OS
+Thumbs.db
+ehthumbs.db
+Icon?
+._*
+node_modules/
