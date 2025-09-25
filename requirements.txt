@@ -1,0 +1,6 @@
+dask==2025.9.1
+hyperopt==0.2.7
+numpy==2.3.3
+pandas==2.3.2
+python-dotenv==1.1.1
+scikit_learn==1.7.2
