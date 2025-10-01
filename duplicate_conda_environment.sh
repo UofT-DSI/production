@@ -1,14 +1,18 @@
+
 #!/bin/bash
 
-# Usage: ./duplicate_conda_env.sh <new_env_name>
-# Example: ./duplicate_conda_env.sh my_env_copy
+# Usage: ./duplicate_conda_environment.sh <new_env_name> [env_file]
+# Example: ./duplicate_conda_environment.sh my_env_copy my_env_spec.txt
 
 if [ -z "$1" ]; then
-  echo "Usage: $0 <new_env_name>"
+  echo "Usage: $0 <new_env_name> [env_file]"
   exit 1
 fi
 
 NEW_ENV_NAME="$1"
+ENV_FILE="${2:-conda_env_spec.txt}"
+
+# Get the current active environment name
 CURRENT_ENV=$(conda info --json | grep -Po '"active_prefix":.*?[^\\]",' | awk -F '"' '{print $4}')
 
 if [ -z "$CURRENT_ENV" ]; then
@@ -16,13 +20,11 @@ if [ -z "$CURRENT_ENV" ]; then
   exit 2
 fi
 
-echo "Exporting environment from: $CURRENT_ENV"
-conda list --explicit > env.txt
+echo "Exporting environment from: $CURRENT_ENV to $ENV_FILE"
+conda list --explicit > "$ENV_FILE"
+echo "Environment spec saved to $ENV_FILE. You can commit this file and use it in other branches or projects."
 
-echo "Creating new environment: $NEW_ENV_NAME"
-conda create --name "$NEW_ENV_NAME" --file env.txt
+echo "To create a new environment elsewhere, run:"
+echo "  conda create --name <new_env_name> --file $ENV_FILE"
 
-echo "Cleaning up temporary file."
-rm env.txt
-
-echo "Done! New environment '$NEW_ENV_NAME' created."
+echo "Done!"
