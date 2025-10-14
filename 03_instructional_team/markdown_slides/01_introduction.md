@@ -8,7 +8,7 @@ paginate: true
 # Production: Introduction to ML Systems
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 

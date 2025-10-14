@@ -8,7 +8,7 @@ paginate: true
 # Production: Infrastructure and Organization
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 

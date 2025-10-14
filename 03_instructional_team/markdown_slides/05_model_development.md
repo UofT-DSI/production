@@ -17,7 +17,7 @@ img[alt~="center"] {
 # Production: Model Development
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 

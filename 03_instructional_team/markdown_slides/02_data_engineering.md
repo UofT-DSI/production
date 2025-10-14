@@ -8,7 +8,7 @@ paginate: true
 # Production: Data Engineering Fundamentals
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 

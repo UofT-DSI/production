@@ -8,7 +8,7 @@ paginate: true
 # Production: Data Distribution Shifts and Monitoring
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 

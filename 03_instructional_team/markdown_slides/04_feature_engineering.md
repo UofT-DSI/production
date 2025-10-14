@@ -15,7 +15,7 @@ img[alt~="center"] {
 # Production: Feature Engineering
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 

@@ -8,7 +8,7 @@ paginate: true
 # Production: Model Deployment
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 

@@ -8,7 +8,7 @@ paginate: true
 # Production: Working with Training Data
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 
