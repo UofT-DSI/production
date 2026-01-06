@@ -1,7 +1,6 @@
 ---
 marp: true
-theme: dsi-certificates-theme
-_class: invert
+theme: dsi_certificates_theme
 paginate: true
 ---
 
@@ -15,7 +14,7 @@ img[alt~="center"] {
 # Production: Feature Engineering
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 

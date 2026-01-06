@@ -1,7 +1,6 @@
 ---
 marp: true
-theme: dsi-certificates-theme
-_class: invert
+theme: dsi_certificates_theme
 paginate: true
 ---
 
@@ -17,7 +16,7 @@ img[alt~="center"] {
 # Production: Model Development
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 
@@ -243,9 +242,9 @@ SVM use linear models to implement non-linear boundaries by performing a non-lin
 
 ## Guidance for Model Selection (1/3)
 
-![h:450px center](./images/05_leaderboard_benchmark.png)
+![h:400px center](./images/05_leaderboard_benchmark.png)
 
-<center>State of the Art Model Performance on ImageNet c.2023 (paperswithcode.com)</center>
+State of the Art Model Performance on ImageNet c.2023 (paperswithcode.com)
 
 ---
 
@@ -284,10 +283,14 @@ SVM use linear models to implement non-linear boundaries by performing a non-lin
 
 ## Guidance for Model Selection (3/3)
 
-### Understand your model's assumptions
+Understand your model's assumptions:
 - Every model comes with its assumptions.
 - Prediction assumption: every model that aims to predict an output Y from an input X assumes that it is possible to predict Y based on X.
 - Independent and Identically Distributed: neural nets assume that examples are independent and identically distributed.
+
+---
+
+## Guidance for Model Selection (3/3)
 - Smoothness: supervised learning models assume that a set of functions can transform inputs into outputs such that similar inputs are transformed into similar outputs. If an input X produces Y, then an input close to X would produce an output proportionally close to Y.
 - Linear boundaries, conditional independence, normally distributed, and so on.
 

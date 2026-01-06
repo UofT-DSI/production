@@ -1,14 +1,13 @@
 ---
 marp: true
-theme: dsi-certificates-theme
-_class: invert
+theme: dsi_certificates_theme
 paginate: true
 ---
 
 # Production: Model Deployment
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 

@@ -1,14 +1,13 @@
 ---
 marp: true
-theme: dsi-certificates-theme
-_class: invert
+theme: dsi_certificates_theme
 paginate: true
 ---
 
 # Production: Infrastructure and Organization
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 

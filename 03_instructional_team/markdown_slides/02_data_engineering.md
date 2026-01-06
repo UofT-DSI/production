@@ -1,14 +1,13 @@
 ---
 marp: true
-theme: dsi-certificates-theme
-_class: invert
+theme: dsi_certificates_theme
 paginate: true
 ---
 
 # Production: Data Engineering Fundamentals
 
 ```code
-$ echo "Data Science Institute"
+$ echo "Data Sciences Institute"
 ```
 ---
 
@@ -496,6 +495,9 @@ ETL is the process of extracting data from one or several sources, transforming 
 - Use a compressed format.
 - Take advantage of clusters of computers and the cloud.
 
+---
+
+## ELT: Extract, Load, and Transform (cont.)
 
 - Also difficult to manage.
 - Inefficient to search through a massive amount of raw data for your desired data.
