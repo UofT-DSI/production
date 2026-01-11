@@ -1,6 +1,7 @@
 # Production
 
 ## Content
+
 * [Description](#description)
 * [Learning Outcomes](#learning-outcomes)
 * [Contacts](#contacts)
@@ -8,82 +9,87 @@
 * [Schedule](#schedule)
 * [Requirements](#requirements)
 * [Assessment](#assessment)
-  + [Quizzes](#quizzes)
-  + [Assignments](#assignments)
+
+    - [Quizzes](#quizzes)
+    - [Assignments](#assignments)
+
 * [Resources](#resources)
-  + [Documents](#documents)
-  + [Videos](#videos)
+
+    - [Documents](#documents)
+    - [Videos](#videos)
+
 * [Folder Structure](#folder-structure)
-* [Acknowledgement](#acknowledgement)
+
 
 
 ## Description
 
-This module provides an overview of the Design of Machine Learning Systems which are embedded within data-intensive products and applications. It covers the fundamental components of the infrastructure, systems, and methods necessary to implement and maintain Machine Learning (ML) models in production. In short, we will learn techniques to build a factory of ML models. 
+This module provides an overview of the Design of Machine Learning Systems embedded in data-intensive products and applications. It covers the fundamental components of the infrastructure, systems, and methods necessary to implement and maintain Machine Learning (ML) models in production. In short, we will learn techniques for building an ML model factory.
 
-The module has two components: 
+The module has two components:
 
-+ A discussion of the main issues and challenges faced in production, together with some approaches to address them.
-+ A live lab with demonstrations of implementation techniques. 
+* A discussion of the main issues and challenges faced in production, together with some approaches to address them.
+* A live lab with demonstrations of implementation techniques.
 
 The module covers the following areas:
 
-+ Data engineering.
-+ Feature engineering.
-+ Hyperparameter tuning.
-+ Model deployment.
-+ Model explainability.
-+ Logging, experiment tracking, and monitoring.
+* Data engineering.
+* Feature engineering.
+* Hyperparameter tuning.
+* Model deployment.
+* Model explainability.
+* Logging, experiment tracking, and monitoring.
 
-We will discuss the tools and techniques required to do the above in good order and at scale. However, we will not discuss the inner workings of models, advantages, and so on. As well, we will not discuss the theoretical aspects of feature engineering or hyperparameter tuning. We will focus on tools and reproducibility.
+We will discuss the tools and techniques required to do the above in good order and at scale. However, we will not discuss the inner workings of models, advantages, and so on. We will also not discuss the theoretical aspects of feature engineering or hyperparameter tuning. We will focus on tools and reproducibility.
 
 ## Learning Outcomes
 
 By the end of this module, participants will be able to:
 
-+ Describe the main components of a machine learning system.
-+ Explain the infrastructure required to train and test models in production.
-+ Implement an experiment tracking system and logging.
-+ Contrast and evaluate different approaches to storing and manipulating data.
-+ Design data flows and processes to automate the construction of ML models.
+* Describe the main components of a machine learning system.
+* Explain the infrastructure required to train and test models in production.
+* Implement an experiment tracking system and logging.
+* Contrast and evaluate different approaches to storing and manipulating data.
+* Design data flows and processes to automate the construction of ML models.
 
 
 ## Contacts
 
-**Questions can be submitted to the _#cohort-3-help_ channel on Slack**
+**Questions can be submitted to the _#cohort-8-help_ channel on Slack.**
 
-* Technical Facilitator: 
-  * [Jesús Calderón](https://www.linkedin.com/in/jcalderon/)
++ **Technical Facilitator** 
+
+    - [Jesús Calderón](https://www.linkedin.com/in/jcalderon/)
   
-* Learning Support Staff: 
-  * [Dmytro Bonislavskyi](https://www.linkedin.com/in/dmytro-bonislavskyi/)
-  * [Gayathri Girish](https://www.linkedin.com/in/gayathri-girish/)
-  * [Xindi Zhang](https://www.linkedin.com/in/xindicindyzhang/)
-  * [Edward Chen](https://www.linkedin.com/in/edwardchen75/)
++ **Learning Support Team**
+
+    - [Gayathri Girish](https://www.linkedin.com/in/gayathri-girish/)
+    - [Edward Chen](https://www.linkedin.com/in/edwardchen75/)
+    - [Ernani Fantinatti](https://www.linkedin.com/in/efantinatti/)
   
 
 ## Delivery of the Learning Module
 
-This module will include live learning sessions and optional, asynchronous work periods. During live learning sessions, the Technical Facilitator will introduce and explain key concepts and demonstrate core skills. Learning is facilitated during this time. Before and after each live learning session, the instructional team will be available for questions related to the core concepts of the module. Optional work periods are to be used to seek help from peers, the Learning Support team, and to work through the homework and assignments in the learning module, with access to live help. Content is not facilitated, but rather, this time should be driven by participants. We encourage participants to come to these work periods with questions and problems to work through. 
- 
-Participants are encouraged to engage actively during the learning module. The key to developing the core skills in each learning module is through practice. The more participants engage in coding along with the instructional team and apply the skills in each module, the more likely it is that these skills will solidify. 
+This module will include live learning sessions and optional, asynchronous work periods. During live learning sessions, the Technical Facilitator will introduce and explain key concepts and demonstrate core skills. Learning is facilitated during this time. Before and after each live learning session, the instructional team will be available to answer questions about the module's core concepts. Optional work periods are to be used to seek help from peers, the Learning Support team, and to work through the homework and assignments in the learning module, with access to live help. Content is not facilitated, but rather, this time should be driven by participants. We encourage participants to come to these work periods with questions and problems to work through.
+ 
+Participants are encouraged to engage actively during the learning module. The key to developing the core skills in each learning module is through practice. The more participants engage in coding alongside the instructional team and apply these skills in each module, the more likely they are to solidify them.
 
 # Schedule
 
 |Live Learning Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
-|  1  | Tue., Sept. 23, 2025    | ML System Design                 |
-|  2  | Wed., Sept. 24, 2025    | Data Engineering Fundamentals    |
-|  3  | Thur., Sept. 25, 2025    | Working with Training Data       |
-|  --  | Fri., Sept. 26, 2025     | Work Period  |
-|  --  | Sat., Sept. 27, 2025     | Work Period  |
-| --  | Sun., Sept. 28, 2025        | Submission deadline for **Assignment 1** and **Quizzes 1-3** |
-|  4  | Tue., Sept. 30, 2025     | Feature Engineering              |
-|  5  | Wed., Oct. 1, 2025     | Model Development and Evaluation |
-|  6  | Thur., Oct. 2, 2025     | Model Explanations and Monitoring|
-|  --  | Fri., Oct. 3, 2025     | Work Period  |
-|  --  | Sat., Oct. 4, 2025     | Work Period  |
-|  --  | Sun., Oct. 5, 2025     | Submission deadline for **Assignment 2** and **Quizzes 4-6** | 
+|  1  | Tue., Jan. 13, 2025    | ML System Design                 |
+|  2  | Wed., Jan. 14, 2025    | Data Engineering Fundamentals    |
+|  3  | Thur., Jan. 15, 2025    | Working with Training Data       |
+|  --  | Fri., Jan. 16, 2025     | Work Period  |
+|  --  | Sat., Jan. 17, 2025     | Work Period  |
+| --  | **Sun., Jan. 18, 2025**        | **Submission deadline for Assignment 1 and Quizzes 1-3** |
+|  4  | Tue., Jan. 19, 2025     | Feature Engineering              |
+|  5  | Wed., Jan. 20, 2025     | Model Development and Evaluation |
+|  6  | Thur., Jan. 21, 2025     | Model Explanations and Monitoring|
+|  --  | Fri., Jan. 22, 2025     | Work Period  |
+|  --  | Sat., Jan. 23, 2025     | Work Period  |
+|  --  | **Sun., Jan. 24, 2025**     | **Submission deadline for Assignment 2 and Quizzes 4-6** | 
 
 ### Requirements
 
@@ -91,12 +97,12 @@ Participants are encouraged to engage actively during the learning module. The k
 * Participants are encouraged to ask questions and collaborate with others to enhance their learning experience.
 * Participants must have a computer and an internet connection to participate in online activities.
 * Participants must have VSCode installed with the following extensions: 
-    * [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
-    * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+      - [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
+      - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 * Participants must [install Docker](https://docs.docker.com/engine/install/) as this module implements a Docker backend that will run a PostgreSQL server. This is intended to mimic a production-like environment. Participants may use SQLite if Docker is not an option.
-* Participants must not use generative AI such as ChatGPT to generate code in order to complete assignments. It should be used as a supportive tool to seek out answers to questions you may have.
+* Participants must not use generative AI such as ChatGPT to generate code in order to complete assignments. It should be used as a support tool to help you find answers to questions you may have.
 * We expect participants to have completed the steps in the [onboarding repo](https://github.com/UofT-DSI/onboarding/blob/main/environment_setup/README.md).
-* We encourage participants to default to having their camera on at all times, and turning the camera off only as needed. This will greatly enhance the learning experience for all participants and provides real-time feedback for the instructional team. 
+* We encourage participants to default to having their camera on at all times, and turning the camera off only as needed. This will greatly enhance the learning experience for all participants and provide real-time feedback for the instructional team. 
 
 ### Assessment
 
@@ -104,7 +110,7 @@ Your performance on this module will be assessed using six quizzes and two assig
 
 #### Quizzes
 
-Quizzes will help you build key concepts in data science, data engineering, and machine learning engineering. Historically, learners take 5-10 minutes to answer each quiz to obtain an average score of +80%. 
+Quizzes will help you build key concepts in data science, data engineering, and machine learning engineering. Historically, learners take 5-10 minutes to complete each quiz, achieving an average score of +80%. 
 
 + Each quiz will contain material from each live learning session.
 + You will receive a link to each quiz during the respective live learning session. The links are personalized; please do not share them. If you did not receive a link, contact any member of the course delivery team.
@@ -114,30 +120,28 @@ Each quiz will contain approximately 10 questions of various types, including tr
 
 #### Assignments
 
-Assignments will help you develop coding and debugging skills. They will cover foundational skills and will extend to advanced concepts. We recommend that you attempt all assignments and submit your work even if it is incomplete (partial submissions will get you partial marks). 
+Assignments will help you develop coding and debugging skills. They will cover foundational skills and will extend to advanced concepts. We recommend that you attempt all assignments and submit your work, even if it is incomplete (partial submissions will earn partial marks). 
 
 + Each assignment should be submitted using the usual method in DSI via a Pull Request. 
 + The assignments and their respective rubrics are:
 
-  - [Assignment 1](./02_activities/assignments/assignment_1.ipynb). [Rubric](./02_activities/assignments/assignment_1_rubric_clean.xlsx).
-  - [Assignment 2](./02_activities/assignments/assignment_2.ipynb) . [Rubric](./02_activities/assignments/assignment_2_rubric_clean.xlsx).
+    - [Assignment 1](./02_activities/assignments/assignment_1.ipynb). [Rubric](./02_activities/assignments/assignment_1_rubric_clean.xlsx).
+    - [Assignment 2](./02_activities/assignments/assignment_2.ipynb). [Rubric](./02_activities/assignments/assignment_2_rubric_clean.xlsx).
 
 
 #### Grades
 
-All participants will receive a pass or fail mark. The mark will be determined as follows:
+All participants will receive a pass or fail mark. For this course, a score of 60 points is required to receive a "pass" mark. The score will be determined as follows:
 
 + Quizzes' average score - 60%
-+ Assginment 1 - 20%
++ Assignment 1 - 20%
 + Assignment 2 - 20%
 
-Assignments' assessment can be transformed to a numeric grade using:
+Assignments' assessment can be transformed into a numeric grade using:
 
 + Complete - 100 points
 + Incomplete / Partially Complete - 50 points
 + Missing / Not submitted - 0 points
-
-For this course, 60 points are required to receive a "pass" mark.
 
 For example, a learner with the following grades would receive "pass":
 
@@ -198,4 +202,3 @@ A different learner with grades as shown below would receive "fail":
 * **SETUP.md**: Contains the steps required to set up this repo for the module.
 * **pyproject.toml**: Tells Python which packages this repo needs to run.  
 * **README.md**: This file.
-

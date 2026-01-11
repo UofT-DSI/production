@@ -57,9 +57,9 @@ $ echo "Data Sciences Institute"
 - Sampling is embedded across the ML lifecycle: data exploration, train/validation/test split, etc.
 - Sometimes, sampling is necessary:
 
-    - We cannot access all possible data in the real world.
-    - Using all data is unfeasible, costly, or otherwise impractical.
-    - Accomplish a task faster and cheaper: experiment with a new model, explore data, etc.
+    + We cannot access all possible data in the real world.
+    + Using all data is unfeasible, costly, or otherwise impractical.
+    + Accomplish a task faster and cheaper: experiment with a new model, explore data, etc.
 
 
 ---
@@ -135,9 +135,9 @@ Generally, selecting data to train ML methods using this family of sampling meth
 - This method allows us to leverage domain expertise.
 - Can be used to adjust samples that are coming from a different distribution than the original data:
 
-    - Assume the data contains 25% red samples and 75% blue samples. 
-    - We know the actual distribution is closer to 50% red and 50% blue.
-    - We can apply red weights that are three times higher than blue weights.
+    + Assume the data contains 25% red samples and 75% blue samples. 
+    + We know the actual distribution is closer to 50% red and 50% blue.
+    + We can apply red weights that are three times higher than blue weights.
 
 ---
 
@@ -146,8 +146,9 @@ Generally, selecting data to train ML methods using this family of sampling meth
 - Ideal for streaming data with a complex universe concept.
 - Aim: unbiased sampling from Twitter feed.
 - Goals:
-    - Ensure equal probability for each tweet.
-    - Ability to halt the algorithm with a correct sampling distribution.
+
+    - Ensure equal probability for each tweet.
+    - Ability to halt the algorithm with a correct sampling distribution.
 
 ![bg right:50% w:500](./images/03_reservoir.png)
 
@@ -159,9 +160,9 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
 - Reservoir sampling:
 
-    - Put the first k elements into the reservoir.
-    - For each incoming nth element, generate a random number i such that 1 ≤ i ≤ n.
-    - If 1 ≤ i ≤ k: replace the ith element in the reservoir with the nth element. Else, do nothing.
+    - Put the first k elements into the reservoir.
+    - For each incoming nth element, generate a random number i such that 1 ≤ i ≤ n.
+    - If 1 ≤ i ≤ k: replace the ith element in the reservoir with the nth element. Else, do nothing.
 
 - Each incoming nth element has a k/n probability of being in the reservoir.
 
@@ -180,8 +181,8 @@ Generally, selecting data to train ML methods using this family of sampling meth
 - Getting hand-labelled data takes a lot of work.  
 - It is expensive, particularly if subject matter expertise is required. For instance, compare:
 
-    - Hand-label a sentiment data set.
-    - Hand-label a medical diagnosis data set.
+    - Hand-label a sentiment data set.
+    - Hand-label a medical diagnosis data set.
 
 - It may be invasive: hand-labelling data requires someone to see the data. 
 - Hand labelling is slow.
@@ -226,9 +227,9 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
 - Natural labels that are inferred from user behaviours like clicks and ratings are known as behavioural labels.
 - Behavioural labels can be:
-    
-    - Explicit labels are observed from user behaviour (click, upvote, rating, etc.)
-    - Implicit labels are inferred by non-behaviour, for example, ads that are not clicked. 
+    
+    - Explicit labels are observed from user behaviour (click, upvote, rating, etc.)
+    - Implicit labels are inferred by non-behaviour, for example, ads that are not clicked. 
 
 - Inferring an implicit label depends on the feedback loop length, which is the time between serving a prediction and the feedback on it provided.
 
