@@ -95,8 +95,8 @@ Participants are encouraged to engage actively during the learning module. The k
     * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 * Participants must [install Docker](https://docs.docker.com/engine/install/) as this module implements a Docker backend that will run a PostgreSQL server. This is intended to mimic a production-like environment. Participants may use SQLite if Docker is not an option.
 * Participants must not use generative AI such as ChatGPT to generate code in order to complete assignments. It should be used as a supportive tool to seek out answers to questions you may have.
-* We expect participants to have completed the steps in the [onboarding repo](https://github.com/UofT-DSI/onboarding/).
-* We encourage participants to have their camera on at all times and to turn the camera off only as needed. Using your camera greatly enhances the learning experience for all participants and provides real-time feedback for the instructional team. 
+* We expect participants to have completed the steps in the [onboarding repo](https://github.com/UofT-DSI/onboarding/blob/main/environment_setup/README.md).
+* We encourage participants to default to having their camera on at all times, and turning the camera off only as needed. This will greatly enhance the learning experience for all participants and provides real-time feedback for the instructional team. 
 
 ### Assessment
 
@@ -182,6 +182,8 @@ A different learner with grades as shown below would receive "fail":
 ├── 05_src
 ├── .gitignore
 ├── LICENSE
+├── SETUP.md
+├── pyproject.toml
 └── README.md
 ```
 
@@ -193,5 +195,7 @@ A different learner with grades as shown below would receive "fail":
 * **src**: Source code, databases, logs, and required dependencies (requirements.txt) needed during the module.
 * **.gitignore**: Files to exclude from this folder, specified by the Technical Facilitator
 * **LICENSE**: The license for this repository.
-* **README**: This file.
+* **SETUP.md**: Contains the steps required to set up this repo for the module.
+* **pyproject.toml**: Tells Python which packages this repo needs to run.  
+* **README.md**: This file.
 
