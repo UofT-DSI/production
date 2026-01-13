@@ -42,7 +42,7 @@ In our course, we will set up the following services:
 + Alternatively, you can bring all images down, including their volumes, with: `docker compose down -v`. 
 
     - The `-v` flag removes volumes. 
-    - It is the best option when you are do not need the data any more because **it will delete the data in your DB **. 
+    - It is the best option when you do not need the data any more because **it will delete the data in your DB **. 
 
 
 ## Connecting to the MLFlow UI
