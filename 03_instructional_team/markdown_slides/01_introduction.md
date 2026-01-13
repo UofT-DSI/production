@@ -34,7 +34,7 @@ $ echo "Data Sciences Institute"
 - **1.3 Project Setup**
     - Introduction.
     - Repo File Structure.
-    - Git, authorization, and production pipelines.
+    - Git, authorisation, and production pipelines.
     - VS Code and Git.
     - Python virtual environments.
     - Branching Strategies.
@@ -101,11 +101,9 @@ ML is a collection of methods that allow a computer to:
 ## When to Use ML?
 
 - A business problem is not the same as an ML problem.
-
-    - Generally, a business will be concerned with profit maximization (directly or indirectly): increasing sales, cutting costs, enhancing customer satisfaction, reducing churn, increasing time on the website, etc.
-    - The objective of an ML method is to enhance the performance of the task, given more data.
-    - Optimising ML performance metrics does not automatically translate to optimizing business performance.
-
+    - The objective of a business is generally concerned with profit maximisation: increasing sales, cutting costs, enhancing customer satisfaction, reducing churn, increasing time on the website, etc.
+    - The objective of an ML method is to enhance the performance of the task, given more data.
+- Optimising ML performance metrics does not automatically translate to optimising business performance.
 - Some of the most popular business applications of ML are in areas where business and ML performance overlap: fraud detection, recommender systems, etc.
 
 ---
@@ -150,7 +148,7 @@ ML is a collection of methods that allow a computer to:
 ### Unseen data
 
 - Unseen data shares patterns with the training data.
-- The learning method generalizes reasonably well on testing data.
+- The learning method generalises reasonably well on testing data.
 
 ### It is repetitive
 
@@ -232,7 +230,7 @@ ML is a collection of methods that allow a computer to:
 ### Computational priorities during model development        
 
 - Training is the bottleneck.
-- Throughput, the number of cases processed, should be maximized. 
+- Throughput, the number of cases processed, should be maximised. 
 
 ---
 
@@ -240,7 +238,7 @@ ML is a collection of methods that allow a computer to:
 ### Computational priorities in production
 
 - Fast inference is desirable.
-- Latency, the time between when a query is received and when it is addressed, should be minimized.
+- Latency, the time between when a query is received and when it is addressed, should be minimised.
 - Latency is usually measured using percentiles of time elapsed (e.g., 99th percentile should be below X ms.)
 
 ![bg contain right:40%](./images/01_latency_throughput.png)
@@ -286,7 +284,7 @@ ML is a collection of methods that allow a computer to:
 ## Designing Data-Intensive Applications
 
 - Many applications today are data-intensive instead of compute-intensive.
-    - The limit factor is data and not computation.
+    - The limiting factor is data and not computation.
     - Concerns: the amount of data, the complexity of data, and the speed at which it changes.
 - ML Systems tend to be embedded in data-intensive applications.
 - (Kleppmann, 2017)
@@ -344,8 +342,8 @@ Have things changed that much? (Huyen, 2022) and [CRISP-DM (c. 1999)](https://ww
     - Regression.    
 
 - A regression model can be framed as a classification model and vice versa.
-    - Regression to classification: apply quantization.
-    - Classification to regression: predict the likelihood of class.
+    - Regression to classification: apply quantisation.
+    - Classification to regression: predict the likelihood of a class.
     
 ---
 
@@ -374,7 +372,7 @@ Have things changed that much? (Huyen, 2022) and [CRISP-DM (c. 1999)](https://ww
 
 ## Objective Functions (1/2)
 
-- ML requires an objective function to guide the learning process through optimization. 
+- ML requires an objective function to guide the learning process through optimisation. 
 - In the context of ML:
     
     - Regression tasks generally employ error or accuracy metrics: Root Mean Square Error (RMSE) or Mean Absolute Error (MAE).
@@ -390,7 +388,7 @@ Have things changed that much? (Huyen, 2022) and [CRISP-DM (c. 1999)](https://ww
  H(y, p)=-\frac{1}{N}\sum_{i=1}^{n}\left(y_i ln(\hat{p}_{i}) +(1-y_{i})ln(1-\hat{p}_{i})\right)
  $$
 
-- Formulation is related to maximum likelihood: minimizing negative log-likelihood is the "same" as minimizing log loss.
+- Formulation is related to maximum likelihood: minimising negative log-likelihood is the "same" as minimising log loss.
 
 ---
 

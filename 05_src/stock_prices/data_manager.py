@@ -100,12 +100,15 @@ class DataManager():
         '''
         _logs.info(f'Saving data by year') 
         for ticker in price_dt['ticker'].unique():
+            _logs.info(f'Processing ticker: {ticker}')
             ticker_dt = price_dt[price_dt['ticker'] == ticker]
             ticker_dt = ticker_dt.assign(Year = ticker_dt.Date.dt.year)
             for yr in ticker_dt['Year'].unique():
+                _logs.info(f'Processing year {yr} for ticker {ticker}.')
                 yr_dd = dd.from_pandas(ticker_dt[ticker_dt['Year'] == yr],2)
                 yr_path = os.path.join(out_dir, ticker, f"{ticker}_{yr}")
                 os.makedirs(os.path.dirname(yr_path), exist_ok=True)
+                _logs.info(f'Writing data to path: {yr_path}')
                 yr_dd.to_parquet(yr_path, engine = "pyarrow")
 
 
@@ -150,23 +153,29 @@ class DataManager():
         _logs.info(f'Creating features')
         _logs.debug(f'Columns in price data {self.price_dd.columns}')
         price_dd = self.price_dd
-        features = (price_dd.groupby('ticker', group_keys=False)
-                            .apply(
-                                lambda x: x.assign(
-                                    Close_lag_1 = x['Close'].shift(1))
-                            ))
-        self.features = features
+        features = (
+            price_dd
+                .groupby('ticker', group_keys=False)
+                .apply(
+                    lambda x: x.sort_values('Date', ascending = True)
+                            .assign(Close_lag_1 = x['Close'].shift(1)), 
+                    meta = pd.DataFrame(data ={'Date': 'datetime64[ns]',
+                            'Open': 'f8',
+                            'High': 'f8',
+                            'Low': 'f8',
+                            'Close': 'f8',
+                            'Adj Close': 'f8',
+                            'Volume': 'i8',
+                            'source': 'object',
+                            'Year': 'int32',
+                            'Close_lag_1': 'f8'},
+                            index = pd.Index([], dtype=pd.StringDtype(), name='ticker'))
+            ))
+        dd_returns = features.assign(
+            Returns = lambda x: x['Close']/x['Close_lag_1'] - 1
+        )
+        self.features = dd_returns
 
-    def create_target(self, target_name = 'positive_return', target_window = 1):
-        '''
-        Create target variable.
-        '''
-
-        _logs.info(f'Creating target')
-        self.features = (self.features.groupby('ticker', group_keys=False).apply(
-                        lambda x: x.sort_values('Date').assign(
-                            target = lambda x: x[target_name].shift(-target_window)
-                        )))
 
     def save_features(self):
         '''
@@ -174,10 +183,23 @@ class DataManager():
         '''
         _logs.info(f'Saving features to {self.features_path}')
         _logs.debug(f'Features columns {self.features.columns}')
-        self.features.to_parquet(
-            self.features_path, 
-            write_index = True, 
-            overwrite = True)
+        self.features.to_parquet(FEATURES_DATA, 
+                   overwrite = True,
+                   write_index = True,
+                   schema={
+                       'Date': 'timestamp[ns]',
+                       'Open': 'float64',
+                       'High': 'float64',
+                       'Low': 'float64',
+                       'Close': 'float64',
+                       'Adj Close': 'float64',
+                       'Volume': 'int64',
+                       'source': 'string',
+                       'Year': 'int32',
+                       'Close_lag_1': 'float64',
+                       'Returns': 'float64',
+                       'ticker': 'large_string'
+                   })
         
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Download and process stock price data.')

@@ -94,7 +94,7 @@ A failure happens when one or more expectations of the system are not met:
 
 - A key assumption is that training and unseen data come from the same distribution.
 - When we say that a model *learns* from data, we are saying that the model learns the distribution of the training data to use this information on unseen data.
-- When predictions on unseen data are satisfactory, we say the model "generalizes to unseen data".
+- When predictions on unseen data are satisfactory, we say the model "generalizes to unseen data.
 - The test data used in the model development phase and the cross-validation are *estimates* of the error in unseen (production) data.
 - Reasons for difference:
     - Data collection, encoding, and instrumentation.
@@ -181,7 +181,7 @@ $$
     - $P(X)$ changes. 
     - $P(Y|X)$ does not change.
 - Widely studied distribution shifts. 
-- Covariate is an independent variable that can influence the outcome of a statistical trial but it is not of direct interest.
+- A covariate is an independent variable that can influence the outcome of a statistical trial, but it is not of direct interest.
 - Example: while predicting house prices as a function of location, a covariate is square footage.
 
 ---
@@ -272,7 +272,7 @@ Causes:
 ### Classes of metrics to monitor
 
 - Operational metrics: 
-    + Convey the health of the system. Operational metrics are related to the network, machine, and application. 
+    + Convey the system's health. Operational metrics relate to the network, machines, and applications. 
     + Ex.: Latency, throughput, prediction requests per unit of time, percentage of successful predictions, CPU/GPU utilization, memory use, etc.
     
 - ML-specific metrics: Model performance, predictions, features, and raw inputs.

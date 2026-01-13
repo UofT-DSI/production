@@ -24,7 +24,7 @@ $ echo "Data Sciences Institute"
 
 - Sampling in Python.
 - An initial training pipeline.
-- Modularizing the training pipeline.
+- Modularising the training pipeline.
 - Decoupling settings, parameters, data, code, and results.
 
 ---
@@ -44,7 +44,7 @@ $ echo "Data Sciences Institute"
 
 ![h:450px](./images/03_flock_ref_arhitecture_highlighted_3.png)
 
-<center>Agrawal et al (2019)</center>
+<center>Agrawal et al. (2019)</center>
 
 ---
 
@@ -137,7 +137,7 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
     + Assume the data contains 25% red samples and 75% blue samples. 
     + We know the actual distribution is closer to 50% red and 50% blue.
-    + We can apply red weights that are three times higher than blue weights.
+    + We can apply red weights that are three times as high as blue weights.
 
 ---
 
@@ -162,7 +162,7 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
     - Put the first k elements into the reservoir.
     - For each incoming nth element, generate a random number i such that 1 ≤ i ≤ n.
-    - If 1 ≤ i ≤ k: replace the ith element in the reservoir with the nth element. Else, do nothing.
+    - If 1 ≤ i ≤ k: replace the ith element in the reservoir with the nth element. Otherwise, do nothing.
 
 - Each incoming nth element has a k/n probability of being in the reservoir.
 
@@ -348,7 +348,7 @@ To handle class imbalance:
 ## Class Probabilities Carry Information
 
 - A greater Area Under the ROC Curve (AUC ROC) indicates a better model: AUC ROC can be interpreted as the probability that the classifier ranks a randomly chosen positive instance above a randomly chosen negative one.
-- AUC ROC measures the ranking order of a model's prediction: it is useful when costs are unavailable and class distributions are unknown.
+- AUC ROC measures the ranking order of a model's prediction: it is useful when costs are unavailable, and class distributions are unknown.
 
 ![bg right:40% w:400](./images/03_roc_curve_comparison.png)
 
@@ -364,7 +364,7 @@ To handle class imbalance:
  $$
 
 
-- Formulation is related to maximum likelihood: minimizing negative log-likelihood is the "same" as minimizing log loss.
+- Formulation is related to maximum likelihood: minimising negative log-likelihood is the "same" as minimising log loss.
 
 ---
 
@@ -377,7 +377,7 @@ To handle class imbalance:
 Loss = -(1*ln(0.9)) = 0.1054
 ```
 
-- If the model is unsure and predicted 0.5, then 
+- If the model is unsure and predicts 0.5, then 
 
 ```
 Loss = -(1*ln(0.5)) = 0.6931
@@ -393,7 +393,7 @@ Loss = -(1*ln(0.1)) = 2.3026
 
 ## Class Weights
 
-- Some models can optimize a cost or loss function that differentiates for specific types of errors.
+- Some models can optimise a cost or loss function that differentiates for specific types of errors.
 - In some instances, one can assume that misclassifying minority events (false negatives) is more costly than incorrectly predicting non-events (false positives).
 
 - Relative cost or class weights can be determined by
@@ -418,7 +418,7 @@ $$
 
 ## SMOTE and ADASYN 
 
-- SMOTE: Synthetic Minority Oversampling TEchnique
+- SMOTE: Synthetic Minority Oversampling Technique
   - Creates new instances based on random linear combinations of existing cases.
 - ADASYN: Adaptive Synthetic Sampling Method
   - Similar to SMOTE, but new instances are generated based on density.

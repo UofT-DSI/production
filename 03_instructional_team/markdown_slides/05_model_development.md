@@ -55,7 +55,7 @@ $ echo "Data Sciences Institute"
 ## The Flock Reference Architecture
 
 ![h:470px center](./images/05_flock_ref_architecture_highlighted_5.png)
-<center>Agrawal et al (2019)</center>
+<center>Agrawal et al. (2019)</center>
 
 ---
 
@@ -107,7 +107,7 @@ Linear Discriminant Analysis (LDA):
 
 
 Quadratic Discriminant Analysis (QDA): 
-+ Classes do not share covariance matrix.
++ Classes do not share a covariance matrix.
 
 ![bg contain right:45%](./images/05_qda.png)
 
@@ -135,7 +135,7 @@ $$
 ## Unregularized Decision Trees
 
 + Divide-and-conquer strategy: segment data based on an attribute such that information gain is maximized. 
-+ Information can be measured with Gini coefficient or entropy.
++ Information can be measured with the Gini coefficient or entropy.
 + Fully expanded decision trees often contain unnecessary structure.
 
 ![bg contain right:45%](./images/05_decision_tree_no_reg.png)
@@ -146,7 +146,7 @@ $$
 ## Regularized Decision Trees
 
 + Pre-pruning: during training, decide which branches to stop developing.
-+ Post-pruning: subtree replacement involves training a full tree, then decide if a branch can be substituted by a leaf node.
++ Post-pruning: subtree replacement involves training a full tree, then deciding if a branch can be substituted by a leaf node.
 + Constrain tree depth or number of examples in leaf nodes (hyperparameters).
 
 
@@ -159,7 +159,7 @@ $$
 
 + Bagging = Bootstrap + Aggregation
 ### Bootstrap
-+ Create subsets of data by sampling with replacement; train decision trees on each subset.
++ Create data subsets by sampling with replacement; train decision trees on each subset.
 
 ### Aggregation
 
@@ -195,7 +195,7 @@ $$
 
 ## Support Vector Machines (2/2)
 
-SVM use linear models to implement non-linear boundaries by performing a non-linear mapping of inputs:
+SVMs use linear models to implement non-linear boundaries by performing a non-linear mapping of inputs:
 - Polynomial
 - Radial Basis Function
 - Sigmoid
@@ -231,9 +231,9 @@ SVM use linear models to implement non-linear boundaries by performing a non-lin
 
 ### Avoid the state-of-the-art trap
 - Researchers evaluate models in academic settings: if a model is state-of-the-art, it performs better than existing models on some static dataset.
-- It is essential to remain up to date but solve the problem first.
+- It is essential to remain up to date, but solve the problem first.
 - Start with the simplest models
-- Simple is better than complex: easier to deploy, easier to understand, and serve as a baseline.
+- Simple is better than complex: easier to deploy, easier to understand, and serves as a baseline.
 - Easier to deploy: speeds up the experimentation cycle.
 - Easier to understand: adds complexity as needed.
 - Baseline: simple models serve as a starting comparison point for model development.
@@ -285,7 +285,7 @@ State of the Art Model Performance on ImageNet c.2023 (paperswithcode.com)
 
 Understand your model's assumptions:
 - Every model comes with its assumptions.
-- Prediction assumption: every model that aims to predict an output Y from an input X assumes that it is possible to predict Y based on X.
+- Prediction assumption: Every model that aims to predict an output Y from an input X assumes that it is possible to predict Y based on X.
 - Independent and Identically Distributed: neural nets assume that examples are independent and identically distributed.
 
 ---
@@ -302,7 +302,7 @@ Understand your model's assumptions:
 
 ## The Wisdom of the Crowds
 
-> “Aggregating the judgment of many consistently beats the accuracy of the average member of the group, and is often as startlingly accurate […] In fact, in any group there are likely to be individuals who beat the group. But those bull’s-eye guesses typically say more about the power of luck […] than about the skill of the guesser. That becomes clear when the exercise is repeated many times.” (Tetlock and Gardner, 2015)
+> “Aggregating the judgment of many consistently beats the accuracy of the average member of the group, and is often as startlingly accurate […] In fact, in any group, there are likely to be individuals who beat the group. But those bull’s-eye guesses typically say more about the power of luck […] than about the skill of the guesser. That becomes clear when the exercise is repeated many times.” (Tetlock and Gardner, 2015)
 
 ---
 
@@ -432,14 +432,14 @@ Understand your model's assumptions:
 
 - Theoretical constraints: model assumptions are not met. For example, use a linear model when decision boundaries are not linear.
 - Poor implementation: The model may be a good fit, but implementation has errors. 
-- Poor choice of hyperparameters: with the same model, one set of hyperparameters can give better results than others.
+- Poor choice of hyperparameters: With the same model, one set of hyperparameters can give better results than others.
 
 ---
 
 ## Debugging: Why ML Models Fail
 
 - Data problems: noise and dirty data are everywhere. Additionally, poor implementation of data flows can lead to data problems.
-- Poor choice of features: Too many features may cause overfitting or data leakage. Too few features might lack predictive power to allow for making good predictions.
+- Poor choice of features: Too many features may cause overfitting or data leakage. Too few features might lack the predictive power to make good predictions.
 - Some debugging approaches:
     - Start simple and gradually add more components.
     - Overfit a single batch.
@@ -487,7 +487,7 @@ Understand your model's assumptions:
 
 ### Model calibration or conformal prediction methods
 - Idea: If the forecast has a 70% chance of rain, then 70% of the time this forecast was made, it actually rained.
-- Prediction scores are often normalized to values between 0 and 1. It is tempting to think of them as probabilities, but they are not necessarily so.
+- Prediction scores are often normalized to values between 0 and 1. It is tempting to think of them as probabilities, but they need not be.
 - Use conformal prediction methods to calibrate prediction scores.
 - Confidence measurement: show only predictions where the model is confident.
 - Slice-based evaluation: model performance is different in subsets of data. 
