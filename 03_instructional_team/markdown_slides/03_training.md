@@ -380,7 +380,7 @@ Loss = -(1*ln(0.9)) = 0.1054
 - If the model is unsure and predicts 0.5, then 
 
 ```
-Loss = -(1*ln(0.5)) = 0.6932
+Loss = -(1*ln(0.5)) = 0.6931
 ```
 
 - If the model is confident but incorrectly predicted 0.1, then 
