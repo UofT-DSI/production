@@ -2,6 +2,9 @@
 .vscode/
 *.zip
 *.csv
+*.xls
+*.xlsx
+*.xlsm
 *.parquet
 *.log
 **/__pycache__/*
