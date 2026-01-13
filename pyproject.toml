@@ -15,6 +15,7 @@ dependencies = [
     "pyarrow>=21.0.0",
     "python-dotenv>=1.1.1",
     "scikit-learn>=1.7.2",
+    "seaborn>=0.13.2",
     "utils>=1.0.2",
     "yfinance>=0.2.65",
 ]
