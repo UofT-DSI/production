@@ -18,7 +18,7 @@ $ echo "Data Sciences Institute"
 ## Agenda
 
 **6.1 Model Deployment and Prediction Service**
-    
+    
 - ML Deployment Myths and Anti-Patterns
 - Batch Prediction vs Online Prediction
 
@@ -80,9 +80,9 @@ $ echo "Data Sciences Institute"
 - Model performance decays over time.
 - Deployments should be easy:
 
-    - The development environment should resemble the production environment as closely as possible.
-    - Infrastructure should be easier to rebuild than to repair.
-    - Small incremental and frequent changes.
+    - The development environment should resemble the production environment as closely as possible.
+    - Infrastructure should be easier to rebuild than to repair.
+    - Small incremental and frequent changes.
 
 
 ---
@@ -98,7 +98,7 @@ $ echo "Data Sciences Institute"
 ### 4. Most ML engineers don't need to worry about scale
 
 - Scale means different things to different applications.
-- Number of users, availability, speed or volume of data.
+- Number of users, availability, speed, or volume of data.
 
 ---
 

@@ -4,7 +4,7 @@ theme: dsi_certificates_theme
 paginate: true
 ---
 
-# Production: Infrastructure and Organization
+# Production: Infrastructure and Organisation
 
 ```code
 $ echo "Data Sciences Institute"
@@ -56,8 +56,8 @@ $ echo "Data Sciences Institute"
 # Storage and Compute
 
 - ML systems require and produce a lot of data.
-- Storage layer can be HDD or SDD, but can also be blob (binary large object) storage.
-- Over the last decade, storage has been commoditized in the cloud.
+- Storage layer can be HDD or SSD, but can also be blob (binary large object) storage.
+- Over the last decade, storage has been commoditised in the cloud.
 
 ---
 
@@ -67,12 +67,12 @@ $ echo "Data Sciences Institute"
 - Compute can be permanent or ephemeral: 
     - Training has spiky compute requirements that tend to be ephemeral.
     - DB will require some compute to operate and, generally, this compute is permanent.
-- Compute and storage can scale: cloud infrastructure is attractive for its elasticity (it grows with needs.)
-- Compute must have access to storage, therefore, it is important to consider the cost of data transmission.
+- Compute and storage can scale: cloud infrastructure is attractive for its elasticity (it grows with needs)
+- Compute must have access to storage; therefore, it is important to consider the cost of data transmission.
 
 ---
 
-# Development Environment
+# Development Environment (1/2)
 
 - Where ML engineers write code, run experiments, and interact with the production environment.
 - Consists of IDE, versioning, and CI/CD.
@@ -80,28 +80,28 @@ $ echo "Data Sciences Institute"
 
 ---
 
-# Development Environment
+# Development Environment (2/2)
 
 - Versioning is fundamental for ML System implementation. 
 - Dev environment should be built for CI/CD:
     - Automated testing.
     - Continuous integration.
-    - Andon Cord: capability to revert to latest working verison of system.
-- Dev Environment should ressemble the production environment as closely as possible.
+    - Andon Cord: capability to revert to the latest working version of the system.
+- Dev Environment should resemble the production environment as closely as possible.
 
 ---
 
 # Resource Management
 
 - In terrestrial data centres, storage and compute are finite.
-- With cloud infrastructure, storage and compute are elastic, but they are charged by utilization.
+- With cloud infrastructure, storage and compute are elastic, but they are charged by utilisation.
 - Two key characteristics to consider:
     - Repetitiveness.
     - Dependencies.
 
 ![bg right:50% w:500](./images/08_dag_example.png)
 
-<!-- Tasks can be organized in Directed Acyclical Graphs (DAGs) using orchestrators (Huyen, 2021) -->
+<!-- Tasks can be organised in Directed Acyclical Graphs (DAGs) using orchestrators (Huyen, 2021) -->
 
 ---
 
@@ -109,10 +109,10 @@ $ echo "Data Sciences Institute"
 
 ---
 
-# Roles, Tasks, and Skills
+# Roles, Tasks, and Skills (1/4)
 
 - CDO/DS Leader: 
-    - Bridges the gap between business and datas science.
+    - Bridges the gap between business and data science.
     - Defines the vision and technical lead. 
     - Skills: leadership, design thinking, data science/ML, domain experience.
 - Data engineer:
@@ -122,46 +122,46 @@ $ echo "Data Sciences Institute"
 
 ---
 
-# Roles, Tasks, and Skills
+# Roles, Tasks, and Skills (2/4)
 
 - Analyst:
-    - Collects, cleans, transforms data.
+    - Collects, cleans, and transforms data.
     - Interprets analytical results, reports and communicates.
     - Skills: R, Python, SQL, BI Tools.
-- Visualization Engineer
+- Visualisation Engineer
     - Makes sense of data and analysis output by showing it in the right context.
     - Articulate business problems and display solutions with data.
     - Skills: design thinking, BI Tools, presentation and writing.
 
 ---
 
-# Roles, Tasks, and Skills (cont.)
+# Roles, Tasks, and Skills (3/4)
 
 - Data Scientist
     - Solves business tasks using ML and data.
     - Data preparation, training, and evaluating models.
     - Skills: R, Python, modelling, data manipulation.
 - ML Engineer
-    - Combines software engineering and modeling to implement data intensive products.
+    - Combines software engineering and modelling to implement data-intensive products.
     - Deploys models into production and at scale.
     - Python, Spark, Julia, MLOps, DevOps, CI/CD.
 
 ---
 
-# Roles, Tasks, and Skills
+# Roles, Tasks, and Skills (4/4)
 
 - Subject Matter Expert
-    - Applies rigorous methods developed in area of expertise.
+    - Applies rigorous methods developed in the area of expertise.
     - Help decision-makers come to conclusions safely beyond ML models.
     - Ex: Statistician, Actuary, Econometrician, Physicist, Epidemiologist
 - Model validation
     - Independently validate models, including their interpretation.
     - Perform technical testing.
-    - Skills: similar to data scientis/SME.
+    - Skills: similar to a data scientist/SME.
 
 ---
 
-# Where to Focus Our Efforts?
+# Where to Focus Our Efforts? (1/2)
 
 ![bg left:50% w:500](./images/08_areas_of_focus.png)
 
@@ -170,12 +170,12 @@ $ echo "Data Sciences Institute"
 Start with the data:
 
 - Mature proprietary solutions have stronger support for data management.
-- Providing complete and useable thrid-party solutions is non-trivial.
+- Providing complete and usable third-party solutions is non-trivial.
 - There is no data analysis without data.
 
 ---
 
-# Where to Focus Our Efforts?
+# Where to Focus Our Efforts? (2/2)
 
 ![bg left:50% w:500](./images/08_areas_of_focus.png)
 

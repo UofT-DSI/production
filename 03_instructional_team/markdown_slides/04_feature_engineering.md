@@ -6,8 +6,8 @@ paginate: true
 
 <style>
 img[alt~="center"] {
-  display: block;
-  margin: 0 auto;
+    display: block;
+    margin: 0 auto;
 }
 </style>
 
@@ -22,7 +22,7 @@ $ echo "Data Sciences Institute"
 
 
 **4.1 Feature Engineering**
-  
+    
 - Common Operations
 - Data Leakage
 - Feature Importance 
@@ -50,7 +50,7 @@ $ echo "Data Sciences Institute"
 ## The Flock Reference Architecture
 
 ![h:450px center](./images/04_flock_ref_arhitecture_highlighted_4.png)
-<center>Agrawal et al (2019)</center>
+<center>Agrawal et al. (2019)</center>
 
 ---
 
@@ -90,9 +90,9 @@ Feature engineering can include:
 - Missing values are a common occurrence in production data. 
 - Missing values can be of three types:
 
-  - Missing Not At Random (MNAR): a value is missing because of the actual value itself.
-  - Missing At Random (MAR): a value is missing not due to the value itself but to another observed variable. 
-  - Missing Completely At Random (MCAR): There is no pattern in missing values.
+    - Missing Not At Random (MNAR): a value is missing because of the actual value itself.
+    - Missing At Random (MAR): a value is missing not due to the value itself but to another observed variable. 
+    - Missing Completely At Random (MCAR): There is no pattern in missing values.
 
 ---
 
@@ -100,10 +100,10 @@ Feature engineering can include:
 
 - The simplest way to remove missing values is deletion.
 - *Column deletion*
-  - Remove variables with excessive missing values, but be cautious of potentially losing valuable information and compromising model performance.
+    - Remove variables with excessive missing values, but be cautious of potentially losing valuable information and compromising model performance.
 - *Row deletion*
-  - Remove samples with missing values, but only effective for MCAR with a few missing values.
-  - Drawbacks: Doesn't work for MNAR data and can create biases by removing rows.
+    - Remove samples with missing values, but only effective for MCAR with a few missing values.
+    - Drawbacks: Doesn't work for MNAR data and can create biases by removing rows.
 
 ---
 
@@ -112,12 +112,12 @@ Feature engineering can include:
 - Impute missing values using default values: missing strings, filled with "".
 - Use a statistic like mean, median, or mode: fill the missing temperature with the mean temperature for the time of day within a specific window.
 - Domain specific: if prices are liquid, use the last available price.
-  
+    
 ---
 
 # Imputation 
 
-- Model-based: if two variables are correlated and one of them has missing values, model the relationship and use model results for imputation. 
+- Model-based: if two variables are correlated and one of them has missing values, model the relationship and use the model results for imputation. 
 - Flag imputed missing values.
 - Avoid filling missing values with possible (fixed) values. Example: Missing number of children should not be filled with 0, a possible value.
 
@@ -126,7 +126,7 @@ Feature engineering can include:
 # Scaling
 
 - The Objective is to obtain values of similar magnitude.
-- Scaling makes variables a "standard size". It benefits algorithms that are scale-sensitive and generally does not hurt algorithms that are scale-insensitive. 
+- Scaling makes variables a "standard size". It benefits scale-sensitive algorithms and generally does not hurt scale-insensitive algorithms. 
 - There is little downside to scaling features, in general.
 - Warning: scaling is a common source of data leakage.
 - Scaling requires global statistics that may be expensive to calculate.
@@ -188,8 +188,8 @@ $$
 
 - With dummy variables, if the original variable contained *C* levels, then we will get *C-1* levels by default. 
 - For instance, our example had five levels (one per weekday), but the resulting dummy representation only has four. 
-  - We can back out the fifth value since we know that when all four values are 0, the fifth value should be 1. 
-  - This avoids an undesirable situation for certain methods called colinearity. 
+    - We can back out the fifth value since we know that when all four values are 0, the fifth value should be 1. 
+    - This avoids an undesirable situation for certain methods called colinearity. 
 - Collinearity occurs when one variable can be obtained as a linear function of others. 
 - Colinearity is a form of observing information redundancy.
 
@@ -208,8 +208,8 @@ $$
 
 
 - Categories are not static: categories change over time.
-  - Categories were not represented in the training data.
-  - New categories may appear over time.
+    - Categories were not represented in the training data.
+    - New categories may appear over time.
 - It is generally a good idea to consider the category UNKNOWN.
 
 ---
@@ -218,9 +218,9 @@ $$
 
 - In some cases, UNKNOWN labels may refer to samples that do not belong together: two new brands may not target the same market, new products, new IP addresses, new user accounts, etc.
 - One solution is the hashing trick:
-  - Use a hash function to generate a hash for every category.
-  - The hashed value will become the index of the category.
-  - Some collisions may occur, but the overloading of the UNKNOWN category is reduced.
+    - Use a hash function to generate a hash for every category.
+    - The hashed value will become the index of the category.
+    - Some collisions may occur, but the overloading of the UNKNOWN category is reduced.
 
 ---
 
@@ -240,7 +240,7 @@ $$
 
 # Multivariate Transformations
 
-Some transformations may include more complex formulations or the results of models that we use to pre-process the data. 
+Some transformations may involve more complex formulations or the results of models we use to preprocess the data. 
 - Principal Components Analysis
 - Discriminant Analysis
 - Embeddings
@@ -248,7 +248,7 @@ Some transformations may include more complex formulations or the results of mod
 ---
 
 ## Principal Components Analysis: 
-  
+    
 - Principal Components Analysis (PCA) is a change of base such that orthogonal directions of maximum variation are used. 
 - Compute PC Scores of a group of variables in the data and keep only the first n (up to a percent of variability explained).
 - Reduces redundant (highly correlated) information. 
@@ -267,9 +267,9 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 ## Multivariate Transformations
 
 - Other transformations:
-  - Discriminant Analysis Score: linear discriminant analysis produces a projection that maximizes linear separability.
-  - Distance to cluster centroids.
-  
+    - Discriminant Analysis Score: linear discriminant analysis produces a projection that maximizes linear separability.
+    - Distance to cluster centroids.
+    
 ---
 
 ## Embeddings (1/2)
@@ -277,9 +277,9 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 ![bg left:50% w:500](./images/04_word_embeddings.png)
 <!--(Gilyadov, 2017)-->
 
-- Training NN is computationally intensive and time-consuming.
+- Training an NN is computationally intensive and time-consuming.
 - Assume that an NN has been trained.
-- Pre-trained NN are available.
+- Pre-trained NNs are available.
 - Models can be trained on general language (news articles, Wikipedia, etc.) and specialized language (legal, medical, etc.) corpora.
 
 ---
@@ -312,7 +312,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 ### Splitting time-correlated data randomly instead of by time
 
-- In many cases, we are dealing with time series data: the date-time in which data is generated affects its label distribution.
+- In many cases, we are dealing with time series data: the date-time at which data is generated affects its label distribution.
 - Ex: stock prices.
 - Solution: split data by time instead of random sampling whenever possible (ex., time-series cross-validation).
 
@@ -350,7 +350,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 ## Data Leakage: Common Causes (5/6)
 
 ### Group leakage
-- Similar to duplication, where a group of examples have strongly correlated labels but are divided into different splits.
+- Similar to duplication, where a group of examples has strongly correlated labels but are divided into different splits.
 - Example: in object detection, several pictures are taken a few seconds apart and are almost identical.
 
 ---
@@ -367,10 +367,10 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 ## Detecting Data Leakage
 
 - Measure the predictive power of each feature.
-  - Investigate unusually high readings.
-  - Investigate data generation and whether we can derive a valid explanation.
+    - Investigate unusually high readings.
+    - Investigate data generation and whether we can derive a valid explanation.
 - Perform ablation studies (remove one feature at a time) to measure how important a feature or set of features is to your model.
-  - If removing a feature causes the model's performance to deteriorate significantly, investigate why that feature is so important.
+    - If removing a feature causes the model's performance to deteriorate significantly, investigate why that feature is so important.
 - Pay attention to new features added to the model.
 
 ---
@@ -497,8 +497,8 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 ## Limitations of Post-Hoc Explainability Methods: SHAP Values
 
 - Difficult to interpret:
-  - Incorrect: the Shapley value of a feature value is the difference of the predicted value after removing the feature from the model training.
-  - Correct: given the current set of feature values, the contribution of a feature value to the difference between the actual prediction and the mean prediction is the estimated Shapley value.
+    - Incorrect: the Shapley value of a feature value is the difference of the predicted value after removing the feature from the model training.
+    - Correct: given the current set of feature values, the contribution of a feature value to the difference between the actual prediction and the mean prediction is the estimated Shapley value.
 - Method (non-Tree implementation) is computationally expensive.
 - SHAP (non-Tree) ignores feature dependence.
 
@@ -513,5 +513,5 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 - Agrawal, A. et al. "Cloudy with high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
 - Gilyadov, J (2017). Word2Vec Explained. [URL](https://israelg99.github.io/2017-03-23-Word2Vec-Explained/)
 - Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2022).
-- Lunderberg and Lee. A Unified Approach to INterpreting Model Predictions. Advances in Nueral INformation Processing Systems 30 (NIPS 2017). [GitHub Repository](https://github.com/shap/shap?tab=readme-ov-file)
+- Lunderberg and Lee. A Unified Approach to Interpreting Model Predictions. Advances in Neural Information Processing Systems 30 (NIPS 2017). [GitHub Repository](https://github.com/shap/shap?tab=readme-ov-file)
 - Molnar, C. Interpretable Machine Learning. (2023) [URL](https://christophm.github.io/interpretable-ml-book/)
