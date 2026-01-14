@@ -42,6 +42,8 @@ The module covers the following areas:
 
 We will discuss the tools and techniques required to do the above in good order and at scale. However, we will not discuss the inner workings of models, advantages, and so on. We will also not discuss the theoretical aspects of feature engineering or hyperparameter tuning. We will focus on tools and reproducibility.
 
+This module follows the contents of [Desinging Machine Learning Systems, by Chip Huyen](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/).
+
 ## Learning Outcomes
 
 By the end of this module, participants will be able to:
@@ -76,20 +78,22 @@ Participants are encouraged to engage actively during the learning module. The k
 
 # Schedule
 
-|Live Learning Session |Date        |Topic                             |
+| Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
-|  1  | Tue., Jan. 13, 2025    | ML System Design                 |
-|  2  | Wed., Jan. 14, 2025    | Data Engineering Fundamentals    |
-|  3  | Thur., Jan. 15, 2025    | Working with Training Data       |
-|  --  | Fri., Jan. 16, 2025     | Work Period  |
-|  --  | Sat., Jan. 17, 2025     | Work Period  |
-| --  | **Sun., Jan. 18, 2025**        | **Submission deadline for Assignment 1 and Quizzes 1-3** |
-|  4  | Tue., Jan. 19, 2025     | Feature Engineering              |
-|  5  | Wed., Jan. 20, 2025     | Model Development and Evaluation |
-|  6  | Thur., Jan. 21, 2025     | Model Explanations and Monitoring|
-|  --  | Fri., Jan. 22, 2025     | Work Period  |
-|  --  | Sat., Jan. 23, 2025     | Work Period  |
-|  --  | **Sun., Jan. 24, 2025**     | **Submission deadline for Assignment 2 and Quizzes 4-6** | 
+|  1  | Tue., Jan. 13, 2026    | ML System Design                 |
+|  2  | Wed., Jan. 14, 2026    | Data Engineering Fundamentals    |
+|  3  | Thur., Jan. 15, 2026    | Working with Training Data       |
+|  --  | Fri., Jan. 16, 2026     | Work Period  |
+|  --  | Sat., Jan. 17, 2026     | Work Period  |
+| --  | **Sun., Jan. 18, 2026**        | **Submission deadline for Quizzes 1-3** |
+| --  | **Mon., Jan. 19, 2026**        | **Submission deadline for Assignment 1** |
+|  4  | Tue., Jan. 20, 2026     | Feature Engineering              |
+|  5  | Wed., Jan. 21, 2026     | Model Development and Evaluation |
+|  6  | Thur., Jan. 22, 2026     | Model Explanations and Monitoring|
+|  --  | Fri., Jan. 23, 2026     | Work Period  |
+|  --  | Sat., Jan. 24, 2026     | Work Period  |
+|  --  | **Sun., Jan. 25, 2026**     | **Submission deadline for Quizzes 4-6** | 
+|  --  | **Mon., Jan. 26, 2026**     | **Submission deadline for Assignment 2** | 
 
 ### Requirements
 
