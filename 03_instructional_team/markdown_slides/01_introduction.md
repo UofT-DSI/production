@@ -18,27 +18,27 @@ $ echo "Data Sciences Institute"
 ## Agenda
 
 - **1.1 Overview of ML Systems**
-    - When to Use ML
-    - ML in Production
-    - ML vs Traditional Software
+    - When to Use ML
+    - ML in Production
+    - ML vs Traditional Software
 - **1.2 Introduction to ML System Design**
-    - Business and ML Objectives
-    - Requirements of Data-Driven Products
-    - Iterative Process
-    - Framing ML Problems 
+    - Business and ML Objectives
+    - Requirements of Data-Driven Products
+    - Iterative Process
+    - Framing ML Problems 
 
 ---
 
 ## Agenda
 
 - **1.3 Project Setup**
-    - Introduction.
-    - Repo File Structure.
-    - Git, authorisation, and production pipelines.
-    - VS Code and Git.
-    - Python virtual environments.
-    - Branching Strategies.
-    - Commit Messages.
+    - Introduction.
+    - Repo File Structure.
+    - Git, authorisation, and production pipelines.
+    - VS Code and Git.
+    - Python virtual environments.
+    - Branching Strategies.
+    - Commit Messages.
 
 ---
 
@@ -88,9 +88,9 @@ ML is a collection of methods that allow a computer to:
 
 - ML is used when a task is too complex or impractical to program explicitly.
 - When applied successfully, ML will enable
-    - Greater scale: automation.
-    - Better performance.
-    - Doing things that were not possible before.
+    - Greater scale: automation.
+    - Better performance.
+    - Doing things that were not possible before.
 
 - ([Image Source](https://www.augmentedstartups.com/blog/overcoming-challenges-in-object-detection-accuracy-speed-and-scalability))
 
@@ -125,7 +125,7 @@ ML is a collection of methods that allow a computer to:
 - There are patterns to learn, and they are complex.
 - ML solutions are only helpful if there are patterns.
 - An ML model can learn simple patterns, but the cost of applying ML may be unreasonable.
-    
+    
 ---
 
 ## Characteristics of ML Use Cases (2/4)
@@ -180,11 +180,11 @@ ML is a collection of methods that allow a computer to:
 
 - ML methods are not ML systems: the learning method needs to be applied to data, assessed, tuned, deployed, governed, and so on.
 - ML system design is a system approach to MLOps, i.e., we will consider the system holistically, including
-    - Business requirements.
-    - Data stack.
-    - Infrastructure.
-    - Deployment.
-    - Monitoring.
+    - Business requirements.
+    - Data stack.
+    - Infrastructure.
+    - Deployment.
+    - Monitoring.
 
 ---
 
@@ -227,7 +227,7 @@ ML is a collection of methods that allow a computer to:
 
 ## Business and ML Objectives (2/5)
 
-### Computational priorities during model development        
+### Computational priorities during model development        
 
 - Training is the bottleneck.
 - Throughput, the number of cases processed, should be maximised. 
@@ -284,8 +284,8 @@ ML is a collection of methods that allow a computer to:
 ## Designing Data-Intensive Applications
 
 - Many applications today are data-intensive instead of compute-intensive.
-    - The limiting factor is data and not computation.
-    - Concerns: the amount of data, the complexity of data, and the speed at which it changes.
+    - The limiting factor is data and not computation.
+    - Concerns: the amount of data, the complexity of data, and the speed at which it changes.
 - ML Systems tend to be embedded in data-intensive applications.
 - (Kleppmann, 2017)
 
@@ -297,14 +297,15 @@ ML is a collection of methods that allow a computer to:
 
 - **Reliability**: The system should continue to perform the correct function at the desired level of performance, even in the face of adversity.
 
-    - May require reporting uncertainty of results.
-    - Remove "silent failures": The system should alert the users to unexpected conditions.
-    - If all else fails, shut down gracefully (e.g., close connections, log errors, alert downstream processes, etc.) 
+    - May require reporting uncertainty of results.
+    - Remove "silent failures": The system should alert the users to unexpected conditions.
+    - If all else fails, shut down gracefully (e.g., close connections, log errors, alert downstream processes, etc.) 
 
 - **Scalability**: To ensure the possibility of growth.
-    - Increase complexity.
-    - Traffic volume or throughput.
-    - Model count.
+
+    - Increase complexity.
+    - Traffic volume or throughput.
+    - Model count.
 
 ---
 
@@ -338,13 +339,13 @@ Have things changed that much? (Huyen, 2022) and [CRISP-DM (c. 1999)](https://ww
 
 - The output of an ML model dictates the type of ML problem.
 - In general, there are two types of ML tasks
-    - Classification.
-    - Regression.    
+    - Classification.
+    - Regression.    
 
 - A regression model can be framed as a classification model and vice versa.
-    - Regression to classification: apply quantisation.
-    - Classification to regression: predict the likelihood of a class.
-    
+    - Regression to classification: apply quantisation.
+    - Classification to regression: predict the likelihood of a class.
+    
 ---
 
 ## Framing ML Problems (1/2)
@@ -374,9 +375,9 @@ Have things changed that much? (Huyen, 2022) and [CRISP-DM (c. 1999)](https://ww
 
 - ML requires an objective function to guide the learning process through optimisation. 
 - In the context of ML:
-    
-    - Regression tasks generally employ error or accuracy metrics: Root Mean Square Error (RMSE) or Mean Absolute Error (MAE).
-    - Classification tasks are generally performed using log loss or cross-entropy.
+    
+    - Regression tasks generally employ error metrics: Root Mean Square Error (RMSE) or Mean Absolute Error (MAE).
+    - Classification tasks are generally performed using log loss or cross-entropy.
 ---
 
 ## Objective Functions (2/2)
