@@ -17,9 +17,9 @@
 
 Go to [docker.com](https://www.docker.com/products/docker-desktop/). Hover over "Download Docker Desktop" and select the right version for your operating system. If you do not know how to choose, the main distinction is whether you have an ARM processor. Detailed installation instructions are below:
 
-    - [Windows users](https://docs.docker.com/desktop/setup/install/windows-install/) If you are using a regular Intel or AMD processor, use the "x86_64" or "AMD64" version.
-    - [Mac users](https://docs.docker.com/desktop/setup/install/mac-install/) select "Apple Silicon" or "ARM" if you have an ARM processor.
-    - [Linux users](https://docs.docker.com/desktop/setup/install/linux/), if you would like the Desktop UI, you can install from docker.com. Otherwise, I expect the containers to run on the Linux Docker Engine.
+- [Windows users](https://docs.docker.com/desktop/setup/install/windows-install/) If you are using a regular Intel or AMD processor, use the "x86_64" or "AMD64" version.
+- [Mac users](https://docs.docker.com/desktop/setup/install/mac-install/) select "Apple Silicon" or "ARM" if you have an ARM processor.
+- [Linux users](https://docs.docker.com/desktop/setup/install/linux/), if you would like the Desktop UI, you can install from docker.com. Otherwise, I expect the containers to run on the Linux Docker Engine.
 
 
 ## General Procedure
