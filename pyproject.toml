@@ -8,6 +8,7 @@ dependencies = [
     "credit>=0.0.1",
     "dask>=2025.9.0",
     "datetime>=5.5",
+    "hyperopt>=0.2.7",
     "ipykernel>=6.30.1",
     "mlflow>=3.3.2",
     "numpy>=2.3.3",

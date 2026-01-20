@@ -82,7 +82,7 @@ def run_experiment_cv(pipe,
                       X, Y, 
                       folds = 5, 
                       experiment_name=None,
-                      model_name=None,
+                      model_name="credit_logistic_simple",
                       test_size = 0.2,
                       scoring = ['neg_log_loss'],
                       mlflow_uri = MLFLOW_URI,
@@ -122,15 +122,15 @@ def run_experiment_cv(pipe,
         mlflow.log_metrics(mean_res_cv)
         
         pipe.fit(X_train, Y_train)
-        signature = infer_signature(X_train, pipe.predict(X_train))
+        # signature = infer_signature(X_train, pipe.predict(X_train))
 
-        model_info = mlflow.sklearn.log_model(
-            sk_model=pipe, 
-            signature = signature,
-            artifact_path = "model", 
-            input_example = X_train.head(5),
-            registered_model_name=model_name
-        )
+        # model_info = mlflow.sklearn.log_model(
+        #     sk_model=pipe, 
+        #     signature = signature,
+        #     artifact_path = "model", 
+        #     input_example = X_train.head(5),
+        #     registered_model_name=model_name
+        # )
 
 def single_run(scoring = 'neg_log_loss', folds = 5, random_state = 42):
     _logs.info(f'Running experiment')
