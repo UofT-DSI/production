@@ -1,10 +1,8 @@
-version: "3.8"
-
 services:  
   # PostgreSQL database
   postgres:
     container_name: postgres
-    image: postgres:latest
+    image: postgres:17-trixie
     restart: always
     ports:
       - "5432:5432"
@@ -70,7 +68,6 @@ services:
   mlflow:
     restart: always
     build: ./mlflow
-    image: mlflow_server
     container_name: mlflow_server
     ports:
       - "5001:5000"
