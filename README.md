@@ -164,7 +164,35 @@ A different learner with grades as shown below would receive "fail":
 ## Resources
 
 
-### Documents and Repositories
+
+### ML Models
+
+Books that mainly discuss learning methods, their applications, and limitations.
+
+- Burkov. [The Hundred-Page Machine Learning Book](https://themlbook.com/). A practical and concise overview of ML methods. It has good coverage of the learning process and a good focus on the classical algorithms. It makes a good desktop reference.
+- Goodfellow, Bengio, and Courville. [Deep Learning](https://www.deeplearningbook.org/). An in-depth discussion of deep learning methods. 
+- James, Witten, Hastie, Tibishirani, and Taylor. [An Introduction to Statistical Learning with Applications in Python](https://www.statlearning.com/). This is the introductory and updated version of Hastie and Tibishirani's classic book. It contains deep discussions, extensive examples, and formal arguments.
+- Witten, Frank, Hall, Pal, and Foulds. [Data Mining: Practical Machine Learning Tools and Techniques](https://ml.cms.waikato.ac.nz/weka/book.html). A great introductory textbook, written from a practical perspective. The book has been updated over the year and it covers a wide spectrum of models (not only Neural Nets/Deep Learners).
+
+### ML Engineering
+
+Books that discuss how to put learning methods in production, including training, deployment, monitoring. As well as more architecture-oriented references.
+
+- Burkov. [Machine Learning Engineering](https://www.mlebook.com/wiki/doku.php). Similar to Burkov's book above, but for ML Engineering.
+- Khun and Silge. [Tidy Modelling with R](https://www.tmwr.org/). The book implements its examples in R, but the discussion about models, evaluation techniques, and pipelines is highly worthwhile. Both, Julia Silge and Max Khun, are brilliant data scientists and great communicators. 
+- Kleppmann. [Designing Data-Intensive Applications](https://dataintensive.net/). A great in-depth resource about the techniques for building data-intensive applications.
+
+
+### Advanced Topics
+
+References for specific topics like Feature Engineering, Conformal Prediction, and Model Interpretability.
+
+- Khun and Johnson. [Feature Engineering and Selection: A Practical Approach for Predictive Models](http://www.feat.engineering/). Discusses feature engineering methods, their evaluation, and ideas on how to implement them. This one does not contain code, only ideas. 
+- Manokhin. [Practical Guide to Applied Conformal Prediction in Python](https://www.packtpub.com/en-us/product/practical-guide-to-applied-conformal-prediction-in-python-9781805122760). Discusses conformal prediction methods with Python, which will allow you to clearly define uncertainty of the predictions that you obtain from ML methods.
+- Molnar. [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/). An overview of model-agnostic explainability/interpretability methods.
+
+
+### Online Resources and Repositories
 
 - [Chip Huyen's DMLS repo on GitHub](https://github.com/chiphuyen/dmls-book)
 - [Scikit-Learn User Guide](https://scikit-learn.org/stable/user_guide.html)
