@@ -121,18 +121,18 @@ def run_cv(pipe,
         mean_res_cv = pd.DataFrame(res_cv).mean().to_dict()
         mlflow.log_metrics(mean_res_cv)
         
-        pipe.fit(X_train, Y_train)
-        signature = infer_signature(X_train, pipe.predict(X_train))
+        # pipe.fit(X_train, Y_train)
+        # signature = infer_signature(X_train, pipe.predict(X_train))
 
-        model_info = mlflow.sklearn.log_model(
-            sk_model=pipe, 
-            signature = signature,
-            artifact_path = "model", 
-            input_example = X_train.head(5),
-            registered_model_name=model_name
-        )
+        # model_info = mlflow.sklearn.log_model(
+        #     sk_model=pipe, 
+        #     signature = signature,
+        #     artifact_path = "model", 
+        #     input_example = X_train.head(5),
+        #     registered_model_name=model_name
+        # )
 
-def grid_search(scoring = 'neg_log_loss', folds = 5, random_state = 42):
+def grid_search(scoring = 'neg_log_loss', folds = 5, model_name = "credit_logistic_grid_search",random_state = 42):
     _logs.info(f'Running experiment')
     pipe = get_pipe()
     X, Y = load_data(CREDIT_FILE)
@@ -152,7 +152,7 @@ def grid_search(scoring = 'neg_log_loss', folds = 5, random_state = 42):
                         X, Y, 
                         folds = 5, 
                         experiment_name='credit_grid_search_logistic',
-                        model_name=None,
+                        model_name=model_name,
                         test_size = 0.2,
                         scoring = ['neg_log_loss', 'balanced_accuracy', 'f1'],
                         mlflow_uri = MLFLOW_URI,

@@ -47,7 +47,7 @@ In our course, we will set up the following services:
 
 ## Stopping the Containers
 
-+ To stop the containers use (from `./05_src/db/`): `docker compose stop`.
++ To stop the containers use (from `./05_src/experiment_tracking/`): `docker compose stop`.
 + Alternatively, you can bring all images down, including their volumes, with: `docker compose down -v`. 
 
     - The `-v` flag removes volumes. 
