@@ -1,0 +1,6 @@
+ find . -name "*.parquet" | wc -l
+
+ find . -name "*.parquet"
+ ls -ltRD
+ ls -la
+ ls -lR *.parquet | wc
