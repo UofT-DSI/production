@@ -93,7 +93,7 @@ def get_or_create_experiment(experiment_name):
 
 def run_cv(params, 
            folds = 5, 
-           model_name=None,
+           model_name='credit_logistic_hyperopt',
            test_size = 0.2,
            scoring = ['neg_log_loss'],
            random_state = None, 
@@ -126,18 +126,19 @@ def run_cv(params,
         pipe.set_params(**params)
         res_cv = cross_validate(pipe, X_train, Y_train, cv = folds, scoring = scoring, return_train_score = True)
         mean_res_cv = pd.DataFrame(res_cv).mean().to_dict()
+        _logs.info('Logging cross-validation metrics to MLflow')
         mlflow.log_metrics(mean_res_cv)
         
-        pipe.fit(X_train, Y_train)
-        signature = infer_signature(X_train, pipe.predict(X_train))
-
-        model_info = mlflow.sklearn.log_model(
-            sk_model=pipe, 
-            signature = signature,
-            artifact_path = "model", 
-            input_example = X_train.head(5),
-            registered_model_name=model_name
-        )
+        # pipe.fit(X_train, Y_train)
+        # signature = infer_signature(X_train, pipe.predict(X_train))
+        # _logs.info('Logging model to MLflow')
+        # model_info = mlflow.sklearn.log_model(
+        #     sk_model=pipe, 
+        #     signature = signature,
+        #     pip_requirements="requirements.txt",
+        #     input_example = X_train.head(5),
+        #     artifact_path="model"
+        # )
     
         return {'loss': -mean_res_cv['test_neg_log_loss'], 'status': STATUS_OK, 'model': pipe, 'params': params}
 
@@ -145,7 +146,10 @@ def run_cv(params,
 
 
 
-def hyperparam_opt(scoring = ['neg_log_loss', 'balanced_accuracy', 'f1'], folds = 5, random_state = 42, experiment_name='credit_hyperopt_logistic'):
+def hyperparam_opt(scoring = ['neg_log_loss', 'balanced_accuracy', 'f1'], 
+                   folds = 5, 
+                   random_state = 42, 
+                   experiment_name='credit_hyperopt_logistic'):
     _logs.info(f'Running experiment')
 
     space = {
@@ -159,6 +163,7 @@ def hyperparam_opt(scoring = ['neg_log_loss', 'balanced_accuracy', 'f1'], folds 
 
     _logs.info(f'Creating experiment {experiment_name}')
     experiment_id = get_or_create_experiment(experiment_name)
+    _logs.info(f'Setting experiment ID to {experiment_id}')
     mlflow.set_experiment(experiment_id=experiment_id)
 
     with mlflow.start_run():
@@ -174,7 +179,9 @@ def hyperparam_opt(scoring = ['neg_log_loss', 'balanced_accuracy', 'f1'], folds 
 
         mlflow.log_params(best)
         mlflow.log_metric("test_neg_log_loss", -best_run['loss'])
-        mlflow.sklearn.log_model(best_run['model'], "model", registered_model_name="CreditLogisticModel")
+        # mlflow.sklearn.log_model(best_run['model'], 
+        #                          artifact_path="model", 
+        #                          registered_model_name="CreditLogisticModel")
 
 
 if __name__=="__main__":
