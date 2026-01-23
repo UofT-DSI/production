@@ -13,9 +13,18 @@
 
 > Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure, allowing you to deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By leveraging Docker's methodologies for shipping, testing, and deploying code, you can significantly reduce the time between writing code and running it in production.
 
+## Installation
+
+Go to [docker.com](https://www.docker.com/products/docker-desktop/). Hover over "Download Docker Desktop" and select the right version for your operating system. If you do not know how to choose, the main distinction is whether you have an ARM processor. Detailed installation instructions are below:
+
+- [Windows users](https://docs.docker.com/desktop/setup/install/windows-install/) If you are using a regular Intel or AMD processor, use the "x86_64" or "AMD64" version.
+- [Mac users](https://docs.docker.com/desktop/setup/install/mac-install/) select "Apple Silicon" or "ARM" if you have an ARM processor.
+- [Linux users](https://docs.docker.com/desktop/setup/install/linux/), if you would like the Desktop UI, you can install from docker.com. Otherwise, I expect the containers to run on the Linux Docker Engine.
+
+
 ## General Procedure
 
-+ To set up services using containers, we will do the following:
+After installation, to set up services using containers, we will do the following:
 
 1. Download an image from [Docker Hub](https://hub.docker.com/) or an equivalent image repository.
 2. If required, set up a volume to [persist data](https://docs.docker.com/guides/walkthroughs/persist-data/).
@@ -38,7 +47,7 @@ In our course, we will set up the following services:
 
 ## Stopping the Containers
 
-+ To stop the containers use (from `./05_src/db/`): `docker compose stop`.
++ To stop the containers use (from `./05_src/experiment_tracking/`): `docker compose stop`.
 + Alternatively, you can bring all images down, including their volumes, with: `docker compose down -v`. 
 
     - The `-v` flag removes volumes. 
@@ -81,4 +90,4 @@ In our course, we will set up the following services:
 ## Learn More
 
 + Containers and containerization are topics well beyond the scope of this course. However, we will use containerized applications to help us implement certain patterns. 
-+ If you are interested in Docker, a good place to start is the [Official Docker Guides](https://docs.docker.com/get-started/overview/). 
++ If you are interested in Docker, a good place to start is the [Official Docker Guides](https://docs.docker.com/get-started/overview/).
