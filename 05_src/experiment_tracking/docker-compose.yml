@@ -70,7 +70,7 @@ services:
     build: ./mlflow
     container_name: mlflow_server
     ports:
-      - "5001:5000"
+      - "8080:5000"
     env_file: ./.env
     environment:
       - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}

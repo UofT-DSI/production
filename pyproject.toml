@@ -17,6 +17,7 @@ dependencies = [
     "python-dotenv>=1.1.1",
     "scikit-learn>=1.7.2",
     "seaborn>=0.13.2",
+    "shap>=0.49.1",
     "ucimlrepo>=0.0.7",
     "utils>=1.0.2",
     "yfinance>=0.2.65",
