@@ -13,7 +13,7 @@ $ echo "Data Sciences Institute"
 
 ## Agenda
 
-**7.1. Monitoring**
+**7.1 Monitoring**
     
 - ML System Failures
 - Data Distribution Shifts
@@ -27,7 +27,7 @@ $ echo "Data Sciences Institute"
 
 ## About
 
-- These notes are based on Chapter 6 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
+- These notes are based on Chapter 8 of [*Designing Machine Learning Systems*](https://huyenchip.com/books/), by [Chip Huyen](https://huyenchip.com/).
 
 ---
 
@@ -69,7 +69,8 @@ A failure happens when one or more expectations of the system are not met:
 - A package or codebase that the system depends on breaks, which leads to system failure.
 - Common when the dependency is maintained by a third party.
 - Can also happen when our model is a dependency of a downstream consumer.
-- Deployment failure
+
+### Deployment failure
 - The root cause is deployment errors: deploying old binaries, permissions are not correctly granted, etc.
 - Coding errors and integration errors (interface changes).
 
@@ -94,7 +95,7 @@ A failure happens when one or more expectations of the system are not met:
 
 - A key assumption is that training and unseen data come from the same distribution.
 - When we say that a model *learns* from data, we are saying that the model learns the distribution of the training data to use this information on unseen data.
-- When predictions on unseen data are satisfactory, we say the model "generalizes to unseen data.
+- When predictions on unseen data are satisfactory, we say the model "generalizes to unseen data."
 - The test data used in the model development phase and the cross-validation are *estimates* of the error in unseen (production) data.
 - Reasons for difference:
     - Data collection, encoding, and instrumentation.
@@ -147,7 +148,7 @@ $$
 
 ---
 
-# Types of Distribution Shifts (2/3)
+## Types of Data Distribution Shifts (2/3)
 
 - Covariate shift:
     - $P(X)$ changes. 
@@ -162,7 +163,7 @@ $$
 
 ---
 
-# Types of Distribution Shifts (3/3)
+## Types of Data Distribution Shifts (3/3)
 
 $$
 P(X, Y) = P(Y|X)P(X) = P(X|Y)P(Y)
@@ -175,29 +176,29 @@ $$
 
 ---
 
-# Covariate Shift (1/2)
+## Covariate Shift (1/2)
 
 - Covariate shift:
     - $P(X)$ changes. 
     - $P(Y|X)$ does not change.
-- Widely studied distribution shifts. 
+- A widely studied type of distribution shift.
 - A covariate is an independent variable that can influence the outcome of a statistical trial, but it is not of direct interest.
 - Example: while predicting house prices as a function of location, a covariate is square footage.
 
 ---
 
-# Covariate Shift (2/2)
+## Covariate Shift (2/2)
 
 Causes:
 
-- Sampling methods: example, oversampling of cancer patients over 40.
+- Sampling methods: for example, oversampling of cancer patients over 40.
 - Training data is artificially altered: applied SMOTE and distribution changed.
 - Active learning: instead of randomly sampling, use samples most helpful to that model according to some heuristic.
 - Major changes in the production environment or application: changes in marketing, for example, induce more clients from a certain demographic not previously represented in training data.
 
 ---
 
-# Label Shift 
+## Label Shift
 
 - Label shift:
     - $P(Y)$ changes. 
@@ -209,7 +210,7 @@ Causes:
 
 ---
 
-# Concept Drift
+## Concept Drift
 
 - Concept drift:
     - $P(Y|X)$ changes.
@@ -225,7 +226,7 @@ Causes:
 
 ### Exploratory Data Analysis
 
-- Compare different quantiles of data distributions and compare: 5th, 25th, 50th, 75th, and 95th.
+- Compare different quantiles of data distributions: 5th, 25th, 50th, 75th, and 95th.
 - Comparing mean, median, and standard deviation only may give partial results:
     - Noticing differences may be indicative of a distribution shift.
     - **Not** noticing differences could hide distribution shifts.
@@ -279,7 +280,7 @@ Causes:
 
 ---
 
-## Monitoring and Observability
+## Monitoring and Observability (cont.)
 
 ### Observability
 
@@ -313,7 +314,7 @@ Causes:
     - Min, max, median, and other quantile values.
     - Values satisfy a certain regular expression.
     - Values belong to a predefined set.
-    - Values of a feature are always positive, less than one,  greater than another feature's value, etc.
+    - Values of a feature are always positive, less than one, greater than another feature's value, etc.
 
 ---
 
@@ -330,7 +331,7 @@ Causes:
 
 ---
 
-# References
+## References
 
-- Agrawal, A. et al. "Cloudy with a high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
-- Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2021).
+- Agrawal, A. et al. "Cloudy with high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
+- Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc. (2022).
