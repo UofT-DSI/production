@@ -29,7 +29,7 @@ $ echo "Data Sciences Institute"
 
 ---
 
-## Agenda
+## Agenda (cont.)
 
 - **1.3 Project Setup**
     - Introduction.
@@ -67,7 +67,7 @@ $ echo "Data Sciences Institute"
 
 ## What is Machine Learning (ML)?
 
-> “A computer program is said to learn from experience *E* with respect to some class of tasks *T* and performance measure *P*, if its performance at tasks in *T*, as measured by *P*, improves with experience *E*.” (Mitchel, 1997)
+> “A computer program is said to learn from experience *E* with respect to some class of tasks *T* and performance measure *P*, if its performance at tasks in *T*, as measured by *P*, improves with experience *E*.” (Mitchell, 1997)
 
 
 > "Machine learning is an approach to (1) learn (2) complex patterns from (3) existing data and use these patterns to make (4) predictions on (5) unseen data." (Huyen, 2022)
@@ -79,7 +79,7 @@ $ echo "Data Sciences Institute"
 ML is a collection of methods that allow a computer to:
 
 - **Learn autonomously** to perform a task based on a set of examples and without being explicitly programmed to perform the task.
-- **Gain from experience** such that the method performs better in the measure that it observes additional examples.
+- **Gain from experience** such that the method performs better as it observes additional examples.
 - **Generalize results** beyond the data used for training the method.
 
 ---
@@ -190,7 +190,7 @@ ML is a collection of methods that allow a computer to:
 
 ## ML Systems Design
 
-- MLOps:  a set of tools and best practices for bringing ML into production. 
+- MLOps: a set of tools and best practices for bringing ML into production. 
 - Image: (Sculley, 2015)
 
 ![bg contain right:50%](./images/01_ml_infrastructure.png)
@@ -266,7 +266,7 @@ ML is a collection of methods that allow a computer to:
 - Trust.
 - Legal requirements.
 - Informativeness: Besides predictions, we require feature importance and other information about our results.
-- Transferrability: Can learning from a scenario be applied to other scenarios?
+- Transferability: Can learning from a scenario be applied to other scenarios?
 
 ---
 
@@ -311,8 +311,7 @@ ML is a collection of methods that allow a computer to:
 
 ## Fundamental Requirements of ML Systems (2/2)
 
-- **Maintainability**: To allow different contributors to work 
-productively on the same system.
+- **Maintainability**: To allow different contributors to work productively on the same system.
 
     - Maintain existing capacities.
     - Expand to new use cases.
@@ -351,8 +350,8 @@ Have things changed that much? (Huyen, 2022) and [CRISP-DM (c. 1999)](https://ww
 ## Framing ML Problems (1/2)
 
 ### Binary Classification
-- Two classes. 
-- Simplest classification problems
+- Two classes.
+- The simplest classification problems.
 
 ### Multiclass Classification
 
@@ -386,14 +385,14 @@ Have things changed that much? (Huyen, 2022) and [CRISP-DM (c. 1999)](https://ww
 - In a two-class setting, it is given by
  
  $$
- H(y, p)=-\frac{1}{N}\sum_{i=1}^{n}\left(y_i ln(\hat{p}_{i}) +(1-y_{i})ln(1-\hat{p}_{i})\right)
+ H(y, p)=-\frac{1}{N}\sum_{i=1}^{N}\left(y_i \ln(\hat{p}_{i}) +(1-y_{i})\ln(1-\hat{p}_{i})\right)
  $$
 
 - Formulation is related to maximum likelihood: minimising negative log-likelihood is the "same" as minimising log loss.
 
 ---
 
-## Objective Functions
+## Objective Functions: Example
 
 - Assume the actual value is 1.
 - If the model is confident and correctly predicted 0.9, then 
