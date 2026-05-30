@@ -18,7 +18,7 @@ $ echo "Data Sciences Institute"
 ```
 ---
 
-# Agenda
+## Agenda
 
 
 **4.1 Feature Engineering**
@@ -71,7 +71,7 @@ $ echo "Data Sciences Institute"
 
 ---
 
-## What is Feature Engineering?
+## What is Feature Engineering? (cont.)
 
 Feature engineering can include:
 - A transformation of a feature: standardization, scale, center, log, etc.
@@ -96,7 +96,7 @@ Feature engineering can include:
 
 ---
 
-# Handling Missing Values: Deletion
+## Handling Missing Values: Deletion
 
 - The simplest way to remove missing values is deletion.
 - *Column deletion*
@@ -107,7 +107,7 @@ Feature engineering can include:
 
 ---
 
-# Imputation 
+## Imputation
 
 - Impute missing values using default values: missing strings, filled with "".
 - Use a statistic like mean, median, or mode: fill the missing temperature with the mean temperature for the time of day within a specific window.
@@ -115,7 +115,7 @@ Feature engineering can include:
     
 ---
 
-# Imputation 
+## Imputation (cont.)
 
 - Model-based: if two variables are correlated and one of them has missing values, model the relationship and use the model results for imputation. 
 - Flag imputed missing values.
@@ -123,9 +123,9 @@ Feature engineering can include:
 
 ---
 
-# Scaling
+## Scaling
 
-- The Objective is to obtain values of similar magnitude.
+- The objective is to obtain values of similar magnitude.
 - Scaling makes variables a "standard size". It benefits scale-sensitive algorithms and generally does not hurt scale-insensitive algorithms. 
 - There is little downside to scaling features, in general.
 - Warning: scaling is a common source of data leakage.
@@ -134,7 +134,7 @@ Feature engineering can include:
 
 ---
 
-# Scaling
+## Scaling (cont.)
 
 - Min-Max scaling to obtain values in the range [0, 1]:
 
@@ -156,8 +156,7 @@ $$
 
 ---
 
-# Recoding Variables
-
+## Recoding Variables
 
 - From the perspective of variables and values, we sometimes talk about *code* or, more frequently, how a variable is *encoded*. 
 - The *encoding of a variable* is the representation of the data. 
@@ -167,7 +166,7 @@ $$
 
 ---
 
-# Recoding Variables: Discretization
+## Recoding Variables: Discretization
 
 - Discretization, quantization, or binning is the process of turning a continuous feature into a discrete feature. 
 - Discretization is performed by creating buckets for the given values.
@@ -175,7 +174,7 @@ $$
 
 ---
 
-# Dummy Variables and One-Hot Encoding (1/3)
+## Dummy Variables and One-Hot Encoding (1/3)
 
 
 - Dummy variables and One-Hot encodings are forms of encoding categorical data. 
@@ -189,7 +188,7 @@ $$
 - With dummy variables, if the original variable contained *C* levels, then we will get *C-1* levels by default. 
 - For instance, our example had five levels (one per weekday), but the resulting dummy representation only has four. 
     - We can back out the fifth value since we know that when all four values are 0, the fifth value should be 1. 
-    - This avoids an undesirable situation for certain methods called colinearity. 
+    - This avoids an undesirable situation for certain methods called collinearity. 
 - Collinearity occurs when one variable can be obtained as a linear function of others. 
 - Colinearity is a form of observing information redundancy.
 
@@ -224,21 +223,21 @@ $$
 
 ---
 
-# Feature Crossing (1/2)
+## Feature Crossing (1/2)
 
 - Feature crossing is a technique to combine two or more features to generate new features.
 - We may also benefit from establishing interaction terms. This type of transformation is primarily intended for numeric data. Still, it may be applied to categorical data after being transformed into dummy variables.
 
 ---
 
-# Feature Crossing (2/2)
+## Feature Crossing (2/2)
 
 - Interaction variables typically capture the joint contribution to our predictive model of two or more variables after accounting for their contributions. 
 - A majority of cases will result in the model benefiting only marginally from these terms; however, they are fundamental in some contexts: for example, loan value and collateral value are typically included in default prediction models, together with their interaction term. 
 
 ---
 
-# Multivariate Transformations
+## Multivariate Transformations
 
 Some transformations may involve more complex formulations or the results of models we use to preprocess the data. 
 - Principal Components Analysis
@@ -247,10 +246,10 @@ Some transformations may involve more complex formulations or the results of mod
 
 ---
 
-## Principal Components Analysis: 
+## Principal Components Analysis
     
 - Principal Components Analysis (PCA) is a change of base such that orthogonal directions of maximum variation are used. 
-- Compute PC Scores of a group of variables in the data and keep only the first n (up to a percent of variability explained).
+- Compute PC scores of a group of variables in the data and keep only the first n (up to a specified percentage of variability explained).
 - Reduces redundant (highly correlated) information. 
 
 ![bg contain right:40%](./images/04_pca.png)
@@ -264,7 +263,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 ---
 
-## Multivariate Transformations
+## Multivariate Transformations (cont.)
 
 - Other transformations:
     - Discriminant Analysis Score: linear discriminant analysis produces a projection that maximizes linear separability.
@@ -350,7 +349,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 ## Data Leakage: Common Causes (5/6)
 
 ### Group leakage
-- Similar to duplication, where a group of examples has strongly correlated labels but are divided into different splits.
+- Similar to duplication, where a group of examples have strongly correlated labels but are divided into different splits.
 - Example: in object detection, several pictures are taken a few seconds apart and are almost identical.
 
 ---
@@ -393,7 +392,7 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 
 - Too many features can increase inference latency.
 - Useless features become technical debt. 
-- In principle, if a feature is not useful for prediction, regularization should get rid of it. In practice, it may be faster for the feature not to be available to the model in the first place.
+- In principle, if a feature is not useful for prediction, regularization should eliminate it. In practice, it is more efficient to exclude the feature from the model from the outset.
 
 ---
 
@@ -513,5 +512,5 @@ Image Source: [Devopedia.com](https://devopedia.org/principal-component-analysis
 - Agrawal, A. et al. "Cloudy with high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
 - Gilyadov, J (2017). Word2Vec Explained. [URL](https://israelg99.github.io/2017-03-23-Word2Vec-Explained/)
 - Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2022).
-- Lunderberg and Lee. A Unified Approach to Interpreting Model Predictions. Advances in Neural Information Processing Systems 30 (NIPS 2017). [GitHub Repository](https://github.com/shap/shap?tab=readme-ov-file)
+- Lundberg and Lee. A Unified Approach to Interpreting Model Predictions. Advances in Neural Information Processing Systems 30 (NIPS 2017). [GitHub Repository](https://github.com/shap/shap?tab=readme-ov-file)
 - Molnar, C. Interpretable Machine Learning. (2023) [URL](https://christophm.github.io/interpretable-ml-book/)
