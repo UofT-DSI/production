@@ -20,7 +20,7 @@ $ echo "Data Sciences Institute"
 ```
 ---
 
-# Agenda: 5.1 Model Development and Offline Evaluation
+## Agenda: 5.1 Model Development and Offline Evaluation
 
 - Model Development and Training 
 - Ensembles 
@@ -31,7 +31,7 @@ $ echo "Data Sciences Institute"
 
 ---
 
-# Agenda: 5.2 Experiment Tracking
+## Agenda: 5.2 Experiment Tracking
 
 - Observability and telemetry
 - Docker and Portability
@@ -76,7 +76,7 @@ $ echo "Data Sciences Institute"
 ## Naïve Bayes
 
 + Conditional probability using Bayes’ Theorem.
-+ Assume conditional independence
++ Assume conditional independence.
 
 $$
 \begin{aligned}
@@ -93,7 +93,7 @@ $$
 
 Discriminant Analysis methods find regions in feature space that:
 + Minimize the distance within groups.
-+ Maximizes the distance between groups.
++ Maximize the distance between groups.
 
 Linear Discriminant Analysis (LDA): 
 + Assumes attributes are normally distributed.
@@ -103,7 +103,7 @@ Linear Discriminant Analysis (LDA):
 
 ---
 
-## Discriminant Analysis
+## Discriminant Analysis (cont.)
 
 
 Quadratic Discriminant Analysis (QDA): 
@@ -232,7 +232,7 @@ SVMs use linear models to implement non-linear boundaries by performing a non-li
 ### Avoid the state-of-the-art trap
 - Researchers evaluate models in academic settings: if a model is state-of-the-art, it performs better than existing models on some static dataset.
 - It is essential to remain up to date, but solve the problem first.
-- Start with the simplest models
+- Start with the simplest models.
 - Simple is better than complex: easier to deploy, easier to understand, and serves as a baseline.
 - Easier to deploy: speeds up the experimentation cycle.
 - Easier to understand: adds complexity as needed.
@@ -240,7 +240,7 @@ SVMs use linear models to implement non-linear boundaries by performing a non-li
 
 ---
 
-## Guidance for Model Selection (1/3)
+## Guidance for Model Selection (1/3, cont.)
 
 ![h:400px center](./images/05_leaderboard_benchmark.png)
 
@@ -261,7 +261,7 @@ State of the Art Model Performance on ImageNet c.2023 (paperswithcode.com)
 
 ---
 
-## Guidance for Model Selection (2/3)
+## Guidance for Model Selection (2/3, cont.)
 
 ### Evaluate good performance now versus good performance later
 - Using learning curves is a simple way to estimate how your model's performance might change with more data.
@@ -281,7 +281,7 @@ State of the Art Model Performance on ImageNet c.2023 (paperswithcode.com)
 
 ---
 
-## Guidance for Model Selection (3/3)
+## Guidance for Model Selection (3/3, cont.)
 
 Understand your model's assumptions:
 - Every model comes with its assumptions.
@@ -290,7 +290,7 @@ Understand your model's assumptions:
 
 ---
 
-## Guidance for Model Selection (3/3)
+## Guidance for Model Selection (3/3, cont.)
 - Smoothness: supervised learning models assume that a set of functions can transform inputs into outputs such that similar inputs are transformed into similar outputs. If an input X produces Y, then an input close to X would produce an output proportionally close to Y.
 - Linear boundaries, conditional independence, normally distributed, and so on.
 
@@ -332,7 +332,7 @@ Understand your model's assumptions:
 ## Bagging (1/2)
 
 - Bagging (bootstrap aggregating) is designed to improve ML algorithms' training stability and accuracy.
-- Reduces variance and helps avoid overfitting; it improves unstable methods (e.g., tree-based methods)
+- Reduces variance and helps avoid overfitting; it improves unstable methods (e.g., tree-based methods).
 - Sampling with replacement ensures that each bootstrap is created independently from its peers. 
 
 ![bg left:50% w:500](./images/05_bagging.png)
@@ -390,15 +390,15 @@ Understand your model's assumptions:
 ## Experiment Tracking
 
 - The process of tracking the progress and results of an experiment is called experiment tracking.
-- ML Flow and Weights & Balances are experiment tracking tools.
+- MLflow and Weights & Biases are experiment tracking tools.
 - At a minimum, track performance (loss) and time (speed).
 - Values over time of any parameter and hyperparameter whose changes can affect model performance.
 
 ---
 
-## Experiment Tracking
+## Experiment Tracking (cont.)
 
-- Model performance metrics: on all nontest splits, like accuracy, F1, and perplexity.
+- Model performance metrics: on all non-test splits, like accuracy, F1, and perplexity.
 - Loss curve: train split and each of the eval splits.
 - Log of corresponding sample, prediction, and ground truth labels. 
 - Speed of the model: number of steps per second or tokens processed per second.
@@ -415,7 +415,7 @@ Understand your model's assumptions:
 
 ---
 
-## Versioning
+## Versioning (cont.)
 
 - Code versioning tools allow you to switch between versions of the codebase by keeping copies of all the old files. Data may be too large for duplication to be feasible.
 - Code versioning tools allow several people to work on the same code simultaneously by replicating locally. Data may be too large, as well.
@@ -430,13 +430,13 @@ Understand your model's assumptions:
 
 ## Debugging: Why ML Models Fail
 
-- Theoretical constraints: model assumptions are not met. For example, use a linear model when decision boundaries are not linear.
+- Theoretical constraints: model assumptions are not met. For example, using a linear model when decision boundaries are not linear.
 - Poor implementation: The model may be a good fit, but implementation has errors. 
 - Poor choice of hyperparameters: With the same model, one set of hyperparameters can give better results than others.
 
 ---
 
-## Debugging: Why ML Models Fail
+## Debugging: Why ML Models Fail (cont.)
 
 - Data problems: noise and dirty data are everywhere. Additionally, poor implementation of data flows can lead to data problems.
 - Poor choice of features: Too many features may cause overfitting or data leakage. Too few features might lack the predictive power to make good predictions.
@@ -451,7 +451,7 @@ Understand your model's assumptions:
 
 - AutoML is the automatic process of finding ML algorithms to solve real-world problems.
 - The most popular form of AutoML is hyperparameter tuning.
-- Searching the Hyperparameter space can be time-consuming and resource-intensive.
+- Searching the hyperparameter space can be time-consuming and resource-intensive.
 
 ---
 
@@ -483,7 +483,7 @@ Understand your model's assumptions:
 
 ---
 
-## Evaluation Methods in Production
+## Evaluation Methods in Production (cont.)
 
 ### Model calibration or conformal prediction methods
 - Idea: If the forecast has a 70% chance of rain, then 70% of the time this forecast was made, it actually rained.
@@ -500,7 +500,7 @@ Understand your model's assumptions:
 
 ## References
 
-- Agrawal, A. et al. "Cloudy with a high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
+- Agrawal, A. et al. "Cloudy with high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
 - Domingos, Pedro. "A few useful things to know about machine learning." Communications of the ACM 55, no. 10 (2012): 78-87.
 - Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2022).
 - Tetlock and Gardner. Superforecasting: The art and science of prediction. Random House, 2016.
