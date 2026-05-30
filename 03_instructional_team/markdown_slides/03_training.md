@@ -11,7 +11,7 @@ $ echo "Data Sciences Institute"
 ```
 ---
 
-# Agenda
+## Agenda
 
 **3.1 Working with Training Data**
 
@@ -58,7 +58,7 @@ $ echo "Data Sciences Institute"
 - Sometimes, sampling is necessary:
 
     + We cannot access all possible data in the real world.
-    + Using all data is unfeasible, costly, or otherwise impractical.
+    + Using all data is infeasible, costly, or otherwise impractical.
     + Accomplish a task faster and cheaper: experiment with a new model, explore data, etc.
 
 
@@ -127,7 +127,7 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
 ---
 
-## Random Sampling
+## Random Sampling (cont.)
 
 ### Weighted Sampling
 
@@ -189,7 +189,7 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
 ---
 
-## Hand Labels
+## Hand Labels (cont.)
 
 - Label ambiguity or label multiplicity occurs when multiple conflicting labels exist for a data instance.
 - Label multiplicity may occur when labels are input by multiple annotators or when data comes from different sources.
@@ -208,7 +208,7 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
 ---
 
-##  Natural Labels
+## Natural Labels
 
 - Natural ground truth labels or natural labels occur when the system can automatically evaluate or partially predict.
 - Examples: time travelled on a particular route on Google Maps, stock return, etc.
@@ -216,9 +216,9 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
 ---
 
-##  Natural Labels
+## Natural Labels (cont.)
 
-- Recommender systems are the prime example of natural labels: we will know if the recommendation was good, if it was acted on.
+- Recommender systems are the prime example of natural labels: we know whether the recommendation was good based on whether it was acted upon.
 - Many tasks can be framed as recommendation tasks; for example, predicting an ad's clickthrough rate can be reframed as recommending the best ads.
 
 ---
@@ -229,9 +229,9 @@ Generally, selecting data to train ML methods using this family of sampling meth
 - Behavioural labels can be:
     
     - Explicit labels are observed from user behaviour (click, upvote, rating, etc.)
-    - Implicit labels are inferred by non-behaviour, for example, ads that are not clicked. 
+    - Implicit labels are inferred from an absence of behaviour, for example, ads that are not clicked.
 
-- Inferring an implicit label depends on the feedback loop length, which is the time between serving a prediction and the feedback on it provided.
+- Inferring an implicit label depends on the feedback loop length, which is the time between serving a prediction and receiving feedback on it.
 
 ---
 
@@ -284,7 +284,7 @@ Generally, selecting data to train ML methods using this family of sampling meth
 ### Approach 2: Similarity
 
 - Assume that data samples that share similar characteristics share the same labels.
-- Similarity is established by more complex methods (clustering, k-nn, etc.)
+- Similarity is established by more complex methods (clustering, k-NN, etc.)
 
 ### Approach 3: Perturbation
 
@@ -301,7 +301,7 @@ Generally, selecting data to train ML methods using this family of sampling meth
 
 - Class imbalance occurs when one or more classes have significantly lower proportions in the data than other classes.
 - The majority class dominates, but interest is generally in the minority class (e.g., default, fraud, or market crash).
-- Models trained on imbalanced data will tend to be under-fitted; they will not be able to classify the minority class successfully.
+- Models trained on imbalanced data will tend to be biased toward the majority class and unable to classify the minority class successfully.
 
 ---
 
@@ -345,7 +345,7 @@ To handle class imbalance:
 
 ---
 
-## Class Probabilities Carry Information
+## Class Probabilities Carry Information (cont.)
 
 - A greater Area Under the ROC Curve (AUC ROC) indicates a better model: AUC ROC can be interpreted as the probability that the classifier ranks a randomly chosen positive instance above a randomly chosen negative one.
 - AUC ROC measures the ranking order of a model's prediction: it is useful when costs are unavailable, and class distributions are unknown.
@@ -360,7 +360,7 @@ To handle class imbalance:
 - In a two-class setting, it is given by:
 
  $$
- H(y, p)=-\frac{1}{N}\sum_{i=1}^{n}\left(y_i ln(\hat{p}_{i}) +(1-y_{i})ln(1-\hat{p}_{i})\right)
+ H(y, p)=-\frac{1}{N}\sum_{i=1}^{N}\left(y_i \ln(\hat{p}_{i}) +(1-y_{i})\ln(1-\hat{p}_{i})\right)
  $$
 
 
@@ -368,7 +368,7 @@ To handle class imbalance:
 
 ---
 
-## Cross-entropy, Negative Log-Loss, and Log-Likelihood
+## Cross-entropy, Negative Log-Loss, and Log-Likelihood: Example
 
 - Assume the actual value is 1.
 - If the model is confident and correctly predicted 0.9, then 
@@ -393,16 +393,16 @@ Loss = -(1*ln(0.1)) = 2.3026
 
 ## Class Weights
 
-- Some models can optimise a cost or loss function that differentiates for specific types of errors.
+- Some models can optimise a cost or loss function that differentiates between specific types of errors.
 - In some instances, one can assume that misclassifying minority events (false negatives) is more costly than incorrectly predicting non-events (false positives).
 
 - Relative cost or class weights can be determined by
 
-  - Consulting a Cost Specialist or Subject Matter Expert
-  - Balance function
+  - Consulting a cost specialist or subject matter expert.
+  - Balance function:
 
 $$
-W_{y} = \frac{N_{samples}}{M_{classes}N{y}}
+W_{y} = \frac{N_{samples}}{M_{classes}N_{y}}
 $$
 
 ---
