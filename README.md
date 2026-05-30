@@ -5,17 +5,21 @@
 * [Description](#description)
 * [Learning Outcomes](#learning-outcomes)
 * [Contacts](#contacts)
-* [Delivery of the Learning module](#delivery-of-the-learning-module)
+* [Delivery of the Learning Module](#delivery-of-the-learning-module)
 * [Schedule](#schedule)
 * [Requirements](#requirements)
 * [Assessment](#assessment)
 
     - [Quizzes](#quizzes)
     - [Assignments](#assignments)
+    - [Grades](#grades)
 
 * [Resources](#resources)
 
-    - [Documents](#documents)
+    - [ML Models](#ml-models)
+    - [ML Engineering](#ml-engineering)
+    - [Advanced Topics](#advanced-topics)
+    - [Online Resources and Repositories](#online-resources-and-repositories)
     - [Videos](#videos)
 
 * [Folder Structure](#folder-structure)
@@ -42,7 +46,7 @@ The module covers the following areas:
 
 We will discuss the tools and techniques required to do the above in good order and at scale. However, we will not discuss the inner workings of models, advantages, and so on. We will also not discuss the theoretical aspects of feature engineering or hyperparameter tuning. We will focus on tools and reproducibility.
 
-This module follows the contents of [Desinging Machine Learning Systems, by Chip Huyen](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/).
+This module follows the contents of [Designing Machine Learning Systems, by Chip Huyen](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/).
 
 ## Learning Outcomes
 
@@ -65,9 +69,8 @@ By the end of this module, participants will be able to:
   
 + **Learning Support Team**
 
-    - [Gayathri Girish](https://www.linkedin.com/in/gayathri-girish/)
-    - [Edward Chen](https://www.linkedin.com/in/edwardchen75/)
     - [Ernani Fantinatti](https://www.linkedin.com/in/efantinatti/)
+    - [Kasra Vakiloroayaei](www.linkedin.com/in/kasrav/)
   
 
 ## Delivery of the Learning Module
@@ -76,28 +79,28 @@ This module will include live learning sessions and optional, asynchronous work 
  
 Participants are encouraged to engage actively during the learning module. The key to developing the core skills in each learning module is through practice. The more participants engage in coding alongside the instructional team and apply these skills in each module, the more likely they are to solidify them.
 
-# Schedule
+## Schedule
 
 | Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
-|  1  | Tue., Jan. 13, 2026    | ML System Design                 |
-|  2  | Wed., Jan. 14, 2026    | Data Engineering Fundamentals    |
-|  3  | Thur., Jan. 15, 2026    | Working with Training Data       |
-|  --  | Fri., Jan. 16, 2026     | Work Period  |
-|  --  | Sat., Jan. 17, 2026     | Work Period  |
-| --  | **Sun., Jan. 18, 2026**        | **Submission deadline for Quizzes 1-3** |
-| --  | **Mon., Jan. 19, 2026**        | **Submission deadline for Assignment 1** |
-|  4  | Tue., Jan. 20, 2026     | Feature Engineering              |
-|  5  | Wed., Jan. 21, 2026     | Model Development and Evaluation |
-|  6  | Thur., Jan. 22, 2026     | Model Explanations and Monitoring|
-|  --  | Fri., Jan. 23, 2026     | Work Period  |
-|  --  | Sat., Jan. 24, 2026     | Work Period  |
-|  --  | **Sun., Jan. 25, 2026**     | **Submission deadline for Quizzes 4-6** | 
-|  --  | **Mon., Jan. 26, 2026**     | **Submission deadline for Assignment 2** | 
+|  1  | Tue., June 2, 2026    | ML System Design                 |
+|  2  | Wed., June 3, 2026    | Data Engineering Fundamentals    |
+|  3  | Thur., June 4, 2026    | Working with Training Data       |
+|  --  | Fri., June 5, 2026     | Work Period  |
+|  --  | Sat., June 6, 2026     | Work Period  |
+| --  | **Mon., June 8, 2026**        | **Submission deadline for Quizzes 1-3** |
+| --  | **Mon., June 8, 2026**        | **Submission deadline for Assignment 1** |
+|  4  | Tue., June 9, 2026     | Feature Engineering              |
+|  5  | Wed., June 10, 2026     | Model Development and Evaluation |
+|  6  | Thur., June 11, 2026     | Model Explanations and Monitoring|
+|  --  | Fri., June 12, 2026     | Work Period  |
+|  --  | Sat., June 13, 2026     | Work Period  |
+|  --  | **Mon., June 15, 2026**     | **Submission deadline for Quizzes 4-6** | 
+|  --  | **Mon., June 15, 2026**     | **Submission deadline for Assignment 2** | 
 
-### Requirements
+## Requirements
 
-* Participants are expected to have completed Shell, Git, and Python learning modules.
+* Participants are expected to have skills equivalent to completing the Shell, Git, and Python learning modules.
 * Participants are encouraged to ask questions and collaborate with others to enhance their learning experience.
 * Participants must have a computer and an internet connection to participate in online activities.
 * Participants must have VSCode installed with the following extensions: 
@@ -108,21 +111,21 @@ Participants are encouraged to engage actively during the learning module. The k
 * We expect participants to have completed the steps in the [onboarding repo](https://github.com/UofT-DSI/onboarding/blob/main/environment_setup/README.md).
 * We encourage participants to default to having their camera on at all times, and turning the camera off only as needed. This will greatly enhance the learning experience for all participants and provide real-time feedback for the instructional team. 
 
-### Assessment
+## Assessment
 
 Your performance on this module will be assessed using six quizzes and two assignments. 
 
-#### Quizzes
+### Quizzes
 
 Quizzes will help you build key concepts in data science, data engineering, and machine learning engineering. Historically, learners take 5-10 minutes to complete each quiz, achieving an average score of +80%. 
 
 + Each quiz will contain material from each live learning session.
 + You will receive a link to each quiz during the respective live learning session. The links are personalized; please do not share them. If you did not receive a link, contact any member of the course delivery team.
-Each quiz will contain approximately 10 questions of various types, including true/false, multiple-choice, and simple selection.
++ Each quiz will contain approximately 10 questions of various types, including true/false, multiple-choice, and simple selection.
 + All quizzes are mandatory and should be submitted by their due date. 
 + The quizzes will remain open until their respective due dates, after which you will not have access to them.
 
-#### Assignments
+### Assignments
 
 Assignments will help you develop coding and debugging skills. They will cover foundational skills and will extend to advanced concepts. We recommend that you attempt all assignments and submit your work, even if it is incomplete (partial submissions will earn partial marks). 
 
@@ -133,7 +136,7 @@ Assignments will help you develop coding and debugging skills. They will cover f
     - [Assignment 2](./02_activities/assignments/assignment_2.ipynb). [Rubric](./02_activities/assignments/assignment_2_rubric_clean.xlsx).
 
 
-#### Grades
+### Grades
 
 All participants will receive a pass or fail mark. For this course, a score of 60 points is required to receive a "pass" mark. The score will be determined as follows:
 
@@ -162,8 +165,6 @@ A different learner with grades as shown below would receive "fail":
 + (0.6 * 80) + (0.2 * 50) + 0 = 48 + 10 + 0 = 58 < 60
 
 ## Resources
-
-
 
 ### ML Models
 
@@ -224,11 +225,11 @@ References for specific topics like Feature Engineering, Conformal Prediction, a
 ```
 
 * **.github**: Contains issue templates and pull request templates for the repository.
-* **materials**: Module slides and interactive notebooks (.ipynb files) used during learning sessions.
-* **activities**: Contains graded assignments, exercises, and homework to practice concepts covered in the learning module.
-* **instructional_team**: Resources for the instructional team.
-* **this_cohort**: Additional materials and resources for cohort three.
-* **src**: Source code, databases, logs, and required dependencies (requirements.txt) needed during the module.
+* **01_materials**: Module slides and interactive notebooks (.ipynb files) used during learning sessions.
+* **02_activities**: Contains graded assignments, exercises, and homework to practice concepts covered in the learning module.
+* **03_instructional_team**: Resources for the instructional team.
+* **04_this_cohort**: Additional materials and resources for this cohort.
+* **05_src**: Source code, databases, logs, and required dependencies (requirements.txt) needed during the module.
 * **.gitignore**: Files to exclude from this folder, specified by the Technical Facilitator
 * **LICENSE**: The license for this repository.
 * **SETUP.md**: Contains the steps required to set up this repo for the module.
