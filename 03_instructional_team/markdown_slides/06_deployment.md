@@ -26,7 +26,7 @@ $ echo "Data Sciences Institute"
 
 - Partial Dependence Plots
 - Permutation Importance
-- Shap Values
+- SHAP Values
 
 ---
 
@@ -54,10 +54,10 @@ $ echo "Data Sciences Institute"
 
 ## Deployment
 
-- Deploying a model is to make it usable by allowing users to interact with it through an app or by using its results for a purpose in a data product (BI visuals, reports, data views).
+- Deploying a model means making it usable by allowing users to interact with it through an app or through a data product (BI visuals, reports, data views).
 - Deployment is a transition of development to a production environment. 
 - There is a wide range of production environments, from BI to live applications serving millions of users.
-- Engaging with users in formal or informal feedback conversations is helpful, although only sometimes possible.
+- Engaging with users in formal or informal feedback conversations is helpful, although not always possible.
 
 ---
 
@@ -92,7 +92,7 @@ $ echo "Data Sciences Institute"
 ### 3. If we don't do anything, model performance stays the same
 
 - Software does not age like fine wine.
-- Data distribution shifts: when the data distribution in the trained model differs from the distribution during testing.
+- Data distribution shifts: when the data distribution seen during training differs from the distribution encountered in production.
 
 
 ### 4. Most ML engineers don't need to worry about scale
@@ -102,7 +102,7 @@ $ echo "Data Sciences Institute"
 
 ---
 
-## Batch Prediction Vs Online Prediction
+## Batch Prediction vs. Online Prediction
 
 ### Online Prediction
 
@@ -121,7 +121,7 @@ $ echo "Data Sciences Institute"
 
 ## Model Prediction Service
 
-Three types of model prediction or inference service:
+Three types of prediction service:
 
 - Batch prediction: uses only batch features.
 - Online prediction that uses only batch features (e.g., precomputed embeddings).
@@ -133,7 +133,7 @@ Three types of model prediction or inference service:
 
 ---
 
-# Model Prediction Service (cont.)
+## Model Prediction Service (cont.)
 
 ![w:1100](./images/06_model_prediction_service_comp.png)
 
@@ -142,7 +142,7 @@ Three types of model prediction or inference service:
 
 ---
 
-# References
+## References
 
-- Agrawal, A. et al. "Cloudy with a high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
-- Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc.(2021).
+- Agrawal, A. et al. "Cloudy with high chance of DBMS: A 10-year prediction for Enterprise-Grade ML." arXiv preprint arXiv:1909.00084 (2019).
+- Huyen, Chip. "Designing machine learning systems." O'Reilly Media, Inc. (2022).
