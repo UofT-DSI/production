@@ -23,7 +23,7 @@ services:
   # A web-based database management tool for PostgreSQL
   pgadmin:
     container_name: pgadmin4_dsi_container
-    image: dpage/pgadmin4:latest
+    image: dpage/pgadmin4:9
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: '${PGADMIN_DEFAULT_EMAIL}'
@@ -52,13 +52,16 @@ services:
   # A command-line client for MinIO
   minio-setup:
     image: quay.io/minio/mc
+    restart: "no"
     env_file: ./.env
     depends_on:
       - minio
-    volumes:
-      - ./minio/create-bucket.sh:/create-bucket.sh
     entrypoint: /bin/sh
-    command: -c "chmod +x /create-bucket.sh && /create-bucket.sh"
+    command: >-
+      -c "until /usr/bin/mc alias set minioserver http://minio:9000 $$MINIO_ROOT_USER $$MINIO_ROOT_PASSWORD;
+      do echo 'Waiting for MinIO to be ready...'; sleep 1; done &&
+      /usr/bin/mc mb minioserver/mlflow &&
+      echo 'Bucket mlflow created successfully.'"
     environment:
       - MINIO_ROOT_USER=${MINIO_ACCESS_KEY}
       - MINIO_ROOT_PASSWORD=${MINIO_SECRET_ACCESS_KEY}
@@ -84,6 +87,8 @@ services:
       --serve-artifacts
       --artifacts-destination s3://mlflow
     depends_on:
-      - postgres
-      - minio-setup
+      postgres:
+        condition: service_healthy
+      minio-setup:
+        condition: service_completed_successfully
   

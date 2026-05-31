@@ -31,6 +31,7 @@ if __name__ == "__main__":
             signature = infer_signature(X, predictions)
             _logs.info('Logging model.')
             mlflow.sklearn.log_model(lr, "model", signature=signature)
-            _logs.info(f"Model saved in run {mlflow.active_run().info.run_uuid}")
+            _logs.info(f"Model saved in run {mlflow.active_run().info.run_id}")
         except Exception as e:
             _logs.error(f"Error during ML flow test: {e}")
+            mlflow.end_run(status='FAILED')
