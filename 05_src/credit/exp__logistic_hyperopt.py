@@ -116,7 +116,7 @@ def hyperparam_opt(
         signature = infer_signature(X_train, best_pipe.predict(X_train))
         mlflow.sklearn.log_model(
             sk_model=best_pipe,
-            artifact_path='best_model',
+            name='best_model',
             signature=signature,
             input_example=X_train.head(5),
             registered_model_name=model_name,

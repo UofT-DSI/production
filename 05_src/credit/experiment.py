@@ -157,7 +157,7 @@ def run_cv(
             signature = infer_signature(X_train, pipe.predict(X_train))
             mlflow.sklearn.log_model(
                 sk_model=pipe,
-                artifact_path='model',
+                name='model',
                 signature=signature,
                 input_example=X_train.head(5),
                 registered_model_name=model_name,
