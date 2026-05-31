@@ -9,7 +9,7 @@ Docker Compose stack for local ML experiment tracking. Runs four services:
 | `minio` | `quay.io/minio/minio` | `9000` / `9001` | S3-compatible artifact store |
 | `mlflow` | built from `./mlflow` | `5001` | MLflow tracking server |
 
-`minio-setup` is a one-shot init container that creates the `mlflow` bucket on first start.
+`minio-setup` is a one-shot init container that creates the `mlflow` bucket. Its logic is inlined directly in `docker-compose.yml` — there is no external shell script.
 
 ---
 
@@ -51,8 +51,8 @@ docker compose up -d
 
 Startup order is enforced by health conditions:
 1. `postgres` starts and passes its healthcheck (`pg_isready`).
-2. `minio` starts; `minio-setup` connects and creates the `mlflow` bucket.
-3. `mlflow` starts only after both `postgres` is healthy and `minio-setup` has completed successfully.
+2. `minio` starts; `minio-setup` polls it with `mc alias set` until it accepts connections, then creates the `mlflow` bucket.
+3. `mlflow` starts only after `postgres` is healthy and `minio-setup` has completed successfully.
 
 First start may take 30–60 seconds for all services to be ready.
 
@@ -96,11 +96,10 @@ experiment_tracking/
 ├── docker-compose.yml
 ├── .env                  # git-ignored — create from .env.example
 ├── .env.example          # committed reference with placeholder values
+├── .gitattributes        # enforces LF line endings on *.sh files
 ├── mlflow/
 │   ├── Dockerfile        # python:3.11-slim-bookworm + mlflow + boto3
 │   └── requirements.txt
-├── minio/
-│   └── create-bucket.sh  # one-shot bucket init run by minio-setup
 ├── postgres/
 │   └── init.sql          # creates the mlflow database on first start
 ├── minio_data/           # git-ignored volume mount
