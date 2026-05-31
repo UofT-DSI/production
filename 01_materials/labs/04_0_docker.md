@@ -33,53 +33,53 @@ After installation, to set up services using containers, we will do the followin
 
 In our course, we will set up the following services:
 
-+ MLFlow: an experiment tracking system. MLFlow requires two backends: a database and an object store.
++ MLflow: an experiment tracking system. MLflow requires two backends: a database and an object store.
 + PostgreSQL: a database management system.
 + MinIO: an object store that resembles S3 buckets in AWS.
 
 ## Starting the Containers
 
 + To run the process above, first navigate to the `./05_src/experiment_tracking/` folder.
-+ The first time that you set up the containers, you will need to build the MLFlow image. You can build the required image with `docker compose build`. 
-+ After building a local image for MLFlow, run `docker compose up -d`. 
++ The first time you set up the containers, you will need to build the MLflow image. You can build the required image with `docker compose build`. 
++ After building a local image for MLflow, run `docker compose up -d`. 
 + The flag `-d` indicates that we will do a headless run. 
 + Notice that the containers are set to always restart. You can remove the option or turn the containers off manually. Be aware that if you leave this option on, the containers will run whenever Docker Desktop restarts.
 
 ## Stopping the Containers
 
-+ To stop the containers use (from `./05_src/experiment_tracking/`): `docker compose stop`.
++ To stop the containers, use (from `./05_src/experiment_tracking/`): `docker compose stop`.
 + Alternatively, you can bring all images down, including their volumes, with: `docker compose down -v`. 
 
     - The `-v` flag removes volumes. 
-    - It is the best option when you do not need the data any more because **it will delete the data in your DB **. 
+    - It is the best option when you do not need the data anymore because **it will delete the data in your DB**. 
 
 
-## Connecting to the MLFlow UI
+## Connecting to the MLflow UI
 
-+ MLFlow provides a convenient interface accessible at [http://localhost:5001](http://localhost:5001).
++ MLflow provides a convenient interface accessible at [http://localhost:5001](http://localhost:5001).
 
 <div><img src="./images/01_mlflow.png" height=450></div>
 
 
-## Connecting to PgAdmin
+## Connecting to pgAdmin 4
 
-+ PgAdmin4 is management software for PostgreSQL Server.
++ pgAdmin 4 is management software for PostgreSQL Server.
 + You can open the local implementation by navigating to [http://localhost:5051](http://localhost:5051/). You will find a screen like the one below.
 
 <div><img src="./images/01_pgadmin_login.png" height=450></div>
 
-+ Login using the credentials specified in the file `./05_src/experiment_tracking/.env`. Notice there are two sets of credentials; use the ones for PgAdmin4. After authentication, you will see a screen like the one below.
++ Log in using the credentials specified in the file `./05_src/experiment_tracking/.env`. Notice there are two sets of credentials; use the ones for pgAdmin 4. After authentication, you will see a screen like the one below.
 
 <div><img src="./images/01_pgadmin_initial.png" height=450></div>
 
 + Click on "Add New Server":
 
     - In the *General* Tab, under Name enter: localhost. 
-    - Under the *Connection* Tab, use Host name *postgres* (this is the name of the service in the docker compose file). 
+    - Under the *Connection* Tab, use Host name *postgres* (this is the name of the service in the Docker Compose file). 
     - Username and password are the ones found in the `./05_src/experiment_tracking/.env` file.
 
 
-## Connect to MinIO
+## Connecting to MinIO
 
 + The interface for MinIO can be reached via [http://localhost:9001](http://localhost:9001)
 + The credentials can be found in the `./05_src/experiment_tracking/.env` file.
