@@ -9,10 +9,11 @@ Logistic regression experiments on the Give Me Some Credit dataset, tracked with
 | File | Purpose |
 |------|---------|
 | `data.py` | Load and preprocess the raw CSV into `(X, Y)` |
-| `pipeline.py` | Shared sklearn pipeline factory, MLflow helpers, and CV runner |
+| `logistic.py` | Logistic regression pipeline factory (`get_pipe`) |
+| `experiment.py` | MLflow experiment helpers and CV runner |
 | `exp__logistic_simple.py` | Single baseline run with fixed default parameters |
 | `exp__logistic_grid_search.py` | Exhaustive grid search over a predefined parameter space |
-| `exp__logistic_hyperopt.py` | Bayesian optimisation with Hyperopt (TPE); registers the best model |
+| `exp__logistic_hyperopt.py` | Bayesian optimisation with Optuna (TPE); registers the best model |
 
 ---
 
@@ -21,7 +22,7 @@ Logistic regression experiments on the Give Me Some Credit dataset, tracked with
 | Variable | Used by | Description |
 |----------|---------|-------------|
 | `CREDIT_DATA` | `data.py` | Path to the raw Give Me Some Credit CSV file |
-| `MLFLOW_TRACKING_URI` | `pipeline.py` | MLflow tracking server URL (e.g. `http://localhost:5001`) |
+| `MLFLOW_TRACKING_URI` | `experiment.py` | MLflow tracking server URL (e.g. `http://localhost:5001`) |
 
 ---
 
@@ -44,7 +45,7 @@ three binary indicators, coerces everything to numeric, and returns `(X, Y)`.
 
 ---
 
-## `pipeline.py` — shared components
+## `logistic.py` — pipeline factory
 
 ### `get_pipe() -> Pipeline`
 
@@ -56,6 +57,10 @@ Builds a fresh unfitted sklearn pipeline with two parallel preprocessing branche
 | `num_pow_cols` | utilization, income, debt ratio | `SimpleImputer(median)` → `StandardScaler` → `PowerTransformer` |
 
 Binary indicator columns pass through unchanged. Classifier: `LogisticRegression`.
+
+---
+
+## `experiment.py` — MLflow helpers and CV runner
 
 ### `get_or_create_experiment(experiment_name: str) -> str`
 

@@ -1,5 +1,5 @@
 """
-Bayesian hyperparameter optimisation using Hyperopt (Tree-structured Parzen Estimator).
+Bayesian hyperparameter optimisation using Optuna (Tree-structured Parzen Estimator).
 
 Each trial is a nested child MLflow run. After optimisation, the parent run
 logs the best parameters, the best ``neg_log_loss``, fits a final model on
@@ -9,15 +9,18 @@ the training split, and registers it in the MLflow Model Registry as
 
 import mlflow
 import mlflow.sklearn
-from hyperopt import STATUS_OK, Trials, fmin, hp, space_eval, tpe
+import optuna
 from mlflow.models import infer_signature
 from sklearn.model_selection import train_test_split
 
 from credit.data import load_data
-from credit.pipeline import get_or_create_experiment, get_pipe, run_cv
+from credit.experiment import get_or_create_experiment, run_cv
+from credit.logistic import get_pipe
 from utils.logger import get_logger
 
 _logs = get_logger(__name__)
+
+optuna.logging.set_verbosity(optuna.logging.WARNING)
 
 
 def hyperparam_opt(
@@ -32,9 +35,9 @@ def hyperparam_opt(
     """Run Bayesian hyperparameter optimisation over the logistic regression pipeline.
 
     Each evaluation is logged as a nested child MLflow run (metrics only, no
-    model artifact). After ``fmin`` completes, the parent run logs the best
-    decoded parameters and best ``neg_log_loss``, then fits a final pipeline
-    on the training data and registers it in the Model Registry.
+    model artifact). After ``optimize`` completes, the parent run logs the best
+    parameters and best ``neg_log_loss``, then fits a final pipeline on the
+    training data and registers it in the Model Registry.
 
     Parameters
     ----------
@@ -44,9 +47,10 @@ def hyperparam_opt(
     folds : int
         Number of cross-validation folds per trial.
     random_state : int
-        Seed for the train/test split and the logistic regression solver.
+        Seed for the train/test split, the logistic regression solver, and the
+        Optuna TPE sampler.
     max_evals : int
-        Number of hyperopt evaluations (trials).
+        Number of Optuna trials.
     test_size : float
         Fraction of data held out for the final test split.
     experiment_name : str
@@ -57,45 +61,48 @@ def hyperparam_opt(
     if scoring is None:
         scoring = ['neg_log_loss', 'balanced_accuracy', 'f1']
 
-    _logs.info(f'Starting hyperopt optimisation: max_evals={max_evals}')
+    _logs.info(f'Starting Optuna optimisation: max_evals={max_evals}')
     X, Y = load_data()
     X_train, X_test, Y_train, Y_test = train_test_split(
         X, Y, test_size=test_size, random_state=random_state
     )
 
-    space = {
-        'preproc__num_standard__imputer__add_indicator': hp.choice(
-            'preproc__num_standard__imputer__add_indicator', [False, True]
-        ),
-        'clf__C': hp.uniform('clf__C', 0.1, 1.0),
-        'clf__class_weight': hp.choice('clf__class_weight', [None, 'balanced']),
-        'clf__penalty': hp.choice('clf__penalty', ['l2']),
-        'clf__random_state': hp.choice('clf__random_state', [random_state]),
-        'clf__solver': hp.choice('clf__solver', ['lbfgs', 'liblinear']),
-    }
-
     experiment_id = get_or_create_experiment(experiment_name)
     mlflow.set_experiment(experiment_id=experiment_id)
 
     with mlflow.start_run():
-        trials = Trials()
 
-        def objective(params: dict) -> dict:
+        def objective(trial: optuna.Trial) -> float:
+            params = {
+                'preproc__num_standard__imputer__add_indicator': trial.suggest_categorical(
+                    'preproc__num_standard__imputer__add_indicator', [False, True]
+                ),
+                'clf__C': trial.suggest_float('clf__C', 0.1, 1.0),
+                'clf__class_weight': trial.suggest_categorical('clf__class_weight', [None, 'balanced']),
+                'clf__l1_ratio': 0.0,
+                'clf__random_state': random_state,
+            }
             metrics = run_cv(
                 get_pipe(), X, Y, params,
                 folds=folds,
                 scoring=scoring,
                 random_state=random_state,
-                tags={'optimizer': 'hyperopt'},
+                tags={'optimizer': 'optuna'},
                 nested=True,
                 log_model=False,
             )
-            return {'loss': -metrics['test_neg_log_loss'], 'status': STATUS_OK}
+            return -metrics['test_neg_log_loss']
 
-        best = fmin(fn=objective, space=space, algo=tpe.suggest, max_evals=max_evals, trials=trials)
+        sampler = optuna.samplers.TPESampler(seed=random_state)
+        study = optuna.create_study(direction='minimize', sampler=sampler)
+        study.optimize(objective, n_trials=max_evals)
 
-        best_params = space_eval(space, best)
-        best_loss = min(t['loss'] for t in trials.results)
+        best_params = {
+            **study.best_params,
+            'clf__l1_ratio': 0.0,
+            'clf__random_state': random_state,
+        }
+        best_loss = study.best_value
         _logs.info(f'Best params: {best_params}')
         _logs.info(f'Best test_neg_log_loss: {-best_loss:.4f}')
 

@@ -1,8 +1,7 @@
 """
-Shared pipeline factory and MLflow experiment runner for credit risk experiments.
+MLflow experiment helpers and cross-validation runner for credit risk experiments.
 
-Centralises three components used by all experiment scripts:
-  - get_pipe()                  — sklearn preprocessing + LogisticRegression pipeline
+Centralises two components used by all experiment scripts:
   - get_or_create_experiment()  — MLflow experiment lookup / creation
   - run_cv()                    — cross-validation loop with full MLflow logging
 """
@@ -14,12 +13,8 @@ import mlflow.sklearn
 import pandas as pd
 from dotenv import load_dotenv
 from mlflow.models import infer_signature
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_validate, train_test_split
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import PowerTransformer, StandardScaler
 
 from utils.logger import get_logger
 
@@ -28,63 +23,6 @@ MLFLOW_URI = os.getenv("MLFLOW_TRACKING_URI", "http://localhost:5001")
 
 _logs = get_logger(__name__)
 mlflow.set_tracking_uri(MLFLOW_URI)
-
-
-def get_pipe() -> Pipeline:
-    """Build and return the sklearn preprocessing + logistic regression pipeline.
-
-    Two preprocessing branches run in parallel via ColumnTransformer:
-
-    ``num_standard`` — count and age columns:
-        SimpleImputer (median) → StandardScaler
-
-    ``num_pow_cols`` — skewed continuous columns (utilization, income, debt ratio):
-        SimpleImputer (median) → StandardScaler → PowerTransformer (Yeo-Johnson)
-
-    Binary indicator columns created in ``data.load_data``
-    (``high_debt_ratio``, ``missing_monthly_income``, ``missing_num_dependents``)
-    pass through the ColumnTransformer unchanged via ``remainder='passthrough'``.
-
-    Returns
-    -------
-    Pipeline
-        Unfitted pipeline ready for ``set_params`` and ``fit``.
-    """
-    num_std_cols = [
-        'num_30_59_days_late',
-        'num_60_89_days_late',
-        'num_90_days_late',
-        'num_open_credit_loans',
-        'num_real_estate_loans',
-        'age',
-        'num_dependents',
-    ]
-    num_pow_cols = [
-        'revolving_unsecured_line_utilization',
-        'monthly_income',
-        'debt_ratio',
-    ]
-
-    preproc_std = Pipeline(steps=[
-        ('imputer', SimpleImputer(strategy='median')),
-        ('scaler', StandardScaler()),
-    ])
-
-    preproc_power = Pipeline(steps=[
-        ('imputer', SimpleImputer(strategy='median')),
-        ('scaler', StandardScaler()),
-        ('power', PowerTransformer()),
-    ])
-
-    ct = ColumnTransformer(transformers=[
-        ('num_standard', preproc_std, num_std_cols),
-        ('num_pow_cols', preproc_power, num_pow_cols),
-    ], remainder='passthrough')
-
-    return Pipeline(steps=[
-        ('preproc', ct),
-        ('clf', LogisticRegression()),
-    ])
 
 
 def get_or_create_experiment(experiment_name: str) -> str:
@@ -171,7 +109,8 @@ def run_cv(
 
     Example
     -------
-    >>> from credit.pipeline import get_pipe, run_cv
+    >>> from credit.logistic import get_pipe
+    >>> from credit.experiment import run_cv
     >>> from credit.data import load_data
     >>> X, Y = load_data()
     >>> metrics = run_cv(get_pipe(), X, Y, {'clf__C': 0.5},
