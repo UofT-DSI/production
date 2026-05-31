@@ -21,3 +21,9 @@ dependencies = [
     "utils>=1.0.2",
     "yfinance>=0.2.65",
 ]
+
+[dependency-groups]
+dev = [
+    "pyrefly>=1.0.0",
+    "ruff>=0.15.15",
+]
