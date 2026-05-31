@@ -54,7 +54,7 @@ In our course, we will set up the following services:
     - It is the best option when you do not need the data anymore because **it will delete the data in your DB**. 
 
 
-## Connecting to the MLFlow UI
+## Connecting to the MLflow UI
 
 + MLflow provides a convenient interface accessible at [http://localhost:5001](http://localhost:5001).
 
