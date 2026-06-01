@@ -63,10 +63,6 @@ def load_data(file: str | None = CREDIT_FILE) -> tuple[pd.DataFrame, pd.Series]:
             'NumberOfTime60-89DaysPastDueNotWorse': 'num_60_89_days_late',
             'NumberOfDependents': 'num_dependents',
         }
-    ).assign(
-        high_debt_ratio=lambda x: (x['debt_ratio'] > 1) * 1,
-        missing_monthly_income=lambda x: x['monthly_income'].isna() * 1,
-        missing_num_dependents=lambda x: x['num_dependents'].isna() * 1,
     ).apply(
         lambda x: pd.to_numeric(x, errors='coerce')
     )

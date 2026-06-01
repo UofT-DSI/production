@@ -7,7 +7,8 @@ The model is registered in the MLflow Model Registry as ``CreditLogisticSimple``
 """
 
 from credit.data import load_data
-from credit.pipeline import get_pipe, run_cv
+from credit.experiment import run_cv
+from credit.logistic import get_pipe
 from utils.logger import get_logger
 
 _logs = get_logger(__name__)
@@ -58,7 +59,7 @@ def single_run(
         'clf__intercept_scaling': 1,
         'clf__l1_ratio': None,
         'clf__max_iter': 100,
-        'clf__penalty': 'l2',
+        'clf__l1_ratio': 0.0,
         'clf__random_state': random_state,
         'clf__solver': 'lbfgs',
     }

@@ -13,7 +13,8 @@ import mlflow
 from sklearn.model_selection import ParameterGrid
 
 from credit.data import load_data
-from credit.pipeline import get_or_create_experiment, get_pipe, run_cv
+from credit.experiment import get_or_create_experiment, run_cv
+from credit.logistic import get_pipe
 from utils.logger import get_logger
 
 _logs = get_logger(__name__)
@@ -50,9 +51,8 @@ def grid_search(
         'preproc__num_standard__imputer__add_indicator': [False, True],
         'clf__C': [0.1, 0.25, 0.5, 0.75, 0.9, 1.0],
         'clf__class_weight': [None, 'balanced'],
-        'clf__penalty': ['l2'],
+        'clf__l1_ratio': [0.0],
         'clf__random_state': [random_state],
-        'clf__solver': ['lbfgs', 'liblinear'],
     }
     param_grid = list(ParameterGrid(param_space))
     _logs.info(f'Grid search: {len(param_grid)} combinations')

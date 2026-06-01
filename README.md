@@ -87,14 +87,12 @@ Participants are encouraged to engage actively during the learning module. The k
 |  2  | Wed., June 3, 2026    | Data Engineering Fundamentals    |
 |  3  | Thur., June 4, 2026    | Working with Training Data       |
 |  --  | Fri., June 5, 2026     | Work Period  |
-|  --  | Sat., June 6, 2026     | Work Period  |
 | --  | **Mon., June 8, 2026**        | **Submission deadline for Quizzes 1-3** |
 | --  | **Mon., June 8, 2026**        | **Submission deadline for Assignment 1** |
 |  4  | Tue., June 9, 2026     | Feature Engineering              |
 |  5  | Wed., June 10, 2026     | Model Development and Evaluation |
 |  6  | Thur., June 11, 2026     | Model Explanations and Monitoring|
 |  --  | Fri., June 12, 2026     | Work Period  |
-|  --  | Sat., June 13, 2026     | Work Period  |
 |  --  | **Mon., June 15, 2026**     | **Submission deadline for Quizzes 4-6** | 
 |  --  | **Mon., June 15, 2026**     | **Submission deadline for Assignment 2** | 
 
