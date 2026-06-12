@@ -12,6 +12,8 @@ dependencies = [
     "mlflow>=3.3.2",
     "numpy>=2.3.3",
     "optuna>=4.8.0",
+    "shap>=0.48.0",
+    "numba>=0.57.0",
     "pandas>=2.3.2",
     "pyarrow>=21.0.0",
     "python-dotenv>=1.1.1",
@@ -19,6 +21,7 @@ dependencies = [
     "seaborn>=0.13.2",
     "ucimlrepo>=0.0.7",
     "utils>=1.0.2",
+    "venn-abers>=1.5.3",
     "yfinance>=0.2.65",
 ]
 
