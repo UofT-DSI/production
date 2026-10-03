@@ -23,6 +23,53 @@ _logs = get_logger(__name__)
 optuna.logging.set_verbosity(optuna.logging.WARNING)
 
 
+def suggest_params(trial: optuna.Trial, random_state: int) -> dict:
+    """Sample one set of pipeline parameters from the linear search space.
+
+    The penalty is expressed only through ``clf__l1_ratio`` (scikit-learn >= 1.8):
+    ``0.0`` is l2, ``1.0`` is l1, and values in between are elasticnet.
+
+    | Penalty | Solver | ``clf__l1_ratio`` |
+    |---------|--------|-------------------|
+    | ``l1`` | saga | 1.0 |
+    | ``l2`` | lbfgs or saga (searched) | 0.0 |
+    | ``elasticnet`` | saga | searched in [0, 1] |
+
+    Parameters
+    ----------
+    trial : optuna.Trial
+        Trial to sample from. An ``optuna.trial.FixedTrial`` gives deterministic output.
+    random_state : int
+        Seed passed to the classifier.
+
+    Returns
+    -------
+    dict
+        Parameters ready for ``Pipeline.set_params``.
+    """
+    penalty = trial.suggest_categorical('clf__penalty', ['l1', 'l2', 'elasticnet'])
+
+    if penalty == 'elasticnet':
+        solver = 'saga'
+        l1_ratio = trial.suggest_float('clf__l1_ratio', 0.0, 1.0)
+    elif penalty == 'l1':
+        solver = 'saga'
+        l1_ratio = 1.0
+    else:
+        solver = trial.suggest_categorical('clf__solver', ['lbfgs', 'saga'])
+        l1_ratio = 0.0
+
+    return {
+        'clf__C': trial.suggest_float('clf__C', 1e-4, 100.0, log=True),
+        'clf__solver': solver,
+        'clf__class_weight': trial.suggest_categorical(
+            'clf__class_weight', [None, 'balanced']
+        ),
+        'clf__l1_ratio': l1_ratio,
+        'clf__random_state': random_state,
+    }
+
+
 def linear_search(
     scoring: list[str] | None = None,
     folds: int = 5,
@@ -36,11 +83,13 @@ def linear_search(
 
     The search space covers penalty type (l1, l2, elasticnet), regularisation
     strength C, class weighting, and — for l2 — solver choice. Solver is fixed
-    to saga for l1 and elasticnet as it is the only compatible option.
+    to saga for l1 and elasticnet as it is the only compatible option. See
+    ``suggest_params`` for the exact mapping.
 
-    Each trial is logged as a nested child MLflow run (metrics only). After
-    ``study.optimize`` completes, the parent run logs the best decoded parameters
-    and best log-loss, then fits a final model and registers it.
+    Each trial is logged as a nested child MLflow run (metrics only) and stores
+    its full parameter dict as an Optuna user attribute. After ``study.optimize``
+    completes, the parent run logs the best trial's parameters and best log-loss,
+    then fits a final model with those same parameters and registers it.
 
     Parameters
     ----------
@@ -74,27 +123,8 @@ def linear_search(
     with mlflow.start_run():
 
         def objective(trial: optuna.Trial) -> float:
-            penalty = trial.suggest_categorical('clf__penalty', ['l1', 'l2', 'elasticnet'])
-
-            if penalty == 'elasticnet':
-                solver = 'saga'
-                extra = {'clf__l1_ratio': trial.suggest_float('clf__l1_ratio', 0.0, 1.0)}
-            elif penalty == 'l1':
-                solver = 'saga'
-                extra = {'clf__l1_ratio': 1.0}
-            else:
-                solver = trial.suggest_categorical('clf__solver', ['lbfgs', 'saga'])
-                extra = {'clf__l1_ratio': 0.0}
-
-            params = {
-                'clf__C': trial.suggest_float('clf__C', 1e-4, 100.0, log=True),
-                'clf__solver': solver,
-                'clf__class_weight': trial.suggest_categorical(
-                    'clf__class_weight', [None, 'balanced']
-                ),
-                'clf__random_state': random_state,
-                **extra,
-            }
+            params = suggest_params(trial, random_state)
+            trial.set_user_attr('params', params)
             metrics = run_cv(
                 get_pipe(), X, Y, params,
                 folds=folds,
@@ -110,18 +140,9 @@ def linear_search(
         study = optuna.create_study(direction='minimize', sampler=sampler)
         study.optimize(objective, n_trials=n_trials)
 
-        # Reconstruct full params for logging and final fit.
-        # clf__solver is only in best_params when penalty='l2'; otherwise saga was hardcoded.
-        best = study.best_params
-        penalty = best['clf__penalty']
-        best_params = {
-            'clf__C': best['clf__C'],
-            'clf__solver': best.get('clf__solver', 'saga'),
-            'clf__class_weight': best['clf__class_weight'],
-            'clf__random_state': random_state,
-        }
-        if penalty == 'elasticnet':
-            best_params['clf__l1_ratio'] = best['clf__l1_ratio']
+        # study.best_params holds only the sampled values; the stored dict also has
+        # the derived solver and l1_ratio, so the final fit matches the best trial.
+        best_params = study.best_trial.user_attrs['params']
 
         best_loss = study.best_value
         _logs.info(f'Best params: {best_params}')

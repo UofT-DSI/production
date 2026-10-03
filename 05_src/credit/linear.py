@@ -96,12 +96,12 @@ def get_pipe() -> Pipeline:
         ('util', preproc_util, ['revolving_unsecured_line_utilization']),
         ('debt', preproc_debt, ['debt_ratio']),
         ('income', preproc_income, ['monthly_income']),
-        ('income_ind', MissingIndicator(), ['monthly_income']),
+        ('income_ind', MissingIndicator(features='all'), ['monthly_income']),
         ('age', preproc_age, ['age']),
         ('open_loans', preproc_open_loans, ['num_open_credit_loans']),
         ('real_estate', preproc_real_estate, ['num_real_estate_loans']),
         ('dep', preproc_dep, ['num_dependents']),
-        ('dep_ind', MissingIndicator(), ['num_dependents']),
+        ('dep_ind', MissingIndicator(features='all'), ['num_dependents']),
     ])
 
     return Pipeline([
