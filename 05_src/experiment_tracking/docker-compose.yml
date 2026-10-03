@@ -2,7 +2,7 @@ services:
   # PostgreSQL database
   postgres:
     container_name: postgres
-    image: postgres:17-trixie
+    image: postgres:18
     restart: always
     ports:
       - "5432:5432"
@@ -12,7 +12,7 @@ services:
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
       POSTGRES_DB: "${POSTGRES_DB}"
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
@@ -23,51 +23,18 @@ services:
   # A web-based database management tool for PostgreSQL
   pgadmin:
     container_name: pgadmin4_dsi_container
-    image: dpage/pgadmin4:9
+    image: dpage/pgadmin4:9.18
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: '${PGADMIN_DEFAULT_EMAIL}'
       PGADMIN_DEFAULT_PASSWORD: '${PGADMIN_DEFAULT_PASSWORD}'
     ports:
       - "5051:80"
-  # MinIO
-  # An object storage server compatible with Amazon S3
-  minio:
-    restart: always
-    image: quay.io/minio/minio
-    container_name: minio
-    ports:
-      - "9000:9000"
-      - "9001:9001"
-    env_file: ./.env
-    environment:
-      - MINIO_ROOT_USER=${MINIO_ACCESS_KEY}
-      - MINIO_ROOT_PASSWORD=${MINIO_SECRET_ACCESS_KEY}
-      - MINIO_STORAGE_USE_HTTPS=false
-    command: server /data --console-address ":9001"
-    volumes:
-      - ./minio_data:/data
-
-  # MinIO Client
-  # A command-line client for MinIO
-  minio-setup:
-    image: quay.io/minio/mc
-    restart: "no"
-    env_file: ./.env
-    depends_on:
-      - minio
-    entrypoint: /bin/sh
-    command: >-
-      -c "until /usr/bin/mc alias set minioserver http://minio:9000 $$MINIO_ROOT_USER $$MINIO_ROOT_PASSWORD;
-      do echo 'Waiting for MinIO to be ready...'; sleep 1; done &&
-      /usr/bin/mc mb minioserver/mlflow &&
-      echo 'Bucket mlflow created successfully.'"
-    environment:
-      - MINIO_ROOT_USER=${MINIO_ACCESS_KEY}
-      - MINIO_ROOT_PASSWORD=${MINIO_SECRET_ACCESS_KEY}
   # MLflow
   # An open-source platform for managing the ML lifecycle
   # It includes experimentation, reproducibility, and deployment
+  # Artifacts are stored on the host in ./mlflow_artifacts and proxied
+  # through the tracking server, so clients only need HTTP access to it.
   mlflow:
     restart: always
     build: ./mlflow
@@ -75,20 +42,15 @@ services:
     ports:
       - "5001:5000"
     env_file: ./.env
-    environment:
-      - AWS_ACCESS_KEY_ID=${MINIO_ACCESS_KEY}
-      - AWS_SECRET_ACCESS_KEY=${MINIO_SECRET_ACCESS_KEY}
-      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
-      - MLFLOW_S3_IGNORE_TLS=true
+    volumes:
+      - ./mlflow_artifacts:/mlflow/artifacts
     command: >
       mlflow server
       --backend-store-uri postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/mlflow
       --host 0.0.0.0
       --serve-artifacts
-      --artifacts-destination s3://mlflow
+      --artifacts-destination /mlflow/artifacts
     depends_on:
       postgres:
         condition: service_healthy
-      minio-setup:
-        condition: service_completed_successfully
   

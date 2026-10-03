@@ -33,9 +33,8 @@ After installation, to set up services using containers, we will do the followin
 
 In our course, we will set up the following services:
 
-+ MLflow: an experiment tracking system. MLflow requires two backends: a database and an object store.
++ MLflow: an experiment tracking system. MLflow requires two backends: a database for run metadata and a store for artifacts. We use PostgreSQL for the former and a local folder, mounted into the container, for the latter.
 + PostgreSQL: a database management system.
-+ MinIO: an object store that resembles S3 buckets in AWS.
 
 ## Starting the Containers
 
@@ -79,12 +78,11 @@ In our course, we will set up the following services:
     - Username and password are the ones found in the `./05_src/experiment_tracking/.env` file.
 
 
-## Connecting to MinIO
+## Browsing Artifacts
 
-+ The interface for MinIO can be reached via [http://localhost:9001](http://localhost:9001)
-+ The credentials can be found in the `./05_src/experiment_tracking/.env` file.
-
-<div><img src="./images/01_minio.png" height=450></div>
++ MLflow stores artifacts (models, plots, files) on your machine, in the folder `./05_src/experiment_tracking/mlflow_artifacts/`. This folder is mounted into the MLflow container as a volume.
++ The MLflow server proxies all artifact uploads and downloads, so your code only needs to reach [http://localhost:5001](http://localhost:5001).
++ You can browse artifacts in the MLflow UI (open a run and select the *Artifacts* tab) or directly in the folder above.
 
 
 ## Learn More
