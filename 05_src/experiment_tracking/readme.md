@@ -1,15 +1,14 @@
 # experiment_tracking
 
-Docker Compose stack for local ML experiment tracking. Runs four services:
+Docker Compose stack for local ML experiment tracking. Runs three services:
 
 | Service | Image | Default port | Purpose |
 |---------|-------|-------------|---------|
-| `postgres` | `postgres:17-trixie` | `5432` | MLflow backend store |
-| `pgadmin` | `dpage/pgadmin4:9` | `5051` | Web UI for PostgreSQL |
-| `minio` | `quay.io/minio/minio` | `9000` / `9001` | S3-compatible artifact store |
-| `mlflow` | built from `./mlflow` | `5001` | MLflow tracking server |
+| `postgres` | `postgres:18` | `5432` | MLflow backend store |
+| `pgadmin` | `dpage/pgadmin4:9.18` | `5051` | Web UI for PostgreSQL |
+| `mlflow` | built from `./mlflow` | `5001` | MLflow tracking server and artifact proxy |
 
-`minio-setup` is a one-shot init container that creates the `mlflow` bucket. Its logic is inlined directly in `docker-compose.yml` — there is no external shell script.
+Artifacts are written to `./mlflow_artifacts/` on the host, which is bind-mounted into the `mlflow` container at `/mlflow/artifacts`. The server runs with `--serve-artifacts`, so clients upload and download artifacts over HTTP through `http://localhost:5001` and never need direct access to the storage.
 
 ---
 
@@ -37,8 +36,6 @@ cp .env.example .env
 | `POSTGRES_DB` | postgres | Default database name |
 | `PGADMIN_DEFAULT_EMAIL` | pgadmin | pgAdmin login e-mail |
 | `PGADMIN_DEFAULT_PASSWORD` | pgadmin | pgAdmin login password |
-| `MINIO_ACCESS_KEY` | minio, minio-setup, mlflow | MinIO root user / access key |
-| `MINIO_SECRET_ACCESS_KEY` | minio, minio-setup, mlflow | MinIO root password / secret key |
 
 ---
 
@@ -51,17 +48,18 @@ docker compose up -d
 
 Startup order is enforced by health conditions:
 1. `postgres` starts and passes its healthcheck (`pg_isready`).
-2. `minio` starts; `minio-setup` polls it with `mc alias set` until it accepts connections, then creates the `mlflow` bucket.
-3. `mlflow` starts only after `postgres` is healthy and `minio-setup` has completed successfully.
+2. `mlflow` starts only after `postgres` is healthy.
 
 First start may take 30–60 seconds for all services to be ready.
 
 ## Stopping the stack
 
 ```bash
-docker compose down          # stop and remove containers, keep volumes
-docker compose down -v       # also delete postgres and minio volumes (destructive)
+docker compose down          # stop and remove containers, keep data
+docker compose down -v       # also delete named volumes (destructive)
 ```
+
+`postgres_data/` and `mlflow_artifacts/` are bind mounts, so `down -v` does not delete them. To start from a clean slate, stop the stack and delete both folders.
 
 ---
 
@@ -70,9 +68,10 @@ docker compose down -v       # also delete postgres and minio volumes (destructi
 | Service | URL | Credentials |
 |---------|-----|-------------|
 | MLflow UI | http://localhost:5001 | — |
-| MinIO Console | http://localhost:9001 | `MINIO_ACCESS_KEY` / `MINIO_SECRET_ACCESS_KEY` |
 | pgAdmin | http://localhost:5051 | `PGADMIN_DEFAULT_EMAIL` / `PGADMIN_DEFAULT_PASSWORD` |
 | PostgreSQL | `localhost:5432` | `POSTGRES_USER` / `POSTGRES_PASSWORD` |
+
+Artifacts can be browsed in the MLflow UI (a run's *Artifacts* tab) or directly in `./mlflow_artifacts/`.
 
 ---
 
@@ -85,7 +84,7 @@ docker compose down -v       # also delete postgres and minio volumes (destructi
 uv run python experiment_tracking/test_mlflow.py
 ```
 
-On success the script logs a `score` metric and a `model` artifact, then prints the run ID. Check the result at http://localhost:5001 under the `mlflow_test_experiment` experiment.
+On success the script logs a `score` metric and a `model` artifact, then prints the run ID. Check the result at http://localhost:5001 under the `mlflow_test_experiment` experiment; the model files appear under `./mlflow_artifacts/`.
 
 ---
 
@@ -98,11 +97,11 @@ experiment_tracking/
 ├── .env.example          # committed reference with placeholder values
 ├── .gitattributes        # enforces LF line endings on *.sh files
 ├── mlflow/
-│   ├── Dockerfile        # python:3.11-slim-bookworm + mlflow + boto3
+│   ├── Dockerfile        # python:3.11-slim-bookworm + mlflow + psycopg2
 │   └── requirements.txt
 ├── postgres/
 │   └── init.sql          # creates the mlflow database on first start
-├── minio_data/           # git-ignored volume mount
-├── postgres_data/        # git-ignored volume mount
+├── mlflow_artifacts/     # git-ignored bind mount: MLflow artifact store
+├── postgres_data/        # git-ignored bind mount: PostgreSQL data
 └── test_mlflow.py        # smoke test
 ```

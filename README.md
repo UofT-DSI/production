@@ -25,7 +25,6 @@
 * [Folder Structure](#folder-structure)
 
 
-
 ## Description
 
 This module provides an overview of the Design of Machine Learning Systems embedded in data-intensive products and applications. It covers the fundamental components of the infrastructure, systems, and methods necessary to implement and maintain Machine Learning (ML) models in production. In short, we will learn techniques for building an ML model factory.
@@ -70,7 +69,6 @@ By the end of this module, participants will be able to:
 + **Learning Support Team**
 
     - [Ernani Fantinatti](https://www.linkedin.com/in/efantinatti/)
-    - [Kasra Vakiloroayaei](www.linkedin.com/in/kasrav/)
   
 
 ## Delivery of the Learning Module
@@ -83,18 +81,18 @@ Participants are encouraged to engage actively during the learning module. The k
 
 | Session |Date        |Topic                             |
 |-----|------------|----------------------------------|
-|  1  | Tue., June 2, 2026    | ML System Design                 |
-|  2  | Wed., June 3, 2026    | Data Engineering Fundamentals    |
-|  3  | Thur., June 4, 2026    | Working with Training Data       |
-|  --  | Fri., June 5, 2026     | Work Period  |
-| --  | **Mon., June 8, 2026**        | **Submission deadline for Quizzes 1-3** |
-| --  | **Mon., June 8, 2026**        | **Submission deadline for Assignment 1** |
-|  4  | Tue., June 9, 2026     | Feature Engineering              |
-|  5  | Wed., June 10, 2026     | Model Development and Evaluation |
-|  6  | Thur., June 11, 2026     | Model Explanations and Monitoring|
-|  --  | Fri., June 12, 2026     | Work Period  |
-|  --  | **Mon., June 15, 2026**     | **Submission deadline for Quizzes 4-6** | 
-|  --  | **Mon., June 15, 2026**     | **Submission deadline for Assignment 2** | 
+|  1  | Tue., Oct. 6, 2026    | ML System Design                 |
+|  2  | Wed., Oct. 7, 2026    | Data Engineering Fundamentals    |
+|  3  | Thur., Oct. 8, 2026    | Working with Training Data       |
+|  --  | Fri., Oct. 9, 2026     | Work Period  |
+| --  | **Tue., Oct. 13, 2026**        | **Submission deadline for Quizzes 1-3** |
+| --  | **Tue., Oct. 13, 2026**        | **Submission deadline for Assignment 1** |
+|  4  | Tue., Oct. 13, 2026     | Feature Engineering              |
+|  5  | Wed., Oct. 14, 2026     | Model Development and Evaluation |
+|  6  | Thur., Oct. 15, 2026     | Model Explanations and Monitoring|
+|  --  | Fri., Oct. 16, 2026     | Work Period  |
+|  --  | **Mon., Oct. 19, 2026**     | **Submission deadline for Quizzes 4-6** | 
+|  --  | **Mon., Oct. 19, 2026**     | **Submission deadline for Assignment 2** | 
 
 ## Requirements
 

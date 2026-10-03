@@ -2,8 +2,7 @@
 Data loading and preprocessing for the credit risk dataset.
 
 Reads the raw Give Me Some Credit CSV, renames columns to snake_case,
-engineers three binary missingness/threshold indicators, and returns
-feature matrix X and target vector Y.
+and returns feature matrix X and target vector Y.
 
 Reads one environment variable:
   CREDIT_DATA — path to the raw CSV file
@@ -28,12 +27,8 @@ def load_data(file: str | None = CREDIT_FILE) -> tuple[pd.DataFrame, pd.Series]:
     Performs the following steps in order:
     1. Drop the unnamed index column added by the original CSV export.
     2. Rename all columns to snake_case.
-    3. Engineer three binary indicators:
-       - ``high_debt_ratio``         — ``debt_ratio > 1``
-       - ``missing_monthly_income``  — ``monthly_income`` is NaN
-       - ``missing_num_dependents``  — ``num_dependents`` is NaN
-    4. Coerce all columns to numeric, converting non-parseable values to NaN.
-    5. Split into feature matrix X and target vector Y.
+    3. Coerce all columns to numeric, converting non-parseable values to NaN.
+    4. Split into feature matrix X and target vector Y.
 
     Parameters
     ----------
