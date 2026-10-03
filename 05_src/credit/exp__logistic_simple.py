@@ -57,7 +57,6 @@ def single_run(
         'clf__class_weight': None,
         'clf__fit_intercept': True,
         'clf__intercept_scaling': 1,
-        'clf__l1_ratio': None,
         'clf__max_iter': 100,
         'clf__l1_ratio': 0.0,
         'clf__random_state': random_state,

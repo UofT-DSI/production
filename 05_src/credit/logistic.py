@@ -20,10 +20,6 @@ def get_pipe() -> Pipeline:
     ``num_pow_cols`` — skewed continuous columns (utilization, income, debt ratio):
         SimpleImputer (median) → StandardScaler → PowerTransformer (Yeo-Johnson)
 
-    Binary indicator columns created in ``data.load_data``
-    (``high_debt_ratio``, ``missing_monthly_income``, ``missing_num_dependents``)
-    pass through the ColumnTransformer unchanged via ``remainder='passthrough'``.
-
     Returns
     -------
     Pipeline
