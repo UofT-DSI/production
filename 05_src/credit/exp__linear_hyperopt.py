@@ -14,7 +14,7 @@ from mlflow.models import infer_signature
 from sklearn.model_selection import train_test_split
 
 from credit.data import load_data
-from credit.experiment import get_or_create_experiment, run_cv
+from credit.experiment import SKOPS_TRUSTED_TYPES, get_or_create_experiment, run_cv
 from credit.linear import get_pipe
 from utils.logger import get_logger
 
@@ -162,6 +162,7 @@ def linear_search(
             signature=signature,
             input_example=X_train.head(5),
             registered_model_name=model_name,
+            skops_trusted_types=SKOPS_TRUSTED_TYPES,
         )
 
 

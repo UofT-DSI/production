@@ -153,6 +153,15 @@ Runs one cross-validated experiment and logs everything to MLflow.
 Returns mean CV metrics keyed as in `cross_validate` (e.g. `test_neg_log_loss`).
 Requires `CREDIT_DATA` and a running MLflow server at `MLFLOW_TRACKING_URI`.
 
+### `SKOPS_TRUSTED_TYPES`
+
+MLflow saves sklearn models with [skops](https://skops.readthedocs.io/), which refuses
+to load any type not marked as trusted. Every `log_model` call in this package passes
+`SKOPS_TRUSTED_TYPES = ['numpy.clip', 'numpy.dtype']` — the non-default types the two
+credit pipelines contain — so registered models load with a plain
+`mlflow.sklearn.load_model('models:/<name>/<version>')`. Extend the list if a pipeline
+gains another custom function or type.
+
 ```python
 from credit.data import load_data
 from credit.experiment import run_cv
