@@ -28,5 +28,19 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pyrefly>=1.0.0",
+    "pytest>=9.1.1",
     "ruff>=0.15.15",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["05_src/tests"]
+pythonpath = ["05_src"]
+addopts = ["--import-mode=importlib", "--strict-markers", "-p", "pytester", "-ra"]
+markers = [
+    "unit: fast, exact-value checks of a single function or class",
+    "pipeline: end-to-end data pipeline runs into temporary directories",
+    "experiment: MLflow-logging runs against the temporary tracking store",
+]
+
+[tool.pyrefly]
+search-path = ["05_src"]
