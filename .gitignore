@@ -11,4 +11,3 @@
 uv.lock
 production-env
 .venv
-.claude/*
