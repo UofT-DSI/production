@@ -1,8 +1,12 @@
 """
 Shared fixtures for the DSI production test suite.
 
-Importing ``tests.harness`` first isolates the working directory, logs, and
-MLflow for the whole session; see that module for details. Data-dependent
+Importing ``tests.harness`` first isolates logs and MLflow for the whole
+session; see that module for details. The ``_run_from_05_src`` fixture then
+makes ``05_src`` the working directory so the relative paths in ``05_src/.env``
+resolve the same way they do for the course scripts. It is a fixture, not an
+import-time ``chdir``, because pytest resolves ``testpaths`` after conftest
+import: an early ``chdir`` makes it collect all of ``05_src``. Data-dependent
 tests request ``credit_csv`` / ``price_csv_dir``, which fail (never skip)
 when the real data is missing.
 """
@@ -13,8 +17,15 @@ from pathlib import Path
 
 import mlflow
 import pytest
-from tests.harness import SESSION_ROOT, TESTS_README, require_data_path
+from tests.harness import SESSION_ROOT, SRC_DIR, TESTS_README, require_data_path
 from tests.layer_markers import pytest_collection_modifyitems  # noqa: F401
+
+
+@pytest.fixture(scope='session', autouse=True)
+def _run_from_05_src():
+    with pytest.MonkeyPatch.context() as mp:
+        mp.chdir(SRC_DIR)
+        yield
 
 
 @pytest.fixture(scope='session')

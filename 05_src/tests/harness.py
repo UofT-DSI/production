@@ -4,8 +4,6 @@ Session isolation for the DSI production test suite.
 Everything a test could leak is redirected into one session temp root
 before any source module is imported:
 
-  - the working directory is set to ``05_src`` so the relative paths in
-    ``05_src/.env`` resolve the same way they do for the course scripts;
   - ``LOG_DIR`` points at ``<root>/logs`` so test runs never write to ``07_logs``;
   - MLflow tracking and the Model Registry use a SQLite database in ``<root>``,
     and every artifact lands under ``<root>/artifacts``.
@@ -25,7 +23,6 @@ SRC_DIR = Path(__file__).resolve().parents[1]
 TESTS_README = '05_src/tests/readme.md'
 SESSION_ROOT = Path(tempfile.mkdtemp(prefix='dsi_tests_'))
 
-os.chdir(SRC_DIR)
 os.environ['LOG_DIR'] = str(SESSION_ROOT / 'logs')
 os.environ['MLFLOW_DISABLE_AGENT_HINT'] = '1'
 
