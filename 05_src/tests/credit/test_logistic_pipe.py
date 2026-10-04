@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import pytest
 from credit.logistic import get_pipe
+from tests.helpers import assert_valid_probabilities
 
 pytestmark = pytest.mark.unit
 
@@ -47,8 +48,4 @@ def test_standard_branch_imputes_median_then_standardises():
 
 def test_fitted_pipeline_returns_valid_probabilities(credit_sample):
     X, Y = credit_sample
-    pipe = get_pipe().fit(X, Y)
-    proba = pipe.predict_proba(X.head(50))
-    assert proba.shape == (50, 2)
-    assert proba.sum(axis=1) == pytest.approx(np.ones(50))
-    assert ((proba >= 0) & (proba <= 1)).all()
+    assert_valid_probabilities(get_pipe().fit(X, Y), X)

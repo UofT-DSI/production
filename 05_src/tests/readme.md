@@ -104,6 +104,7 @@ def test_target_is_binary(credit_xy):
 2. Mark it with exactly one layer, usually with a module-level `pytestmark = pytest.mark.unit`.
 3. Assert exact values: compute the expected answer independently and compare with `pytest.approx` for floats.
 4. Write outputs to `tmp_path`, never to `05_src/data`.
+5. Reuse `tests/helpers.py`: `unique_name(prefix)` for MLflow experiment and model names, `experiment_runs(name)` to read an experiment's runs back, and `assert_valid_probabilities(model, X)` for classifier output.
 
 ---
 

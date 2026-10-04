@@ -45,16 +45,16 @@ def _expected_features(csv_files: list[Path]) -> pd.DataFrame:
     return pd.concat(frames)
 
 
-def _run_pipeline(csv_dir: Path, tmp_path: Path) -> tuple[DataManager, pd.DataFrame]:
+def _run_pipeline(csv_dir: Path, out_dir: Path) -> pd.DataFrame:
+    """Ingest every CSV in ``csv_dir`` into ``out_dir/prices``, featurize, and read the features back."""
     dm = DataManager(
         csv_dir=str(csv_dir),
-        price_dir=str(tmp_path / 'prices'),
-        features_path=str(tmp_path / 'features'),
+        price_dir=str(out_dir / 'prices'),
+        features_path=str(out_dir / 'features'),
     )
     dm.process_all_files()
     dm.featurize()
-    features = pd.read_parquet(tmp_path / 'features').reset_index()
-    return dm, features
+    return pd.read_parquet(out_dir / 'features').reset_index()
 
 
 def _assert_lags_match(features: pd.DataFrame, expected: pd.DataFrame) -> None:
@@ -74,11 +74,22 @@ def three_tickers(price_csv_dir, tmp_path_factory) -> list[Path]:
     return sorted(csv_dir.glob('*.csv'))
 
 
-def test_ingest_then_featurize_preserves_rows_and_schema(three_tickers, tmp_path):
-    _, features = _run_pipeline(three_tickers[0].parent, tmp_path)
+@pytest.fixture(scope='module')
+def pipeline_run(three_tickers, tmp_path_factory) -> tuple[Path, pd.DataFrame]:
+    """One pipeline run over the three sampled tickers: ``(output dir, features)``."""
+    out_dir = tmp_path_factory.mktemp('pipeline')
+    return out_dir, _run_pipeline(three_tickers[0].parent, out_dir)
 
-    expected = _expected_features(three_tickers)
-    assert len(features) == len(expected)
+
+@pytest.fixture(scope='module')
+def expected_features(three_tickers) -> pd.DataFrame:
+    return _expected_features(three_tickers)
+
+
+def test_ingest_then_featurize_preserves_rows_and_schema(three_tickers, pipeline_run, expected_features):
+    _, features = pipeline_run
+
+    assert len(features) == len(expected_features)
     assert set(features['ticker']) == {p.stem for p in three_tickers}
     for column, dtype in FEATURE_DTYPES.items():
         assert str(features[column].dtype) == dtype, column
@@ -86,28 +97,28 @@ def test_ingest_then_featurize_preserves_rows_and_schema(three_tickers, tmp_path
     assert set(features['source']) == {p.name for p in three_tickers}
 
 
-def test_partitions_are_written_per_ticker_and_year(three_tickers, tmp_path):
-    _run_pipeline(three_tickers[0].parent, tmp_path)
+def test_partitions_are_written_per_ticker_and_year(three_tickers, pipeline_run):
+    out_dir, _ = pipeline_run
 
     for csv in three_tickers:
         years = pd.DatetimeIndex(pd.read_csv(csv)['Date']).year.unique()
-        written = sorted(p.name for p in (tmp_path / 'prices' / csv.stem).iterdir())
+        written = sorted(p.name for p in (out_dir / 'prices' / csv.stem).iterdir())
         assert written == sorted(f'{csv.stem}_{y}' for y in years)
 
 
-def test_features_match_pandas_reference(three_tickers, tmp_path):
-    _, features = _run_pipeline(three_tickers[0].parent, tmp_path)
-    _assert_lags_match(features, _expected_features(three_tickers))
+def test_features_match_pandas_reference(pipeline_run, expected_features):
+    _, features = pipeline_run
+    _assert_lags_match(features, expected_features)
 
 
-def test_lag_is_chronological_when_input_rows_are_shuffled(three_tickers, tmp_path):
+def test_lag_is_chronological_when_input_rows_are_shuffled(three_tickers, expected_features, tmp_path):
     csv_dir = tmp_path / 'shuffled'
     csv_dir.mkdir()
     for csv in three_tickers:
         pd.read_csv(csv).sample(frac=1.0, random_state=0).to_csv(csv_dir / csv.name, index=False)
 
-    _, features = _run_pipeline(csv_dir, tmp_path)
+    features = _run_pipeline(csv_dir, tmp_path)
 
-    _assert_lags_match(features, _expected_features(three_tickers))
+    _assert_lags_match(features, expected_features)
     first_rows = features.sort_values('Date').groupby('ticker').head(1)
     assert first_rows['Close_lag_1'].isna().all()

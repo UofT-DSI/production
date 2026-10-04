@@ -10,7 +10,7 @@ import mlflow
 import pytest
 import utils.logger
 from tests import layer_markers
-from tests.harness import SESSION_ROOT, SRC_DIR, require_data_path
+from tests.harness import SESSION_ROOT, SRC_DIR, TESTS_README, require_data_path
 
 pytestmark = pytest.mark.unit
 
@@ -40,7 +40,7 @@ def test_missing_data_file_fails_loudly_naming_variable_and_readme(monkeypatch, 
         require_data_path('CREDIT_DATA')
     message = str(excinfo.value)
     assert 'CREDIT_DATA' in message
-    assert 'tests/readme.md' in message
+    assert TESTS_README in message
 
 
 def test_unset_data_variable_fails_loudly(monkeypatch):
