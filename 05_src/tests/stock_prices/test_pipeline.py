@@ -90,7 +90,7 @@ def test_partitions_are_written_per_ticker_and_year(three_tickers, tmp_path):
     _run_pipeline(three_tickers[0].parent, tmp_path)
 
     for csv in three_tickers:
-        years = pd.read_csv(csv, parse_dates=['Date'])['Date'].dt.year.unique()
+        years = pd.DatetimeIndex(pd.read_csv(csv)['Date']).year.unique()
         written = sorted(p.name for p in (tmp_path / 'prices' / csv.stem).iterdir())
         assert written == sorted(f'{csv.stem}_{y}' for y in years)
 

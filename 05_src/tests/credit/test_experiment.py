@@ -26,9 +26,14 @@ def _unique(prefix: str) -> str:
     return f'{prefix}_{uuid.uuid4().hex[:8]}'
 
 
-def _only_run(client: mlflow.MlflowClient, experiment_name: str):
+def _experiment_id(client: mlflow.MlflowClient, experiment_name: str) -> str:
     experiment = client.get_experiment_by_name(experiment_name)
-    runs = client.search_runs([experiment.experiment_id])
+    assert experiment is not None, f'experiment {experiment_name!r} was not created'
+    return experiment.experiment_id
+
+
+def _only_run(client: mlflow.MlflowClient, experiment_name: str):
+    runs = client.search_runs([_experiment_id(client, experiment_name)])
     assert len(runs) == 1
     return runs[0]
 
@@ -95,6 +100,7 @@ def test_run_cv_with_model_registers_a_loadable_model(credit_sample):
     )
 
     model = mlflow.sklearn.load_model(f'models:/{model_name}/1')
+    assert model is not None
     proba = model.predict_proba(X.head(10))
     assert proba.shape == (10, 2)
     assert proba.sum(axis=1) == pytest.approx(np.ones(10))
@@ -123,8 +129,7 @@ def test_nested_run_is_a_child_of_the_active_parent(credit_sample, mlflow_client
     with mlflow.start_run() as parent:
         run_cv(get_pipe(), X, Y, PARAMS, folds=2, random_state=1, nested=True, log_model=False)
 
-    experiment = mlflow_client.get_experiment_by_name(name)
-    runs = mlflow_client.search_runs([experiment.experiment_id])
+    runs = mlflow_client.search_runs([_experiment_id(mlflow_client, name)])
     children = [r for r in runs if r.info.run_id != parent.info.run_id]
     assert len(runs) == 2
     assert len(children) == 1
