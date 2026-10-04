@@ -14,7 +14,7 @@ from mlflow.models import infer_signature
 from sklearn.model_selection import train_test_split
 
 from credit.data import load_data
-from credit.experiment import get_or_create_experiment, run_cv
+from credit.experiment import SKOPS_TRUSTED_TYPES, get_or_create_experiment, run_cv
 from credit.linear import get_pipe
 from utils.logger import get_logger
 
@@ -23,7 +23,7 @@ _logs = get_logger(__name__)
 optuna.logging.set_verbosity(optuna.logging.WARNING)
 
 
-def suggest_params(trial: optuna.Trial, random_state: int) -> dict:
+def suggest_params(trial: optuna.trial.BaseTrial, random_state: int) -> dict:
     """Sample one set of pipeline parameters from the linear search space.
 
     The penalty is expressed only through ``clf__l1_ratio`` (scikit-learn >= 1.8):
@@ -37,7 +37,7 @@ def suggest_params(trial: optuna.Trial, random_state: int) -> dict:
 
     Parameters
     ----------
-    trial : optuna.Trial
+    trial : optuna.trial.BaseTrial
         Trial to sample from. An ``optuna.trial.FixedTrial`` gives deterministic output.
     random_state : int
         Seed passed to the classifier.
@@ -162,6 +162,7 @@ def linear_search(
             signature=signature,
             input_example=X_train.head(5),
             registered_model_name=model_name,
+            skops_trusted_types=SKOPS_TRUSTED_TYPES,
         )
 
 

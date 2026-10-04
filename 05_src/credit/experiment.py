@@ -21,6 +21,10 @@ from utils.logger import get_logger
 load_dotenv(override=True)
 MLFLOW_URI = os.getenv("MLFLOW_TRACKING_URI", "http://localhost:5001")
 
+# MLflow saves sklearn models with skops, which refuses to load any type not
+# marked as trusted. These are the non-default types the credit pipelines use.
+SKOPS_TRUSTED_TYPES = ['numpy.clip', 'numpy.dtype']
+
 _logs = get_logger(__name__)
 mlflow.set_tracking_uri(MLFLOW_URI)
 
@@ -161,6 +165,7 @@ def run_cv(
                 signature=signature,
                 input_example=X_train.head(5),
                 registered_model_name=model_name,
+                skops_trusted_types=SKOPS_TRUSTED_TYPES,
             )
 
     return mean_res_cv

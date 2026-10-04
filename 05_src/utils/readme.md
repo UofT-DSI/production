@@ -11,7 +11,7 @@ Returns a named `logging.Logger` pre-configured with two handlers:
 | Handler | Destination | Format fields |
 |---------|-------------|---------------|
 | `FileHandler` | `<log_dir>/<YYYYMMDD_HHMMSS>.log` | asctime, name, filename, lineno, funcName, levelname, message |
-| `StreamHandler` | stdout | asctime, filename, lineno, levelname, message |
+| `StreamHandler` | stderr | asctime, filename, lineno, levelname, message |
 
 Python's `logging` module is a global registry: the first call for a given `name` creates and caches the logger; subsequent calls return the same instance without adding duplicate handlers.
 

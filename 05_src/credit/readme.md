@@ -164,11 +164,20 @@ metrics = run_cv(get_pipe(), X, Y, {'clf__C': 0.5},
 metrics['test_neg_log_loss']
 ```
 
+### `SKOPS_TRUSTED_TYPES`
+
+MLflow saves sklearn models with [skops](https://skops.readthedocs.io/), which refuses
+to load any type not marked as trusted. Every `log_model` call in this package passes
+`SKOPS_TRUSTED_TYPES = ['numpy.clip', 'numpy.dtype']` — the non-default types the two
+credit pipelines contain — so registered models load with a plain
+`mlflow.sklearn.load_model('models:/<name>/<version>')`. Extend the list if a pipeline
+gains another custom function or type.
+
 ---
 
 ## `exp__linear_hyperopt.py` — linear search
 
-### `suggest_params(trial: optuna.Trial, random_state: int) -> dict`
+### `suggest_params(trial: optuna.trial.BaseTrial, random_state: int) -> dict`
 
 Samples one parameter set for the extended pipeline. Each Optuna trial stores
 the returned dict as a user attribute, and the final model is refit from the
