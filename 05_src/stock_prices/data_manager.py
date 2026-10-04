@@ -208,6 +208,13 @@ class DataManager:
         parquet_files = glob(os.path.join(self.price_dir, "**/*.parquet"), recursive=True)
         self.price_dd = dd.read_parquet(parquet_files).set_index("ticker")
 
+    @staticmethod
+    def _add_close_lag(ticker_dt: pd.DataFrame) -> pd.DataFrame:
+        # Shift the sorted frame, not the input: rows arrive in partition order,
+        # and every row shares the ticker index, so assign() aligns by position.
+        ticker_dt = ticker_dt.sort_values('Date', ascending=True)
+        return ticker_dt.assign(Close_lag_1=ticker_dt['Close'].shift(1))
+
     def create_features(self) -> None:
         """Compute ``Close_lag_1`` and ``Returns`` and store in ``self.features``.
 
@@ -216,25 +223,12 @@ class DataManager:
         """
         _logs.debug(f'Columns in price data {self.price_dd.columns}')
         price_dd = self.price_dd
+        meta = price_dd._meta.assign(Close_lag_1=pd.Series(dtype='float64'))
         features = (
             price_dd
                 .groupby('ticker', group_keys=False)
-                .apply(
-                    lambda x: x.sort_values('Date', ascending=True)
-                            .assign(Close_lag_1=x['Close'].shift(1)),
-                    meta=pd.DataFrame(data={
-                            'Date': 'datetime64[ns]',
-                            'Open': 'f8',
-                            'High': 'f8',
-                            'Low': 'f8',
-                            'Close': 'f8',
-                            'Adj Close': 'f8',
-                            'Volume': 'i8',
-                            'source': 'object',
-                            'Year': 'int32',
-                            'Close_lag_1': 'f8'},
-                        index=pd.Index([], dtype=pd.StringDtype(), name='ticker'))
-                ))
+                .apply(DataManager._add_close_lag, meta=meta)
+        )
         self.features = features.assign(
             Returns=lambda x: x['Close'] / x['Close_lag_1'] - 1
         )
