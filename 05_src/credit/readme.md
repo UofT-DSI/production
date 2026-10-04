@@ -168,7 +168,7 @@ metrics['test_neg_log_loss']
 
 ## `exp__linear_hyperopt.py` — linear search
 
-### `suggest_params(trial: optuna.Trial, random_state: int) -> dict`
+### `suggest_params(trial: optuna.trial.BaseTrial, random_state: int) -> dict`
 
 Samples one parameter set for the extended pipeline. Each Optuna trial stores
 the returned dict as a user attribute, and the final model is refit from the

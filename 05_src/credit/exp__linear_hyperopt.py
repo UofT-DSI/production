@@ -23,7 +23,7 @@ _logs = get_logger(__name__)
 optuna.logging.set_verbosity(optuna.logging.WARNING)
 
 
-def suggest_params(trial: optuna.Trial, random_state: int) -> dict:
+def suggest_params(trial: optuna.trial.BaseTrial, random_state: int) -> dict:
     """Sample one set of pipeline parameters from the linear search space.
 
     The penalty is expressed only through ``clf__l1_ratio`` (scikit-learn >= 1.8):
@@ -37,7 +37,7 @@ def suggest_params(trial: optuna.Trial, random_state: int) -> dict:
 
     Parameters
     ----------
-    trial : optuna.Trial
+    trial : optuna.trial.BaseTrial
         Trial to sample from. An ``optuna.trial.FixedTrial`` gives deterministic output.
     random_state : int
         Seed passed to the classifier.
