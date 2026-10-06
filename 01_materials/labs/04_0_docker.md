@@ -18,7 +18,7 @@
 Go to [docker.com](https://www.docker.com/products/docker-desktop/). Hover over "Download Docker Desktop" and select the right version for your operating system. If you do not know how to choose, the main distinction is whether you have an ARM processor. Detailed installation instructions are below:
 
 - [Windows users](https://docs.docker.com/desktop/setup/install/windows-install/) If you are using a regular Intel or AMD processor, use the "x86_64" or "AMD64" version.
-- [Mac users](https://docs.docker.com/desktop/setup/install/mac-install/) select "Apple Silicon" or "ARM" if you have an ARM processor.
+- [Mac users](https://docs.docker.com/desktop/setup/install/mac-install/) select the Apple Silicon download for an Apple chip, or the Intel download for an Intel processor.
 - [Linux users](https://docs.docker.com/desktop/setup/install/linux/), if you would like the Desktop UI, you can install from docker.com. Otherwise, I expect the containers to run on the Linux Docker Engine.
 
 
@@ -47,10 +47,10 @@ In our course, we will set up the following services:
 ## Stopping the Containers
 
 + To stop the containers, use (from `./05_src/experiment_tracking/`): `docker compose stop`.
-+ Alternatively, you can bring all images down, including their volumes, with: `docker compose down -v`. 
++ Alternatively, `docker compose down` stops and removes the containers. The `-v` option also removes named volumes.
 
-    - The `-v` flag removes volumes. 
-    - It is the best option when you do not need the data anymore because **it will delete the data in your DB**. 
+    - This stack stores PostgreSQL data in `./postgres_data/` and MLflow artifacts in `./mlflow_artifacts/`. These are folders on your computer, so `docker compose down -v` does **not** delete their contents.
+    - If you need a clean start, stop the containers first, then remove those folders yourself. This permanently deletes the database and saved artifacts.
 
 
 ## Connecting to the MLflow UI
