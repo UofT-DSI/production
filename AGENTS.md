@@ -32,12 +32,11 @@ uv run pyrefly check <files>         # type check
 - It runs locally against the real course data (gitignored under `05_src/data/`) and a throwaway MLflow store — no Docker, no CI. 
 - `05_src/tests/readme.md` is the student-facing guide to setup and layers.
 
-### How it was set up
+### Testing Guidelines
 
-1. **Scoped in a brainstorm, then planned** (`docs/plans/2026-10-03-1928-feat-src-test-suite-plan.md`). Decisions: real data over fixtures, missing data **fails** (never skips), MLflow isolated in a temp store, experiments run through their real entry points with minimal settings (2 folds, 1–3 trials), bugs the tests expose are fixed in the same PR, tests double as teaching material.
-2. **Harness first** (`tests/harness.py`, `tests/conftest.py`, `tests/layer_markers.py`, `[tool.pytest.ini_options]` in `pyproject.toml`). Order is load-bearing: set `LOG_DIR` → import `credit.experiment` (it runs `load_dotenv(override=True)` + `mlflow.set_tracking_uri`) → re-apply `LOG_DIR` and redirect MLflow to SQLite in the temp root → `chdir` into `05_src` in a session fixture, never at import time.
-3. **Unit tests per module**, then the stock-price **pipeline** tests, then **experiment** tests for `run_cv` and all four `exp__*` scripts. Each behaviour fix was written test-first and its test was observed failing before the fix.
-4. **Simplify pass, multi-reviewer code review** (including a cross-model pass), then PR.
+- **Harness first** (`tests/harness.py`, `tests/conftest.py`, `tests/layer_markers.py`, `[tool.pytest.ini_options]` in `pyproject.toml`). Order is load-bearing: set `LOG_DIR` → import `credit.experiment` (it runs `load_dotenv(override=True)` + `mlflow.set_tracking_uri`) → re-apply `LOG_DIR` and redirect MLflow to SQLite in the temp root → `chdir` into `05_src` in a session fixture, never at import time.
+- **Unit tests per module**, then the stock-price **pipeline** tests, then **experiment** tests for `run_cv` and all four `exp__*` scripts. Each behaviour fix was written test-first and its test was observed failing before the fix.
+- **Simplify pass, multi-reviewer code review** (including a cross-model pass), then PR.
 
 ### Rules for new tests
 
